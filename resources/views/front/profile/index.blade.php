@@ -31,30 +31,52 @@
                 {!! Form::close() !!}
             </div>
         </div>
-        <div class="col-md-8" style="margin-top: 20px">
-            <div class="card">
-                {!! Form::model($user, ['route' => ['profile.update'], 'method' => 'PUT']) !!}
-                    <div class="card-body">
-                        <div class="form-group">
-                            {!! Form::label('name', 'User Name') !!}
-                            {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('email', 'E-Mail Address') !!}
-                            {!! Form::email('email', null, ['placeholder' => 'enter email address', 'class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('password', 'Password') !!}
-                            {!! Form::password('password', ['class' => 'form-control']) !!}
-                            <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
-                        </div>
+        @if ($user->type == "company")
+
+            @if ($user->company)
+                <div class="col-md-8" style="margin-top: 20px">
+                    <div class="card">
+                        {!! Form::model($user->company, ['route' => ['company.update', $user->company->id], 'method' => 'PUT']) !!}
+                            <div class="card-body">
+                                <div class="form-group">
+                                    {!! Form::label('name', 'Company Name') !!}
+                                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('registration_number', 'Registration Number') !!}
+                                    {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-footer ">
+                                {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+                            </div>
+                        {!! Form::close() !!}
                     </div>
-                    <div class="card-footer ">
-                        {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+                </div>
+
+            @else 
+                <div class="col-md-8" style="margin-top: 20px">
+                    <div class="card">
+                        {!! Form::open(['route' => ['company.store'], 'method' => 'POST']) !!}
+                            <div class="card-body">
+                                <div class="form-group">
+                                    {!! Form::label('name', 'Company Name') !!}
+                                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                                </div>
+                                <div class="form-group">
+                                    {!! Form::label('registration_number', 'Registration Number') !!}
+                                    {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-footer ">
+                                {!! Form::submit('Create', ['class' => 'btn btn-primary']); !!}
+                            </div>
+                        {!! Form::close() !!}
                     </div>
-                {!! Form::close() !!}
-            </div>
-        </div>
+                </div>
+            @endif
+            
+        @endif
     </div>
     
 </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -35,7 +37,19 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'                  => 'required',
+            'registration_number'   => 'required'
+        ]);
+
+        $data       = $request->all();
+        $data['user_id']    = Auth::user()->id;
+
+        $company    = Company::create($data);
+
+        if ($company) {
+            return redirect()->route('profile.index');
+        }
     }
 
     /**
@@ -57,7 +71,6 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -69,7 +82,21 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company    = Company::findOrFail($id);
+
+
+        $request->validate([
+            'name'                  => 'required',
+            'registration_number'   => 'required'
+        ]);
+
+        $data       = $request->all();
+
+        $company->update($data);
+
+        if ($company) {
+            return redirect()->route('profile.index');
+        }
     }
 
     /**
