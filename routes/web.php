@@ -27,7 +27,10 @@ Route::namespace('Admin')->group(function () {
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
                 Route::resources([
-                    'user'  => 'UserController'
+                    'user'      => 'UserController',
+                    'category'  => 'CategoryController',
+                    'type'      =>  'TypeController',
+                    'option'    =>   'OptionController'
                 ]);
             });
         });

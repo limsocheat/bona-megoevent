@@ -225,6 +225,27 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+        [
+            'text'        => 'categories',
+            'url'         => 'admin/category',
+            'icon'        => 'fa fa-list-alt',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'types',
+            'url'         => 'admin/type',
+            'icon'        => 'fa fa-cogs',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'options',
+            'url'         => 'admin/option',
+            'icon'        => 'fa fa-cog',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
