@@ -16,7 +16,7 @@
 			</div>
 			 <div class="form-group">
                 {!! Form::label('type', 'Type :') !!}
-                 {{ Form::select('type', ['event_team' => 'event_team', 'event_attendance' => 'event_attendance', 'event_frequency	' => 'event_frequency','event_location'=>'event_location'], ['id' => 'type','class' => 'form-control']) }}
+                 {{ Form::select('type', ['event_team' => 'event_team', 'event_attendance' => 'event_attendance', 'event_frequency' => 'event_frequency','event_location'=>'event_location'], null, ['id' => 'type','class' => 'form-control']) }}
                </div>
 
            <div class="form-group">
