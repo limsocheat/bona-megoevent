@@ -13,7 +13,7 @@
        
     </div>
     <div class="card-body">
-        <table id="example" class="display" style="width:100%">
+        <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                      {{-- <th>Event Experience</th>
@@ -29,25 +29,21 @@
 					<th>End Date</th>
 					<th>End Time</th>
 					<th>Location</th>
-					<th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($events as $event)
                     <tr>
-						<td>{{ $event->option->name }}</td>
-						<td>{{ $event->type->name }}</td>
-						<td>{{ $event->category->name}}</td>
+						<td>{{ $event->option ? $event->option->name : null }}</td>
+						<td>{{ $event->type ? $event->type->name : null }}</td>
+						<td>{{ $event->category ? $event->category->name : null}}</td>
 						<td>{{ $event->name}}</td>
 						<td>{{ $event->start_date}}</td>
 						<td>{{ $event->start_time}}</td>
 						<td>{{ $event->end_date}}</td>
 						<td>{{ $event->end_time}}</td>
 						<td>{{ $event->location}}</td>
-						<td>{{ $event->description}}</td>
 					
-                       
-                     
                         {{-- <td>
                             <a href="{{ route('admin.exhibitor.edit', $exhibitor->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
                             {!! Form::open(['route' => ['admin.exhibitor.destroy', $exhibitor->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
