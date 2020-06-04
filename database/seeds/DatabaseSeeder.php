@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Exhibitor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,8 @@ class DatabaseSeeder extends Seeder
             OptionsTableSeeder::class,
             EventTypesTableSeeder::class,
             EventCategoriesTableSeeder::class,
+            EventsTableSeeder::class,
+            ExhibitorsTableSeeder::class,
         ]);
     }
 }

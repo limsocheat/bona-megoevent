@@ -26,6 +26,16 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <link rel="stylesheet" href="{{ asset('plugins/nice-select/css/nice-select.css') }}">
+
+    <style type="text/css">
+        @font-face {
+            font-family: CenturyGothic;
+            src: {{ asset('fonts/GOTHIC.TTF') }};
+        }
+        * {
+            font-family: 'Century Gothic'
+        }
+    </style>
 </head>
 <body>
     <div id="app">

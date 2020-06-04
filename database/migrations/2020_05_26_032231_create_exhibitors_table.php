@@ -18,6 +18,7 @@ class CreateExhibitorsTable extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
             $table->binary('logo')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
