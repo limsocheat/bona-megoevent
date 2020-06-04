@@ -30,8 +30,8 @@
             <tbody>
                 @foreach ($exhibitors as $exhibitor)
                     <tr>
-                        <td>{{ $exhibitor->user->name }}</td>
-                         <td>{{ $exhibitor->user->email}}</td>
+                        <td>{{ $exhibitor->user ? $exhibitor->user->name:null }}</td>
+                         <td>{{ $exhibitor->user ?$exhibitor->user->email :null}}</td>
                         <td>{{ $exhibitor->first_name }}</td>
                          <td>{{ $exhibitor->last_name }}</td>
                         <td><img src="{{ $exhibitor->image_url }}" class="rounded mx-auto" alt="" width="50" height="50"></td>
