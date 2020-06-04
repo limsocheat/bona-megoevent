@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Auth::routes();
 
@@ -29,11 +29,12 @@ Route::namespace('Admin')->group(function () {
                 Route::resources([
                     'user'      => 'UserController',
                     'category'  => 'CategoryController',
-                    'type'      =>  'TypeController',
-                    'option'    =>   'OptionController',
-                    'exhibitor' =>   'ExhibitorController',
-                    'event'     =>   'EventController',
-                    'page'      =>   'PageController'
+                    'type'      => 'TypeController',
+                    'option'    => 'OptionController',
+                    'exhibitor' => 'ExhibitorController',
+                    'event'     => 'EventController',
+                    'page'      => 'PageController',
+                    'banner'    => 'BannerController'
                 ]);
             });
         });
