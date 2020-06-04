@@ -16,27 +16,26 @@
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-					
+                    <th>Slug</th>
                     <th>Title</th>
-                    <th>Description</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($types as $type)
+                @foreach ($pages as $page)
                     <tr>
 						
-                        <td>{{ $type->name }}</td>
-                        <td>{{ $type->description }}</td>
-                        <td>{{ $type->active}}</td>
-                     
+                        <td>{{ $page->slug }}</td>
+                        <td>{{ $page->title }}</td>
+            
                         <td>
-                            <a href="{{ route('admin.type.edit', $type->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
-                            {!! Form::open(['route' => ['admin.type.destroy', $type->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
+                            <a href="{{ route('admin.page.edit', $page->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
+                            {!! Form::open(['route' => ['admin.page.destroy', $page->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             {!! Form::close() !!}
                         </td>
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>

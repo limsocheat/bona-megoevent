@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             EventCategoriesTableSeeder::class,
             EventsTableSeeder::class,
             ExhibitorsTableSeeder::class,
+            PagesTableSeeder::class,
         ]);
     }
 }

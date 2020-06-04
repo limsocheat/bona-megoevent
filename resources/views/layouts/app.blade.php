@@ -39,21 +39,23 @@
 </head>
 <body>
     <div id="app">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('images/logo.png') }}" style="width: 150px !important"/>
-                    </a>
-                </div>
-                <div class="col-md8">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{ asset('images/banner.png') }}" />
-                    </a>
+        <div class="bg-light" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{ asset('images/logo.png') }}" style="width: 150px !important"/>
+                        </a>
+                    </div>
+                    <div class="col-md8">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{ asset('images/banner.png') }}" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>   
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -62,14 +64,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a href="" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">About</a>
+                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Contact</a>
+                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Contact</a>
                         </li>
                     </ul>
 
@@ -111,11 +113,54 @@
                     </ul>
                 </div>
             </div>
+
+            @inject('page', 'App\Models\Page')
+            @php
+                $contact    = $page::select('*')->where('slug', 'contact')->first();
+                $about      = $page::select('*')->where('slug', 'about')->first();
+            @endphp
+
+            <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="aboutLabel">
+                            {!! $about->title !!}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @inject('page', 'App\Models\Page')
+                            {!! $about->description !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="contactLabel">{!! $contact->title !!}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {!! $contact->description !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
 
         <main>
             @yield('content')
         </main>
+
+        @include('layouts.footer')
     </div>
     {{-- <script type="text/javascript">
         jQuery(document).ready(function($){
