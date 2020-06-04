@@ -50,7 +50,7 @@ class BannerController extends Controller
             $imageName = $request->file('new_image')->getClientOriginalName();
             request()->new_image->move(public_path('upload'), $imageName);
 
-            $data['image'] = $imageName;
+            $data['image'] = "/upload/".$imageName;
         }
         $banner = Banner::create($data);
         if($banner){
@@ -103,7 +103,7 @@ class BannerController extends Controller
             $imageName = $request->file('new_image')->getClientOriginalName();
             request()->new_image->move(public_path('upload'), $imageName);
 
-            $data['image'] = $imageName;
+            $data['image'] = "/upload/".$imageName;
         }
 
 

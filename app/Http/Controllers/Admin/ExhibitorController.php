@@ -61,7 +61,7 @@ class ExhibitorController extends Controller
             $imageName = $request->file('new_image')->getClientOriginalName();
             request()->new_image->move(public_path('upload'), $imageName);
 
-            $data['logo'] = $imageName;
+            $data['logo'] = "/upload/".$imageName;
         }
 
         $data['user_id'] = $user->id;
@@ -114,7 +114,7 @@ class ExhibitorController extends Controller
             $imageName = $request->file('new_image')->getClientOriginalName();
             request()->new_image->move(public_path('upload'), $imageName);
 
-            $data['logo'] = $imageName;
+            $data['logo'] = "/upload/".$imageName;
         }
 
 

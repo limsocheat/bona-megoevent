@@ -12,6 +12,6 @@ class Banner extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? url('/upload/' . $this->image) : url('/upload/camera.png');
+        return $this->image ? url($this->image) : url('/upload/camera.png');
     }
 }
