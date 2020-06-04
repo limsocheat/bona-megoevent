@@ -33,6 +33,7 @@ Route::namespace('Admin')->group(function () {
                     'option'    =>   'OptionController',
                     'exhibitor' =>   'ExhibitorController',
                     'event'     =>   'EventController',
+                    'page'      =>   'PageController'
                 ]);
             });
         });

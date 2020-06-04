@@ -260,6 +260,13 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+        [
+            'text'        => 'pages',
+            'url'         => 'admin/page',
+            'icon'        => 'fa fa-file',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

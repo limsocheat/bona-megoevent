@@ -3,13 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Exhibitor</h1>
+    <h1>Event</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-header text-right">
-        <a href="{{ route('admin.event.create') }}" class="btn btn-primary">New Exhibitor</a>
+        <a href="{{ route('admin.event.create') }}" class="btn btn-primary">New Event</a>
        
     </div>
     <div class="card-body">
