@@ -30,7 +30,9 @@ Route::namespace('Admin')->group(function () {
                     'user'      => 'UserController',
                     'category'  => 'CategoryController',
                     'type'      =>  'TypeController',
-                    'option'    =>   'OptionController'
+                    'option'    =>   'OptionController',
+                    'exhibitor' =>   'ExhibitorController',
+                    'event'     =>   'EventController',
                 ]);
             });
         });

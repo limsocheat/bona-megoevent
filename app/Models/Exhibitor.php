@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Exhibitor extends Model
 {
     protected $fillable = [
-        'user_id', 'name', 'phone', 'email', 'address', 'active'
+        'user_id', 'first_name', 'last_name', 'logo', 'phone', 'address', 'active'
     ];
 
-    public function user() 
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
+    public function getImageUrlAttribute()
+    {
+        return $this->logo ? url('/upload/' . $this->logo) : url('/upload/camera.png');
+    }
 }
+// return $this->image ? url($this->image) : url('/images/placeholder.png');

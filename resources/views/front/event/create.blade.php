@@ -11,6 +11,7 @@
                     </div>
 
                     <div class="card-body">
+                        
                         <div class="form-group">
                             {!! Form::label('event_experience_id', 'What\'s your level of experience hosting events?') !!}
                             {!! Form::select('event_experience_id', $event_experiences, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}

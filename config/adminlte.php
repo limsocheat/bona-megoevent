@@ -246,6 +246,20 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+        [
+            'text'        => 'exhibitors',
+            'url'         => 'admin/exhibitor',
+            'icon'        => 'fa fa-user-plus',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'events',
+            'url'         => 'admin/event',
+            'icon'        => 'fa fa-user-plus',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
