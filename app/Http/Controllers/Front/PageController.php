@@ -11,4 +11,9 @@ class PageController extends Controller
     {
         return view('front.index');
     }
+
+    public function entrance()
+    {
+        return view('front.entrance');
+    }
 }
