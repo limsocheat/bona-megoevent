@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             {!! Form::model($event, ['route' => ['event.update', $event->id], 'method' => 'PUT']) !!}
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Create Event') }}
+                        {{ __('Update Event') }}
                     </div>
 
                     <div class="card-body">
