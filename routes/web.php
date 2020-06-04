@@ -41,6 +41,7 @@ Route::namespace('Admin')->group(function () {
 
 Route::namespace('Front')->group(function () {
     Route::get('/', 'PageController@index');
+    Route::get('/entrance', 'PageController@entrance');
     Route::get('/profile', 'ProfileController@index')->name('profile.index');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');
     Route::resources([
