@@ -39,6 +39,10 @@
 </head>
 <body>
     <div id="app">
+        @inject('banner', 'App\Models\Banner')
+            @php
+                $header_banner    = $banner::select('*')->where('location', 'header')->first();
+            @endphp
         <div class="bg-light" >
             <div class="container">
                 <div class="row">
@@ -48,8 +52,8 @@
                         </a>
                     </div>
                     <div class="col-md8">
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{ asset('images/banner.png') }}" />
+                        <a class="navbar-brand" href="{{ $header_banner->link }}">
+                            <img src="{{ $header_banner->image }}" />
                         </a>
                     </div>
                 </div>
