@@ -2,6 +2,23 @@
 
 @section('content')
     <div class="container py-4">
-        Start hjere
+		    <div class="col">
+				@include('front.components.entrance.breadcrumb')
+			</div>
+        <div class="row">
+			@include('front.components.entrance.slideentrance')
+		</div>
+        <div class="row py-4">
+			<div class="col-md-12">
+				<h2 class="text-left">Event Exhibitors</h2>
+			</div>
+			@include('front.components.entrance.eventexhibitors')
+		</div>
+        <div class="row my-4">
+			<div class="col-md-12">
+				<h2 class="text-left">Feared Exhibitors</h2>
+			</div>
+			@include('front.components.entrance.featureexhibitors')
+		</div>
     </div>
 @endsection
