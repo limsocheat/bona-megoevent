@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    start here
+    <div class="container py-4">
+        Start hjere
+    </div>
 @endsection
