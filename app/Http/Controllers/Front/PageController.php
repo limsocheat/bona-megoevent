@@ -28,4 +28,15 @@ class PageController extends Controller
     {
         return view('front.entrance');
     }
+    public function upcoming() {
+     $data = [
+            'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
+            'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
+            'events'            => Event::select('*')->get(),
+            'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
+            'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
+        ];
+   
+        return view('front.upcoming',$data);
+    }
 }

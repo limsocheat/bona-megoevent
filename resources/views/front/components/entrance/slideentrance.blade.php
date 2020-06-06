@@ -6,7 +6,7 @@
     }
     .carousel-caption{
         text-align:left;
-        margin-bottom:10%;
+        margin-bottom:7%;
         width:30%;
     }
     .carousel-caption h3{

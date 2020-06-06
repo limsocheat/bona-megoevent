@@ -1,4 +1,7 @@
 <style>
+    body{
+        font-family: 'Century Gothic';
+    }
     .card{
         width:auto;
         height: 391.36px;
@@ -21,9 +24,21 @@
         height:50%;
         border:solid 2px gray;
     }
+    .card h3{
+        font-weight: bold;
+        text-align:center;
+        margin-top:24%;
+    }
+    .card a{
+        color:red;
+        text-align:right;
+        margin-top:10%;
+        margin-right:10px;
+        font-size: 20px;
+
+    }
 </style>
 <div class="col-md-4 mb-4">
-
 	<div class="card">
 		<img src="{{asset('images/image1.jpg')}}" alt="" class="card-img-top">
 		<div class="card-body">
@@ -47,15 +62,25 @@
 		</div>
 	</div>
 </div>
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <form class="text-center border border-light p-5" action="#!">
-            <p class="h4 mb-4">Sign in</p>
-            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="EMAI ADDRESS">
-            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="PASSWORD">
-            <div class="d-flex justify-content-around">
+<div class="col-md-4">
+    <div class="row ">
+        <div class="col-md-12 mb-4">
+            <div class="card" style="height:300px;">
+                <form class="text-center border border-light p-4" action="#!">
+                    <p class="h4 mb-4">Sign in</p>
+                    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="EMAI ADDRESS">
+                    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="PASSWORD">
+                    <div class="d-flex justify-content-around">
+                    </div>
+                    <button class="btn btn-info btn-block my-4" type="submit">SIGN UP FREE</button>
+                </form>
             </div>
-            <button class="btn btn-info btn-block my-4" type="submit">SIGN UP FREE</button>
-        </form>
+        </div>
+        <div class="col-md-12 mb-4">
+            <div class="card" style="height:200px;">
+                <h3>Next Upcoming Event</h3>
+                <a href="#">View more</a>
+            </div>
+        </div>
     </div>
 </div>
