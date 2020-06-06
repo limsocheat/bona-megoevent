@@ -1,3 +1,4 @@
+
 <div id="app">
 		@inject('banner', 'App\Models\Banner')
 		@php
