@@ -1,4 +1,3 @@
-
 <div id="app">
 		@inject('banner', 'App\Models\Banner')
 		@php
@@ -15,7 +14,7 @@
 					</div>
 					<div class="col-md-4">
 						<a class="navbar-brand" href="{{ $header_banner2->link }}">
-							<img src="{{ $header_banner2->image }}" style="width: 300px;"/>
+							<img src="{{ $header_banner2->image }}"/>
 						</a>
 					</div>
 				</div>
