@@ -1,13 +1,13 @@
 <style>
 .card{
     width:auto;
-    height: 420.36px;
+    height: 435.36px;
 }
 .block-ellipsis {
     display: block;
     display: -webkit-box;
     max-width: 100%;
-    height: 55%;
+    height: 53%;
     margin: 0 auto;
     font-size: 14px;
     line-height: 2;
@@ -36,7 +36,11 @@
 }
 .card-body h4{
     font-weight:bold;
-    font-size:18px;
+    font-size: 2.25em;
+}
+.card-body p{
+    font-size: 1.2em;
+    line-height:1.375;
 }
 </style>
 

@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container py-4">
-		<div class="col">
+
+	<div class="my-4">
 			@include('front.components.entrance.breadcrumb')
 		</div>
-        <div class="row my-4">
+        <div class="">
 		    @include('front.components.entrance.slideentrance')
-	    </div>
+		</div>
+	<div class="container">
         <div class="row py-4">
 			<div class="col-md-12">
 				<h2 class="text-left">Event Exhibitors</h2>

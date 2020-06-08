@@ -38,6 +38,40 @@
         * {
             font-family: 'Century Gothic'
         }
+        .menu .active{
+            border-bottom:4px solid red;
+        }
+        .menu li a{
+            text-decoration:none;
+            color:#000000;
+            text-transform:uppercase;
+            position:relative;
+            text-align:center;
+            margin-left:1px;
+            padding:10px 15px;
+        }
+        .menu li a::before{
+            content:"";
+            position:absolute;
+            top:100%;
+            left:0;
+            width:0;
+            height:4px;
+            background-color:red;
+            transition:all .1s linear;
+        }
+        .menu li a:hover{
+            color:red;
+            transition:.05s;
+        }
+        .menu li a:hover::before{
+            width:100%;
+            background-color:red;
+        }
+
+        .container{
+            max-width: 1280px !important;
+        }
     </style>
 </head>
 <body>
@@ -62,7 +96,7 @@
                 </div>
             </div>
         </div>   
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -70,7 +104,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto menu">
                         <li class="nav-item active">
                             <a href="" class="nav-link">Home</a>
                         </li>

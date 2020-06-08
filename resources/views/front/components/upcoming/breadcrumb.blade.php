@@ -12,10 +12,12 @@
     }
 </style>
 <div class="container">
-  <nav aria-label="breadcrumb" class="breadcrumb">
-    <ol class="breadcrumb ml-3">
-      <li><a href="#">Home</a>></li>
-      <li><a href="#">Festivals & Event</a></li>
-    </ol>
-  </nav>
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb" class="breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="#">Home</a>></li>
+        <li><a href="#">Festivals & Event</a></li>
+      </ol>
+    </nav>
+  </div>
 </div>
