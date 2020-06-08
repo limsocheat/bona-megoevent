@@ -34,7 +34,8 @@ Route::namespace('Admin')->group(function () {
                     'exhibitor' => 'ExhibitorController',
                     'event'     => 'EventController',
                     'page'      => 'PageController',
-                    'banner'    => 'BannerController'
+                    'banner'    => 'BannerController',
+                    'slide'     => 'SlideController'
                 ]);
             });
         });
@@ -47,6 +48,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/upcoming','PageController@upcoming');
     Route::get('/profile', 'ProfileController@index')->name('profile.index');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');
+  
     Route::resources([
         'company'   => 'CompanyController',
         'event' => 'EventController',

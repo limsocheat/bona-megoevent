@@ -274,6 +274,14 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+          [
+            'text'        => 'Slides',
+            'url'         => 'admin/slide',
+            'icon'        => 'fa fa-video',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

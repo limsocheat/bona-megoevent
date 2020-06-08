@@ -23,7 +23,7 @@
                 
 				{!! Form::label('new_image', 'Logo :') !!}
                <input name="new_image" type="file" id="new_image" />
-                <img id="imagePreview" class="rounded mx-auto" src="{{ asset('upload/'.$exhibitor->logo) }}" alt="" style="width:200px;height:200px">
+                <img id="imagePreview" class="rounded mx-auto" src="{{ asset($exhibitor->logo) }}" alt="" style="width:200px;height:200px">
             </div>
 			<div class="form-group">
                 {!! Form::label('phone', 'Phone') !!}
