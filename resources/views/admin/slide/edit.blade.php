@@ -3,31 +3,31 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Edit Banner</h1>
+    <h1>Edit Slide</h1>
 @stop
 
 @section('content')
 <div class="card">
-    {!! Form::model($banner,['route' => ['admin.banner.update',$banner->id], 'method' => 'PUT','enctype'=>'multipart/form-data']) !!}
+    {!! Form::model($slide,['route' => ['admin.slide.update',$slide->id], 'method' => 'PUT','enctype'=>'multipart/form-data']) !!}
           @csrf
         <div class="card-body">
             <div class="form-group">
-                {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ['placeholder' => 'name', 'class' => 'form-control']) !!}
+                {!! Form::label('title', 'Title') !!}
+                {!! Form::text('title', null, ['placeholder' => 'title', 'class' => 'form-control']) !!}
             </div>
 			<div class="form-group">
-                {!! Form::label('link', 'Link') !!}
-                {!! Form::text('link', null, ['placeholder' => 'link', 'class' => 'form-control']) !!}
+                {!! Form::label('sub_title', 'Sub Title') !!}
+                {!! Form::text('sub_title', null, ['placeholder' => 'sub_title', 'class' => 'form-control']) !!}
 			</div>
 			<div class="form-group">
                 
-				{!! Form::label('new_image', 'Logo :') !!}
+				{!! Form::label('new_image', 'Image') !!}
                <input name="new_image" type="file" id="new_image" />
-                <img id="imagePreview" class="rounded mx-auto" src="{{ asset($banner->image_url) }}" alt="" >
+                <img id="imagePreview" class="rounded mx-auto" src="{{ asset($slide->image_url) }}" alt="" style="height:200px" >
             </div>
 			<div class="form-group">
                 {!! Form::label('location', 'Location :') !!}
-                 {{ Form::select('location', ['header' => 'header', 'subheader1' => 'subheader1', 'subheader2' => 'subheader2'], null, ['id' => 'location','class' => 'form-control']) }}
+                 {{ Form::select('location', ['homepage' => 'homepage', 'entrance' => 'entrance'], null, ['id' => 'location','class' => 'form-control']) }}
                </div>
 
         </div>

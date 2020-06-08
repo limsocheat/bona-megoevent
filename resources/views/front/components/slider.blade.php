@@ -1,3 +1,4 @@
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -6,10 +7,12 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('images/slider1.jpg') }}" alt="First slide">
+         @foreach($slides as $key=>$slide)
+        <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+            <img class="d-block w-100" src="{{ asset($slide->image) }}" alt="First slide">
         </div>
-        <div class="carousel-item">
+          @endforeach
+        {{-- <div class="carousel-item">
             <img class="d-block w-100" src="{{ asset('images/slider2.jpg') }}" alt="Second slide">
         </div>
         <div class="carousel-item">
@@ -17,7 +20,8 @@
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="{{ asset('images/slider4.jpg') }}" alt="Fourth slide">
-        </div>
+        </div> --}}
+
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

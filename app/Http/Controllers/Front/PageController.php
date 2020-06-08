@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\EventType;
 use App\Models\Exhibitor;
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -19,6 +20,7 @@ class PageController extends Controller
             'events'            => Event::select('*')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
             'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
+            'slides'             => Slide::select('*')->where('location', 'homepage')->get(),
         ];
 
         return view('front.index', $data);

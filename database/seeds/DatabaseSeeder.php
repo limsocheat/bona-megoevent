@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ExhibitorsTableSeeder::class,
             PagesTableSeeder::class,
             BannersTableSeeder::class,
+            SlideTableSeeder::class
         ]);
     }
 }
