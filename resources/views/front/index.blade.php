@@ -6,13 +6,7 @@
 			@include('front.components.slider')
 		</div>
 
-	<div class="m-auto"style="width:1280px; height: auto;">
-		<div class="row my-4">
-			<div class="col-md-12">
-				<h2 class="text-left">Statistic</h2>
-			</div>
-			@include('front.components.statistic')
-		</div>
+	<div class="container">
 		<div class="row my-4">
 			<div class="col-md-12">
 				<h2 class="text-left">Our Partners</h2>

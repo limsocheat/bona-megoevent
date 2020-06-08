@@ -38,19 +38,30 @@
         * {
             font-family: 'Century Gothic'
         }
-        .menu .active{
+        .navbar-nav .active{
             border-bottom:4px solid red;
         }
-        .menu li a{
+        .navbar-nav .actives{
+            border-bottom:4px solid white;
+            
+        }
+        .actives a i{
+            font-size:20px;
+        }
+        .navbar-nav li{
+            border-left:1px solid #DAD9D9;
+        }
+        .navbar-nav li a{
             text-decoration:none;
+            font-weight: 700;
+            font-size: .99em;
             color:#000000;
             text-transform:uppercase;
             position:relative;
             text-align:center;
-            margin-left:1px;
-            padding:10px 15px;
+            padding:18px 15px;
         }
-        .menu li a::before{
+        .navbar-nav li a::before{
             content:"";
             position:absolute;
             top:100%;
@@ -60,18 +71,17 @@
             background-color:red;
             transition:all .1s linear;
         }
-        .menu li a:hover{
-            color:red;
+        .navbar-nav li a:hover{
             transition:.05s;
         }
-        .menu li a:hover::before{
+        .navbar-nav li a:hover::before{
             width:100%;
             background-color:red;
         }
-
         .container{
             max-width: 1280px !important;
         }
+
     </style>
 </head>
 <body>
@@ -96,7 +106,7 @@
                 </div>
             </div>
         </div>   
-        <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm pt-0 pb-0">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -104,54 +114,43 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto menu">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a href="" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
+                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">Festivals & Events</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Contact</a>
+                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Eat & Drink</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Stay</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">Tours</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Traveller Essentials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Deals</a>
+                        </li>
+                    </ul>
+               <!--Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item actives">
+                            <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                        </li>
+                        <li class="nav-item actives">
+                            <a href="" class="nav-link">&nbsp;&nbsp;<i class="fa fa-star" aria-hidden="true">&nbsp;&nbsp;</i></a>
                         </li>
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    <a href="{{ route('home') }}" class="dropdown-item">Home</a>
-                                    <a href="{{ route('profile.index') }}" class="dropdown-item">Profile</a>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
                 </div>
             </div>
 
@@ -160,7 +159,6 @@
                 $contact    = $page::select('*')->where('slug', 'contact')->first();
                 $about      = $page::select('*')->where('slug', 'about')->first();
             @endphp
-
             <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
