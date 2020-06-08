@@ -4,7 +4,7 @@
     }
     .card{
         width:auto;
-        height: 391.36px;
+        height: 469.36px;
     }
     .block-ellipsis {
         display: block;
@@ -27,7 +27,14 @@
     .card h3{
         font-weight: bold;
         text-align:center;
-        margin-top:24%;
+        margin-top:20%;
+    }
+    .card h4{
+        font-size: 2.25em;
+    }
+    .card-body p{
+        font-size: 1.2em;
+        line-height:1.375;
     }
     .card a{
         color:red;
@@ -43,7 +50,7 @@
 		<img src="{{asset('images/image1.jpg')}}" alt="" class="card-img-top">
 		<div class="card-body">
             <h5 class="card-title text-truncate" style="max-lines:2; color: red;">24 MAY</h5>
-			<h5 class="card-title text-truncate" style="max-lines: 2">Hari Raya Aidilfitri</h5>
+			<h4 class="card-title text-truncate" style="max-lines: 2">Hari Raya Aidilfitri</h4>
 			<p class="card-text block-ellipsis"  style="max-lines: 5"> On Hari Raya Aidilfitri, Muslims
                 in Singapore end their time of fasting with a joyous 
                 celebration of forgiveness, fellowship and food.</p>
@@ -55,7 +62,7 @@
 		<img src="images/image1.jpg" alt="" class="card-img-top">
 		<div class="card-body">
             <h5 class="card-title text-truncate" style="max-lines:2; color: red;">45 JUN</h5>
-			<h5 class="card-title text-truncate" style="max-lines: 2">Hari Raya Aidilfitri</h5>
+			<h4 class="card-title text-truncate" style="max-lines: 2">Hari Raya Aidilfitri</h4>
 			<p class="block-ellipsis">
                 This is an example of a multi-line ellipsis. We just set the number of lines we want to display before the ellipsis takes into effect and make some changes to the CSS and the ellipsis should take into effect once we reach the number of lines we want.
             </p>

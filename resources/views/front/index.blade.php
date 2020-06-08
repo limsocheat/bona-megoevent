@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container grid">
-        <div class="row">
+    
+        <div class="">
 			@include('front.components.slider')
 		</div>
+
+	<div class="m-auto"style="width:1280px; height: auto;">
 		<div class="row my-4">
 			<div class="col-md-12">
 				<h2 class="text-left">Statistic</h2>
