@@ -20,6 +20,6 @@
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="{{ asset('images/slider4.jpg') }}" alt="Fourth slide">
-        </div> --}}
-
+        </div> --}}     
     </div>
+</div>

@@ -38,6 +38,10 @@
         * {
             font-family: 'Century Gothic'
         }
+        .navbar {
+            overflow:hidden;
+            background-color:#333;
+        }
         .navbar-nav .active{
             border-bottom:4px solid red;
         }
@@ -81,7 +85,31 @@
         .container{
             max-width: 1280px !important;
         }
-
+        /* dropdown */
+        .dropdodwn{
+            float:left;
+            overflow:hidden;
+        }
+        .dropdown .dropbtn{
+            font-size:16px;
+            border:none;
+            outline:none;
+            color:#000000;
+            padding:14px 16px;
+            background-color:inherit;
+            font-family:inherit;
+            margin:0;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn{
+            background-color:red;
+        }
+        .dropdown-content{
+            display:none;
+            position:absolute;
+            background-color:white;
+            min-width:180px;
+            z-index:1;
+        }
     </style>
 </head>
 <body>
@@ -146,10 +174,18 @@
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
                         <li class="nav-item actives">
-                            <a href="" class="nav-link">&nbsp;&nbsp;<i class="fa fa-star" aria-hidden="true">&nbsp;&nbsp;</i></a>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                   &nbsp;&nbsp;&nbsp;<i class="fa fa-star" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#"><i class="fa fa-login" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-register" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-email" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
-
 
                 </div>
             </div>
