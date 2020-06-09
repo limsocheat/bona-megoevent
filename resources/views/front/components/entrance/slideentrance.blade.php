@@ -27,15 +27,19 @@
 </style>
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('images/slider1.jpg')}}"
+            @foreach ($entrances as $key=>$entrance)
+                
+         
+        <div class="carousel-item {{ $key ==0 ?'active' :''}}active">
+                <img class="d-block w-100" src="{{ asset($entrance->image)}}"
                 alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>FESTIVALS & EVENTS</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!</p>
+                <h3>{{$entrance->title}}</h3>
+                <p>{{$entrance->sub_title}}</p>
                 </div>
             </div>
-            <div class="carousel-item">
+               @endforeach
+            {{-- <div class="carousel-item">
                 <img class="d-block w-100" src="{{ asset('images/slider2.jpg') }}"
                 alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
@@ -50,7 +54,7 @@
                     <h3>FESTIVALS & EVENTS</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <a class="carousel-control-prev"href="#carouselExampleFade" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

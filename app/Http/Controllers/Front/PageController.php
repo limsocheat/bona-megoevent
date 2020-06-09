@@ -20,7 +20,8 @@ class PageController extends Controller
             'events'            => Event::select('*')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
             'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
-            'slides'             => Slide::select('*')->where('location', 'homepage')->get(),
+            'slides'            => Slide::select('*')->where('location', 'homepage')->get(),
+           
         ];
 
         return view('front.index', $data);
@@ -28,7 +29,11 @@ class PageController extends Controller
 
     public function entrance()
     {
-        return view('front.entrance');
+         $data = [
+           'entrances' => Slide::select('*')->where('location','entrance')->get(),
+        ];
+   
+        return view('front.entrance', $data);
     }
     public function upcoming() {
      $data = [
