@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -56,7 +58,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('start_date', 'Start Date') !!}
-                                    {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control']) !!}
+                                    {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control', 'id' => 'StartDate']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -71,7 +73,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('end_date', 'End Date') !!}
-                                    {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control']) !!}
+                                    {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control', 'id' => 'EndDate']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -107,4 +109,25 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('#StartDate').datepicker({
+            todayBtn:  1,
+            autoclose: true,
+            format: "yyyy-mm-dd"
+        }).on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('#EndDate').datepicker('setStartDate', minDate);
+        });
+
+        $('#EndDate').datepicker({
+            autoclose: true,
+            format: "yyyy-mm-dd"
+        }).on('changeDate', function (selected) {
+            var maxDate = new Date(selected.date.valueOf());
+            $('#StartDate').datepicker('setEndDate', maxDate);
+        });
+    });
+</script>
 @endsection
