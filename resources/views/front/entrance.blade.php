@@ -1,28 +1,88 @@
 @extends('layouts.app')
 
+@section ('title', "entrance")
+
 @section('content')
 
-	<div class="my-4">
-			@include('front.components.entrance.breadcrumb')
-		</div>
-        <div class="">
-		    @include('front.components.entrance.slideentrance')
-		</div>
-		<div class="mb-5">
-			@include('front.components.entrance.subslider')
-		</div>
-		<div class="container">
-        <div class="row py-4">
+	<style type="text/css">
+		#NextUpcomingEvent {
+			width: auto;
+        	height: 250px;
+		}
+
+		#NextUpcomingEvent #ViewMore {
+			color:red;
+			text-align:right;
+			margin-top:10%;
+			margin-right:10px;
+			font-size: 20px;
+		}
+	</style>
+
+
+	@include('front.components.slider')
+
+	<div class="mb-5">
+		@include('front.components.entrance.subslider')
+	</div>
+	<div class="container">
+		<div class="row py-4">
 			<div class="col-md-12">
-				<h2 class="text-left">Event Exhibitors</h2>
+				<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Event Exhibitors</h1>
 			</div>
 			@include('front.components.entrance.eventexhibitors')
 		</div>
-        <div class="row my-4">
-			<div class="col-md-12">
-				<h2 class="text-left">Feared Exhibitors</h2>
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row my-2">
+						<div class="col-md-12">
+							<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Highlighted Events</h1>
+						</div>
+						@foreach ($feature_events as $event)
+							<div class="col-md-6 mb-4">
+								<div class="card border-light">
+									<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-7">
+												<h5 class="text-truncate text-danger" style="max-lines: 1">{{ $event->created_at }}</h5>
+											</div>
+											<div class="col-5 text-right">
+												<a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+											</div>
+										</div>
+										<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>
+										<p class="card-text ">{!! $event->description !!}</p>
+									</div>
+								</div>
+							</div>
+						@endforeach
+					</div>
+				</div>
+				<div class="col-md-4">
+
+					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">&nbsp;</h1>
+							
+					<div class="card" style="height:300px;">
+						<form class="text-center border border-light p-4" action="#!">
+							<p class="h4 mb-4">Sign in</p>
+							<input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="EMAI ADDRESS">
+							<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="PASSWORD">
+							<div class="d-flex justify-content-around">
+							</div>
+							<button class="btn btn-info btn-block my-4" type="submit">SIGN UP FREE</button>
+						</form>
+					</div>
+
+					<p>&nbsp;</p>
+
+					<div id="NextUpcomingEvent" class="card">
+						<h3 style="margin-top: 100px; text-align: center">Next Upcoming Event</h3>
+						<a href="#" id="ViewMore">View more</a>
+					</div>
+				</div>
 			</div>
-			@include('front.components.entrance.featureexhibitors')
 		</div>
-    </div>
+	</div>
 @endsection

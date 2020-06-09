@@ -85,30 +85,10 @@
         .container{
             max-width: 1280px !important;
         }
-        /* dropdown */
-        .dropdodwn{
-            float:left;
-            overflow:hidden;
-        }
-        .dropdown .dropbtn{
-            font-size:16px;
-            border:none;
-            outline:none;
-            color:#000000;
-            padding:14px 16px;
-            background-color:inherit;
-            font-family:inherit;
-            margin:0;
-        }
-        .navbar a:hover, .dropdown:hover .dropbtn{
-            background-color:red;
-        }
-        .dropdown-content{
-            display:none;
-            position:absolute;
-            background-color:white;
-            min-width:180px;
-            z-index:1;
+    
+
+        body p, a , label {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -126,15 +106,15 @@
                             <img src="{{ asset('images/logo.png') }}" style="width: 150px !important"/>
                         </a>
                     </div>
-                    <div class="col-md8">
-                        <a class="navbar-brand" href="{{ $header_banner->link }}">
-                            <img src="{{ $header_banner->image }}" />
+                    <div class="col-md-8">
+                        <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
+                            <img src="{{ $header_banner->image }}" style="width: 100%; height: auto;" />
                         </a>
                     </div>
                 </div>
             </div>
         </div>   
-        <nav class="navbar navbar-expand-md navbar-white bg-white shadow-sm pt-0 pb-0">
+        <nav class="navbar navbar-expand-md navbar-white bg-white pt-0 pb-0" style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -147,44 +127,38 @@
                             <a href="" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">Festivals & Events</a>
+                            <a href="/upcoming" class="nav-link">Upcomming Events</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Eat & Drink</a>
+                            <a href="/entrance" class="nav-link">Entrance</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">Shop</a>
+                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Stay</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">Tours</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Traveller Essentials</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Deals</a>
+                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Contact</a>
                         </li>
                     </ul>
-               <!--Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item actives">
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
-                        <li class="nav-item actives">
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                   &nbsp;&nbsp;&nbsp;<i class="fa fa-star" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#"><i class="fa fa-login" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-register" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-email" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </li>
+                        @guest
+                            <li class="nav-item actives">
+                                <a href="{{ route('register') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            </li>
+                            <li class="nav-item actives">
+                                <a href="{{ route('login') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            </li>
+                        @else 
+                            <li class="nav-item actives">
+                                <a href="{{ route('profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            </li>
+                            <li class="nav-item actives">
+                                <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            </li>
+                        @endguest
                     </ul>
 
                 </div>
@@ -228,6 +202,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </nav>
+        <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
+            <div class="container">
+                    <ul class="breadcrumb" style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
+                        <li class="breadcrumb-item {{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/" style="padding: 0">Home</a></li>
+                        @foreach ($breadcrumbs as $key => $url)
+                            <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}" aria-current="{{ $loop->last ? 'page' : '' }}">
+                                <a href="{{ url($url) }}" style="padding: 0">
+                                    @if (! $loop->last)
+                                        {{ ucfirst($key) }}
+                                    @else
+                                        @yield ('title')
+                                    @endif
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
             </div>
         </nav>
 

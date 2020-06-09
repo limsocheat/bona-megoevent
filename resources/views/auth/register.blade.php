@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Register')
+
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -62,12 +64,14 @@
                         </div>
 
                         <div class="form-group row">
-                            @foreach ($roles as $role)
-                                <div class="form-check form-check-inline">
-                                    <input name="role" class="form-check-input" type="radio" name="inlineRadioOptions" id="{{ $role->name }}" value="{{ $role->name }}">
-                                    <label class="form-check-label" for="{{ $role->name }}">{{ $role->name }}</label>
-                                </div>
-                            @endforeach
+                            <div class="col-md-6 offset-md-4">
+                                @foreach ($roles as $role)
+                                    <div class="form-check form-check-inline">
+                                        <input name="role" class="form-check-input" type="radio" name="inlineRadioOptions" id="{{ $role->name }}" value="{{ $role->name }}">
+                                        <label class="form-check-label" for="{{ $role->name }}">{{ $role->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0">

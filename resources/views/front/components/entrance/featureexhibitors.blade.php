@@ -49,7 +49,14 @@
 	<div class="card">
 		<img src="{{asset('images/image1.jpg')}}" alt="" class="card-img-top">
 		<div class="card-body">
-            <h5 class="card-title text-truncate" style="max-lines:2; color: red;">24 MAY</h5>
+            <div class="row">
+                <div class="col-7">
+                    <h5 class="card-title text-truncate" style="max-lines:2; color: red;">24 MAY</h5>
+                </div>
+                <div class="col-5 text-right">
+                    <a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+                </div>
+            </div>
 			<h4 class="card-title text-truncate" style="max-lines: 2">Hari Raya Aidilfitri</h4>
 			<p class="card-text block-ellipsis"  style="max-lines: 5"> On Hari Raya Aidilfitri, Muslims
                 in Singapore end their time of fasting with a joyous 

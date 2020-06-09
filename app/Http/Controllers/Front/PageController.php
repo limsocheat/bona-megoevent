@@ -30,7 +30,8 @@ class PageController extends Controller
     public function entrance()
     {
          $data = [
-           'entrances' => Slide::select('*')->where('location','entrance')->get(),
+            'entrances' => Slide::select('*')->where('location','entrance')->get(),
+            'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
         ];
    
         return view('front.entrance', $data);

@@ -43,9 +43,9 @@ Route::namespace('Admin')->group(function () {
 });
 
 Route::namespace('Front')->group(function () {
-    Route::get('/', 'PageController@index');
-    Route::get('/entrance', 'PageController@entrance');
-    Route::get('/upcoming','PageController@upcoming');
+    Route::get('/', 'PageController@index')->name('index');
+    Route::get('/entrance', 'PageController@entrance')->name('entrance');
+    Route::get('/upcoming','PageController@upcoming')->name('upcoming');
     Route::get('/profile', 'ProfileController@index')->name('profile.index');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');
   
@@ -54,3 +54,4 @@ Route::namespace('Front')->group(function () {
         'event' => 'EventController',
     ]);
 });
+

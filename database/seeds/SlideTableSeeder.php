@@ -24,13 +24,30 @@ class SlideTableSeeder extends Seeder
                 'sub_title'     => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!',
                 'image'         => 'images/slider2.jpg',
                 'location'      => 'entrance',
-            ]
-            ,
+            ],
             [
                 'title'         => 'FESTIVALS & EVENTS',
                 'sub_title'     => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!',
                 'image'         => 'images/slider3.jpg',
                 'location'      => 'entrance',
+            ],
+            [
+                'title'         => 'FESTIVALS & EVENTS',
+                'sub_title'     => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!',
+                'image'         => '/images/slider1.jpg',
+                'location'      => 'homepage',
+            ],
+            [
+                'title'         => 'FESTIVALS & EVENTS',
+                'sub_title'     => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!',
+                'image'         => 'images/slider2.jpg',
+                'location'      => 'homepage',
+            ],
+            [
+                'title'         => 'FESTIVALS & EVENTS',
+                'sub_title'     => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci esse vitae exercitationem fugit, numquam minus!',
+                'image'         => 'images/slider3.jpg',
+                'location'      => 'homepage',
             ]
         ];
 
