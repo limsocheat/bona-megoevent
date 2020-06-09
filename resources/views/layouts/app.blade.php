@@ -127,10 +127,10 @@
                             <a href="" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/upcoming" class="nav-link">Upcomming Events</a>
+                            <a href="{{ route('upcoming') }}" class="nav-link">Upcomming Events</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/entrance" class="nav-link">Entrance</a>
+                            <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
                         </li>
                         <li class="nav-item">
                             <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
