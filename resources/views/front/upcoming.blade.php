@@ -14,6 +14,9 @@
 			@include('front.components.filter')
 		</div>
 		<div class="row my-4">
+			@include('front.components.upcoming.eventscalendar')
+		</div>
+		<div class="row my-4">
 			@include('front.components.upcoming.gategory')
 		</div>
 	</div>
