@@ -9,9 +9,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript" src="{{ asset('plugins/nice-select/js/jquery.nice-select.js') }}"></script>
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!---icon--->
@@ -108,7 +110,7 @@
                     </div>
                     <div class="col-md-8">
                         <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
-                            <img src="{{ $header_banner->image }}" style="width: 100%; height: auto;" />
+                            <img src="{{ asset($header_banner->image) }}" style="width: 100%; height: auto;" />
                         </a>
                     </div>
                 </div>
@@ -146,7 +148,7 @@
                         </li>
                         @guest
                             <li class="nav-item actives">
-                                <a href="{{ route('register') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                                <a href="{{ route('register') }}" class="nav-link" data-toggle="tooltip" data-placement="top" title="Tooltip on top">&nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                             </li>
                             <li class="nav-item actives">
                                 <a href="{{ route('login') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
@@ -267,11 +269,11 @@
 
         @include('layouts.footer')
     </div>
-    {{-- <script type="text/javascript">
-        jQuery(document).ready(function($){
-            $('select').niceSelect();
-        });
-    </script> --}}
     @yield('script')
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 </html>
