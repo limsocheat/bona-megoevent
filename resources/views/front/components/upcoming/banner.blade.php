@@ -9,12 +9,12 @@
 				<div class="row">
 				<div class="col-md-6">
 					<a class="navbar-brand" href="{{ $header_banner1->link }}">
-						<img src="{{ $header_banner1->image }}" style="width :100%; height: auto;"/>
+						<img src="{{ asset($header_banner1->image) }}" style="width :100%; height: auto;"/>
 					</a>
 				</div>
 				<div class="col-md-6">
 					<a class="navbar-brand" href="{{ $header_banner2->link }}">
-						<img src="{{ $header_banner2->image }}" style="width :100%; height: auto;"/>
+						<img src="{{ asset($header_banner2->image) }}" style="width :100%; height: auto;"/>
 					</a>
 				</div>
 			</div>
