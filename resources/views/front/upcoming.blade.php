@@ -1,6 +1,6 @@
 
 @extends('layouts.app')
-@section ('title', "upcoming")
+@section ('title', "Upcoming")
 @section('content')
 	<div class="container">
 		<div class="row my-4">
@@ -20,14 +20,14 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
-									<h5 class="text-truncate text-danger" style="max-lines: 1">{{ $event->created_at }}</h5>
+									<h5 class="text-truncate text-danger text-capitalize" style="max-lines: 1; text-transform: capitalize;">{{ $event->created_at }}</h5>
 								</div>
 								<div class="col-5 text-right">
-									<a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
-							<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>
-							<p class="card-text text-truncate">{!! $event->description !!}</p>
+							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
+							<p class="card-text text-truncate textcapitalize">{!! $event->description !!}</p>
 						</div>
 					</div>
 				</div>
@@ -44,14 +44,14 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
-									<h5 class="text-truncate text-danger" style="max-lines: 1">{{ $event->created_at }}</h5>
+									<h5 class="text-truncate text-danger text-capitalize" style="max-lines: 1; text-transform: capitalize;">{{ $event->created_at }}</h5>
 								</div>
 								<div class="col-5 text-right">
-									<a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
-							<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>
-							<p class="card-text text-truncate">{!! $event->description !!}</p>
+							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
+							<p class="card-text text-truncate text-capitalize">{!! $event->description !!}</p>
 						</div>
 					</div>
 				</div>

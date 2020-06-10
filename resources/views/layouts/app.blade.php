@@ -43,7 +43,7 @@
             background-color:#333;
         }
         .navbar-nav .active{
-            border-bottom:4px solid red;
+            border-bottom:4px solid black;
         }
         .navbar-nav .actives{
             border-bottom:4px solid white;
@@ -53,14 +53,14 @@
             font-size:20px;
         }
         .navbar-nav li{
-            border-left:1px solid #DAD9D9;
+            border-left:1px solid #efefef;
         }
         .navbar-nav li a{
             text-decoration:none;
             font-weight: 700;
-            font-size: .99em;
+            font-size: 1.2em;
             color:#000000;
-            text-transform:uppercase;
+            text-transform:capitalize;
             position:relative;
             text-align:center;
             padding:18px 15px;
@@ -72,7 +72,7 @@
             left:0;
             width:0;
             height:4px;
-            background-color:red;
+            background-color:black;
             transition:all .1s linear;
         }
         .navbar-nav li a:hover{
@@ -80,7 +80,7 @@
         }
         .navbar-nav li a:hover::before{
             width:100%;
-            background-color:red;
+            background-color:black;
         }
         .container{
             max-width: 1280px !important;
@@ -98,7 +98,7 @@
             @php
                 $header_banner    = $banner::select('*')->where('location', 'header')->first();
             @endphp
-        <div class="bg-light" >
+        <div class="bg-white" >
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -114,7 +114,7 @@
                 </div>
             </div>
         </div>   
-        <nav class="navbar navbar-expand-md navbar-white bg-white pt-0 pb-0" style="border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;">
+        <nav class="navbar navbar-expand-md navbar-white bg-white pt-0 pb-0" style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -189,9 +189,9 @@
 
             
             <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <!-- <div class="modal-header">
                             <h5 class="modal-title" id="contactLabel">{!! $contact->title !!}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -199,7 +199,45 @@
                         </div>
                         <div class="modal-body">
                             {!! $contact->description !!}
-                        </div>
+                        </div> -->
+                        <form class="mt-5 mb-5 text-capitalize "style="width:500px; margin:auto;">
+                            <h1 class="text-center">Contact us</h1>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Name*</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput2">Email*</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Contact Number</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Contact Number">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput2">Country</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Country">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Company Name</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Company Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Type</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Enquiry </option>
+                                    <option>Testimonial</option>
+                                    <option>Feedback</option>
+                                    <option>Advertiser</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Message</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -207,7 +245,7 @@
         <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
             <div class="container">
                     <ul class="breadcrumb" style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
-                        <li class="breadcrumb-item {{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/" style="padding: 0">Home</a></li>
+                        <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/" style="padding: 0">Home</a></li>
                         @foreach ($breadcrumbs as $key => $url)
                             <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}" aria-current="{{ $loop->last ? 'page' : '' }}">
                                 <a href="{{ url($url) }}" style="padding: 0">

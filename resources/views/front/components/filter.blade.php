@@ -2,7 +2,7 @@
     #filter_form select{
         text-decoration: none ;
         color: black;
-        border: 2px solid red !important;
+        border: 2px solid black !important;
     }
 
     #filter_form select option:hover {
@@ -20,18 +20,18 @@
             {!! Form::label('type', 'Type', ['class' => 'label-control']) !!}
             {!! Form::select('type', $event_types, null, ['placeholder' => 'All Types', 'class' => 'form-control']) !!}
         </div>
-        <div class="col-sm form-group">
+        <!-- <div class="col-sm form-group">
             {!! Form::label('audience', 'Audience', ['class' => 'label-control']) !!}
             {!! Form::select('audience', $event_types, null, ['placeholder' => 'All Audiences', 'class' => 'form-control']) !!}
-        </div>
+        </div> -->
         <div class="col-sm form-group">
             {!! Form::label('period', 'Period', ['class' => 'label-control']) !!}
-            {!! Form::select('period', $event_types, null, ['placeholder' => 'All Time', 'class' => 'form-control']) !!}
+            {!! Form::select('period', $event_types, null, ['placeholder' => 'Start & End Date', 'class' => 'form-control']) !!}
         </div>
         <div class="col-sm form-group">
             <div class="label-control">&nbsp;</div>
             <div style="margin-top: 9px;"  >
-                <button type="button" class="btn btn-danger">Apply</button>
+                <button type="button" class="btn btn-dark">Apply</button>
                 <button type="button" class="btn btn-secondary">Reset</button>
             </div>
         </div>

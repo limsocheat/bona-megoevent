@@ -63,7 +63,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                         <div class="form-group row">
+                            
+                        </div>
+
+                        <!-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 @foreach ($roles as $role)
                                     <div class="form-check form-check-inline">
@@ -72,7 +76,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

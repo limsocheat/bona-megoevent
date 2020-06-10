@@ -32,7 +32,9 @@
     .home_slider_fullscreen .slick-next{
         margin-right: 100px !important;
     }
-
+    .home_slider_modal{
+        
+    }
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
         .home_slider_carousel_item {
@@ -143,7 +145,15 @@
         <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" alt="Banner 1" class="home_slider_carousel_item">
     </div>
 </div>
-
+<!-- <div id="home_slider_modal" class="container">
+    <div class="home_slider_carousel">
+        <img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt="Banner 1" class="home_slider_carousel_item">
+        <img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg" alt="Banner 1" class="home_slider_carousel_item">
+        <img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt="Banner 1" class="home_slider_carousel_item">
+        <img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt="Banner 1" class="home_slider_carousel_item">
+        <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" alt="Banner 1" class="home_slider_carousel_item">
+    </div>
+</div> -->
 <script type="text/javascript">
     jQuery(document).ready(function($){
         $('.home_slider_fullscreen').slick({

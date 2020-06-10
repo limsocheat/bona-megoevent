@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section ('title', "entrance")
+@section ('title', "Entrance")
 
 @section('content')
 
@@ -49,7 +49,7 @@
 												<h5 class="text-truncate text-danger" style="max-lines: 1">{{ $event->created_at }}</h5>
 											</div>
 											<div class="col-5 text-right">
-												<a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+												<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 											</div>
 										</div>
 										<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>

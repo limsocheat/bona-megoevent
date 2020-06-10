@@ -28,13 +28,13 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
-									<h5 class="text-truncate text-danger" style="max-lines: 1">{{ $event->created_at }}</h5>
+									<h5 class="text-truncate text-danger text-capitalize" style="max-lines: 1">{{ $event->created_at }}</h5>
 								</div>
 								<div class="col-5 text-right">
-									<a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
-							<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>
+							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2">{{ $event->name }}</h3>
 							<p class="card-text text-truncate">{!! $event->description !!}</p>
 						</div>
 					</div>
@@ -52,13 +52,13 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
-									<h5 class="text-truncate text-danger" style="max-lines: 1">{{ $event->created_at }}</h5>
+									<h5 class="text-truncate text-danger text-capitalize" style="max-lines: 1">{{ $event->created_at }}</h5>
 								</div>
 								<div class="col-5 text-right">
-									<a href="#" class="btn btn-sm btn-outline-primary">Join Now</a>
+									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
-							<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>
+							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2">{{ $event->name }}</h3>
 							<p class="card-text text-truncate">{!! $event->description !!}</p>
 						</div>
 					</div>
@@ -75,7 +75,7 @@
 					<div class="card border-light">
 						<img src="{{ asset($exhibitor->logo) }}" alt="{{ $exhibitor->name }}" class="card-img-top">
 						<div class="card-body">
-							<h3 class="card-title text-truncate" style="max-lines: 2">{{ $exhibitor->name }}</h3>
+							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2">{{ $exhibitor->name }}</h3>
 						</div>
 					</div>
 				</div>

@@ -21,37 +21,16 @@
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="list-unstyled">
                 <li>
-                    <a href="#!">Link 1</a>
+                    <a href="#!" class="text-white">Link 1</a>
                 </li>
                 <li>
-                    <a href="#!">Link 2</a>
+                    <a href="#!" class="text-white">Link 2</a>
                 </li>
                 <li>
-                    <a href="#!">Link 3</a>
+                    <a href="#!" class="text-white">Link 3</a>
                 </li>
                 <li>
-                    <a href="#!">Link 4</a>
-                </li>
-                </ul>
-            </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none">
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                <ul class="list-unstyled">
-                <li>
-                    <a href="#!">Link 1</a>
-                </li>
-                <li>
-                    <a href="#!">Link 2</a>
-                </li>
-                <li>
-                    <a href="#!">Link 3</a>
-                </li>
-                <li>
-                    <a href="#!">Link 4</a>
+                    <a href="#!" class="text-white">Link 4</a>
                 </li>
                 </ul>
             </div>
@@ -63,16 +42,37 @@
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="list-unstyled">
                 <li>
-                    <a href="#!">Link 1</a>
+                    <a href="#!" class="text-white">Link 1</a>
                 </li>
                 <li>
-                    <a href="#!">Link 2</a>
+                    <a href="#!" class="text-white">Link 2</a>
                 </li>
                 <li>
-                    <a href="#!">Link 3</a>
+                    <a href="#!" class="text-white">Link 3</a>
                 </li>
                 <li>
-                    <a href="#!">Link 4</a>
+                    <a href="#!" class="text-white" >Link 4</a>
+                </li>
+                </ul>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none">
+            <!-- Grid column -->
+            <div class="col-md-2 mx-auto">
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                <ul class="list-unstyled">
+                <li>
+                    <a href="#!" class="text-white">Link 1</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-white">Link 2</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-white">Link 3</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-white">Link 4</a>
                 </li>
                 </ul>
             </div>
@@ -88,7 +88,7 @@
             <h5 class="mb-1">Register for free</h5>
         </li>
         <li class="list-inline-item">
-            <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
+            <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark">Sign up!</a>
         </li>
     </ul>
     <!-- Call to action -->
@@ -97,34 +97,34 @@
     <ul class="list-unstyled list-inline text-center">
         <li class="list-inline-item">
             <a class="btn-floating btn-fb mx-1">
-            <i class="fab fa-facebook-f"> </i>
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
             </a>
         </li>
         <li class="list-inline-item">
             <a class="btn-floating btn-tw mx-1">
-            <i class="fab fa-twitter"> </i>
+            <i class="fa fa-twitter-square" aria-hidden="true"></i>
             </a>
         </li>
         <li class="list-inline-item">
             <a class="btn-floating btn-gplus mx-1">
-            <i class="fab fa-google-plus-g"> </i>
+            <i class="fa fa-google-plus-square" aria-hidden="true"></i>
             </a>
         </li>
         <li class="list-inline-item">
             <a class="btn-floating btn-li mx-1">
-            <i class="fab fa-linkedin-in"> </i>
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
         </li>
         <li class="list-inline-item">
             <a class="btn-floating btn-dribbble mx-1">
-            <i class="fab fa-dribbble"> </i>
+            <i class="fa fa-dribbble" aria-hidden="true"></i>
             </a>
         </li>
     </ul>
     <!-- Social buttons -->
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://megovents.com/"> megovents.com</a>
+        <a href="https://megovents.com/" class="text-white"> megovents.com</a>
     </div>
     <!-- Copyright -->
 </footer>
