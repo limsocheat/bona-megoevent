@@ -1,5 +1,5 @@
 <style>
-    #filter_form select{
+    #filter_form select,input{
         text-decoration: none ;
         color: black;
         border: 2px solid black !important;
@@ -12,6 +12,10 @@
 
 <form action="" class="col-md-12" id="filter_form">
     <div class="row">
+        <div class="col-sm form-group">
+            <label for="Search">Key work</label>
+            <input type="text" class="form-control" id="usr" placeholder="Key word">
+        </div>
         <div class="col-sm form-group">
             {!! Form::label('category', 'Category', ['class' => 'label-control']) !!}
             {!! Form::select('category', $event_categories, null, ['placeholder' => 'All Categories', 'class' => 'form-control']) !!}

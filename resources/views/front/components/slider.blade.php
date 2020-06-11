@@ -14,7 +14,46 @@
     </div>
 </div> --}}
 <style>
-
+    /* modal */
+    .slider-for img {
+        width: 100%;
+        }
+    .modal-content {
+        background-color: rgba(0, 0, 0, 0);
+        border: 0 none;
+        border-radius: 0;
+        margin-left: 1px;
+        .modal-body {
+            padding: 0;
+            iframe {
+                margin-bottom: -5px;
+            }
+        }
+        .modal-header {
+            border: 0 none;
+            height: 0;
+            min-height: 0;
+            padding: 0;
+            .close {
+                background-color: #000000 !important;
+                border: 2px solid #ffffff !important;
+                border-radius: 13px;
+                color: #ffffff;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 20px;
+                font-weight: 700;
+                height: 26px;
+                opacity: 1;
+                padding-bottom: 0;
+                position: absolute;
+                right: -13px;
+                text-shadow: none;
+                top: -13px;
+                width: 26px;
+                z-index: 1;
+            }
+        }
+    }
 
     .slick-next:before {
         color: black;
@@ -145,17 +184,35 @@
         <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" alt="Banner 1" class="home_slider_carousel_item">
     </div>
 </div>
-<!-- <div id="home_slider_modal" class="container">
-    <div class="home_slider_carousel">
-        <img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt="Banner 1" class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg" alt="Banner 1" class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt="Banner 1" class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt="Banner 1" class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" alt="Banner 1" class="home_slider_carousel_item">
+<!-- Modal -->
+{{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="slider-for">
+                    <div><img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt=""></div>
+                    <div><img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg" alt=""></div>
+                    <div><img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt=""></div>
+                    <div><img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt=""></div>
+                    <div><img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div> -->
+</div> --}}
 <script type="text/javascript">
     jQuery(document).ready(function($){
+        // $('.slider-for').slick({
+        //     slidesToShow: 1,
+        //     slidesToScroll: 1,
+        //     fade: true,
+        //     asNavFor: '.home_slider_carouse'
+        // });
+
         $('.home_slider_fullscreen').slick({
             infinite: true,
             adaptiveHeight: true,

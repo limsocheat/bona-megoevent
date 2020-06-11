@@ -129,7 +129,7 @@
                             <a href="" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('upcoming') }}" class="nav-link">Upcomming Events</a>
+                            <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
@@ -141,23 +141,23 @@
                             <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Contact</a>
                         </li>
                     </ul>
-
+                    {{-- right side of navba --}}
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item actives">
+                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
                         @guest
-                            <li class="nav-item actives">
-                                <a href="{{ route('register') }}" class="nav-link" data-toggle="tooltip" data-placement="top" title="Tooltip on top">&nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
+                                <a href="{{ route('register') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                             </li>
-                            <li class="nav-item actives">
+                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign in">
                                 <a href="{{ route('login') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                             </li>
                         @else 
-                            <li class="nav-item actives">
+                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="User">
                                 <a href="{{ route('profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                             </li>
-                            <li class="nav-item actives">
+                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Email">
                                 <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                             </li>
                         @endguest
@@ -271,9 +271,10 @@
     </div>
     @yield('script')
     <script type="text/javascript">
-        jQuery(document).ready(function($){
+        $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
+        
     </script>
 </body>
 </html>
