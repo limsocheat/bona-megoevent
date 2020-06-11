@@ -35,7 +35,7 @@
         <div class="col-sm form-group">
             <div class="label-control">&nbsp;</div>
             <div style="margin-top: 9px;"  >
-                <button type="button" class="btn btn-dark">Apply</button>
+                <a href="{{ route('search') }}" type="button" class="btn btn-dark">Apply</a>
                 <button type="button" class="btn btn-secondary">Reset</button>
             </div>
         </div>

@@ -94,8 +94,8 @@
         body p, a , label {
             font-size: 16px;
         }
-        body a {
-            color: #000 !important;
+        body a, body a:hover {
+            color: #000;
         }
 
     </style>
@@ -132,7 +132,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a href="" class="nav-link">Home</a>
+                            <a href="{{ route('index') }}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>

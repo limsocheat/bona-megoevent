@@ -29,15 +29,16 @@ class PageController extends Controller
 
     public function entrance()
     {
-         $data = [
+        $data = [
             'entrances' => Slide::select('*')->where('location','entrance')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
         ];
    
         return view('front.entrance', $data);
     }
+
     public function upcoming() {
-     $data = [
+        $data = [
             'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
             'events'            => Event::select('*')->get(),
@@ -46,5 +47,16 @@ class PageController extends Controller
         ];
    
         return view('front.upcoming',$data);
+    }
+
+    public function search() {
+        $data = [
+            'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
+            'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
+            'events'            => Event::select('*')->get(),
+            'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
+            'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
+        ];
+        return view('front.search', $data);
     }
 }

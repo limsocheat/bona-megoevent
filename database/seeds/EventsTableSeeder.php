@@ -19,7 +19,7 @@ class EventsTableSeeder extends Seeder
                 'image'         => '/events/1.jpg',
             ],
             [
-                'name'          => 'THE SHOW MUST GO ON! The Afro-Peruvian Sextet\'s Livestreaming Experience',
+                'name'          => 'The Afro-Peruvian Sextet\'s Livestreaming Experience',
                 'description'   => 'In times of COVID-19, we will not stop playing for you. We are curating a professional three camara shoot for this special concert!',
                 'image'         => '/events/2.jpg',
             ],
@@ -29,8 +29,8 @@ class EventsTableSeeder extends Seeder
                 'image'         => '/events/3.jpg',
             ],
             [
-                'name'          => 'BANGBANGCON THE LIVE',
-                'description'   => 'THESE ARE ONLY FREEBIES MADE BY @PROJECTTEAMARMY STAFFS, YOU CAN PURCHASE THE PAY-PER-VIEW OF THE BANGBANGCON THE LIVE ON WEVERSE SHOP!',
+                'name'          => 'Join the virtual administrator party of the year!',
+                'description'   => 'Join the virtual administrator party of the year!',
                 'image'         => '/events/4.jpg',
             ],
             [

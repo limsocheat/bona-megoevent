@@ -48,6 +48,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/upcoming','PageController@upcoming')->name('upcoming');
     Route::get('/profile', 'ProfileController@index')->name('profile.index');
     Route::put('/profile', 'ProfileController@update')->name('profile.update');
+    Route::get('/search', 'PageController@search')->name('search');
   
     Route::resources([
         'company'   => 'CompanyController',
