@@ -45,4 +45,13 @@ class LoginController extends Controller
             return redirect()->route('admin.index');
         }   
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => 'required|captcha',
+        ]);
+    }
 }

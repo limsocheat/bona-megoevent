@@ -257,5 +257,10 @@
                 }
             ]
         });
+
+        $('.home_slider_carousel').slickLightbox({
+            src: 'src',
+            itemSelector: 'img'
+        });
     });
 </script>

@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
+@section('title', 'Events')
+
 @section('content')
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">
+                    Dashboard
+                    <a class="btn btn-primary float-right" href="{{ route('event.create') }}">New Event</a>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))

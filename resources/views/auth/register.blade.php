@@ -79,6 +79,16 @@
                         </div> -->
 
                         <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                {!! Captcha::display($attributes = [
+                                    'data-type' => 'audio',
+                                ]) !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block text-danger">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}

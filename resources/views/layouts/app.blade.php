@@ -12,6 +12,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js"></script>
     <script type="text/javascript" src="{{ asset('plugins/nice-select/js/jquery.nice-select.js') }}"></script>
     
     <!-- Scripts -->
@@ -29,6 +30,7 @@
     <link href="{{ asset('css/circle.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css">
 
     <link rel="stylesheet" href="{{ asset('plugins/nice-select/css/nice-select.css') }}">
 
@@ -92,6 +94,10 @@
         body p, a , label {
             font-size: 16px;
         }
+        body a {
+            color: #000 !important;
+        }
+
     </style>
 </head>
 <body>
@@ -146,6 +152,9 @@
                         <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
+                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Email">
+                            <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                        </li>
                         @guest
                             <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
                                 <a href="{{ route('register') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
@@ -157,8 +166,11 @@
                             <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="User">
                                 <a href="{{ route('profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                             </li>
-                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Email">
-                                <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
+                                <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                </form>
                             </li>
                         @endguest
                     </ul>
@@ -237,7 +249,16 @@
                                 <label for="exampleFormControlTextarea1">Message</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                            
+                            <div class="col-md-12">
+                                {!! Captcha::display($attributes = [
+                                    'data-type' => 'audio',
+                                ]) !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block text-danger">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
