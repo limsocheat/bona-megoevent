@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                {!! Form::model($user, ['route' => ['profile.update'], 'method' => 'PUT']) !!}
+                {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT']) !!}
                     <div class="card-body">
                         <div class="form-group">
                             {!! Form::label('name', 'User Name') !!}

@@ -22,7 +22,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('front.profile.index', ['user' => $user]);
+        return view('front.manage.profile.index', ['user' => $user]);
     }
 
     public function update(Request $request)
@@ -48,7 +48,7 @@ class ProfileController extends Controller
         $user->update($data);
 
         if ($user) {
-            return redirect()->route('profile.index');
+            return redirect()->route('manage.profile.index');
         }
     }
 }

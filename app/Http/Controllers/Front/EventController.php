@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\EventType;
+use App\Models\Location;
 use App\Models\Option;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events     = Event::select('*')->get();
+
+        $data       = [
+            'events'    => $events,
+        ];
+
+        return view('front.manage.event.index', $data);
     }
 
     /**
@@ -46,12 +53,12 @@ class EventController extends Controller
             'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
             'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
             'event_attendances' => Option::select('id', 'name')->where('type', 'event_attendance')->get()->pluck('name', 'id'),
-            'event_locations' => Option::select('id', 'name')->where('type', 'event_location')->get()->pluck('name', 'id'),
+            'event_locations' => Location::select('id', 'name')->get()->pluck('name', 'id'),
             'types' => EventType::select('id', 'name')->get()->pluck('name', 'id'),
             'categories' => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
         ];
 
-        return view('front.event.create', $data);
+        return view('front.manage.event.create', $data);
     }
 
     /**
@@ -70,14 +77,14 @@ class EventController extends Controller
             'event_team_id'         => 'required|exists:options,id',
             'event_frequency_id'    => 'required|exists:options,id',
             'event_attendance_id'   => 'required|exists:options,id',
-            'event_location_id'     => 'required|exists:options,id',
+            'location_id'           => 'required|exists:locations,id',
         ]);
 
         $data       = $request->all();
 
         $event      = Event::create($data);
         if ($event) {
-            return redirect()->route('home');
+            return redirect()->route('manage.event.index');
         }
     }
 
@@ -109,12 +116,12 @@ class EventController extends Controller
             'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
             'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
             'event_attendances' => Option::select('id', 'name')->where('type', 'event_attendance')->get()->pluck('name', 'id'),
-            'event_locations' => Option::select('id', 'name')->where('type', 'event_location')->get()->pluck('name', 'id'),
+            'event_locations'   => Location::select('id', 'name')->get()->pluck('name', 'id'),
             'types' => EventType::select('id', 'name')->get()->pluck('name', 'id'),
             'categories' => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
         ];
 
-        return view('front.event.edit', $data);
+        return view('front.manage.event.edit', $data);
     }
 
     /**
@@ -135,13 +142,13 @@ class EventController extends Controller
             'event_team_id'         => 'required|exists:options,id',
             'event_frequency_id'    => 'required|exists:options,id',
             'event_attendance_id'   => 'required|exists:options,id',
-            'event_location_id'     => 'required|exists:options,id',
+            'location_id'           => 'required|exists:locations,id',
         ]);
 
         $data       = $request->all();
         $event->update($data);
         if ($event) {
-            return redirect()->route('home');
+            return redirect()->route('manage.event.index');
         }
     }
 

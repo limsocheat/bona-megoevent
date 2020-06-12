@@ -62,4 +62,9 @@ class PageController extends Controller
     public function contact(){
         return view('front.contact');
     }
+
+    public function manage()
+    {
+        return view('front.manage.index');
+    }
 }

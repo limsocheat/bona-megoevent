@@ -46,14 +46,21 @@ Route::namespace('Front')->group(function () {
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/entrance', 'PageController@entrance')->name('entrance');
     Route::get('/upcoming','PageController@upcoming')->name('upcoming');
-    Route::get('/profile', 'ProfileController@index')->name('profile.index');
-    Route::put('/profile', 'ProfileController@update')->name('profile.update');
     Route::get('/search', 'PageController@search')->name('search');
     Route::get('/contact','PageController@contact')->name('contact');
   
-    Route::resources([
-        'company'   => 'CompanyController',
-        'event' => 'EventController',
-    ]);
+    Route::middleware('auth')->group(function() {
+        Route::prefix('manage')->group(function() {
+            Route::name('manage.')->group(function () {
+                Route::resources([
+                    'company'   => 'CompanyController',
+                    'event' => 'EventController',
+                ]);
+                Route::get('/', 'PageController@manage');
+                Route::get('/profile', 'ProfileController@index')->name('profile.index');
+                Route::put('/profile', 'ProfileController@update')->name('profile.update');
+            });
+        });
+    });
 });
 

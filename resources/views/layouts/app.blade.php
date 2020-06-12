@@ -198,7 +198,7 @@
                         </li>
                         @else
                         <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="User">
-                            <a href="{{ route('profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i
+                            <a href="{{ route('manage.profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i
                                     class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
                         <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
