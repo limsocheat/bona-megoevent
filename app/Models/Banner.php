@@ -14,4 +14,9 @@ class Banner extends Model
     {
         return $this->image ? url($this->image) : url('/upload/camera.png');
     }
+
+    public function bannerable() 
+    {
+        return $this->morphTo();
+    }
 }

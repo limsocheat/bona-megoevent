@@ -33,6 +33,11 @@ class Event extends Model
         return $this->belongsTo(Event::class, 'event_organizer');
     }
 
+    public function banners()
+    {
+        return $this->morphMany(Banner::class, 'bannerable');
+    }
+
     public function videos()
     {
         return $this->morphMany(Video::class, 'vidable');

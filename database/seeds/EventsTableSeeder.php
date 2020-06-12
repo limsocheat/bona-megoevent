@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Event;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class EventsTableSeeder extends Seeder
@@ -77,6 +78,7 @@ class EventsTableSeeder extends Seeder
 
         foreach($events as $event) {
             Event::create([
+                'organizer_id'  => User::inRandomOrder()->first()->id,
                 'name'          => $event['name'],
                 'description'   => $event['description'],
                 'image'         => $event['image'],
