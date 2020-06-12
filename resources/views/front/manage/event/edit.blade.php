@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container py-4">
+    <div class="row">
+        <div class="col-md-12 mt-4 mb-4" style="">
+            @include('front.components.event.taps')
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             {!! Form::model($event, ['route' => ['manage.event.update', $event->id], 'method' => 'PUT']) !!}

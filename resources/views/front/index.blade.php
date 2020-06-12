@@ -85,7 +85,7 @@
 			<div class="card border-light">
 				<img src="{{ asset($exhibitor->logo) }}" alt="{{ $exhibitor->name }}" class="card-img-top">
 				<div class="card-body">
-					<h3 class="card-title text-truncate" style="max-lines: 2">{{ $exhibitor->name }}
+					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $exhibitor->name }}
 					</h3>
 				</div>
 			</div>
