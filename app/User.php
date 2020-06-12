@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Exhibitor;
 use App\Models\Organizer;
 use App\Models\Participant;
+use App\Models\Profile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -65,6 +66,11 @@ class User extends Authenticatable
     public function participant()
     {
         return $this->hasOne(Participant::class);
+    }
+
+    public function profile() 
+    {
+        return $this->hasOne(Profile::class);
     }
 
     public function company()
