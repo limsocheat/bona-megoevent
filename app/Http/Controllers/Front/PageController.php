@@ -59,4 +59,7 @@ class PageController extends Controller
         ];
         return view('front.search', $data);
     }
+    public function contact(){
+        return view('front.contact');
+    }
 }

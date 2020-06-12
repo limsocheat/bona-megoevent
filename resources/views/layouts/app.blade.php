@@ -174,7 +174,7 @@
                             <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#contact" class="nav-link">Contact</a>
+                        <a href="{{route('contact')}}"  class="nav-link">Contact</a>
                         </li>
                     </ul>
                     {{-- right side of navba --}}
@@ -240,8 +240,7 @@
                 </div>
             </div>
 
-
-            <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
+            {{-- <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -306,7 +305,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </nav>
         <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
             <div class="container">

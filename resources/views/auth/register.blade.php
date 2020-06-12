@@ -63,9 +63,9 @@
                             </div>
                         </div>
 
-                         <div class="form-group row">
+                         {{-- <div class="form-group row">
                             
-                        </div>
+                        </div> --}}
 
                         <!-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
@@ -79,7 +79,7 @@
                         </div> -->
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4 mb-2">
                                 {!! Captcha::display($attributes = [
                                     'data-type' => 'audio',
                                 ]) !!}
