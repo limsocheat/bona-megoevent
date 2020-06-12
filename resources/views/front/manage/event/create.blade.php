@@ -3,8 +3,6 @@
 @section('title', 'Create Event')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
