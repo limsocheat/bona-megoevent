@@ -57,7 +57,6 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required'],
             'g-recaptcha-response' => 'required|captcha',
         ]);
     }
@@ -89,7 +88,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-        $user->assignRole($request->input('role'));
 
         event(new Registered($user));
 

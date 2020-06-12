@@ -13,8 +13,8 @@
 <form action="" class="col-md-12" id="filter_form">
     <div class="row">
         <div class="col-sm form-group">
-            <label for="Search">Key work</label>
-            <input type="text" class="form-control" id="usr" placeholder="Key word">
+            <label for="Search">Keyword</label>
+            <input type="text" class="form-control" id="usr" placeholder="Keyword">
         </div>
         <div class="col-sm form-group">
             {!! Form::label('category', 'Category', ['class' => 'label-control']) !!}
