@@ -68,15 +68,17 @@
             background-color: #333;
         }
 
-        .navbar-nav .active {
+        /* .navbar-nav .active {
             border-bottom: 4px solid black;
         }
 
         .navbar-nav .actives {
             border-bottom: 4px solid white;
 
-        }
-
+        } */
+    .navbar-nav ul li:hover{
+        border-bottom: 4px solid black;
+    }
         .actives a i {
             font-size: 20px;
         }
@@ -187,30 +189,30 @@
                         </li>
                     </ul>
                     {{-- right side of navba --}}
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
+                    <ul class="nav navbar-nav navbar-right ml-auto">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Search">
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search"
                                     aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Email">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Email">
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"
                                     aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
                         @guest
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
                             <a href="{{ route('register') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i
                                     class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign in">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
                             <a href="{{ route('login') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in"
                                     aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
                         @else
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="User">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="User">
                             <a href="{{ route('manage.profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i
                                     class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
                             <a href="#"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                                 class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out"
@@ -347,9 +349,15 @@
     @yield('script')
     <script type="text/javascript">
         $(document).ready(function(){
+            $(".nav-item").on("click", function(){
+            $(".collapse").find(".active").removeClass("active");
+            $(this).addClass("active");
+            
+            });
             $('[data-toggle="tooltip"]').tooltip();
+
         });
-        
+
     </script>
 </body>
 

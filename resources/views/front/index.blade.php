@@ -8,8 +8,11 @@
 	.multi-line-truncate {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 2;
 	overflow: hidden;
+	}
+	#card-body{
+		height: 338.32px;
 	}
 </style>
 <div class="container">
@@ -31,7 +34,7 @@
 		</div>
 		@foreach ($events as $event)
 		<div class="col-md-3 mb-4">
-			<div class="card border-light">
+			<div class="card border-light" id="card-body">
 				<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
 				<div class="card-body">
 					<div class="row">
@@ -44,7 +47,7 @@
 						</div>
 					</div>
 					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
-					<p class="card-text text-truncate">{!! $event->description !!}</p>
+					<p class="card-text multi-line-truncate">{!! $event->description !!}</p>
 				</div>
 			</div>
 		</div>
@@ -69,7 +72,7 @@
 						</div>
 					</div>
 					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
-					<p class="card-text text-truncate">{!! $event->description !!}</p>
+					<p class="card-text multi-line-truncate">{!! $event->description !!}</p>
 				</div>
 			</div>
 		</div>

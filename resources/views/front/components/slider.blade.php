@@ -200,7 +200,6 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
         <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg"
             alt="Banner 1" class="home_slider_carousel_item">
     </div>
-    
 </div>
 <!-- Modal -->
 {{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -278,41 +277,42 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
 
         $('.home_slider_carousel').slickLightbox({
             src: 'src',
+            
             itemSelector: 'img'
         });
 
-        $('.home_slider_carousel').slickLightbox({
-            infinite: true,
-            dots: false,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            centerPadding: '0px',
-            centerMode: true,
-            variableWidth: true,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
+        // $('.home_slider_carousel').slickLightbox({
+        //     infinite: true,
+        //     dots: false,
+        //     autoplay: true,
+        //     autoplaySpeed: 2000,
+        //     centerPadding: '0px',
+        //     centerMode: true,
+        //     variableWidth: true,
+        //     responsive: [
+        //         {
+        //             breakpoint: 1024,
+        //             settings: {
+        //                 slidesToShow: 3,
+        //                 slidesToScroll: 3,
+        //                 infinite: true,
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 600,
+        //             settings: {
+        //                 slidesToShow: 2,
+        //                 slidesToScroll: 2
+        //             }
+        //         },
+        //         {
+        //             breakpoint: 480,
+        //             settings: {
+        //                 slidesToShow: 1,
+        //                 slidesToScroll: 1
+        //             }
+        //         }
+        //     ]
+        // });
     });
 </script>

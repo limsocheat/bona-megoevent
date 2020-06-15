@@ -2,6 +2,18 @@
 @extends('layouts.app')
 @section ('title', "Upcoming")
 @section('content')
+
+<style>
+	.multi-line-truncate {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	}
+	#card-body{
+	height: 338.32px;
+	}
+</style>
 	<div class="container">
 		<div class="row my-4">
 			@include('front.components.upcoming.banner')
@@ -15,7 +27,7 @@
 			</div>
 			@foreach ($events as $event)
 				<div class="col-md-3 mb-4">
-					<div class="card border-light">
+					<div class="card border-light" id="card-body">
 						<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
 						<div class="card-body">
 							<div class="row">
@@ -27,8 +39,8 @@
 									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
-							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
-							<p class="card-text text-truncate textcapitalize">{!! $event->description !!}</p>
+							<h3 class="card-title multi-line-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
+							<p class="card-text multi-line-truncate textcapitalize">{!! $event->description !!}</p>
 						</div>
 					</div>
 				</div>
@@ -40,7 +52,7 @@
 			</div>
 			@foreach ($events as $event)
 				<div class="col-md-3 mb-4">
-					<div class="card border-light">
+					<div class="card border-light" id="card-bordy">
 						<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
 						<div class="card-body">
 							<div class="row">
@@ -52,8 +64,8 @@
 									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
-							<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
-							<p class="card-text text-truncate text-capitalize">{!! $event->description !!}</p>
+							<h3 class="card-title multi-line-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
+							<p class="card-text multi-line-truncate text-capitalize">{!! $event->description !!}</p>
 						</div>
 					</div>
 				</div>

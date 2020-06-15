@@ -17,6 +17,15 @@
 			margin-right:10px;
 			font-size: 20px;
 		}
+		.multi-line-truncate {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+			}
+			#card-body{
+			height: 386.65px;
+		}
 	</style>
 
 
@@ -41,7 +50,7 @@
 						</div>
 						@foreach ($feature_events as $event)
 							<div class="col-md-6 mb-4">
-								<div class="card border-light">
+								<div class="card border-light" id="card-body">
 									<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
 									<div class="card-body">
 										<div class="row">
@@ -53,8 +62,8 @@
 												<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
 											</div>
 										</div>
-										<h3 class="card-title text-truncate" style="max-lines: 2">{{ $event->name }}</h3>
-										<p class="card-text ">{!! $event->description !!}</p>
+										<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
+										<p class="card-text multi-line-truncate">{!! $event->description !!}</p>
 									</div>
 								</div>
 							</div>
