@@ -14,43 +14,46 @@
     }
 </style>
 
-<form action="" class="col-md-12" id="filter_form">
+<form action="{{ route('search') }}" class="col-md-12" id="filter_form">
     <div class="row">
         <div class="col-sm form-group">
-            <label for="Search">Keyword</label>
-            <input type="text" class="form-control keyword" id="usr" placeholder="Keyword">
+            {!! Form::label('keyword', 'Keyword', ['class' => 'label-control']) !!}
+            {!! Form::text('keyword', request()->keyword, ['placeholder' => 'keyword', 'class' => 'form-control']) !!}
         </div>
         <div class="col-sm form-group">
             {!! Form::label('category', 'Category', ['class' => 'label-control']) !!}
-            {!! Form::select('category', $event_categories, null, ['placeholder' => 'All Categories', 'class' => 'form-control']) !!}
+            {!! Form::select('category', $event_categories, request()->category, ['placeholder' => 'All Categories', 'class' => 'form-control']) !!}
         </div>
         <div class="col-sm form-group">
             {!! Form::label('type', 'Type', ['class' => 'label-control']) !!}
-            {!! Form::select('type', $event_types, null, ['placeholder' => 'All Types', 'class' => 'form-control']) !!}
+            {!! Form::select('type', $event_types, request()->type, ['placeholder' => 'All Types', 'class' => 'form-control']) !!}
         </div>
-        <!-- <div class="col-sm form-group">
-            {!! Form::label('audience', 'Audience', ['class' => 'label-control']) !!}
-            {!! Form::select('audience', $event_types, null, ['placeholder' => 'All Audiences', 'class' => 'form-control']) !!}
-        </div> -->
         <div class="col-sm form-group pr-0">
             {!! Form::label('period', 'Period', ['class' => 'label-control']) !!}
-            <div class="col-sm p-0">
-                <input type="date" class="form-control" id="stard-date" placeholder="Start date">
-            </div>
-            {{-- {!! Form::select('period', $event_types, null, ['placeholder' => 'Start & End Date', 'class' => 'form-control']) !!} --}}
-        </div>
-        <div class="col-sm form-group pl-1">
-            <div class="label-control">&nbsp;</div>
-            <div class="col-sm p-0" style="margin-top:11px;">
-                <input type="date" class="form-control" id="stard-date" placeholder="End date">
-            </div>
+            {!! Form::text('date', request()->date, ['class' => 'form-control', 'id' => 'daterange']) !!}
         </div>
         <div class="col-sm form-group">
             <div class="label-control">&nbsp;</div>
             <div style="margin-top: 11px;"  >
-                <a href="{{ route('search') }}" type="button" class="btn btn-dark">Apply</a>
+                <button type="submit" class="btn btn-dark">Apply</button>
                 <button type="button" class="btn btn-secondary">Reset</button>
             </div>
         </div>
     </div>
 </form>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+
+        $('#daterange').daterangepicker({
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        });
+    });
+</script>

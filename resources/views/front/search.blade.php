@@ -19,7 +19,7 @@
 							<div class="row">
 								<div class="col-7">
 									<h5 class="text-truncate font-weight-bold text-capitalize" style="max-lines: 1; text-transform: capitalize;">
-										{{\Carbon\Carbon::parse($event->created_at)->format('jS F Y')}}</h5>
+										{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}}</h5>
 								</div>
 								<div class="col-5 text-right">
 									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
