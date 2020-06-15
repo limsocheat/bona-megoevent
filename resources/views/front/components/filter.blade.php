@@ -36,7 +36,7 @@
             <div class="label-control">&nbsp;</div>
             <div style="margin-top: 11px;"  >
                 <button type="submit" class="btn btn-dark">Apply</button>
-                <button type="button" class="btn btn-secondary">Reset</button>
+                <a href="{{ url()->current() }}" type="button" class="btn btn-secondary">Reset</a>
             </div>
         </div>
     </div>

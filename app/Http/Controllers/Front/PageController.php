@@ -54,8 +54,15 @@ class PageController extends Controller
         $keyword    = $request->input('keyword');
         $category   = $request->input('category');
         $type       = $request->input('type');
-        $start_date = explode(' - ',$request->input('date'))[0];
-        $end_date   = explode(' - ',$request->input('date'))[1];
+        $dates      = explode(' - ', $request->input('date'));
+
+        $start_date = null;
+        $end_date   = null;
+
+        if(count($dates) >= 2) {
+            $start_date = explode(' - ', $request->input('date'))[0];
+            $end_date   = explode(' - ', $request->input('date'))[1];
+        } 
         
         $events     = Event::select('*')
             ->when($keyword, function($query, $keyword) {
