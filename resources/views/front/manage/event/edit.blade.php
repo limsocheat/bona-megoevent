@@ -8,7 +8,7 @@
             @include('front.components.event.taps')
         </div>
     </div>
-    <div class="row justify-content-center">
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             {!! Form::model($event, ['route' => ['manage.event.update', $event->id], 'method' => 'PUT']) !!}
                 <div class="card">
@@ -110,7 +110,7 @@
             
             {!! Form::close() !!}
         </div>
-    </div>
+    </div> --}}
 </div>
 
 <script type="text/javascript">
