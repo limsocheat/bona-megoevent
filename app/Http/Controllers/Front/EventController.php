@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\EventType;
@@ -145,8 +146,32 @@ class EventController extends Controller
             'location_id'           => 'required|exists:locations,id',
         ]);
 
+        
         $data       = $request->all();
         $event->update($data);
+        $banners    = [];
+
+        if($files= $request->file('images')){
+
+            $event->banners()->delete();
+
+            foreach($files as $file){
+                $name= $file->getClientOriginalName();
+                $file->move('upload', $name);
+                $images[] = $name;
+
+                $banners[] = New Banner([
+                    'name'      => $event->name,
+                    'location'  => 'event',
+                    'image'     => $name,
+                ]);
+            }
+        }
+
+        if(count($banners)) {
+            $event->banners()->saveMany($banners);
+        }
+
         if ($event) {
             return redirect()->route('manage.event.index');
         }
