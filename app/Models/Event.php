@@ -43,4 +43,9 @@ class Event extends Model
     {
         return $this->morphMany(Video::class, 'vidable');
     }
+
+    public function getImageUrlAttribute()
+    {
+        return url($this->image);
+    }
 }

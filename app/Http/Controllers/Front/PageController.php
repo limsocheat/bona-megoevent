@@ -100,4 +100,15 @@ class PageController extends Controller
     {
         return view('front.manage.index');
     }
+
+    public function event(Request $request, $id) {
+        $event      = Event::findOrFail($id);
+        $data       = [
+            'entrances' => Slide::select('*')->where('location','entrance')->get(),
+            'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
+            'event' => $event,
+        ];
+
+        return view('front.event', $data);
+    }
 }
