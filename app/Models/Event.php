@@ -8,12 +8,11 @@ class Event extends Model
 {
 
     protected $fillable = [
-        'mode',
+        'mode', 'organizer_id',
         'event_experience_id', 'event_team_id', 'event_frequency_id',
         'event_attendance_id', 'location_id', 'type_id', 'category_id',
         'name', 'start_date', 'start_time', 'end_date', 'end_time',
-        'location', 'description',
-        'diamond_max', 'gold_max', 'silver_max', 'bronze_max', 'pax_min', 'pax_max',
+        'location', 'description', 'diamond_max', 'gold_max', 'silver_max', 'bronze_max', 'pax_min', 'pax_max',
         'pax_min_last_date', 'price', 'early_bird_price', 'early_bird_date', 'group_price', 'group_min_pax'
     ];
     public function location()

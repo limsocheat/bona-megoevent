@@ -5,16 +5,24 @@
 <div class="container py-4">
     <h1 class="pb-3">Edit Event</h1>
 
+    <style>
+        .entry:not(:first-of-type)
+        {
+            margin-top: 10px;
+        }
+    </style>
+
     {!! Form::model($event, ['route' => ['manage.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
     
-    <div class="card" id="app">
-        <div class="card-title">
+    
+    <div class="card">
+        <div class="card-header">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="home" aria-selected="true">Details</a>
+                <li class="nav-item ">
+                    <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="home" aria-selected="true">Details</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="false">Image & Video</a>
+                    <a class="nav-link " id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="false">Image & Video</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="date-tab" data-toggle="tab" href="#date" role="tab" aria-controls="date" aria-selected="false">Date and Time</a>
@@ -29,7 +37,7 @@
         </div>
         <div class="card-body">
             <div class="tab-content">
-                <div class="tab-pane " id="detail" role="tabpanel" aria-labelledby="detail-tab">
+                <div class="tab-pane active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
                     <div class="form-group">
                         {!! Form::label('event_experience_id', 'What\'s your level of experience hosting events?') !!}
                         {!! Form::select('event_experience_id', $event_experiences, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
@@ -86,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane active" id="image" role="tabpanel" aria-labelledby="image-tab">
+                <div class="tab-pane " id="image" role="tabpanel" aria-labelledby="image-tab">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-field">
@@ -95,9 +103,31 @@
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 {!! Form::label('video', 'Video Link') !!}
                                 {!! Form::url('video', null, ['placeholder' => 'Video Link', 'class' => 'form-control']) !!}
+                            </div> --}}
+
+                            <label class="active">Videos</label>
+                            <div class="controls"> 
+                                @foreach ($event->videos as $video)
+                                    <div class="entry input-group col-xs-3">
+                                        <input class="form-control" name="videos[]" value="{{ $video->url }}" type="text" placeholder="video url" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger btn-remove" type="button">
+                                                <span class="fa fa-minus"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                @endforeach
+                                <div class="entry input-group col-xs-3">
+                                    <input class="form-control" name="videos[]" type="text" placeholder="video url" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success btn-add" type="button">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -343,7 +373,7 @@
         var banners   = <?php echo json_encode($event->banners); ?>;
         var preloaded = [];
         banners.forEach((element, index) => {
-            preloaded.push({id: index, src: '/upload/' + element.image});
+            preloaded.push({id: element.id, src: '/upload/' + element.image});
         });
 
         $('.input-images-1').imageUploader({
@@ -367,6 +397,27 @@
         }).on('changeDate', function (selected) {
             var maxDate = new Date(selected.date.valueOf());
             $('#StartDate').datepicker('setEndDate', maxDate);
+        });
+
+        $(document).on('click', '.btn-add', function(e)
+        {
+            e.preventDefault();
+
+            var controlForm = $('.controls'),
+                currentEntry = $(this).parents('.entry:first'),
+                newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+            newEntry.find('input').val('');
+            controlForm.find('.entry:not(:last) .btn-add')
+                .removeClass('btn-add').addClass('btn-remove')
+                .removeClass('btn-success').addClass('btn-danger')
+                .html('<span class="fa fa-minus"></span>');
+        }).on('click', '.btn-remove', function(e)
+        {
+            $(this).parents('.entry:first').remove();
+
+            e.preventDefault();
+            return false;
         });
     });
 </script>

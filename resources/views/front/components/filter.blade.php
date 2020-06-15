@@ -34,15 +34,15 @@
         </div> -->
         <div class="col-sm form-group pr-0">
             {!! Form::label('period', 'Period', ['class' => 'label-control']) !!}
-                    <div class="col-sm p-0">
-                        <input type="dates" class="form-control" id="stard-date" placeholder="Start date">
-                    </div>
+            <div class="col-sm p-0">
+                <input type="date" class="form-control" id="stard-date" placeholder="Start date">
+            </div>
             {{-- {!! Form::select('period', $event_types, null, ['placeholder' => 'Start & End Date', 'class' => 'form-control']) !!} --}}
         </div>
         <div class="col-sm form-group pl-1">
             <div class="label-control">&nbsp;</div>
             <div class="col-sm p-0" style="margin-top:11px;">
-                <input type="dates" class="form-control" id="stard-date" placeholder="End date">
+                <input type="date" class="form-control" id="stard-date" placeholder="End date">
             </div>
         </div>
         <div class="col-sm form-group">

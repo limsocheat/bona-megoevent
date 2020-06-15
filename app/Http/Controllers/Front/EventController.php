@@ -9,6 +9,7 @@ use App\Models\EventCategory;
 use App\Models\EventType;
 use App\Models\Location;
 use App\Models\Option;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -32,8 +33,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events     = Event::select('*')->get();
+        $organizer      = auth()->user();
 
+        $events     = Event::select('*')->where('organizer_id', $organizer->id)->get();
         $data       = [
             'events'    => $events,
         ];
@@ -70,6 +72,8 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $organizer      = auth()->user();
+
         $request->validate([
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
@@ -79,11 +83,50 @@ class EventController extends Controller
             'event_frequency_id'    => 'required|exists:options,id',
             'event_attendance_id'   => 'required|exists:options,id',
             'location_id'           => 'required|exists:locations,id',
+            'start_date'            => 'required',
+            'start_time'            => 'required',
+            'end_date'              => 'required',
+            'end_time'              => 'required',
         ]);
 
-        $data       = $request->all();
+        $data                       = $request->all();
+        $data['organizer_id']       = $organizer->id;
+        $event                      = Event::create($data);
 
-        $event      = Event::create($data);
+        $banners    = [];
+        if($files= $request->file('images')){
+
+            foreach($files as $file){
+                $name= $file->getClientOriginalName();
+                $file->move('upload', $name);
+                $images[] = $name;
+
+                $banners[] = New Banner([
+                    'name'      => $event->name,
+                    'location'  => 'event',
+                    'image'     => $name,
+                ]);
+            }
+        }
+
+        if(count($banners)) {
+            $event->banners()->saveMany($banners);
+        }
+
+        $event->videos()->delete();
+        $videos     = [];
+        foreach($request->videos as $video) {
+            if($video) {
+                $videos[] = new Video([
+                    'url'   => $video,
+                ]);
+            }
+        }
+
+        if(count($videos)) {
+            $event->videos()->saveMany($videos);
+        }
+
         if ($event) {
             return redirect()->route('manage.event.index');
         }
@@ -146,14 +189,12 @@ class EventController extends Controller
             'location_id'           => 'required|exists:locations,id',
         ]);
 
-        
         $data       = $request->all();
         $event->update($data);
+
+        $event->banners()->whereNotIn('id', $request->input('old'))->delete();
         $banners    = [];
-
         if($files= $request->file('images')){
-
-            $event->banners()->delete();
 
             foreach($files as $file){
                 $name= $file->getClientOriginalName();
@@ -170,6 +211,20 @@ class EventController extends Controller
 
         if(count($banners)) {
             $event->banners()->saveMany($banners);
+        }
+
+        $event->videos()->delete();
+        $videos     = [];
+        foreach($request->videos as $video) {
+            if($video) {
+                $videos[] = new Video([
+                    'url'   => $video,
+                ]);
+            }
+        }
+
+        if(count($videos)) {
+            $event->videos()->saveMany($videos);
         }
 
         if ($event) {
