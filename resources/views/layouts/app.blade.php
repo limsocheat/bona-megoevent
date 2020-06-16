@@ -51,15 +51,9 @@
 
     <style type="text/css">
         @font-face {
-            font-family: CenturyGothic;
-
-            src: {
-                    {
-                    asset('fonts/GOTHIC.TTF')
-                }
-            }
-
-            ;
+            font-family: "Century Gothic";
+            src: url("{{ asset('/fonts/gothic.ttf') }}") format('truetype');
+            /* src: url("<?php echo asset('fonts/GOTHIC.TTF'); ?>"); */
         }
 
         * {
