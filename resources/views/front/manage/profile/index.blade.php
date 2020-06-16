@@ -58,7 +58,7 @@
             @else 
                 <div class="col-md-8" style="margin-top: 20px">
                     <div class="card">
-                        {!! Form::open(['route' => ['company.store'], 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST']) !!}
                             <div class="card-body">
                                 <div class="form-group">
                                     {!! Form::label('name', 'Company Name') !!}
