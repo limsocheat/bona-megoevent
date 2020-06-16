@@ -69,7 +69,7 @@
 				</div>
 				<div class="text-block" style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
 					<h4 id="demo">countdown</h4>
-					<p>until event happens</p>
+					<p>Event Starts In</p>
 				</div>
 			</div>
 		@else 
@@ -77,7 +77,7 @@
 				<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
 				<div class="text-block" style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
 					<h4 id="demo">countdown</h4>
-					<p>until event happens</p>
+					<p>Event Starts In</p>
 				</div>
 			</div>
 			

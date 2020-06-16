@@ -38,33 +38,33 @@
                 <div class="tab-pane active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
                     
                     <div class="form-group">
+                        {!! Form::label('name', 'Event Name') !!}
+                        {!! Form::text('name', null, ['placeholder' => 'Eent Name', 'class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label('type_id', 'What type of event are you hosting today?') !!}
-                        {!! Form::select('type_id', $types, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
+                        {!! Form::select('type_id', $types, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('category_id', 'How would you categorize your event?') !!}
-                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('name', 'Name of your event') !!}
-                        {!! Form::text('name', null, ['placeholder' => 'event name', 'class' => 'form-control']) !!}
+                        {!! Form::label('category_id', 'Category') !!}
+                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
                     </div>
                     
                     <div class="form-group">
                         {!! Form::label('location_id', 'Event Location') !!}
-                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
+                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('location', 'Location Details') !!}
-                        {!! Form::text('location', null, ['placeholder' => 'location details', 'class' => 'form-control']) !!}
+                        {!! Form::text('location', null, ['placeholder' => 'Location Details', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('description', 'Description') !!}
-                        {!! Form::textarea('description', null, ['placeholder' => 'description', 'class' => 'form-control']) !!}
+                        {!! Form::textarea('description', null, ['placeholder' => 'Description', 'class' => 'form-control']) !!}
                     </div>
                 </div>
 
