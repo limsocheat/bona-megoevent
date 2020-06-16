@@ -65,14 +65,14 @@
             background-color: #333;
         }
 
-        /* .navbar-nav .active {
+        .navbar-nav .active {
             border-bottom: 4px solid black;
         }
 
         .navbar-nav .actives {
             border-bottom: 4px solid white;
 
-        } */
+        }
     .navbar-nav ul li:hover{
         border-bottom: 4px solid black;
     }
@@ -186,8 +186,8 @@
                         </li>
                     </ul>
                     {{-- right side of navba --}}
-                    <ul class="nav navbar-nav navbar-right ml-auto">
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Search">
+                    <ul class="navbar-nav navbar-right ml-auto">
+                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
                             <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search"
                                     aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
