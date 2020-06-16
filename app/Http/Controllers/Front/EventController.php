@@ -78,10 +78,6 @@ class EventController extends Controller
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
             'category_id'           => 'required|exists:event_categories,id',
-            'event_experience_id'   => 'required|exists:options,id',
-            'event_team_id'         => 'required|exists:options,id',
-            'event_frequency_id'    => 'required|exists:options,id',
-            'event_attendance_id'   => 'required|exists:options,id',
             'location_id'           => 'required|exists:locations,id',
             'start_date'            => 'required',
             'start_time'            => 'required',
@@ -182,10 +178,6 @@ class EventController extends Controller
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
             'category_id'           => 'required|exists:event_categories,id',
-            'event_experience_id'   => 'required|exists:options,id',
-            'event_team_id'         => 'required|exists:options,id',
-            'event_frequency_id'    => 'required|exists:options,id',
-            'event_attendance_id'   => 'required|exists:options,id',
             'location_id'           => 'required|exists:locations,id',
         ]);
 

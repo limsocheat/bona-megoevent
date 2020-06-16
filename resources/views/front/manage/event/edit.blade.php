@@ -38,25 +38,6 @@
         <div class="card-body">
             <div class="tab-content">
                 <div class="tab-pane active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
-                    <div class="form-group">
-                        {!! Form::label('event_experience_id', 'What\'s your level of experience hosting events?') !!}
-                        {!! Form::select('event_experience_id', $event_experiences, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('event_team_id', 'How many people help plan your events online?') !!}
-                        {!! Form::select('event_team_id', $event_teams, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('event_frequency_id', 'How often do you plan to host events?') !!}
-                        {!! Form::select('event_frequency_id', $event_frequencies, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('event_attendance_id', 'How many people do you expect will attend this event?') !!}
-                        {!! Form::select('event_attendance_id', $event_attendances, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                    </div>
 
                     <div class="form-group">
                         {!! Form::label('type_id', 'What type of event are you hosting today?') !!}
@@ -71,11 +52,6 @@
                     <div class="form-group">
                         {!! Form::label('name', 'Name of your event') !!}
                         {!! Form::text('name', null, ['placeholder' => 'event name', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('mode', 'Mode') !!}
-                        {!! Form::select('mode', ['single' => 'Single Event', 'recurring' => 'Recurring Event'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
@@ -96,17 +72,18 @@
 
                 <div class="tab-pane " id="image" role="tabpanel" aria-labelledby="image-tab">
                     <div class="row">
+
                         <div class="col-md-12">
+                            Featured Image
+                        </div>
+
+                        <div class="col-md-12 pt-3">
                             <div class="input-field">
-                                <label class="active">Image</label>
+                                <label class="active">Banners</label>
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">
-                            {{-- <div class="form-group">
-                                {!! Form::label('video', 'Video Link') !!}
-                                {!! Form::url('video', null, ['placeholder' => 'Video Link', 'class' => 'form-control']) !!}
-                            </div> --}}
 
                             <label class="active">Videos</label>
                             <div class="controls"> 
@@ -373,7 +350,7 @@
         var banners   = <?php echo json_encode($event->banners); ?>;
         var preloaded = [];
         banners.forEach((element, index) => {
-            preloaded.push({id: element.id, src: '/upload/' + element.image});
+            preloaded.push({id: element.id, src: "<?php echo asset('/upload/') ?>" +"/"+ element.image});
         });
 
         $('.input-images-1').imageUploader({

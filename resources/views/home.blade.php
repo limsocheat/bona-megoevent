@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     Dashboard
-                    <a class="btn btn-primary float-right" href="{{ route('event.create') }}">New Event</a>
+                    <a class="btn btn-primary float-right" href="{{ route('manage.event.create') }}">New Event</a>
                 </div>
 
                 <div class="card-body">
@@ -37,7 +37,7 @@
                                     <td>{{ $event->start_date }} {{ $event->start_time }}</td>
                                     <td>{{ $event->end_date }} {{ $event->end_time }}</td>
                                     <td>
-                                        <a href="{{ route('event.edit', $event->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="{{ route('manage.event.edit', $event->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach

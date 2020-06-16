@@ -16,7 +16,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::select('*')
-            ->with('option:id,name', 'type:id,name', 'category:id,name', 'organizers:id,name')
+            ->with('type:id,name', 'category:id,name', 'organizers:id,name')
             ->get();
         return view('admin.event.index', [
             'events' => $events

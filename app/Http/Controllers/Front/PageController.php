@@ -63,6 +63,7 @@ class PageController extends Controller
             $start_date = explode(' - ', $request->input('date'))[0];
             $end_date   = explode(' - ', $request->input('date'))[1];
         } 
+
         
         $events     = Event::select('*')
             ->when($keyword, function($query, $keyword) {
