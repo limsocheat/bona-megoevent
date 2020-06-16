@@ -4,7 +4,7 @@
 @section('content')
 <div class="container py-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
                 {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT']) !!}
                     <div class="card-body">
@@ -32,12 +32,44 @@
                 {!! Form::close() !!}
             </div>
         </div>
-        @if ($user->type == "company")
+        <div class="col-md-6">
+            
+            <div class="card">
+                {!! Form::open(['route' => ['manage.profile.update'], 'method' => 'PUT']) !!}
+                    <div class="card-body">
+                        <div class="form-group">
+                            {!! Form::label('first_name', 'First Name') !!}
+                            {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('last_name', 'Last Name') !!}
+                            {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('job_title', 'Job Title') !!}
+                            {!! Form::text('job_title', null, ['placeholder' => 'Job Title', 'class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('type', 'Type') !!}
+                            {!! Form::select('type', ['individual' => 'Individual', 'company' => 'Company'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('password', 'Password') !!}
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
+                            <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
+                        </div>
+                    </div>
+                    <div class="card-footer ">
+                        {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+                    </div>
+                {!! Form::close() !!}
+            </div>
 
-            @if ($user->company)
-                <div class="col-md-8" style="margin-top: 20px">
+            @if ($user->type == "company")
+
+                @if ($user->company)
                     <div class="card">
-                        {!! Form::model($user->company, ['route' => ['company.update', $user->company->id], 'method' => 'PUT']) !!}
+                        {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' => 'PUT']) !!}
                             <div class="card-body">
                                 <div class="form-group">
                                     {!! Form::label('name', 'Company Name') !!}
@@ -53,10 +85,7 @@
                             </div>
                         {!! Form::close() !!}
                     </div>
-                </div>
-
-            @else 
-                <div class="col-md-8" style="margin-top: 20px">
+                @else 
                     <div class="card">
                         {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST']) !!}
                             <div class="card-body">
@@ -74,10 +103,9 @@
                             </div>
                         {!! Form::close() !!}
                     </div>
-                </div>
+                @endif
             @endif
-            
-        @endif
+        </div>
     </div>
     
 </div>
