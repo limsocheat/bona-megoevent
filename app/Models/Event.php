@@ -46,6 +46,6 @@ class Event extends Model
 
     public function getImageUrlAttribute()
     {
-        return url($this->image);
+        return $this->image ? url($this->image) : url('/events/1.jpg');
     }
 }

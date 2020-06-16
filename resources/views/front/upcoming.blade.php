@@ -28,15 +28,15 @@
 			@foreach ($events as $event)
 				<div class="col-md-3 mb-4">
 					<div class="card border-light" id="card-body">
-						<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
+						<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
 									<h5 class="text-truncate font-weight-bold text-capitalize" style="max-lines: 1; text-transform: capitalize;">
-										{{\Carbon\Carbon::parse($event->created_at)->format('jS F Y')}}</h5>
+										{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}}</h5>
 								</div>
 								<div class="col-5 text-right">
-									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
+									<a href="{{ route('event', $event->id) }}" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
 							<h3 class="card-title multi-line-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
@@ -53,15 +53,15 @@
 			@foreach ($events as $event)
 				<div class="col-md-3 mb-4">
 					<div class="card border-light" id="card-bordy">
-						<img src="{{ asset($event->image) }}" alt="{{ $event->name }}" class="card-img-top">
+						<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
 									<h5 class="text-truncate font-weight-bold text-capitalize" style="max-lines: 1; text-transform: capitalize;">
-										{{\Carbon\Carbon::parse($event->created_at)->format('jS F Y')}}</h5>
+										{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}}</h5>
 								</div>
 								<div class="col-5 text-right">
-									<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
+									<a href="{{ route('event', $event->id) }}" class="btn btn-sm btn-outline-dark">Join Now</a>
 								</div>
 							</div>
 							<h3 class="card-title multi-line-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>

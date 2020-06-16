@@ -96,6 +96,17 @@ class PageController extends Controller
         return view('front.contact');
     }
 
+    public function submitContact(Request $request) {
+
+        $request->validate([
+            'name'  => 'required',
+            'email' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
+        ]);
+
+        return redirect(route('contact'))->with('success', 'submit successfully');;
+    }
+
     public function manage()
     {
         return view('front.manage.index');

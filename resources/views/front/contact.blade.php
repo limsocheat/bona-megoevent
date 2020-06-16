@@ -36,39 +36,40 @@
         <div class="row">
             <div class="col-sm-6 mt-4 p-auto">
         
-                <form class="text-capitalize ">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        {!! \Session::get('success') !!}
+                    </div>
+                @endif
+
+                {!! Form::open(['route' => 'contact.submit', 'method' => 'POST']) !!}
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Name*</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name">
+                        {!! Form::label('name', 'Name*') !!}
+                        {!! Form::text('name', null, ['placeholder' => 'name', 'class' => 'form-control', 'required' => true]) !!}
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Email*</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+                        {!! Form::label('email', 'Email*') !!}
+                        {!! Form::email('email', null, ['placeholder' => 'email', 'class' => 'form-control', 'required' => true]) !!}
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Contact Number</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Contact Number">
+                        {!! Form::label('contact_number', 'Contact Number') !!}
+                        {!! Form::text('contact_number', null, ['placeholder' => 'contact_number', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Country</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Country">
+                        {!! Form::label('country', 'Country') !!}
+                        {!! Form::text('country', null, ['placeholder' => 'country', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Company Name</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Company Name">
+                        {!! Form::label('company_name', 'Company Name') !!}
+                        {!! Form::text('company_name', null, ['placeholder' => 'Company Name', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <label for="inputState">Type</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Enquiry </option>
-                            <option>Testimonial</option>
-                            <option>Feedback</option>
-                            <option>Advertiser</option>
-                        </select>
+                        {!! Form::label('type', 'Type') !!}
+                        {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Message</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        {!! Form::label('message', 'Message') !!}
+                        {!! Form::textarea('message', null, ['placeholder' => 'Message', 'class' => 'form-control']) !!}
                     </div>
                     <div class="col-md-12 p-0">
                         {!! Captcha::display($attributes = [
@@ -83,7 +84,7 @@
                     <p></p>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <p></p>
-                </form>
+                {!! Form::close() !!}
             </div>
             <div class="col-sm-6 mt-4 p-auto txt-line-height">
                 <p style="font-size: 1.2rem;">If you have a question regarding a specific development project or IT funding please let us know how we can be of
