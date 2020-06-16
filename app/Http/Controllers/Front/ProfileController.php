@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Country;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('front.manage.profile.index', ['user' => $user]);
+        $Country = Country::select('id', 'name')->pluck('name', 'id');
+        return view('front.manage.profile.index', ['user' => $user, 'countries' => $Country]);
     }
 
     public function update(Request $request)
