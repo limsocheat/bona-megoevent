@@ -349,7 +349,6 @@
             $(".nav-item").on("click", function(){
             $(".collapse").find(".active").removeClass("active");
             $(this).addClass("active");
-            
             });
             $('[data-toggle="tooltip"]').tooltip();
 

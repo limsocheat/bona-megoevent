@@ -43,12 +43,12 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('type_id', 'What type of event are you hosting today?') !!}
+                        {!! Form::label('type_id', 'Category') !!}
                         {!! Form::select('type_id', $types, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('category_id', 'Category') !!}
+                        {!! Form::label('category_id', 'How would you categorize your event?') !!}
                         {!! Form::select('category_id', $categories, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
                     </div>
                     
