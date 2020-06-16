@@ -89,7 +89,16 @@
 			</div>
 			@include('front.components.entrance.eventexhibitors')
 		</div>
-		<div class="col-md-12">
+		<div class="row py-4">
+			<div class="col-md-12">
+				<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Event Description</h1>
+			</div>
+			<div class="col-md-12">
+				{{ $event->description }}
+			</div>
+		</div>
+
+		<div class="col-md-12 px-0">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="row my-2">

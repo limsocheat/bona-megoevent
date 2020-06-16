@@ -120,6 +120,6 @@ class PageController extends Controller
             'event' => $event,
         ];
 
-        return view('front.event', $data);
+        return view('front.event.show', $data);
     }
 }
