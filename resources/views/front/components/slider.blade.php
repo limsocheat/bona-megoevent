@@ -165,6 +165,10 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
             background: pink;
         }
     }
+
+    .slick-lightbox-slick-item-inner, .slick-lightbox-slick-img {
+        max-height: auto !important;
+    }
 </style>
 
 <div class="home_slider_fullscreen">
@@ -189,16 +193,26 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
 
 <div id="home_slider_carousel" class="container">
     <div class="home_slider_carousel">
-        <img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt="Banner 1"
+        <a href="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" target="_blank">
+            <img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt="Banner 1"
+                class="home_slider_carousel_item">
+        </a>
+        <a href="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg" target="_blank">
+            <img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg"
+            alt="Banner 1" class="home_slider_carousel_item" style="max-height: auto !important;">
+        </a>
+        <a href="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" target="_blank">
+            <img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt="Banner 1"
             class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg"
+        </a>
+        <a href="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" target="_blank">
+            <img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt="Banner 1"
+                class="home_slider_carousel_item">
+        </a>
+        <a href="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" target="_blank">
+            <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg"
             alt="Banner 1" class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt="Banner 1"
-            class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt="Banner 1"
-            class="home_slider_carousel_item">
-        <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg"
-            alt="Banner 1" class="home_slider_carousel_item">
+        </a>
     </div>
 </div>
 <!-- Modal -->
@@ -249,6 +263,7 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
             centerPadding: '0px',
             centerMode: true,
             variableWidth: true,
+            adaptiveHeight: false,
             responsive: [
                 {
                     breakpoint: 1024,
@@ -276,9 +291,6 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
         });
 
         $('.home_slider_carousel').slickLightbox({
-            src: 'src',
-            
-            itemSelector: 'img'
         });
 
         // $('.home_slider_carousel').slickLightbox({
