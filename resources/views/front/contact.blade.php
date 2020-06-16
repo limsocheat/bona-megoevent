@@ -45,19 +45,19 @@
                 {!! Form::open(['route' => 'contact.submit', 'method' => 'POST']) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Name*') !!}
-                        {!! Form::text('name', null, ['placeholder' => 'name', 'class' => 'form-control', 'required' => true]) !!}
+                        {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control', 'required' => true]) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('email', 'Email*') !!}
-                        {!! Form::email('email', null, ['placeholder' => 'email', 'class' => 'form-control', 'required' => true]) !!}
+                        {!! Form::email('email', null, ['placeholder' => 'Email', 'class' => 'form-control', 'required' => true]) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('contact_number', 'Contact Number') !!}
-                        {!! Form::text('contact_number', null, ['placeholder' => 'contact_number', 'class' => 'form-control']) !!}
+                        {!! Form::text('contact_number', null, ['placeholder' => 'Contact_Number', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('country', 'Country') !!}
-                        {!! Form::text('country', null, ['placeholder' => 'country', 'class' => 'form-control']) !!}
+                        {!! Form::text('country', null, ['placeholder' => 'Country', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('company_name', 'Company Name') !!}
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         {!! Form::label('type', 'Type') !!}
-                        {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
+                        {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('message', 'Message') !!}
