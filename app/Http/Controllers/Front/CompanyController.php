@@ -44,10 +44,11 @@ class CompanyController extends Controller
 
         $data       = $request->all();
         $data['user_id']    = Auth::user()->id;
-        if($image = $request->file('logo')) {
-            $name= $image->getClientOriginalName();
+        if($image   = $request->file('logo')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time().'_'.$name;
             $image->move('upload', $name);
-            $profile['logo'] = $name;
+            $data['logo'] = $name;
         }
         $company    = Company::create($data);
 
@@ -95,7 +96,12 @@ class CompanyController extends Controller
         ]);
 
         $data       = $request->all();
-
+        if($image   = $request->file('logo')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time().'_'.$name;
+            $image->move('upload', $name);
+            $data['logo'] = $name;
+        }
         $company->update($data);
 
         if ($company) {

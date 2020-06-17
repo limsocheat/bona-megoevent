@@ -127,7 +127,7 @@
                 @if ($user->company)
                     <div class="card">
                         {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
-                        'PUT']) !!}
+                        'PUT', 'files' => true ]) !!}
                             <div class="card-body">
                                 <div class="form-group" style="height: 110px;">
                                     <div class="preview text-center" style="height:125px;">
@@ -159,7 +159,7 @@
                     @else
                     
                     <div class="card">
-                        {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST', 'files' => true]) !!}
                             <div class="card-body">
                                 <div class="form-group" style="height: 110px;">
                                     <div class="preview text-center" style="height:125px;">

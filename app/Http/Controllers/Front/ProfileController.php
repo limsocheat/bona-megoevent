@@ -52,6 +52,7 @@ class ProfileController extends Controller
 
         if($image = $request->file('profile.image')) {
             $name= $image->getClientOriginalName();
+            $name = time().'_'.$name;
             $image->move('upload', $name);
             $profile['avatar'] = $name;
         }
