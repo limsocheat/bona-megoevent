@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         $administrators = [
             [
                 'name'      => 'admin',
-                'email'     => 'admin@megoevent.com',
+                'email'     => 'itmall.com.kh@gmail.com',
                 'password'  => bcrypt('secret'),
             ]
         ];

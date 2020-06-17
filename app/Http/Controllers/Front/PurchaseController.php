@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EventPurchased;
+use App\Mail\EventTicket;
+use App\Mail\TicketGenerated;
+use App\Models\Event;
 use App\Models\Purchase;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PurchaseController extends Controller
 {
@@ -55,13 +61,29 @@ class PurchaseController extends Controller
             $user           = auth()->user();
             $data           = $request->all();
             $data['user_id']= $user->id;
+            $event          = Event::findOrFail($request->input('event_id'));
+            $organizer      = $event->organizer;
 
             $purchase       = Purchase::create($data);
+            if($purchase) {
+                Mail::to($organizer)->send(new EventPurchased($purchase));
+                for ($i = 0; $i < $purchase->quantity; $i++) { 
+                    $ticket = $purchase->tickets()->save(
+                        new Ticket([
+                            'code'  => time() . $i
+                        ])
+                    );
+
+                    if($ticket) {
+                        Mail::to($request->user())->send(new TicketGenerated($ticket));
+                    }
+                }
+            }
             DB::commit();
             return redirect()->route('manage.purchase.index');
         } catch(\Exception $e) {
             DB::rollBack();
-            return redirect()->back();
+            return redirect()->back()->with('error', $e->getMessage());
         }
 
     }

@@ -57,6 +57,11 @@
     <div class="col-md-12 order-md-1">
 			
 			<div class="row">
+				@if (\Session::has('error'))
+					<div class="alert alert-danger">
+						{!! \Session::get('error') !!}
+					</div>
+				@endif
 				<div class="col-md-6">
 					{!! Form::model($user, ['route' => 'manage.profile.update', 'method' => 'PUT']) !!}
 						<div class="card">

@@ -38,9 +38,9 @@
         <div class="col-sm-6 mt-4 p-auto">
 
             @if (\Session::has('success'))
-            <div class="alert alert-success">
-                {!! \Session::get('success') !!}
-            </div>
+                <div class="alert alert-success">
+                    {!! \Session::get('success') !!}
+                </div>
             @endif
 
             {!! Form::open(['route' => 'contact.submit', 'method' => 'POST']) !!}

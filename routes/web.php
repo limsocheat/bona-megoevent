@@ -67,6 +67,7 @@ Route::namespace('Front')->group(function () {
                     'company'   => 'CompanyController',
                     'event'     => 'EventController',
                     'purchase'  => 'PurchaseController',
+                    'ticket'    => 'TicketController',
                 ]);
                 Route::get('/', 'PageController@manage');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');

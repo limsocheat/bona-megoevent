@@ -34,7 +34,8 @@ class Event extends Model
     {
         return $this->belongsTo(Event::class, 'event_organizer');
     }
-    public function organizer(){
+    public function organizer()
+    {
         return $this->belongsTo(User::class,'organizer_id');
     }
 
