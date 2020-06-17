@@ -105,7 +105,9 @@
 					
 				<div class="py-3">
 					<h5  class="font-weight-bold">Venue:</h5>
-					<div><i class="fa fa-map-marker" style="font-size: 25px;color:black;" aria-hidden="true"></i> <span class="ml-4">{{$event->location ?$event->location->name : "To Be Announced"}}</span></div>
+					<div><i class="fa fa-map-marker" style="font-size: 25px;color:black;" aria-hidden="true"></i>
+						 <span class="ml-4">{{$event->locations ? $event->locations->name : "To Be Announced"}}</span>
+						<span class="ml-2">{{$event->locations ? $event->locations->address : null}}</span></div>
 				</div>
 				<div class="py-2">
 					<h5  class="font-weight-bold">Date:</h5>
@@ -115,29 +117,29 @@
 					</div>
 				</div>
 				<div class="py-3">
-					<h5  class="font-weight-bold">Time</h5>
+					<h5  class="font-weight-bold">Time:</h5>
 					<div><i class="fa fa-clock-o"  style="font-size: 30px;color:black;" aria-hidden="true"></i>
 					<span class="ml-3">{{\Carbon\Carbon::createFromFormat('H:i:s',$event->start_time)->format('g:i a')}} - {{\Carbon\Carbon::createFromFormat('H:i:s',$event->end_time)->format('g:i a')}}</span></div>
 				</div>
 				<div class="py-3">
-					<h5 class="font-weight-bold">Event Type</h5>
-					<div>{{$event->type ? $event->type->name :null}}</div>
+					<h5 class="font-weight-bold">Event Type:</h5>
+					<p>{{$event->type ? $event->type->name :null}}</p>
 				</div>
 				<div class="py-3">
-					<h5 class="font-weight-bold">Event Category</h5>
-					<div>{{$event->category ? $event->category->name :null}}</div>
+					<h5 class="font-weight-bold">Event Category:</h5>
+					<p>{{$event->category ? $event->category->name :null}}</p>
 				</div>
 				<div class="py-3">
-					<h5 class="font-weight-bold">Organiser</h5>
-					<div>{{$event->organizer ? $event->organizer->name :null}}</div>
+					<h5 class="font-weight-bold">Organiser:</h5>
+					<p>{{$event->organizer ? $event->organizer->name :null}}</p>
 				</div>
 				<div class="py-3">
-					<h5 class="font-weight-bold">Event Description</h5>
-					<span>{{$event->description}}</span>
+					<h5 class="font-weight-bold">Event Description:</h5>
+					<p>{{$event->description}}</p>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<h4 class="text-center ">{{$event->price}}</h4>
+				<h4 class="text-center font-weight-bold ">${{ number_format($event->price,2)}}</h4>
 			</div>
 			<div class="col-md-12 text-center py-3">
 				<button type="button" class="btn font-weight-bold btn-danger">By Ticket</button>
