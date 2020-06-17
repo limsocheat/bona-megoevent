@@ -55,7 +55,6 @@
       </form>
     </div> --}}
     <div class="col-md-12 order-md-1">
-      	{!! Form::open(['route' => ['admin.banner.store'], 'method' => 'POST','enctype'=>'multipart/form-data']) !!}
 			
 			<div class="row">
 				<div class="col-md-6">
@@ -142,13 +141,15 @@
 							</div>
 						</div>
 					</div>
+
+					<p>&nbsp;</p>
+					{!! Form::open(['route' => ['manage.purchase.store'], 'method' => 'POST']) !!}
+						  {!! Form::hidden('event_id', $event->id) !!}
+						  {!! Form::hidden('quantity', $quality) !!}
+						<button class="btn btn-primary btn-lg btn-block" type="submit">checkout</button>
+	    			{!! Form::close() !!}
 				</div>
 			</div>	
-		  	
-				<hr class="mb-4">
-				<button class="btn btn-primary btn-lg btn-block" type="submit">checkout</button>
-		
-	    {!! Form::close() !!}
     </div>
  
 </div>
