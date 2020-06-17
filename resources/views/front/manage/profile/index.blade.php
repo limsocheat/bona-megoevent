@@ -4,55 +4,41 @@
 @section('content')
 
 <style>
-    .avatar-wrapper {
+    .preview{
+        padding: 10px;
         position: relative;
-        height: 100px;
+    }
+    
+    .preview i{
+        color: white;
+        font-size: 20px;
+        transform: translate(7px,60px);
+    }
+    .preview-img{
+        border-radius: 100%;
+        box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.7);
+    }
+    .browse-button{
         width: 100px;
-        float:right;
-        margin:50px auto;
-        border-radius: 50%;
-        overflow: hidden;
-        /* box-shadow: 1px 1px 15px -5px black; */
-        transition: all .3s ease;
-    }
-
-    .profile-pic {
-        height: 100%;
-        width: 100%;
-        transition: all .3s ease;
-    }
-
-    .profile-pic:after {
-        content: "";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        height: 100px;
+        border-radius: 100%;
         position: absolute;
-        font-size: 90px;
-        background: #ecf0f1;
-        color: #34495e;
-        text-align: center;
-
-    }
-
-    .upload-button {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-   .fa-cloud-upload-alt {
-        position: absolute;
-        font-size: 1px;
-        top: 0;
-        left: 0;
-        text-align: center;
+        top: 10px;
+        left: 234px;
+        background: linear-gradient(180deg, transparent, #6d6b6b);
         opacity: 0;
-        transition: all .3s ease;
-        color: #34495e;
+        transition: 0.3s ease;
+    }
+    
+    .browse-button:hover{
+        opacity: 1;
+    }
+    .browse-input{
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        transform: translate(-1px,-26px);
+        opacity: 0;
     }
 </style>
 
@@ -91,10 +77,26 @@
         </div>
 
         <div class="col-md-6">
-
             <div class="card">
                 {!! Form::open(['route' => ['manage.profile.update'], 'method' => 'PUT']) !!}
                 <div class="card-body">
+
+                    <div class="form-group" style="height: 110px;">
+                        <div class="preview text-center" style="height:125px;">
+                            <img id="imagePreview"class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
+                                width="100" height="100" />
+                            <div class="browse-button">
+                               <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <input id="new_image" class="browse-input" type="file" required name="UploadedFile" id="UploadedFile" />
+                            </div>
+                            <span class="Error"></span>
+                        </div>
+                        {{-- <div class="form-control" style="height:65px;">
+                                <input id="new_image" class="file-upload" type="file" accept="image/*" />
+                                <img id="imagePreview" src="{{ asset('images/avatar.jpg') }}" alt="Avatar" class="avatar ">
+                    </div> --}}
+                    </div>
+
                     <div class="form-group">
                         {!! Form::label('first_name', 'First Name') !!}
                         {!! Form::text('first_name', null, ['placeholder' => 'First Name', 'class' => 'form-control'])
@@ -108,19 +110,6 @@
                         {!! Form::label('avatar', 'User Avatar') !!}
                         {!! Form::text('avatar', null, ['placeholder' => 'User Avatar', 'class' => 'form-control']) !!}
                     </div>
-
-                    <div class="form-group rounded" style="height: 100px;">
-                        {!! Form::label('avatar', 'Avatar') !!}
-                        <div class="avatar-wrapper">
-                            {{-- <img class="profile-pic" src="" /> --}}
-                            <img class="profile-pic rounded mx-auto" src="{{ asset('upload/') }}" alt="" style="height:100px">
-                            <div class="upload-button">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                            </div>
-                            <input class="file-upload" type="file" accept="image/*" />
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         {!! Form::label('job_title', 'Job Title') !!}
                         {!! Form::text('job_title', null, ['placeholder' => 'Job Title', 'class' => 'form-control']) !!}
@@ -139,90 +128,92 @@
                         {!! Form::text('phone', null, ['placeholder' => 'Tel', 'class' => 'form-control']) !!}
                     </div>
                     {{-- <div class="form-group">
-                            {!! Form::label('type', 'Type') !!}
-                            {!! Form::select('type', ['individual' => 'Individual', 'company' => 'Company'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div> --}}
-                    {{-- <div class="form-group">
-                            {!! Form::label('password', 'Password') !!}
-                            {!! Form::password('password', ['class' => 'form-control']) !!}
-                            <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
-                        </div> --}}
+                        {!! Form::label('type', 'Type') !!}
+                        {!! Form::select('type', ['individual' => 'Individual', 'company' => 'Company'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('password', 'Password') !!}
+                        {!! Form::password('password', ['class' => 'form-control']) !!}
+                        <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
+                    </div> --}}
                 </div>
                 <div class="card-footer ">
                     {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
                 </div>
                 {!! Form::close() !!}
             </div>
-
-            @if ($user->type == "company")
-
-            @if ($user->company)
-            <div class="card">
-                {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
-                'PUT']) !!}
-                <div class="card-body">
-                    <div class="form-group">
-                        {!! Form::label('name', 'Company Name') !!}
-                        {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('registration_number', 'Registration Number') !!}
-                        {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
-                        'form-control']) !!}
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
-                </div>
-                {!! Form::close() !!}
-            </div>
-            @else
-            <div class="card">
-                {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST']) !!}
-                <div class="card-body">
-                    <div class="form-group">
-                        {!! Form::label('name', 'Company Name') !!}
-                        {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('registration_number', 'Registration Number') !!}
-                        {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
-                        'form-control']) !!}
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    {!! Form::submit('Create', ['class' => 'btn btn-primary']); !!}
-                </div>
-                {!! Form::close() !!}
-            </div>
-            @endif
-            @endif
         </div>
 
+        @if ($user->type == "company")
+
+        @if ($user->company)
+        <div class="card">
+            {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
+            'PUT']) !!}
+            <div class="card-body">
+                <div class="form-group">
+                    {!! Form::label('name', 'Company Name') !!}
+                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('registration_number', 'Registration Number') !!}
+                    {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
+                    'form-control']) !!}
+                </div>
+            </div>
+            <div class="card-footer ">
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+            </div>
+            {!! Form::close() !!}
+        </div>
+        @else
+        <div class="card">
+            {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST']) !!}
+            <div class="card-body">
+                <div class="form-group">
+                    {!! Form::label('name', 'Company Name') !!}
+                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('registration_number', 'Registration Number') !!}
+                    {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
+                    'form-control']) !!}
+                </div>
+            </div>
+            <div class="card-footer ">
+                {!! Form::submit('Create', ['class' => 'btn btn-primary']); !!}
+            </div>
+            {!! Form::close() !!}
+        </div>
+        @endif
+        @endif
     </div>
 
 </div>
-<script>
+
+</div>
+@endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
     $(document).ready(function() {
-    
-        var readURL = function(input) {
+        function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 
-                reader.onload = function (e) {
-                $('.profile-pic').attr('src', e.target.result);
+                reader.onload = function(e) {
+                    $('#imagePreview').attr('src', e.target.result);
                 }
+                
                 reader.readAsDataURL(input.files[0]);
             }
-        }   
+        }
         
-        $(".file-upload").on('change', function(){
-        readURL(this);
+        $("#new_image").change(function() {
+            readURL(this);
         });
-        
-        $(".upload-button").on('click', function() {
-        $(".file-upload").click();
+        $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        $('.custom-file-label').html(fileName);
         });
-    });
+    })
 </script>
-@endsection
