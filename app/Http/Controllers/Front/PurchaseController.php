@@ -96,7 +96,13 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        //
+        $purchase       = Purchase::findOrFail($id);
+
+        $data           = [
+            'purchase'  => $purchase,
+        ];
+
+        return view('front.manage.purchase.show', $data);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -12,9 +13,15 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $tickets        = Ticket::select('*')->get();
+
+        $data           = [
+            'tickets'   => $tickets,
+        ];
+
+        return view('front.manage.ticket.index', $data);
     }
 
     /**
@@ -46,7 +53,13 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        //
+        $ticket         = Ticket::findOrFail($id);
+
+        $data           = [
+            'ticket'    => $ticket,
+        ];
+
+        return view('front.manage.ticket.show', $data);
     }
 
     /**
