@@ -51,6 +51,10 @@
 			border-radius: 35px;
 			border: 1px solid rgba(220, 53, 69, 0.75);      
 		}
+
+		.table-event-pricing td{
+			font-size: 18px;
+		}
 	</style>
 
 	<div class="container">
@@ -99,10 +103,10 @@
 		<div class="row py-4">
 			<div class="col-md-12 py-4 ">
 				<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Event</h1>
-			</div>
-			<div class="col-md-8">
 				<h4 class="font-weight-bold">{{ $event->name}}</h4>
-					
+			</div>
+			<div class="col-md-6">
+	
 				<div class="py-3">
 					<h5  class="font-weight-bold">Venue:</h5>
 					<div><i class="fa fa-map-marker" style="font-size: 25px;color:black;" aria-hidden="true"></i>
@@ -133,16 +137,80 @@
 					<h5 class="font-weight-bold">Organiser:</h5>
 					<p>{{$event->organizer ? $event->organizer->name :null}}</p>
 				</div>
-				<div class="py-3">
-					<h5 class="font-weight-bold">Event Description:</h5>
-					<p>{{$event->description}}</p>
-				</div>
 			</div>
-			<div class="col-md-4">
-				<h4 class="text-center font-weight-bold ">${{ number_format($event->price,2)}}</h4>
+			<div class="col-md-6">
+				{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET"]) !!}
+					@guest
+						<div class="alert alert-danger" role="alert">
+							You must login or register first!
+						</div>
+					@endguest	
+
+					<div class="card">
+						<div class="card-text">
+							<table class="table table-event-pricing">
+								<tr>
+									<td>
+										Regular Price
+									</td>
+									<td>
+										${{ number_format($event->price, 2)}}/person
+									</td>
+								</tr>
+								@if ($event->early_bird_price < $event->price)
+									<tr>
+										<td>
+											Early Bird Price
+											<br>
+											<small class="text-danger">(when purchased before 12:00am {{ $event->early_bird_date }})</small>
+										</td>
+										<td>
+											${{ number_format($event->early_bird_price, 2)}}/person
+										</td>
+									</tr>
+								@endif
+								@if ($event->group_price < $event->price)
+									<tr>
+										<td>
+											Group Price
+											<br>
+											<small class="text-danger">(when purchased greater or equal to {{ $event->group_min_pax }}-person)</small>
+										</td>
+										<td>
+											${{ number_format($event->group_price, 2)}}/person
+										</td>
+									</tr>
+								@endif
+								<tr>
+									<td>
+										Quality <br>
+										<small class="text-danger">(pax: {{ $event->pax_min }} => {{ $event->pax_max }})</small>
+									</td>
+									<td >
+										@php
+											$qualities	= [];
+											for ($i=1; $i <= $event->pax_max; $i++) { 
+												$qualities[$i] = $i;
+											}
+										@endphp
+										{!! Form::select('quality', $qualities, null, ['class' => 'form-control']) !!}
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="card-footer text-center">
+							@guest
+								<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Login To Purchase</a>
+							@else 
+								<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Buy Ticket</button>
+							@endguest
+						</div>
+					</div>
+				{!! Form::close() !!}
 			</div>
-			<div class="col-md-12 text-center py-3">
-				<button type="button" class="btn font-weight-bold btn-danger">By Ticket</button>
+			<div class="py-3">
+				<h5 class="font-weight-bold">Event Description:</h5>
+				<p>{{$event->description}}</p>
 			</div>
 			
 		</div>

@@ -51,14 +51,16 @@ Route::namespace('Front')->group(function () {
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
-    Route::get('/cart','PageController@cart')->name('cart');
-    Route::get('/checkout','PageController@checkout')->name('checkout');
     Route::get('/ticket','PageController@ticket')->name('ticket');
     
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
   
     Route::middleware('auth')->group(function() {
+        
+        Route::get('/cart/{event}','PageController@cart')->name('cart');
+        Route::get('/checkout/{event}','PageController@checkout')->name('checkout');
+
         Route::prefix('manage')->group(function() {
             Route::name('manage.')->group(function () {
                 Route::resources([

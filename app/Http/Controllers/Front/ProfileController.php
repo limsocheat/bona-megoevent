@@ -48,6 +48,15 @@ class ProfileController extends Controller
         }
 
         $user->update($data);
+        $profile    = $request->input('profile');
+
+        if($image = $request->file('profile.image')) {
+            $name= $image->getClientOriginalName();
+            $image->move('upload', $name);
+            $profile['avatar'] = $name;
+        }
+
+        $user->profile()->updateOrCreate([], $profile);
 
         if ($user) {
             return redirect()->route('manage.profile.index');

@@ -8,6 +8,7 @@ use App\Models\EventCategory;
 use App\Models\EventType;
 use App\Models\Exhibitor;
 use App\Models\Slide;
+use App\User;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -137,11 +138,61 @@ class PageController extends Controller
         return view('front.event.show', $data);
     }
 
-    public function cart(){
-         return view('front.cart.index');
+    public function cart(Request $request, $id)
+    {
+        $request->validate([
+            'quality'   => 'required|min:1|numeric'
+        ]);
+
+        $event      = Event::findOrFail($id);
+        $quality    = $request->input('quality');
+        $price      = $event->price;
+        if($quality >= $event->group_min_pax) {
+            $price  = $event->group_price;
+        }
+
+        if(strtotime($event->early_bird_date) < strtotime(date('Y-m-d'))) {
+            $price  = $event->early_bird_price;
+        }
+
+        $data       = [
+            'event'     => $event, 
+            'quality'   => $quality,
+            'price'     => $price,
+            'subtotal'  => $quality * $price,
+        ];
+
+        return view('front.cart.index', $data);
     }
-    public function checkout(){
-        return view('front.checkout.index');
+    public function checkout(Request $request, $id)
+    {
+        $request->validate([
+            'quality'   => 'required|min:1|numeric'
+        ]);
+
+        $user       = auth()->user();
+        $user       = User::with('profile')->findOrFail($user->id);
+
+        $event      = Event::findOrFail($id);
+        $quality    = $request->input('quality');
+        $price      = $event->price;
+        if($quality >= $event->group_min_pax) {
+            $price  = $event->group_price;
+        }
+
+        if(strtotime($event->early_bird_date) < strtotime(date('Y-m-d'))) {
+            $price  = $event->early_bird_price;
+        }
+
+        $data       = [
+            'user'      => $user,
+            'event'     => $event, 
+            'quality'   => $quality,
+            'price'     => $price,
+            'subtotal'  => $quality * $price,
+        ];
+
+        return view('front.checkout.index', $data);
     }
     public function ticket(){
         return view('front.ticket.index');
