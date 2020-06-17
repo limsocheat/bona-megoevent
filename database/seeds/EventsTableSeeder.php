@@ -1,8 +1,12 @@
 <?php
 
 use App\Models\Event;
+use App\Models\EventCategory;
+use App\Models\EventType;
+use App\Models\Location;
 use App\User;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class EventsTableSeeder extends Seeder
 {
@@ -76,12 +80,38 @@ class EventsTableSeeder extends Seeder
             ],
         ];
 
+        $faker  = Faker::create();
+
         foreach($events as $event) {
+
+            $pax_min            = $faker->numberBetween($min = 10, $max = 120);
+            $pax_max            = $faker->numberBetween($min = $pax_min, $max = 200);
+            $pax_min_last_date  = $faker->numberBetween($min = 1, $max = $pax_min);
+            $price              = $faker->numberBetween($min = 10, $max = 120);
+            $early_bird_price   = $faker->numberBetween($min = 1, $max = $price);
+            $group_price    = $faker->numberBetween($min = 1, $max = $price);
+
             Event::create([
                 'organizer_id'  => User::inRandomOrder()->first()->id,
                 'name'          => $event['name'],
                 'description'   => $event['description'],
                 'image'         => $event['image'],
+                'category_id'   => EventCategory::inRandomOrder()->first()->id,
+                'type_id'       => EventType::inRandomOrder()->first()->id,
+                'location_id'   => Location::inRandomOrder()->first()->id,
+                'start_date'    => $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 years', $timezone = null),
+                'end_date'      => $faker->dateTimeInInterval($startDate = '+1 years', $interval = '+ 5 days', $timezone = null),
+                'pax_min'       => $pax_min,
+                'pax_max'       => $pax_max,
+                'pax_min_last_date' => $pax_min_last_date,
+                'price'         => $price,
+                'early_bird_price'  => $early_bird_price,
+                'group_price'   => $group_price,
+                'group_min_pax' => $faker->numberBetween(3, 5),
+                'diamond_max'   => $faker->numberBetween(10, 20),
+                'gold_max'      => $faker->numberBetween(10, 20),
+                'silver_max'    => $faker->numberBetween(10, 20),
+                'bronze_max'    => $faker->numberBetween(10, 20),
             ]);
         }
     }
