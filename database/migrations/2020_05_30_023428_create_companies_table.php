@@ -19,6 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('registration_number');
             $table->text('description')->nullable();
+            $table->binary('logo')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
 

@@ -50,12 +50,11 @@
                 <div class="card-body">
                     <div class="form-group" style="height: 110px;">
                         <div class="preview text-center" style="height:125px;">
-                            <img id="imagePreview"class="preview-img" src="{{ $user->profile && $user->profile->avatarUrl ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" alt="Preview Image"
+                            <img id="profilePreview" class="preview-img" src="{{ $user->profile ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" alt="Preview Image"
                                 width="100" height="100" />
                             <div class="browse-button">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
-                                {{-- <input id="new_image" class="browse-input" type="file" required name="UploadedFile" id="UploadedFile" /> --}}
-                                {{ Form::file('profile[image]', ['id' => "new_image", "class" => "browse-input"]) }}
+                                {{ Form::file('profile[image]', ['id' => "profileImage", "class" => "browse-input"]) }}
                             </div>
                             <span class="Error"></span>
                         </div>
@@ -64,14 +63,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('profile[first_name]', 'First Name') !!}
-                                {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' => 'form-control'])
+                                {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' => 'form-control', 'required' => true])
                                 !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('profile[last_name]', 'Last Name') !!}
-                                {!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
+                                {!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' => 'form-control', 'required' => true]) !!}
                             </div>
                         </div>
                     </div>
@@ -130,6 +129,17 @@
                         {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
                         'PUT']) !!}
                             <div class="card-body">
+                                <div class="form-group" style="height: 110px;">
+                                    <div class="preview text-center" style="height:125px;">
+                                        <img id="logoPreview" class="preview-img" src="{{ $user->company ? $user->company->logoUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" alt="Preview Image"
+                                            width="100" height="100" />
+                                        <div class="browse-button">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            {{ Form::file('logo', ['id' => "logoImage", "class" => "browse-input"]) }}
+                                        </div>
+                                        <span class="Error"></span>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     {!! Form::label('name', 'Company Name') !!}
                                     {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
@@ -151,14 +161,25 @@
                     <div class="card">
                         {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST']) !!}
                             <div class="card-body">
+                                <div class="form-group" style="height: 110px;">
+                                    <div class="preview text-center" style="height:125px;">
+                                        <img id="logoPreview" class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
+                                            width="100" height="100" />
+                                        <div class="browse-button">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            {{ Form::file('logo', ['id' => "logoImage", "class" => "browse-input"]) }}
+                                        </div>
+                                        <span class="Error"></span>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     {!! Form::label('name', 'Company Name') !!}
-                                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control', 'required' => true]) !!}
                                 </div>
                                 <div class="form-group">
                                     {!! Form::label('registration_number', 'Registration Number') !!}
                                     {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
-                                    'form-control']) !!}
+                                    'form-control' , 'required' => true]) !!}
                                 </div>
                             </div>
                             <div class="card-footer ">
@@ -174,24 +195,30 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        function readURL(input) {
-            if (input.files && input.files[0]) {
+        $("#profileImage").change(function() {
+            
+            if (this.files && this.files[0]) {
                 var reader = new FileReader();
                 
                 reader.onload = function(e) {
-                    $('#imagePreview').attr('src', e.target.result);
+                    $('#profilePreview').attr('src', e.target.result);
                 }
                 
-                reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(this.files[0]);
             }
-        }
-        
-        $("#new_image").change(function() {
-            readURL(this);
         });
-        $('input[type="file"]').change(function(e){
-        var fileName = e.target.files[0].name;
-        $('.custom-file-label').html(fileName);
+
+        $("#logoImage").change(function() {
+            
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#logoPreview').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            }
         });
     })
 </script>

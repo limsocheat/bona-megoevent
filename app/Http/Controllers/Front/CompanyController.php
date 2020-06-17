@@ -44,11 +44,15 @@ class CompanyController extends Controller
 
         $data       = $request->all();
         $data['user_id']    = Auth::user()->id;
-
+        if($image = $request->file('logo')) {
+            $name= $image->getClientOriginalName();
+            $image->move('upload', $name);
+            $profile['logo'] = $name;
+        }
         $company    = Company::create($data);
 
         if ($company) {
-            return redirect()->route('profile.index');
+            return redirect()->route('manage.profile.index');
         }
     }
 
@@ -95,7 +99,7 @@ class CompanyController extends Controller
         $company->update($data);
 
         if ($company) {
-            return redirect()->route('profile.index');
+            return redirect()->route('manage.profile.index');
         }
     }
 
