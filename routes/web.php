@@ -54,6 +54,9 @@ Route::namespace('Front')->group(function () {
     Route::get('/cart','PageController@cart')->name('cart');
     Route::get('/checkout','PageController@checkout')->name('checkout');
     Route::get('/ticket','PageController@ticket')->name('ticket');
+    
+    Route::get('/sendemail', 'SendEmailController@index');
+    Route::post('/sendemail/send', 'SendEmailController@send');
   
     Route::middleware('auth')->group(function() {
         Route::prefix('manage')->group(function() {

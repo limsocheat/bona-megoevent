@@ -16,7 +16,7 @@ class Event extends Model
         'location', 'description', 'diamond_max', 'gold_max', 'silver_max', 'bronze_max', 'pax_min', 'pax_max',
         'pax_min_last_date', 'price', 'early_bird_price', 'early_bird_date', 'group_price', 'group_min_pax'
     ];
-    public function location()
+    public function locations()
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
