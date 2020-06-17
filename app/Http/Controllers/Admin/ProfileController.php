@@ -13,6 +13,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
+        
         return view('admin.setting.index', ['user' => $user]);
     }
 
