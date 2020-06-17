@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -32,6 +33,9 @@ class Event extends Model
     public function organizers()
     {
         return $this->belongsTo(Event::class, 'event_organizer');
+    }
+    public function organizer(){
+        return $this->belongsTo(User::class,'organizer_id');
     }
 
     public function banners()

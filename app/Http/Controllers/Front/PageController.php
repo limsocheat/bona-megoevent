@@ -129,11 +129,21 @@ class PageController extends Controller
     public function event(Request $request, $id) {
         $event      = Event::findOrFail($id);
         $data       = [
-            'entrances' => Slide::select('*')->where('location','entrance')->get(),
+            'entrances'         => Slide::select('*')->where('location','entrance')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
             'event' => $event,
         ];
 
         return view('front.event.show', $data);
+    }
+
+    public function cart(){
+         return view('front.cart.index');
+    }
+    public function checkout(){
+        return view('front.checkout.index');
+    }
+    public function ticket(){
+        return view('front.ticket.index');
     }
 }
