@@ -147,12 +147,13 @@ class PageController extends Controller
         $event      = Event::findOrFail($id);
         $quality    = $request->input('quality');
         $price      = $event->price;
+
+        if(strtotime($event->early_bird_date) > strtotime(date('Y-m-d'))) {
+            $price  = $event->early_bird_price;
+        }
+        
         if($quality >= $event->group_min_pax) {
             $price  = $event->group_price;
-        }
-
-        if(strtotime($event->early_bird_date) < strtotime(date('Y-m-d'))) {
-            $price  = $event->early_bird_price;
         }
 
         $data       = [
