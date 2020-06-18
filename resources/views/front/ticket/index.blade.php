@@ -26,9 +26,6 @@
                                 <td>Bob Snell</td>
                                 <td>1bo$sn@mdo</td>
                             </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
                         </tbody>
                         <thead>
                             <tr>

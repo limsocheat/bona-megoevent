@@ -4,7 +4,7 @@
     $event  = $ticket->purchase->event;
 @endphp
 <h2 class="ml-1">{{ $event->name }}</h2>
-<p class="ml-1">{{ $event->start_date }} @ {{ $event->start_time }}</p>
+<p class="ml-1">{{ ($event->start_date)->format('jS F Y')}} @ {{ $event->start_time }}</p>
 @component('mail::table')
     <table class="table table-borderless">
         <thead>
