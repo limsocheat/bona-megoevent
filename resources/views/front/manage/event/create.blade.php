@@ -58,11 +58,6 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('location', 'Location Details') !!}
-                        {!! Form::text('location', null, ['placeholder' => 'Location Details', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
                         {!! Form::label('description', 'Description') !!}
                         {!! Form::textarea('description', null, ['placeholder' => 'Description', 'class' => 'form-control']) !!}
                     </div>
@@ -70,17 +65,23 @@
 
                 <div class="tab-pane " id="image" role="tabpanel" aria-labelledby="image-tab">
                     <div class="row">
+
+                        <div class="col-md-12 pt-3">
+                            <label class="active">Feature Image</label>
+                            <button type="button" class="btn btn-secondary" id="feature-image-chooser">Choose Image</button>
+                            {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
+                        </div>
+                        <div class="col-md-12">
+                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" alt="Feature Image Previewer">
+                        </div>
+
                         <div class="col-md-12">
                             <div class="input-field">
-                                <label class="active">Image</label>
+                                <label class="active">Banners</label>
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">
-                            {{-- <div class="form-group">
-                                {!! Form::label('video', 'Video Link') !!}
-                                {!! Form::url('video', null, ['placeholder' => 'Video Link', 'class' => 'form-control']) !!}
-                            </div> --}}
 
                             <label class="active">Videos</label>
                             <div class="controls"> 
@@ -270,6 +271,24 @@
             e.preventDefault();
             return false;
         });
+
+        $("#feature-image-chooser").click(function() {
+            $("#feature-image-uploader").click();
+        });
+
+        $("#feature-image-uploader").change(function() {
+            
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#feature-image-previewer').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
     });
 </script>
 @endsection

@@ -87,6 +87,14 @@ class EventController extends Controller
 
         $data                       = $request->all();
         $data['organizer_id']       = $organizer->id;
+
+        if($image   = $request->file('image')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time().'_'.$name;
+            $image->move('uploads', $name);
+            $data['image'] = '/uploads/'.$name;
+        }
+
         $event                      = Event::create($data);
 
         $banners    = [];
@@ -182,9 +190,20 @@ class EventController extends Controller
         ]);
 
         $data       = $request->all();
+
+        if($image   = $request->file('image')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time().'_'.$name;
+            $image->move('uploads', $name);
+            $data['image'] = '/uploads/'.$name;
+        }
+
         $event->update($data);
 
-        $event->banners()->whereNotIn('id', $request->input('old'))->delete();
+        if(count($event->banners)) {
+            $event->banners()->whereNotIn('id', $request->input('old'))->delete();
+        }
+  
         $banners    = [];
         if($files= $request->file('images')){
 

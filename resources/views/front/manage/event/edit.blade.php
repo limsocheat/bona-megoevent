@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container py-4">
+
     <h1 class="pb-3">Edit Event</h1>
 
     <style>
@@ -22,7 +23,7 @@
                     <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="home" aria-selected="true">Details</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="false">Image & Video</a>
+                    <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="false">Image & Video</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="date-tab" data-toggle="tab" href="#date" role="tab" aria-controls="date" aria-selected="false">Date and Time</a>
@@ -45,23 +46,18 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('type_id', 'Category') !!}
-                        {!! Form::select('type_id', $types, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
+                        {!! Form::label('type_id', 'Type') !!}
+                        {!! Form::select('type_id', $types, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('category_id', 'How would you categorize your event?') !!}
-                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
+                        {!! Form::label('category_id', 'Category') !!}
+                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('location_id', 'Event Location') !!}
-                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('location', 'Location Details') !!}
-                        {!! Form::text('location', null, ['placeholder' => 'Location Details', 'class' => 'form-control']) !!}
+                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
@@ -70,17 +66,22 @@
                     </div>
                 </div>
 
-                <div class="tab-pane " id="image" role="tabpanel" aria-labelledby="image-tab">
+                <div class="tab-pane" id="image" role="tabpanel" aria-labelledby="image-tab">
                     <div class="row">
 
+                        <div class="col-md-12 pt-3">
+                            <label class="active">Feature Image</label>
+                            <button type="button" class="btn btn-secondary" id="feature-image-chooser">Choose Image</button>
+                            {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
+                        </div>
                         <div class="col-md-12">
-                            Featured Image
+                            <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" alt="Feature Image Previewer">
                         </div>
 
                         <div class="col-md-12 pt-3">
                             <div class="input-field">
                                 <label class="active">Banners</label>
-                                <div class="input-images-1" style="padding-top: .5rem;"></div>
+                                <div class="banners-uploader" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">
@@ -353,7 +354,7 @@
             preloaded.push({id: element.id, src: "<?php echo asset('/upload/') ?>" +"/"+ element.image});
         });
 
-        $('.input-images-1').imageUploader({
+        $('.banners-uploader').imageUploader({
             preloaded: preloaded,
             imagesInputName: 'images',
             preloadedInputName: 'old'
@@ -396,6 +397,25 @@
             e.preventDefault();
             return false;
         });
+
+
+        $("#feature-image-chooser").click(function() {
+            $("#feature-image-uploader").click();
+        });
+
+        $("#feature-image-uploader").change(function() {
+            
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#feature-image-previewer').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
     });
 </script>
 @endsection
