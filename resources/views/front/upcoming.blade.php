@@ -35,9 +35,9 @@
 									<h5 class="text-truncate font-weight-bold text-capitalize" style="max-lines: 1; text-transform: capitalize;">
 										{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}}</h5>
 								</div>
-								<div class="col-5 text-right">
-									<a href="{{ route('event', $event->id) }}" class="btn btn-sm btn-outline-dark">Join Now</a>
-								</div>
+								{{-- <div class="col-5 text-right"> --}}
+									<a href="{{ route('event', $event->id) }}" class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
+								{{-- </div> --}}
 							</div>
 							<h3 class="card-title multi-line-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
 							<p class="card-text multi-line-truncate textcapitalize">{!! $event->description !!}</p>
@@ -60,9 +60,9 @@
 									<h5 class="text-truncate font-weight-bold text-capitalize" style="max-lines: 1; text-transform: capitalize;">
 										{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}}</h5>
 								</div>
-								<div class="col-5 text-right">
-									<a href="{{ route('event', $event->id) }}" class="btn btn-sm btn-outline-dark">Join Now</a>
-								</div>
+								{{-- <div class="col-5 text-right"> --}}
+									<a href="{{ route('event', $event->id) }}" class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
+								{{-- </div> --}}
 							</div>
 							<h3 class="card-title multi-line-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
 							<p class="card-text multi-line-truncate text-capitalize">{!! $event->description !!}</p>

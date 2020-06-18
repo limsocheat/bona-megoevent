@@ -58,9 +58,9 @@
 												<h5 class="text-truncate text-dark font-weight-bold"style=" max-lines: 1">
 													{{\Carbon\Carbon::parse($event->created_at)->format('jS F Y')}}</h5>
 											</div>
-											<div class="col-5 text-right">
-												<a href="#" class="btn btn-sm btn-outline-dark">Join Now</a>
-											</div>
+											{{-- <div class="col-5 text-right"> --}}
+												<a href="#" class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
+											{{-- </div> --}}
 										</div>
 										<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
 										<p class="card-text multi-line-truncate">{!! $event->description !!}</p>
