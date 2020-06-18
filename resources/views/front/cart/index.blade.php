@@ -29,7 +29,7 @@
 									<tr>
 										<th scope="row">{{ $event->id }}</th>
 										<td>{{ $event->name }}</td>
-										<td>{{ $event->start_date }} {{ $event->start_time }}</td>
+										<td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
 										<td>${{ $price }}</td>
 										<td>
 											{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET", 'id' => 'cart_form']) !!}	

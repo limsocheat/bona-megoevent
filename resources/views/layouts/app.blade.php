@@ -139,6 +139,11 @@
             margin-top: 0; 
         }
 
+        .nav-item a i.fa {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
     </style>
 </head>
 
@@ -197,41 +202,38 @@
                     {{-- right side of navba --}}
                     <ul class="navbar-nav navbar-right ml-auto">
                         <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
-                            <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-search"
-                                    aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            <a href="" class="nav-link">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Email">
-                            <a href="" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"
-                                    aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            <a href="" class="nav-link">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
                         </li>
                         @guest
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
-                            <a href="{{ route('register') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i
-                                    class="fa fa-user-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            <a href="{{ route('register') }}" class="nav-link">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
-                            <a href="{{ route('login') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-in"
-                                    aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                            <a href="{{ route('login') }}" class="nav-link">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            </a>
                         </li>
                         @else
-                        <li class="nav-item dropdown" data-toggle="tooltip" data-placement="bottom" title="User">
-                            <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;<i
-                                    class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i><span class="caret"></span></a>
-                                    <ul class="dropdown-menu" >
-                                        <li><a href="https://getbootstrap.com/examples/theme/#">Action</a></li>
-                                        <li><a href="https://getbootstrap.com/examples/theme/#">Another action</a></li>
-                                        <li><a href="https://getbootstrap.com/examples/theme/#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li class="dropdown-header">Nav header</li>
-                                        <li><a href="https://getbootstrap.com/examples/theme/#">Separated link</a></li>
-                                        <li><a href="https://getbootstrap.com/examples/theme/#">One more separated link</a></li>
-                                    </ul>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="User">
+                            <a href="{{ route('manage.profile.index') }}" class="nav-link ">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
                             <a href="#"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                class="nav-link">&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out"
-                                    aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                                class="nav-link">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>

@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
+        "simplesoftwareio/simple-qrcode": "^3.0",
         "spatie/laravel-permission": "^3.13",
         "srmklive/paypal": "^1.7",
         "watson/breadcrumbs": "^1.1"

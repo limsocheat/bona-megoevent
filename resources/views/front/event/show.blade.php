@@ -110,20 +110,20 @@
 				<div class="py-3">
 					<h5  class="font-weight-bold">Venue:</h5>
 					<div><i class="fa fa-map-marker" style="font-size: 25px;color:black;" aria-hidden="true"></i>
-						 <span class="ml-4">{{$event->locations ? $event->locations->name : "To Be Announced"}}</span>
-						<span class="ml-2">{{$event->locations ? $event->locations->address : null}}</span></div>
+						 <span class="ml-4">{{$event->location ? $event->location->name : "To Be Announced"}}</span>
+						<span class="ml-2">{{$event->location ? $event->location->address : null}}</span></div>
 				</div>
 				<div class="py-2">
 					<h5  class="font-weight-bold">Date:</h5>
 					<div><i class="fa fa-calendar-o" style="font-size: 25px;color: color:black;" aria-hidden="true"></i>
-						<span class="ml-3 mr-2">Starting-Ending</span>{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}} -
-						{{\Carbon\Carbon::parse($event->end_date)->format('jS F Y')}}
+						<span class="ml-3 mr-2">Starting-Ending</span>{{ $event->display_start_date }} -
+						{{ $event->display_end_date }}
 					</div>
 				</div>
 				<div class="py-3">
 					<h5  class="font-weight-bold">Time:</h5>
 					<div><i class="fa fa-clock-o"  style="font-size: 30px;color:black;" aria-hidden="true"></i>
-					<span class="ml-3">{{\Carbon\Carbon::createFromFormat('H:i:s',$event->start_time)->format('g:i a')}} - {{\Carbon\Carbon::createFromFormat('H:i:s',$event->end_time)->format('g:i a')}}</span></div>
+					<span class="ml-3">{{ $event->display_start_time }} - {{ $event->display_end_time }}</span></div>
 				</div>
 				<div class="py-3">
 					<h5 class="font-weight-bold">Event Type:</h5>
@@ -162,7 +162,7 @@
 										<td>
 											Early Bird Price
 											<br>
-											<small class="text-danger">(when purchased before 12:00am {{ $event->early_bird_date }})</small>
+											<small class="text-danger">(when purchased before 12:00am {{ $event->display_early_bird_date }})</small>
 										</td>
 										<td>
 											${{ number_format($event->early_bird_price, 2)}}/person
@@ -208,7 +208,7 @@
 					</div>
 				{!! Form::close() !!}
 			</div>
-			<div class="py-3">
+			<div class="col-md-12 py-3">
 				<h5 class="font-weight-bold">Event Description:</h5>
 				<p>{{$event->description}}</p>
 			</div>
@@ -247,19 +247,6 @@
 				<div class="col-md-4">
 
 					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">&nbsp;</h1>
-							
-					<div class="card" style="height:300px;">
-						<form class="text-center border border-light p-4" action="#!">
-							<p class="h4 mb-4">Sign in</p>
-							<input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="EMAI ADDRESS">
-							<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="PASSWORD">
-							<div class="d-flex justify-content-around">
-							</div>
-							<button class="btn btn-info btn-block my-4" type="submit">SIGN UP FREE</button>
-						</form>
-					</div>
-
-					<p>&nbsp;</p>
 
 					<div id="NextUpcomingEvent" class="card">
 						<h3 style="margin-top: 100px; text-align: center">Next Upcoming Event</h3>

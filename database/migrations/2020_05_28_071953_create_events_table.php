@@ -26,7 +26,6 @@ class CreateEventsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->enum('mode', ['single', 'recurring'])->default('single');
-            $table->text('location')->nullable();
             $table->string('image')->nullable();
             $table->integer('diamond_max')->nullable()->default(0);
             $table->integer('gold_max')->nullable()->default(0);

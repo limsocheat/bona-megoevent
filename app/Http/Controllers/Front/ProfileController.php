@@ -60,7 +60,7 @@ class ProfileController extends Controller
         $user->profile()->updateOrCreate([], $profile);
 
         if ($user) {
-            return redirect()->route('manage.profile.index');
+            return redirect()->route('manage.profile.index')->with('success', 'Profile Updated Succesfully!');
         }
     }
 }

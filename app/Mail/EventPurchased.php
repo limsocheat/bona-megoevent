@@ -33,6 +33,6 @@ class EventPurchased extends Mailable
     public function build()
     {
         return $this->markdown('mails.events.purchased')
-            ->subject("Megoevent - New registration on [" . $this->purchase->event->name ."]");
+            ->subject("Megoevent - New registration on " . $this->purchase->event->name);
     }
 }

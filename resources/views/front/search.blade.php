@@ -19,11 +19,9 @@
 								<div class="row">
 									<div class="col-7">
 										<h5 class="text-truncate font-weight-bold text-capitalize" style="max-lines: 1; text-transform: capitalize;">
-											{{\Carbon\Carbon::parse($event->start_date)->format('jS F Y')}}</h5>
+											{{ $event->display_start_date }}</h5>
 									</div>
-									<div class="col-5 text-right">
-										<a href="{{ route('event', $event->id) }}" class="btn btn-sm btn-outline-dark">Join Now</a>
-									</div>
+									<a href="{{ route('event', $event->id) }}" class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
 								</div>
 								<h3 class="card-title text-truncate text-capitalize" style="max-lines: 2 text-transform: capitalize;">{{ $event->name }}</h3>
 								<p class="card-text text-truncate text-capitalize">{!! $event->description !!}</p>

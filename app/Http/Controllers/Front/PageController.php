@@ -106,7 +106,7 @@ class PageController extends Controller
             'g-recaptcha-response' => 'required|captcha',
         ]);
 
-        return redirect(route('contact'))->with('success', 'submit successfully');
+        return redirect(route('contact'))->with('success', 'Submit Successfully!');
     }
 
     public function manage()

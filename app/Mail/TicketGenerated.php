@@ -32,6 +32,6 @@ class TicketGenerated extends Mailable
     public function build()
     {
         return $this->markdown('mails.tickets.generated')
-            ->subject("Megoevent - Your ticket at [" . $this->ticket->purchase->event->name ."]");
+            ->subject("Megoevent - Your ticket at " . $this->ticket->purchase->event->name);
     }
 }

@@ -44,6 +44,13 @@
 
 <div class="container py-4">
     <div class="row justify-content-center">
+        <div class="col-md-12">
+            @if (\Session::has('success'))
+                <div class="alert alert-success">
+                    {!! \Session::get('success') !!}
+                </div>
+            @endif
+        </div>
         <div class="col-md-6">
             <div class="card">
                 {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT', 'files' => true]) !!}

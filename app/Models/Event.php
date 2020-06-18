@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -13,10 +14,10 @@ class Event extends Model
         'event_experience_id', 'event_team_id', 'event_frequency_id',
         'event_attendance_id', 'location_id', 'type_id', 'category_id',
         'name', 'start_date', 'start_time', 'end_date', 'end_time',
-        'location', 'description', 'diamond_max', 'gold_max', 'silver_max', 'bronze_max', 'pax_min', 'pax_max',
+        'description', 'diamond_max', 'gold_max', 'silver_max', 'bronze_max', 'pax_min', 'pax_max',
         'pax_min_last_date', 'price', 'early_bird_price', 'early_bird_date', 'group_price', 'group_min_pax'
     ];
-    public function locations()
+    public function location()
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
@@ -52,5 +53,30 @@ class Event extends Model
     public function getImageUrlAttribute()
     {
         return $this->image ? url($this->image) : url('/events/1.jpg');
+    }
+
+    public function getDisplayStartDateAttribute()
+    {
+        return Carbon::parse($this->start_date)->format('jS M Y');
+    }
+
+    public function getDisplayEndDateAttribute()
+    {
+        return Carbon::parse($this->end_date)->format('jS M Y');
+    }
+
+    public function getDisplayEarlyBirdDateAttribute()
+    {
+        return Carbon::parse($this->early_bird_date)->format('jS M Y');
+    }
+
+    public function getDisplayStartTimeAttribute() 
+    {
+        return Carbon::createFromFormat('H:i:s', $this->start_time)->format('g:i a');
+    }
+
+    public function getDisplayEndTimeAttribute() 
+    {
+        return Carbon::createFromFormat('H:i:s', $this->end_time)->format('g:i a');
     }
 }

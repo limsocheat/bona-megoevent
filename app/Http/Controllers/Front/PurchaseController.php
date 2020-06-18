@@ -66,6 +66,7 @@ class PurchaseController extends Controller
 
             $purchase       = Purchase::create($data);
             if($purchase) {
+                //send email to organizer
                 Mail::to($organizer)->send(new EventPurchased($purchase));
                 for ($i = 0; $i < $purchase->quantity; $i++) { 
                     $ticket = $purchase->tickets()->save(
@@ -75,6 +76,7 @@ class PurchaseController extends Controller
                     );
 
                     if($ticket) {
+                        //send email to participant
                         Mail::to($request->user())->send(new TicketGenerated($ticket));
                     }
                 }
