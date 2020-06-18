@@ -130,6 +130,15 @@
         body a:hover {
             color: #000;
         }
+        .dropdown-menu:li {
+            text-align: left;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0; 
+        }
+
     </style>
 </head>
 
@@ -155,7 +164,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-white bg-white pt-0 pb-0"
+        <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
             style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
             <div class="container">
                 {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -205,9 +214,18 @@
                                     aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
                         </li>
                         @else
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="User">
-                            <a href="{{ route('manage.profile.index') }}" class="nav-link">&nbsp;&nbsp;&nbsp;<i
-                                    class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i></a>
+                        <li class="nav-item dropdown" data-toggle="tooltip" data-placement="bottom" title="User">
+                            <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">&nbsp;&nbsp;&nbsp;<i
+                                    class="fa fa-user" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i><span class="caret"></span></a>
+                                    <ul class="dropdown-menu" >
+                                        <li><a href="https://getbootstrap.com/examples/theme/#">Action</a></li>
+                                        <li><a href="https://getbootstrap.com/examples/theme/#">Another action</a></li>
+                                        <li><a href="https://getbootstrap.com/examples/theme/#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Nav header</li>
+                                        <li><a href="https://getbootstrap.com/examples/theme/#">Separated link</a></li>
+                                        <li><a href="https://getbootstrap.com/examples/theme/#">One more separated link</a></li>
+                                    </ul>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
                             <a href="#"
