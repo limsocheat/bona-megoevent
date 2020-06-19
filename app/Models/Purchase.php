@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
@@ -24,5 +25,10 @@ class Purchase extends Model
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    public function getDisplayCreatedAtAttribute()
+    {
+        return Carbon::parse($this->create_at)->format('jS M Y g:i a');
     }
 }

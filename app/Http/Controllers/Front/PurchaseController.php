@@ -54,28 +54,33 @@ class PurchaseController extends Controller
         $request->validate([
             'event_id'  => 'required|exists:events,id',
             'quantity'  => 'required|min:1|numeric',
+            'profile'   => 'required'
         ]);
 
         DB::beginTransaction();
         try {
             $user           = auth()->user();
+            $profile        = $request->input('profile');
+
+            $user->profile()->updateOrCreate([], $profile);
+
             $data           = $request->all();
-            $data['user_id']= $user->id;
+            $data['user_id'] = $user->id;
             $event          = Event::findOrFail($request->input('event_id'));
             $organizer      = $event->organizer;
 
             $purchase       = Purchase::create($data);
-            if($purchase) {
+            if ($purchase) {
                 //send email to organizer
                 Mail::to($organizer)->send(new EventPurchased($purchase));
-                for ($i = 0; $i < $purchase->quantity; $i++) { 
+                for ($i = 0; $i < $purchase->quantity; $i++) {
                     $ticket = $purchase->tickets()->save(
                         new Ticket([
                             'code'  => time() . $i
                         ])
                     );
 
-                    if($ticket) {
+                    if ($ticket) {
                         //send email to participant
                         Mail::to($request->user())->send(new TicketGenerated($ticket));
                     }
@@ -83,11 +88,10 @@ class PurchaseController extends Controller
             }
             DB::commit();
             return redirect()->route('manage.purchase.index');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
         }
-
     }
 
     /**

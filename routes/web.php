@@ -36,7 +36,10 @@ Route::namespace('Admin')->group(function () {
                     'event'     => 'EventController',
                     'page'      => 'PageController',
                     'banner'    => 'BannerController',
-                    'slide'     => 'SlideController'
+                    'slide'     => 'SlideController',
+                    'purchase'  => 'PurchaseController',
+                    'ticket'    => 'TicketController',
+                    'location'  => 'LocationController'
                 ]);
             });
         });
@@ -46,23 +49,23 @@ Route::namespace('Admin')->group(function () {
 Route::namespace('Front')->group(function () {
     Route::get('/', 'PageController@index')->name('index');
     Route::get('/entrance', 'PageController@entrance')->name('entrance');
-    Route::get('/upcoming','PageController@upcoming')->name('upcoming');
+    Route::get('/upcoming', 'PageController@upcoming')->name('upcoming');
     Route::get('/search', 'PageController@search')->name('search');
-    Route::get('/contact','PageController@contact')->name('contact');
+    Route::get('/contact', 'PageController@contact')->name('contact');
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
     // Route::get('/ticket','PageController@ticket')->name('ticket');
-    
+
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
-  
-    Route::middleware('auth')->group(function() {
-        
-        Route::get('/cart/{event}','PageController@cart')->name('cart');
-        Route::get('/checkout/{event}','PageController@checkout')->name('checkout');
 
-        Route::prefix('manage')->group(function() {
+    Route::middleware('auth')->group(function () {
+
+        Route::get('/cart/{event}', 'PageController@cart')->name('cart');
+        Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
+
+        Route::prefix('manage')->group(function () {
             Route::name('manage.')->group(function () {
                 Route::resources([
                     'company'   => 'CompanyController',
@@ -77,4 +80,3 @@ Route::namespace('Front')->group(function () {
         });
     });
 });
-

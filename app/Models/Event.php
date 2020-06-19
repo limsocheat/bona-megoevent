@@ -37,7 +37,7 @@ class Event extends Model
     }
     public function organizer()
     {
-        return $this->belongsTo(User::class,'organizer_id');
+        return $this->belongsTo(User::class, 'organizer_id');
     }
 
     public function banners()
@@ -48,6 +48,16 @@ class Event extends Model
     public function videos()
     {
         return $this->morphMany(Video::class, 'vidable');
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasManyThrough(Ticket::class, Purchase::class);
     }
 
     public function getImageUrlAttribute()
@@ -70,12 +80,12 @@ class Event extends Model
         return Carbon::parse($this->early_bird_date)->format('jS M Y');
     }
 
-    public function getDisplayStartTimeAttribute() 
+    public function getDisplayStartTimeAttribute()
     {
         return Carbon::createFromFormat('H:i:s', $this->start_time)->format('g:i a');
     }
 
-    public function getDisplayEndTimeAttribute() 
+    public function getDisplayEndTimeAttribute()
     {
         return Carbon::createFromFormat('H:i:s', $this->end_time)->format('g:i a');
     }
