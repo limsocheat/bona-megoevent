@@ -15,6 +15,9 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
+        
+
+    
         $tickets        = Ticket::select('*')->get();
 
         $data           = [
