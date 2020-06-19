@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Dashboard
+                    <h2 class="float-left">Manage Event</h2>
                     <a class="btn btn-primary float-right" href="{{ route('manage.event.create') }}">New Event</a>
                 </div>
 
