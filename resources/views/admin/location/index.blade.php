@@ -35,10 +35,10 @@
                     <td>{{ $location->active}}</td>
 
                     <td>
-             <a href="{{ route('admin.location.edit', $location->id) }}" class="btn btn-primary btn-sm"
+                 <a href="{{ route('admin.location.edit', $location->id) }}" class="btn btn-primary btn-sm"
                     style="float: left; margin-right: 5px">Edit</a>
-                    {!! Form::open(['route' => ['admin.location.destroy', $location->id], 'onsubmit' => "return
-                    confirm('Are you sure?')", 'method' => 'DELETE']) !!}
+                   {!! Form::open(['route' => ['admin.location.destroy', $location->id], 'onsubmit' => "return confirm('Are you sure?')",
+                    'method' => 'DELETE']) !!}
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     {!! Form::close() !!}
                     </td>
