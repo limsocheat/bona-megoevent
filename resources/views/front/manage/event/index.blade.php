@@ -14,9 +14,9 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     <table class="table">
@@ -26,20 +26,25 @@
                             <th>Category</th>
                             <th>Start</th>
                             <th>End</th>
+                            <th>Orders</th>
+                            <th>Tickets</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            @foreach ($events as $event)    
-                                <tr>
-                                    <td>{{ $event->name }}</td>
-                                    <td>{{ $event->type ? $event->type->name : null }}</td>
-                                    <td>{{ $event->category ? $event->category->name : null }}</td>
-                                    <td>{{ $event->start_date }} {{ $event->start_time }}</td>
-                                    <td>{{ $event->end_date }} {{ $event->end_time }}</td>
-                                    <td>
-                                        <a href="{{ route('manage.event.edit', $event->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                    </td>
-                                </tr>
+                            @foreach ($events as $event)
+                            <tr>
+                                <td>{{ $event->name }}</td>
+                                <td>{{ $event->type ? $event->type->name : null }}</td>
+                                <td>{{ $event->category ? $event->category->name : null }}</td>
+                                <td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
+                                <td>{{ $event->display_end_date }} @ {{ $event->display_end_time }}</td>
+                                <td>{{ count($event->purchases) }}</td>
+                                <td>{{ count($event->tickets) }}</td>
+                                <td>
+                                    <a href="{{ route('manage.event.edit', $event->id) }}"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
