@@ -18,14 +18,16 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js"></script>
     <script type="text/javascript" src="{{ asset('plugins/nice-select/js/jquery.nice-select.js') }}"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-    
+
     <link type="text/css" rel="stylesheet" href="{{ asset('/plugins/image-uploader/image-uploader.css') }}">
     <script type="text/javascript" src="{{ asset('/plugins/image-uploader/image-uploader.js') }}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -65,7 +67,7 @@
             background-color: #333;
         }
 
-        .navbar-nav .active {
+        #navbar-nav .active {
             border-bottom: 4px solid black;
         }
 
@@ -73,9 +75,11 @@
             border-bottom: 4px solid white;
 
         }
-    .navbar-nav ul li:hover{
-        border-bottom: 4px solid black;
-    }
+
+        .accent-cyannavbar-nav ul li:hover {
+            border-bottom: 4px solid black;
+        }
+
         .actives a i {
             font-size: 20px;
         }
@@ -103,7 +107,7 @@
             width: 0;
             height: 4px;
             background-color: black;
-            transition: all .1s linear;
+            /* transition: all .1s linear; */
         }
 
         .navbar-nav li a:hover {
@@ -114,6 +118,10 @@
             width: 100%;
             background-color: black;
         }
+
+        /* .dropdown-menu {
+            z-index: 1;
+        } */
 
         .container {
             max-width: 1280px !important;
@@ -130,20 +138,44 @@
         body a:hover {
             color: #000;
         }
-        .dropdown-menu:li {
-            text-align: left;
+
+        /* dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
 
-        .dropdown:hover .dropdown-menu {
+        .navbar-nav .dropdown-content {
+            y
+        }
+
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            min-height: 160px;
+            border-bottom: none;
+            z-index: 1;
+        }
+
+        .dropdown .dropdown-content li {
+            padding: 10px 16px;
+            text-decoration: none;
             display: block;
-            margin-top: 0; 
+        }
+
+        .dropdown-content li {}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+
         }
 
         .nav-item a i.fa {
             padding-left: 15px;
             padding-right: 15px;
         }
-
     </style>
 </head>
 
@@ -178,11 +210,12 @@
                 <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"><i class="fa fa-bars" style="color:#1f1c1c; font-size:28px;"></i></span>
+                    <span class="navbar-toggler-icon"><i class="fa fa-bars"
+                            style="color:#1f1c1c; font-size:28px;"></i></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul id="navbar-nav" class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a href="{{ route('index') }}" class="nav-link">Home</a>
                         </li>
@@ -196,7 +229,7 @@
                             <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
-                        <a href="{{route('contact')}}"  class="nav-link">Contact</a>
+                            <a href="{{route('contact')}}" class="nav-link">Contact</a>
                         </li>
                     </ul>
                     {{-- right side of navba --}}
@@ -223,10 +256,24 @@
                             </a>
                         </li>
                         @else
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="User">
-                            <a href="{{ route('manage.profile.index') }}" class="nav-link ">
+                        <li class="nav-item dropdown">
+                            <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
+                                data-toggle="dropdown">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                             </a>
+                            {{-- dropdown --}}
+                            <ul class="dropdown-content p-0">
+                                <li>
+                                    <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
+
+                                </li>
+                                <li>
+                                    <a href="{{ route('manage.event.index')}}">Manage Event</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
                             <a href="#"
@@ -326,42 +373,42 @@
                                 @if ($errors->has('g-recaptcha-response'))
                                 <span class="help-block text-danger">
                                     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div> --}}
-        </nav>
-        <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
-            <div class="container">
-                <ul class="breadcrumb"
-                    style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
-                    <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/"
-                            style="padding: 0">Home</a></li>
-                    @foreach ($breadcrumbs as $key => $url)
-                    <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
-                        aria-current="{{ $loop->last ? 'page' : '' }}">
-                        <a href="{{ url($url) }}" style="padding: 0">
-                            @if (! $loop->last)
-                            {{ ucfirst($key) }}
-                            @else
-                            @yield ('title')
-                            @endif
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </nav>
+            </span>
+            @endif
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    </div>
+    </div> --}}
+    </nav>
+    <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb"
+                style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
+                <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/"
+                        style="padding: 0">Home</a></li>
+                @foreach ($breadcrumbs as $key => $url)
+                <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
+                    aria-current="{{ $loop->last ? 'page' : '' }}">
+                    <a href="{{ url($url) }}" style="padding: 0">
+                        @if (! $loop->last)
+                        {{ ucfirst($key) }}
+                        @else
+                        @yield ('title')
+                        @endif
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+    </nav>
 
-        <main>
-            @yield('content')
-        </main>
+    <main>
+        @yield('content')
+    </main>
 
-        @include('layouts.footer')
+    @include('layouts.footer')
     </div>
     @yield('script')
     <script type="text/javascript">
@@ -371,9 +418,8 @@
             $(this).addClass("active");
             });
             $('[data-toggle="tooltip"]').tooltip();
-
+           
         });
-
     </script>
 </body>
 

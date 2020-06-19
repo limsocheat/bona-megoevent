@@ -52,7 +52,7 @@ Route::namespace('Front')->group(function () {
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
-    Route::get('/ticket','PageController@ticket')->name('ticket');
+    // Route::get('/ticket','PageController@ticket')->name('ticket');
     
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
