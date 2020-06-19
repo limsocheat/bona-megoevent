@@ -145,16 +145,18 @@
             display: inline-block;
         }
 
-        .navbar-nav .dropdown-content {
+        /* .navbar-nav .dropdown-content {
             y
-        }
+        } */
 
         .dropdown-content {
             display: none;
             position: fixed;
+            float: left;
             background-color: #f1f1f1;
-            min-width: 160px;
+            min-width: 170px;
             min-height: 210px;
+            right: 135px;
             border-bottom: none;
             z-index: 1;
         }
@@ -163,13 +165,30 @@
             padding: 10px 16px;
             text-decoration: none;
             display: block;
+            text-align: center;
+            font-size: 14px;
+            left: 1px;
         }
 
-        .dropdown-content li {}
+        /* .dropdown-content li {} */
 
         .dropdown:hover .dropdown-content {
             display: block;
 
+        }
+
+        @media (max-width: 576px) {
+            .dropdown-content {
+                display: none;
+                position: fixed;
+                float: left;
+                background-color: #f1f1f1;
+                min-width: 200px;
+                min-height: 210px;
+                right: 4px;
+                border-bottom: none;
+                z-index: 1;
+            }
         }
 
         .nav-item a i.fa {
@@ -188,42 +207,54 @@
         <div class="bg-white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{ asset('images/logo.png') }}" style="width: 150px !important" />
+                    <img src="{{ asset('images/logo.png') }}" style="width: 150px !important" />
+                    </a>
+                </div> --}}
+                <div class="col-md-12">
+                    {{-- <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
+                    <img src="{{ asset($header_banner->image) }}" style="width: 100%; height: auto;" />
+                    </a> --}}
+                    <div class="float-left">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{ asset('images/logo.png') }}" style="width: 100px !important" />
                         </a>
                     </div>
-                    <div class="col-md-8">
-                        {{-- <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
-                        <img src="{{ asset($header_banner->image) }}" style="width: 100%; height: auto;" />
-                        </a> --}}
-                        <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
-                            style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
-                            <div class="container">
-                                {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                                <span class="navbar-toggler-icon"></span>
-                                </button> --}}
-                                {{-- <button class="navbar-toggler navbar-toggler-right border-dark" type="button"
+                    <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
+                        style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
+                        <div class="container">
+                            {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                            </button> --}}
+                            {{-- <button class="navbar-toggler navbar-toggler-right border-dark" type="button"
                                     data-toggle="collapse" data-target="#navbarSupportedContent"
                                     aria-controls="navbarSupportedContent" aria-expanded="false"
                                     aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"><i class="fa fa-bars"
                                             style="color:#1f1c1c; font-size:28px;"></i></span>
                                 </button> --}}
-                                <div class=" navbar-collapse ">
-                                    <ul class="navbar-nav navbar-right ml-auto">
-                                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom"
-                                            title="Search">
-                                            <a href="" class="nav-link">
-                                                <i class="fa fa-search" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
-                                            title="Email">
-                                            <a href="" class="nav-link">
-                                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            </a>
-                                        </li>
+                            <div class=" navbar-collapse d-flex justify-content-end">
+                                <ul class="navbar-nav navbar-right ml-auto">
+                                    <div class="row ">
+
+
+                                        <div class="col-xs-3">
+                                            <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom"
+                                                title="Search">
+                                                <a href="" class="nav-link">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                                                title="Email">
+                                                <a href="" class="nav-link">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </div>
                                         @guest
                                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                             title="Sign Up">
@@ -249,7 +280,8 @@
                                                     <a href="{{ route('manage.profile.index') }}">Your Profile</a>
                                                     </a>
                                                 <li>
-                                                    <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
+                                                    <a href="{{ route('manage.purchase.index')}}">Manage
+                                                        Purchase</a>
                                                 </li>
                                                 <li>
                                                     <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
@@ -273,47 +305,48 @@
                                             </form>
                                         </li>
                                         @endguest
-                                    </ul>
-                                </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </nav>
-                    </div>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
-            style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
-            <div class="container">
-                {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-                </button> --}}
-                <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"><i class="fa fa-bars"
-                            style="color:#1f1c1c; font-size:28px;"></i></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul id="navbar-nav" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a href="{{ route('index') }}" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('contact')}}" class="nav-link">Contact</a>
-                        </li>
-                    </ul>
-                    {{-- right side of navba --}}
-                    {{-- <ul class="navbar-nav navbar-right ml-auto">
+    </div>
+    <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
+        style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
+        <div class="container">
+            {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+            </button> --}}
+            <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars"
+                        style="color:#1f1c1c; font-size:28px;"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul id="navbar-nav" class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href="{{ route('index') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('contact')}}" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                {{-- right side of navba --}}
+                {{-- <ul class="navbar-nav navbar-right ml-auto">
                         <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
                             <a href="" class="nav-link">
                                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -327,77 +360,76 @@
                         @guest
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
                             <a href="{{ route('register') }}" class="nav-link">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
+                    <a href="{{ route('login') }}" class="nav-link">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
                     </a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
-                        <a href="{{ route('login') }}" class="nav-link">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    @else
-                    <li class="nav-item dropdown">
-                        <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
-                            data-toggle="dropdown">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </a>
+                </li>
+                @else
+                <li class="nav-item dropdown">
+                    <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
+                        data-toggle="dropdown">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
 
-                        <ul class="dropdown-content p-0">
-                            <li>
-                                <a href="{{ route('manage.profile.index') }}">Your Profile</a>
-                                </a>
-                            <li>
-                                <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
-                            </li>
-                            <li>
-                                <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
+                    <ul class="dropdown-content p-0">
+                        <li>
+                            <a href="{{ route('manage.profile.index') }}">Your Profile</a>
+                            </a>
+                        <li>
+                            <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
+                        </li>
+                        <li>
+                            <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
 
-                            </li>
-                            <li>
-                                <a href="{{ route('manage.event.index')}}">Manage Event</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
-                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                            class="nav-link">
-                            <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                    @endguest
-                    </ul> --}}
+                        </li>
+                        <li>
+                            <a href="{{ route('manage.event.index')}}">Manage Event</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
+                    <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                        class="nav-link">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                @endguest
+                </ul> --}}
 
-                </div>
             </div>
+        </div>
 
-            @inject('page', 'App\Models\Page')
-            @php
-            $contact = $page::select('*')->where('slug', 'contact')->first();
-            $about = $page::select('*')->where('slug', 'about')->first();
-            @endphp
-            <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="aboutLabel">
-                                {!! $about->title !!}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            @inject('page', 'App\Models\Page')
-                            {!! $about->description !!}
-                        </div>
+        @inject('page', 'App\Models\Page')
+        @php
+        $contact = $page::select('*')->where('slug', 'contact')->first();
+        $about = $page::select('*')->where('slug', 'about')->first();
+        @endphp
+        <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="aboutLabel">
+                            {!! $about->title !!}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @inject('page', 'App\Models\Page')
+                        {!! $about->description !!}
                     </div>
                 </div>
             </div>
+        </div>
 
-            {{-- <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
+        {{-- <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -455,14 +487,14 @@
                                 @if ($errors->has('g-recaptcha-response'))
                                 <span class="help-block text-danger">
                                     <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-            </span>
-            @endif
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    </div>
-    </div>
-    </div> --}}
+        </span>
+        @endif
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+        </div>
+        </div> --}}
     </nav>
     <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
         <div class="container">
