@@ -15,10 +15,15 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
-        
+        $user   = auth()->user();
 
-    
-        $tickets        = Ticket::select('*')->get();
+        $tickets        = Ticket::select('*')
+            ->when($user, function ($query, $user) {
+                return $query->whereHas('purchase', function ($query) use ($user) {
+                    return $query->where('user_id', $user->id);
+                });
+            })
+            ->get();
 
         $data           = [
             'tickets'   => $tickets,
