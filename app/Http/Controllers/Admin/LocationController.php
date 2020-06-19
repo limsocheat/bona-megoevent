@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -14,7 +15,13 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::select('*')->get();
+        return view(
+            'admin.location.index',
+            [
+                'locations' => $locations
+            ]
+        );
     }
 
     /**
