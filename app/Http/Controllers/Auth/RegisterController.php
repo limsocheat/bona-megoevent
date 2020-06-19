@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+       
     }
 
     public function showRegistrationForm()
@@ -99,6 +100,6 @@ class RegisterController extends Controller
 
         return $request->wantsJson()
             ? new Response('', 201)
-            : redirect($this->redirectPath());
+            : redirect($this->redirectPath('/home'));
     }
 }
