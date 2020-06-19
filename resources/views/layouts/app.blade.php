@@ -154,7 +154,7 @@
             position: fixed;
             background-color: #f1f1f1;
             min-width: 160px;
-            min-height: 160px;
+            min-height: 210px;
             border-bottom: none;
             z-index: 1;
         }
@@ -194,9 +194,89 @@
                         </a>
                     </div>
                     <div class="col-md-8">
-                        <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
-                            <img src="{{ asset($header_banner->image) }}" style="width: 100%; height: auto;" />
-                        </a>
+                        {{-- <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
+                        <img src="{{ asset($header_banner->image) }}" style="width: 100%; height: auto;" />
+                        </a> --}}
+                        <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
+                            style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
+                            <div class="container">
+                                {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                <span class="navbar-toggler-icon"></span>
+                                </button> --}}
+                                {{-- <button class="navbar-toggler navbar-toggler-right border-dark" type="button"
+                                    data-toggle="collapse" data-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"><i class="fa fa-bars"
+                                            style="color:#1f1c1c; font-size:28px;"></i></span>
+                                </button> --}}
+                                <div class=" navbar-collapse ">
+                                    <ul class="navbar-nav navbar-right ml-auto">
+                                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom"
+                                            title="Search">
+                                            <a href="" class="nav-link">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                                            title="Email">
+                                            <a href="" class="nav-link">
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        @guest
+                                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                                            title="Sign Up">
+                                            <a href="{{ route('register') }}" class="nav-link">
+                                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                                            title="Sign in">
+                                            <a href="{{ route('login') }}" class="nav-link">
+                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        @else
+                                        <li class="nav-item dropdown">
+                                            <a href="{{ route('manage.profile.index') }}"
+                                                class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                            </a>
+                                            {{-- dropdown --}}
+                                            <ul class="dropdown-content p-0">
+                                                <li>
+                                                    <a href="{{ route('manage.profile.index') }}">Your Profile</a>
+                                                    </a>
+                                                <li>
+                                                    <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('manage.event.index')}}">Manage Event</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                                            title="Sign Out">
+                                            <a href="#"
+                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                                class="nav-link">
+                                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                        @endguest
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -233,7 +313,7 @@
                         </li>
                     </ul>
                     {{-- right side of navba --}}
-                    <ul class="navbar-nav navbar-right ml-auto">
+                    {{-- <ul class="navbar-nav navbar-right ml-auto">
                         <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
                             <a href="" class="nav-link">
                                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -247,46 +327,48 @@
                         @guest
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
                             <a href="{{ route('register') }}" class="nav-link">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
-                            <a href="{{ route('login') }}" class="nav-link">
-                                <i class="fa fa-sign-in" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        @else
-                        <li class="nav-item dropdown">
-                            <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
-                                data-toggle="dropdown">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </a>
-                            {{-- dropdown --}}
-                            <ul class="dropdown-content p-0">
-                                <li>
-                                    <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
+                        <a href="{{ route('login') }}" class="nav-link">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
+                            data-toggle="dropdown">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </a>
 
-                                </li>
-                                <li>
-                                    <a href="{{ route('manage.event.index')}}">Manage Event</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
-                            <a href="#"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                class="nav-link">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                        @endguest
-                    </ul>
+                        <ul class="dropdown-content p-0">
+                            <li>
+                                <a href="{{ route('manage.profile.index') }}">Your Profile</a>
+                                </a>
+                            <li>
+                                <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
+                            </li>
+                            <li>
+                                <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
+
+                            </li>
+                            <li>
+                                <a href="{{ route('manage.event.index')}}">Manage Event</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
+                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                            class="nav-link">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                    @endguest
+                    </ul> --}}
 
                 </div>
             </div>
