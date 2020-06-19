@@ -77,7 +77,7 @@
         }
 
         .accent-cyannavbar-nav ul li:hover {
-             border-bottom: 4px solid black;
+            border-bottom: 4px solid black;
         }
 
         .actives a i {
@@ -122,7 +122,7 @@
         /* .dropdown-menu {
             z-index: 1;
         } */
- 
+
         .container {
             max-width: 1280px !important;
         }
@@ -144,15 +144,17 @@
             position: relative;
             display: inline-block;
         }
-        .navbar-nav .dropdown-content{
+
+        .navbar-nav .dropdown-content {
             y
         }
+
         .dropdown-content {
             display: none;
             position: fixed;
             background-color: #f1f1f1;
             min-width: 160px;
-            min-height: 130px;
+            min-height: 160px;
             border-bottom: none;
             z-index: 1;
         }
@@ -162,12 +164,12 @@
             text-decoration: none;
             display: block;
         }
-         .dropdown-content li{
 
-        }
-        .dropdown:hover .dropdown-content{
+        .dropdown-content li {}
+
+        .dropdown:hover .dropdown-content {
             display: block;
-            
+
         }
 
         .nav-item a i.fa {
@@ -258,17 +260,19 @@
                             <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
                                 data-toggle="dropdown">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                {{-- <b class="caret"></b> --}}
                             </a>
                             {{-- dropdown --}}
                             <ul class="dropdown-content p-0">
                                 <li>
-                                    <a href="#">Manage Purchase</a>
+                                    <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
                                 </li>
                                 <li>
-                                    <a href="#">Manage Ticket</a>
-                                </li>
+                                    <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
 
+                                </li>
+                                <li>
+                                    <a href="{{ route('manage.event.index')}}">Manage Event</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
