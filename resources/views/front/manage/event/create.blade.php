@@ -39,22 +39,22 @@
                     
                     <div class="form-group">
                         {!! Form::label('name', 'Event Name') !!}
-                        {!! Form::text('name', null, ['placeholder' => 'Eent Name', 'class' => 'form-control']) !!}
+                        {!! Form::text('name', null, ['placeholder' => 'Event Name', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('type_id', 'Category') !!}
-                        {!! Form::select('type_id', $types, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
+                        {!! Form::select('type_id', $types, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('category_id', 'How would you categorize your event?') !!}
-                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
+                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
                     
                     <div class="form-group">
                         {!! Form::label('location_id', 'Event Location') !!}
-                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Celect', 'class' => 'form-control']) !!}
+                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">

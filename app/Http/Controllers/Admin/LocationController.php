@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -14,7 +15,13 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::select('*')->get();
+        return view(
+            'admin.location.index',
+            [
+                'locations' => $locations
+            ]
+        );
     }
 
     /**
@@ -24,7 +31,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.location.create');
     }
 
     /**
@@ -35,7 +42,14 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
+        $data         = $request->all();
+        $location = Location::create($data);
+        if ($location) {
+            return redirect()->route('admin.location.index');
+        }
     }
 
     /**
@@ -46,7 +60,6 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -57,7 +70,8 @@ class LocationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $location   = Location::findOrFail($id);
+        return view('admin.location.edit', ['location' => $location]);
     }
 
     /**
@@ -69,7 +83,17 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'  => 'required',
+
+        ]);
+        $location   = Location::findOrFail($id);
+        $data       = $request->all();
+        $location->update($data);
+
+        if ($location) {
+            return redirect()->route('admin.location.index');
+        }
     }
 
     /**
@@ -80,6 +104,11 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $location   = Location::findOrFail($id);
+        $location->delete();
+
+        if ($location) {
+            return redirect()->route('admin.location.index');
+        }
     }
 }
