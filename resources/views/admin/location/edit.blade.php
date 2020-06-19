@@ -26,7 +26,6 @@
             {!! Form::label('active', 'Active') !!}
             {!! Form::text('active', null, ['placeholder' => 'description', 'class' => 'form-control']) !!}
         </div>
-
     </div>
     <div class="card-footer ">
         {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}

@@ -156,7 +156,7 @@
             background-color: #f1f1f1;
             min-width: 170px;
             min-height: 210px;
-            right: 135px;
+            right: 60px;
             border-bottom: none;
             z-index: 1;
         }
@@ -181,16 +181,13 @@
             .dropdown-content {
                 display: none;
                 position: fixed;
-                float: left;
                 background-color: #f1f1f1;
                 min-width: 200px;
                 min-height: 210px;
                 right: 4px;
-                border-bottom: none;
                 z-index: 1;
             }
         }
-
         .nav-item a i.fa {
             padding-left: 15px;
             padding-right: 15px;
