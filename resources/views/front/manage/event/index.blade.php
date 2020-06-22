@@ -38,8 +38,8 @@
                                 <td>{{ $event->category ? $event->category->name : null }}</td>
                                 <td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
                                 <td>{{ $event->display_end_date }} @ {{ $event->display_end_time }}</td>
-                                <td>{{ count($event->purchases) }}</td>
-                                <td>{{ count($event->tickets) }}</td>
+                                <td><a href="{{ route('manage.order.index') }}?event_id={{ $event->id }}" class="btn btn-outline-primary">{{ count($event->purchases) }}</a></td>
+                                <td><a href="{{ route('manage.order_ticket.index') }}?event_id={{ $event->id }}" class="btn btn-outline-primary">{{ count($event->tickets) }}</a></td>
                                 <td>
                                     <a href="{{ route('manage.event.edit', $event->id) }}"
                                         class="btn btn-sm btn-primary">Edit</a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class OrderTicketController extends Controller
@@ -12,9 +13,37 @@ class OrderTicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $event_id       = $request->input('event_id');
+        $purchase_id    = $request->input('purchase_id');
+
+        $tickets    = Ticket::select('*')
+            ->whereHas('purchase', function($query) {
+                return $query->whereHas('event', function($query) {
+                    return $query->where('organizer_id', auth()->user()->id);
+                });
+            })
+            ->when($purchase_id, function($query, $purchase_id) {
+                return $query->whereHas('purchase', function($query) use($purchase_id) {
+                    return $query->where('id', $purchase_id);
+                });
+            })
+            ->when($event_id, function($query, $event_id) {
+                return $query->whereHas('purchase', function($query) use($event_id) {
+                    return $query->whereHas('event', function($query) use($event_id) {
+                        return $query->where('id', $event_id);
+                    });
+                });
+            })
+            ->get();
+
+        $data       = [
+            'tickets'   => $tickets,
+        ];
+
+        return view('front.manage.order_ticket.index', $data);
     }
 
     /**

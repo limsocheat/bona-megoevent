@@ -287,6 +287,13 @@
                                                 <li>
                                                     <a href="{{ route('manage.event.index')}}">Manage Event</a>
                                                 </li>
+                                                <li>
+                                                    <a href="{{route('manage.order.index')}}">Manage Order</a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('manage.order_ticket.index')}}">Manage Order Ticket</a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom"

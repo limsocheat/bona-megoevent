@@ -13,12 +13,18 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $event_id   = $request->input('event_id');
 
         $orders     = Purchase::select('*')
             ->whereHas('event', function ($query) {
                 return $query->where('organizer_id', auth()->user()->id);
+            })
+            ->when($event_id, function($query, $event_id) {
+                return $query->whereHas('event', function($query) use($event_id) {
+                    return $query->where('id', $event_id);
+                });
             })
             ->get();
 
