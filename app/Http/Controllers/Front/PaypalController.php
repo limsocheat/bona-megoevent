@@ -154,4 +154,9 @@ class PaypalController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
+    public function cancel(Request $request)
+    {
+        return view('front.paypal.cancel');
+    }
 }
