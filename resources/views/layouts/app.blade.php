@@ -165,7 +165,7 @@
             padding: 10px 16px;
             text-decoration: none;
             display: block;
-            text-align: center;
+            text-align: left;
             font-size: 14px;
             left: 1px;
         }
@@ -287,13 +287,13 @@
                                                 <li>
                                                     <a href="{{ route('manage.event.index')}}">Manage Event</a>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <a href="{{route('manage.order.index')}}">Manage Order</a>
 
                                                 </li>
                                                 <li>
                                                     <a href="{{ route('manage.order_ticket.index')}}">Manage Order Ticket</a>
-                                                </li>
+                                                </li> --}}
                                             </ul>
                                         </li>
                                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom"

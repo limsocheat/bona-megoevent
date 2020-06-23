@@ -111,7 +111,7 @@
 					{!! Form::open(['route' => 'paypal.submit', 'method' => 'POST']) !!}
 					{!! Form::hidden('event_id', $event->id) !!}
 					{!! Form::hidden('quantity', $quantity) !!}
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Pay With Payal</button>
+					<button class="btn btn-primary btn-lg btn-block" type="submit">Pay With PayPal</button>
 					{!! Form::close() !!}
 				</div>
 			</div>

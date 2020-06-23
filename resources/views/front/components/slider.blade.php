@@ -153,6 +153,13 @@
     .slick-lightbox-slick-item-inner, .slick-lightbox-slick-img {
         max-height: auto !important;
     }
+
+    .fullscreen_slider_image {
+        height: 678px;
+        width: 1920px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 </style>
 @inject('slider', 'App\Models\Slide')
 @php
@@ -170,7 +177,7 @@
                         <h3>{{ $fullscreen_slider->sub_title }}</h3>
                     </div>
                 </div>
-                <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}">
+                <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}" class="fullscreen_slider_image">
             </div>
         @endforeach
     </div>
