@@ -27,7 +27,7 @@
             </div>
 			<div class="form-group">
                 {!! Form::label('location', 'Location :') !!}
-                 {{ Form::select('location', ['homepage' => 'homepage', 'entrance' => 'entrance'], null, ['id' => 'location','class' => 'form-control']) }}
+                 {{ Form::select('location', ['fullscreen' => 'fullscreen', 'thumbnail' => 'thumbnail'], null, ['id' => 'location','class' => 'form-control']) }}
                </div>
 
         </div>

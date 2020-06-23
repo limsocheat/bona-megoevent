@@ -1,19 +1,3 @@
-{{-- 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        @foreach($slides as $key=>$slide)
-            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}"
-class="{{$key == 0 ? 'active' : ''}}"></li>
-@endforeach
-</ol>
-<div class="carousel-inner">
-    @foreach($slides as $key=>$slide)
-    <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
-        <img class="d-block w-100" src="{{ asset($slide->image) }}" alt="First slide">
-    </div>
-    @endforeach
-</div>
-</div> --}}
 <style>
     /* modal */
     /* .slider-for img {
@@ -170,71 +154,42 @@ class="{{$key == 0 ? 'active' : ''}}"></li>
         max-height: auto !important;
     }
 </style>
+@inject('slider', 'App\Models\Slide')
+@php
+    $fullscreen_sliders = $slider::select('*')->where('location', 'fullscreen')->get();
+    $thumb_sliders      = $slider::select('*')->where('location', 'thumbnail')->get();
+@endphp
+@if (count($fullscreen_sliders))
+    <div class="home_slider_fullscreen">
 
-<div class="home_slider_fullscreen">
-    <div class="fluid mx-0 px-0">
-        <div class="container">
-            <div class="home_slider_fullscreen_content">
-                <h1 class="font-weight-bold">Hello</h1>
-            </div>
-        </div>
-        <img src="https://singroll.com/web/admin/uploads/2019/08/banner1.jpg" alt="Banner 1">
-    </div>
-
-    <div class="fluid mx-0 px-0">
-        <div class="container">
-            <div class="home_slider_fullscreen_content">
-                <h1 class="font-weight-bold">Banner 2</h1>
-            </div>
-        </div>
-        <img src="https://singroll.com/web/admin/uploads/2019/08/banner2.jpg" alt="Banner 2">
-    </div>
-</div>
-
-<div id="home_slider_carousel" class="container">
-    <div class="home_slider_carousel">
-        <a href="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" target="_blank">
-            <img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt="Banner 1"
-                class="home_slider_carousel_item">
-        </a>
-        <a href="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg" target="_blank">
-            <img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg"
-            alt="Banner 1" class="home_slider_carousel_item" style="max-height: auto !important;">
-        </a>
-        <a href="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" target="_blank">
-            <img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt="Banner 1"
-            class="home_slider_carousel_item">
-        </a>
-        <a href="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" target="_blank">
-            <img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt="Banner 1"
-                class="home_slider_carousel_item">
-        </a>
-        <a href="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" target="_blank">
-            <img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg"
-            alt="Banner 1" class="home_slider_carousel_item">
-        </a>
-    </div>
-</div>
-<!-- Modal -->
-{{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="slider-for">
-                    <div><img src="https://singroll.com/web/admin/uploads/2020/02/palate-s-1.jpg" alt=""></div>
-                    <div><img src="https://singroll.com/web/admin/uploads/2020/02/Pestbusters_Guidebook_FA_hr_page-0001_s.jpg" alt=""></div>
-                    <div><img src="https://singroll.com/web/admin/uploads/2019/11/ad7-11.jpg" alt=""></div>
-                    <div><img src="https://singroll.com/web/admin/uploads/2020/04/2020-04-26.png" alt=""></div>
-                    <div><img src="https://singroll.com/web/admin/uploads/2020/04/93950663_1945787598899392_661082220898811904_o.jpg" alt=""></div>
+        @foreach ($fullscreen_sliders as $fullscreen_slider)
+            <div class="fluid mx-0 px-0">
+                <div class="container">
+                    <div class="home_slider_fullscreen_content">
+                        <h1 class="font-weight-bold">{{ $fullscreen_slider->title }}</h1>
+                        <h3>{{ $fullscreen_slider->sub_title }}</h3>
+                    </div>
                 </div>
+                <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}">
             </div>
+        @endforeach
+    </div>
+@endif
+
+@if (count($thumb_sliders))
+
+    <div id="home_slider_carousel" class="container">
+        <div class="home_slider_carousel">
+            @foreach ($thumb_sliders as $thumb_slider)
+                <a href="{{ $thumb_slider->image_url }}" target="_blank">
+                    <img src="{{ $thumb_slider->image_url }}" alt="{{ $thumb_slider->title }}"
+                        class="home_slider_carousel_item">
+                </a>
+            @endforeach
         </div>
     </div>
-</div> --}}
+    
+@endif
 <script type="text/javascript">
     jQuery(document).ready(function($){
         // $('.slider-for').slick({
