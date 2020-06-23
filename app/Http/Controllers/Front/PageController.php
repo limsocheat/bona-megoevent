@@ -10,6 +10,7 @@ use App\Models\Exhibitor;
 use App\Models\Slide;
 use App\User;
 use Illuminate\Http\Request;
+use Srmklive\PayPal\Services\ExpressCheckout;
 
 class PageController extends Controller
 {
@@ -147,26 +148,26 @@ class PageController extends Controller
     public function cart(Request $request, $id)
     {
         $request->validate([
-            'quality'   => 'required|min:1|numeric'
+            'quantity'   => 'required|min:1|numeric'
         ]);
 
         $event      = Event::findOrFail($id);
-        $quality    = $request->input('quality');
+        $quantity    = $request->input('quantity');
         $price      = $event->price;
 
         if (strtotime($event->early_bird_date) > strtotime(date('Y-m-d'))) {
             $price  = $event->early_bird_price;
         }
 
-        if ($quality >= $event->group_min_pax) {
+        if ($quantity >= $event->group_min_pax) {
             $price  = $event->group_price;
         }
 
         $data       = [
             'event'     => $event,
-            'quality'   => $quality,
+            'quantity'   => $quantity,
             'price'     => $price,
-            'subtotal'  => $quality * $price,
+            'subtotal'  => $quantity * $price,
         ];
 
         return view('front.cart.index', $data);
@@ -174,34 +175,64 @@ class PageController extends Controller
     public function checkout(Request $request, $id)
     {
         $request->validate([
-            'quality'   => 'required|min:1|numeric'
+            'quantity'   => 'required|min:1|numeric'
         ]);
 
-        $user       = auth()->user();
-        $user       = User::with('profile')->findOrFail($user->id);
+        $user           = auth()->user();
+        $user           = User::with('profile')->findOrFail($user->id);
 
-        $event      = Event::findOrFail($id);
-        $quality    = $request->input('quality');
-        $price      = $event->price;
-        if ($quality >= $event->group_min_pax) {
-            $price  = $event->group_price;
+        $event          = Event::findOrFail($id);
+        $quantity       = $request->input('quantity');
+        $price          = $event->price;
+        if ($quantity >= $event->group_min_pax) {
+            $price      = $event->group_price;
         }
 
         if (strtotime($event->early_bird_date) < strtotime(date('Y-m-d'))) {
-            $price  = $event->early_bird_price;
+            $price      = $event->early_bird_price;
         }
 
-        $data       = [
+        $token          = $request->input('token');
+        $payer_id       = $request->input('PayerID');
+        if($token && $payer_id) {
+            $provider   = new ExpressCheckout(); 
+            $name       = $event->name;
+            $description= $event->description;
+            $data = [];
+            $data['items'] = [
+                [
+                    'name'  => $name,
+                    'price' => $price,
+                    'desc'  => $description,
+                    'qty'   => $quantity,
+                ],
+            ];
+            $data['invoice_id'] = time().$event->id;
+            $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
+
+            $total = 0;
+            foreach($data['items'] as $item) {
+                $total += $item['price'] * $item['qty'];
+            }
+
+            $data['total'] = $total;
+            $response = $provider->doExpressCheckoutPayment($data, $token, $payer_id);
+            if($response) {
+                return redirect()->route('manage.purchase.store')->withInput([
+                    'event_id'  => $event->id,
+                    'quantity'  => $quantity,
+                ]);
+            }
+        }
+
+        $data           = [
             'user'      => $user,
             'event'     => $event,
-            'quality'   => $quality,
+            'quantity'  => $quantity,
             'price'     => $price,
-            'subtotal'  => $quality * $price,
+            'subtotal'  => $quantity * $price,
         ];
-
+        
         return view('front.checkout.index', $data);
     }
-    // public function ticket(){
-    //     return view('front.ticket.index');
-    // }
 }

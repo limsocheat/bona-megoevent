@@ -54,15 +54,15 @@ class PurchaseController extends Controller
         $request->validate([
             'event_id'  => 'required|exists:events,id',
             'quantity'  => 'required|min:1|numeric',
-            'profile'   => 'required'
         ]);
 
         DB::beginTransaction();
         try {
             $user           = auth()->user();
             $profile        = $request->input('profile');
-
-            $user->profile()->updateOrCreate([], $profile);
+            if($profile) {
+                $user->profile()->updateOrCreate([], $profile);
+            }
 
             $data           = $request->all();
             $data['user_id'] = $user->id;

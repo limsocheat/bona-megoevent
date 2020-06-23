@@ -333,8 +333,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul id="navbar-nav" class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="{{ route('index') }}" class="nav-link">Home</a>
+                    <li class="nav-item active" >
+                        <a href="{{ route('index') }}" class="nav-link" style="padding-left: 0">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
@@ -500,27 +500,29 @@
         </div>
         </div> --}}
     </nav>
-    <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb"
-                style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
-                <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/"
-                        style="padding: 0">Home</a></li>
-                @foreach ($breadcrumbs as $key => $url)
-                <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
-                    aria-current="{{ $loop->last ? 'page' : '' }}">
-                    <a href="{{ url($url) }}" style="padding: 0">
-                        @if (! $loop->last)
-                        {{ ucfirst($key) }}
-                        @else
-                        @yield ('title')
-                        @endif
-                    </a>
-                </li>
-                @endforeach
-            </ul>
-        </div>
-    </nav>
+    @if(!Request::is('/'))
+        <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
+            <div class="container">
+                <ul class="breadcrumb"
+                    style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
+                    <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a href="/"
+                            style="padding: 0">Home</a></li>
+                    @foreach ($breadcrumbs as $key => $url)
+                    <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
+                        aria-current="{{ $loop->last ? 'page' : '' }}">
+                        <a href="{{ url($url) }}" style="padding: 0">
+                            @if (! $loop->last)
+                            {{ ucfirst($key) }}
+                            @else
+                            @yield ('title')
+                            @endif
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </nav>
+    @endif
 
     <main>
         @yield('content')

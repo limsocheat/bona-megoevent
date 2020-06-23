@@ -39,7 +39,7 @@
 														$qualities[$i] = $i;
 													}
 												@endphp
-												{!! Form::select('quality', $qualities, $quality, ['class' => 'form-control', 'onChange' => 'this.form.submit()']) !!}
+												{!! Form::select('quantity', $qualities, $quantity, ['class' => 'form-control', 'onChange' => 'this.form.submit()']) !!}
 											{!! Form::close() !!}
 										</td>
 										<td>${{ $subtotal }}</td>
@@ -58,7 +58,7 @@
 					</div>
 					<div class="card-footer text-right">
 						{!! Form::open(['route' => ['checkout', $event->id], 'method' => 'GET', 'id' => 'checkout_form']) !!}
-							{!! Form::hidden('quality', $quality) !!}
+							{!! Form::hidden('quantity', $quantity) !!}
 							<button type="submit" class="btn btn-primary" form="checkout_form">Checkout</button>
 						{!! Form::close() !!}
 					</div>

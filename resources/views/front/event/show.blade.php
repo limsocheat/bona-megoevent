@@ -92,31 +92,30 @@
 		<div class="text-block"
 			style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
 			<h4 id="demo">countdown</h4>
-			<p>Event Starts In</p>
+			<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
 		</div>
 	</div>
 	@else
 	<div style="position: relative;">
 		<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="figure-img img-fluid rounded"
 			style="width:100%; height: 450px; ">
-		<div class="text-block"
-			style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
+		<div class="text-block" style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
 			<h4 id="demo">countdown</h4>
-			<p>Event Starts In</p>
+			<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
 		</div>
 	</div>
 
 	@endif
 
-	<div class="row py-4">
+	<div class="row py-2">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Event Exhibitors</h1>
+			<h1 class="text-left pl-0 mb-3 font-weight-bold">Event Exhibitors</h1>
 		</div>
 		@include('front.components.entrance.eventexhibitors')
 	</div>
-	<div class="row py-4">
-		<div class="col-md-12 py-4 ">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Event</h1>
+	<div class="row py-2">
+		<div class="col-md-12 py-2 ">
+			<h1 class="text-left pl-0 mb-3 font-weight-bold">Event</h1>
 			<h4 class="font-weight-bold">{{ $event->name}}</h4>
 		</div>
 		<div class="col-md-6">
@@ -156,136 +155,133 @@
 				<p>{{$event->organizer ? $event->organizer->name :null}}</p>
 			</div>
 		</div>
-		<div class="row py-4">
-			<div class="col-md-6 p-4">
-				<div class="py-3">
-					<h5 class="font-weight-bold">Event Description:</h5>
-					<p>{{$event->description}}</p>
-				</div>
-			</div>
-			<div class="col-md-6 p-4">
-				{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET"]) !!}
-				@guest
-				<div class="alert alert-danger" role="alert">
-					You must login or register first!
-				</div>
-				@endguest
+	</div>
 
-				<div class="card">
-					<div class="card-text">
-						<table class="table table-event-pricing">
+	<div class="row py-2">
+		<div class="col-md-6 py-4">
+			<div class="py-3">
+				<h5 class="font-weight-bold">Event Description:</h5>
+				<p>{{$event->description}}</p>
+			</div>
+		</div>
+		<div class="col-md-6 py-4">
+			<h5 class="font-weight-bold">Event Fee</h5>
+			{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET"]) !!}
+			@guest
+			<div class="alert alert-danger" role="alert">
+				You must login or register first!
+			</div>
+			@endguest
+
+			<div class="card">
+				<div class="card-text">
+					<table class="table table-event-pricing">
+						<tr>
+							<td>
+								Regular Price
+							</td>
+							<td>
+								${{ number_format($event->price, 2)}}/person
+							</td>
+						</tr>
+						@if ($event->early_bird_price < $event->price)
 							<tr>
 								<td>
-									Regular Price
+									Early Bird Price
+									<br>
+									<small class="text-danger">(when purchased before 12:00am
+										{{ $event->display_early_bird_date }})</small>
 								</td>
 								<td>
-									${{ number_format($event->price, 2)}}/person
+									${{ number_format($event->early_bird_price, 2)}}/person
 								</td>
 							</tr>
-							@if ($event->early_bird_price < $event->price)
+							@endif
+							@if ($event->group_price < $event->price)
 								<tr>
 									<td>
-										Early Bird Price
+										Group Price
 										<br>
-										<small class="text-danger">(when purchased before 12:00am
-											{{ $event->display_early_bird_date }})</small>
+										<small class="text-danger">(when purchased greater or equal to
+											{{ $event->group_min_pax }}-person)</small>
 									</td>
 									<td>
-										${{ number_format($event->early_bird_price, 2)}}/person
+										${{ number_format($event->group_price, 2)}}/person
 									</td>
 								</tr>
 								@endif
-								@if ($event->group_price < $event->price)
-									<tr>
-										<td>
-											Group Price
-											<br>
-											<small class="text-danger">(when purchased greater or equal to
-												{{ $event->group_min_pax }}-person)</small>
-										</td>
-										<td>
-											${{ number_format($event->group_price, 2)}}/person
-										</td>
-									</tr>
-									@endif
-									<tr>
-										<td>
-											Quality <br>
-											<small class="text-danger">(pax: {{ $event->pax_min }} =>
-												{{ $event->pax_max }})</small>
-										</td>
-										<td>
-											@php
-											$qualities = [];
-											for ($i=1; $i <= $event->pax_max; $i++) {
-												$qualities[$i] = $i;
-												}
-												@endphp
-												{!! Form::select('quality', $qualities, null, ['class' =>
-												'form-control']) !!}
-										</td>
-									</tr>
-						</table>
-					</div>
-					<div class="card-footer text-center">
-						@guest
-						<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
-							style="width: 100%">Login
-							To Purchase</a>
-						@else
-						<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Buy
-							Ticket</button>
-						@endguest
-					</div>
+								<tr>
+									<td>
+										quantity <br>
+										<small class="text-danger">(pax: {{ $event->pax_min }} =>
+											{{ $event->pax_max }})</small>
+									</td>
+									<td>
+										@php
+										$qualities = [];
+										for ($i=1; $i <= $event->pax_max; $i++) {
+											$qualities[$i] = $i;
+											}
+											@endphp
+											{!! Form::select('quantity', $qualities, null, ['class' =>
+											'form-control']) !!}
+									</td>
+								</tr>
+					</table>
 				</div>
-				{!! Form::close() !!}
+				<div class="card-footer text-center">
+					@guest
+					<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
+						style="width: 100%">Login
+						To Purchase</a>
+					@else
+					<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Buy
+						Ticket</button>
+					@endguest
+				</div>
 			</div>
+			{!! Form::close() !!}
 		</div>
-
-
-
 	</div>
 
-	<div class="col-md-12 px-0">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="row my-2">
-					<div class="col-md-12">
-						<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Highlighted Events</h1>
-					</div>
-					@foreach ($feature_events as $feature_event)
-					<div class="col-md-6 mb-4">
-						<div class="card border-light" id="card-body">
-							<img src="{{ asset($feature_event->image_url) }}" alt="{{ $feature_event->name }}"
-								class="card-img-top">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-7">
-										<h5 class="text-truncate text-dark font-weight-bold" style=" max-lines: 1">
-											{{\Carbon\Carbon::parse($feature_event->start_date)->format('jS F Y')}}</h5>
-									</div>
-									<div class="col-5 text-right">
-										<a href="{{ route('event', $feature_event->id) }}"
-											class="btn btn-sm btn-outline-dark">Join Now</a>
-									</div>
+	<div class="row py-2">
+		<div class="col-md-8">
+			<div class="row my-2">
+				<div class="col-md-12">
+					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Highlighted Events</h1>
+				</div>
+				@foreach ($feature_events as $feature_event)
+				<div class="col-md-6 mb-4">
+					<div class="card border-light" id="card-body">
+						<img src="{{ asset($feature_event->image_url) }}" alt="{{ $feature_event->name }}"
+							class="card-img-top">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-7">
+									<h5 class="text-truncate text-dark font-weight-bold" style=" max-lines: 1">
+										{{\Carbon\Carbon::parse($feature_event->start_date)->format('jS F Y')}}</h5>
 								</div>
-								<h3 class="card-title multi-line-truncate" style="max-lines: 2">
-									{{ $feature_event->name }}</h3>
-								<p class="card-text multi-line-truncate">{!! $feature_event->description !!}</p>
+								<div class="col-5 text-right">
+									<a href="{{ route('event', $feature_event->id) }}"
+										class="btn btn-sm btn-outline-dark">Join Now</a>
+								</div>
 							</div>
+							<h3 class="card-title multi-line-truncate" style="max-lines: 2">
+								{{ $feature_event->name }}</h3>
+							<p class="card-text multi-line-truncate">{!! $feature_event->description !!}</p>
 						</div>
 					</div>
-					@endforeach
 				</div>
+				@endforeach
 			</div>
-			<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
 
-				<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">&nbsp;</h1>
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">&nbsp;</h1>
 
-				<div id="NextUpcomingEvent" class="card">
-					<h3 style="margin-top: 100px; text-align: center">Next Upcoming Event</h3>
-					<a href="#" id="ViewMore">View more</a>
-				</div>
+			<div id="NextUpcomingEvent" class="card">
+				<h3 style="margin-top: 100px; text-align: center">Next Upcoming Event</h3>
+				<a href="#" id="ViewMore">View more</a>
 			</div>
 		</div>
 	</div>

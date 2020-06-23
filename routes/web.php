@@ -64,6 +64,9 @@ Route::namespace('Front')->group(function () {
 
         Route::get('/cart/{event}', 'PageController@cart')->name('cart');
         Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
+        Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
+        Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
+        Route::get('/paypal/cancel', 'PaypalController@cancel')->name('paypal.cancel');
 
         Route::prefix('manage')->group(function () {
             Route::name('manage.')->group(function () {

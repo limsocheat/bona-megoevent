@@ -85,7 +85,7 @@
 											<td>{{ $event->name }}</td>
 											<td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
 											<td>${{ $price }}</td>
-											<td> {{ $quality }}</td>
+											<td> {{ $quantity }}</td>
 											<td>${{ $subtotal }}</td>
 										</tr>
 										<tr>
@@ -104,8 +104,14 @@
 
 					<p>&nbsp;</p>
 					{!! Form::hidden('event_id', $event->id) !!}
-					{!! Form::hidden('quantity', $quality) !!}
+					{!! Form::hidden('quantity', $quantity) !!}
 					<button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
+					{!! Form::close() !!}
+					<p>&nbsp;</p>
+					{!! Form::open(['route' => 'paypal.submit', 'method' => 'POST']) !!}
+					{!! Form::hidden('event_id', $event->id) !!}
+					{!! Form::hidden('quantity', $quantity) !!}
+					<button class="btn btn-primary btn-lg btn-block" type="submit">Pay With Payal</button>
 					{!! Form::close() !!}
 				</div>
 			</div>
