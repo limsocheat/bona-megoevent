@@ -177,7 +177,7 @@
 
         }
 
-        @media (max-width: 576px) {
+        @media (min-width: 576px) {
             .dropdown-content {
                 display: none;
                 position: fixed;
@@ -272,7 +272,7 @@
                                                 <i class="fa fa-user" aria-hidden="true"></i>
                                             </a>
                                             {{-- dropdown --}}
-                                            <ul class="dropdown-content p-0">
+                                            <ul class="dropdown-content p-0 mr-auto ml-auto">
                                                 <li>
                                                     <a href="{{ route('manage.profile.index') }}">Your Profile</a>
                                                     </a>

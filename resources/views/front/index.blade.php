@@ -72,7 +72,7 @@
 						</div>
 						{{-- <div class="col-5 text-right"> --}}
 						<a href="{{ route('event', $event->id) }}"
-							class="ml-auto mr-2 btn btn-sm btn-outline-dark p">Join Now</a>
+							class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
 						{{-- </div> --}}
 					</div>
 					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
