@@ -20,9 +20,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::namespace('Admin')->group(function () {
-    Route::middleware('role:administrator')->group(function () {
-        Route::prefix('admin')->group(function () {
-            Route::name('admin.')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::name('admin.')->group(function () {
+            Route::get('/login', 'AuthController@showLogin')->name('login');
+            Route::middleware('role:administrator')->group(function () {
                 Route::get('/', 'DashboardController@index')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
