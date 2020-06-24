@@ -37,10 +37,10 @@
                     </td>
                     <td>{{ $event->location->name}}</td>
                     <td>
-                        {{ count($event->purchases) }}
+                        <a href="{{ route('admin.event.purchases', $event->id) }}" class="btn btn-outline-primary">{{ count($event->purchases) }}</a>
                     </td>
                     <td>
-                        {{ count($event->tickets) }}
+                        <a href="{{ route('admin.event.tickets', $event->id) }}" class="btn btn-outline-primary">{{ count($event->tickets) }}</a>
                     </td>
                 </tr>
                 @endforeach

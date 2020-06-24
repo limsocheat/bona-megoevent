@@ -22,6 +22,29 @@ class EventController extends Controller
             'events' => $events
         ]);
     }
+    
+
+    public function purchases(Request $request, $id)
+    {
+        $event          = Event::findOrFail($id);
+        $purchases      = $event->purchases;
+        $data           = [
+            'purchases' => $purchases
+        ];
+
+        return view('admin.event.purchases', $data);
+    }
+
+    public function tickets(Request $request, $id)
+    {
+        $event          = Event::findOrFail($id);
+        $tickets        = $event->tickets;
+        $data           = [
+            'tickets' => $tickets
+        ];
+
+        return view('admin.event.tickets', $data);
+    }
 
     /**
      * Show the form for creating a new resource.
