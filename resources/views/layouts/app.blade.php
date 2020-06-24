@@ -184,7 +184,6 @@
                 background-color: #f1f1f1;
                 min-width: 200px;
                 min-height: 210px;
-                right: 4px;
                 z-index: 1;
             }
         }

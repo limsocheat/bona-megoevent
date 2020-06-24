@@ -91,7 +91,7 @@
 		</div>
 		<div class="text-block"
 			style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
-			<h4 id="demo">countdown</h4>
+			<h4 id="demo">Countdown</h4>
 			<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
 		</div>
 	</div>
@@ -100,7 +100,7 @@
 		<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="figure-img img-fluid rounded"
 			style="width:100%; height: 450px; ">
 		<div class="text-block" style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
-			<h4 id="demo">countdown</h4>
+			<h4 id="demo">Countdown</h4>
 			<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
 		</div>
 	</div>
@@ -221,7 +221,7 @@
 									@endif
 									<tr>
 										<td>
-											quantity <br>
+											Quantity <br>
 											<small class="text-danger">(pax: {{ $event->pax_min }} =>
 												{{ $event->pax_max }})</small>
 										</td>
@@ -317,7 +317,7 @@
 
 			<div id="NextUpcomingEvent" class="card">
 				<h3 style="margin-top: 100px; text-align: center">Next Upcoming Event</h3>
-				<a href="#" id="ViewMore">View more</a>
+				<a href="#" id="ViewMore">View More</a>
 			</div>
 		</div>
 	</div>

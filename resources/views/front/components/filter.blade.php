@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-sm form-group">
             {!! Form::label('keyword', 'Keyword', ['class' => 'label-control']) !!}
-            {!! Form::text('keyword', request()->keyword, ['placeholder' => 'keyword', 'class' => 'form-control']) !!}
+            {!! Form::text('keyword', request()->keyword, ['placeholder' => 'Keyword', 'class' => 'form-control']) !!}
         </div>
         <div class="col-sm form-group">
             {!! Form::label('category', 'Category', ['class' => 'label-control']) !!}

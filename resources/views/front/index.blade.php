@@ -36,7 +36,7 @@
 		@foreach ($events as $event)
 		<div class="col-md-3 mb-4">
 			<div class="card border-light" id="card-body">
-				<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top">
+				<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top" style="width: auto; height:172px;">
 				<div class="card-body">
 					<div class="row">
 						<div class="col-7">
@@ -63,7 +63,7 @@
 		<div class="col-md-3 mb-4">
 
 			<div class="card border-light">
-				<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top">
+				<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top" style="width: auto; height:172px;">
 				<div class="card-body">
 					<div class="row">
 						<div class="col-7">

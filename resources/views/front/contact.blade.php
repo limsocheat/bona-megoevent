@@ -38,9 +38,9 @@
         <div class="col-sm-6 mt-4 p-auto">
 
             @if (\Session::has('success'))
-                <div class="alert alert-success">
-                    {!! \Session::get('success') !!}
-                </div>
+            <div class="alert alert-success">
+                {!! \Session::get('success') !!}
+            </div>
             @endif
 
             {!! Form::open(['route' => 'contact.submit', 'method' => 'POST']) !!}
@@ -69,8 +69,8 @@
             </div>
             <div class="form-group">
                 {!! Form::label('type', 'Type') !!}
-                {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null, ['placeholder' =>
-                'Select', 'class' => 'form-control']) !!}
+                {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null,
+                ['placeholder' => 'Select', 'class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('message', 'Message') !!}
