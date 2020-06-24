@@ -149,9 +149,11 @@ class PageController extends Controller
     {
 
         $event      = Event::findOrFail($id);
+        $user       = auth()->user();
 
         $data       = [
             'event' => $event,
+            'user'  => $user,
         ];
 
         return view('front.event.exhibitor_registration', $data);

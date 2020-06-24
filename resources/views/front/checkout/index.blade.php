@@ -25,14 +25,14 @@
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											{!! Form::label('profile[first_name]', 'First Name') !!}
-											{!! Form::text('profile[first_name]', null, ['placeholder' => 'enter first
+											{!! Form::text('profile[first_name]', null, ['placeholder' => 'Enter first
 											name', 'class' => 'form-control', 'readonly' => false]) !!}
 										</div>
 									</div>
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											{!! Form::label('profile[last_name]', 'Last Name') !!}
-											{!! Form::text('profile[last_name]', null, ['placeholder' => 'enter last
+											{!! Form::text('profile[last_name]', null, ['placeholder' => 'Enter last
 											name', 'class' => 'form-control', 'readonly' => false]) !!}
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 								<div class="mb-3">
 									<div class="form-group">
 										{!! Form::label('profile[address]', 'Address') !!}
-										{!! Form::text('profile[address]', null, ['placeholder' => 'enter address',
+										{!! Form::text('profile[address]', null, ['placeholder' => 'Enter address',
 										'class' => 'form-control', 'readonly' => false]) !!}
 									</div>
 								</div>
@@ -55,7 +55,7 @@
 								<div class="mb-3">
 									<div class="form-group">
 										{!! Form::label('email', 'E-Mail') !!}
-										{!! Form::email('email', null, ['placeholder' => 'enter email', 'class' =>
+										{!! Form::email('email', null, ['placeholder' => 'Enter email', 'class' =>
 										'form-control', 'readonly' => true]) !!}
 									</div>
 								</div>

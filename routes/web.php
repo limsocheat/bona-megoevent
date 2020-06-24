@@ -66,7 +66,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'verified'])->group(function () {
 
         // Register Event
         Route::get('/cart/{event}', 'PageController@cart')->name('cart');
