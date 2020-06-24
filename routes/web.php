@@ -57,8 +57,10 @@ Route::namespace('Front')->group(function () {
     Route::get('/search', 'PageController@search')->name('search');
     Route::get('/contact', 'PageController@contact')->name('contact');
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
+
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
+    Route::get('/event/{event}/exhibitor_registration', 'PageController@exhibitor_registration')->name('event.exhibitor_registration');
     // Route::get('/ticket','PageController@ticket')->name('ticket');
 
     Route::get('/sendemail', 'SendEmailController@index');
@@ -66,12 +68,16 @@ Route::namespace('Front')->group(function () {
 
     Route::middleware('auth')->group(function () {
 
+        // Register Event
         Route::get('/cart/{event}', 'PageController@cart')->name('cart');
         Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
+
+        // Paypal Payment
         Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
         Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
         Route::get('/paypal/cancel', 'PaypalController@cancel')->name('paypal.cancel');
 
+        // Manage 
         Route::prefix('manage')->group(function () {
             Route::name('manage.')->group(function () {
                 Route::resources([

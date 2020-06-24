@@ -252,7 +252,7 @@
 					{!! Form::close() !!}
 				</div>
 				<div class="tab-pane fade" id="exhibitor" role="tabpanel" aria-labelledby="exhibitor-tab">
-					{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET"]) !!}
+					{!! Form::open(['route' => ['event.exhibitor_registration', $event->id], 'method' => "GET"]) !!}
 						@guest
 						<div class="alert alert-danger" role="alert">
 							You must login or register first!
@@ -261,7 +261,9 @@
 
 						<div class="card">
 							<div class="card-text">
-								<p class="p-4">If you're interested in joining the event as Exhibitor, please click the button bellow to join.</p>
+								<div class="alert alert-info m-3" role="alert">
+									If you're interested in joining the event as Exhibitor, please click the button bellow to join.
+								</div>
 							</div>
 							<div class="card-footer text-center">
 								@guest

@@ -145,6 +145,18 @@ class PageController extends Controller
         return view('front.event.show', $data);
     }
 
+    public function exhibitor_registration(Request $request, $id) 
+    {
+
+        $event      = Event::findOrFail($id);
+
+        $data       = [
+            'event' => $event,
+        ];
+
+        return view('front.event.exhibitor_registration', $data);
+    }
+
     public function cart(Request $request, $id)
     {
         $request->validate([
