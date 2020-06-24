@@ -70,7 +70,7 @@
             <div class="form-group">
                 {!! Form::label('type', 'Type') !!}
                 {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null, ['placeholder' =>
-                'Celect', 'class' => 'form-control']) !!}
+                'Select', 'class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('message', 'Message') !!}
