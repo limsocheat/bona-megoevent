@@ -198,7 +198,7 @@
 											<td>
 												Early Bird Price
 												<br>
-												<small class="text-danger">(when purchased before 12:00am
+												<small class="text-danger">(When purchased before 12:00am
 													{{ $event->display_early_bird_date }})</small>
 											</td>
 											<td>
@@ -211,7 +211,7 @@
 											<td>
 												Group Price
 												<br>
-												<small class="text-danger">(when purchased greater or equal to
+												<small class="text-danger">(When purchased greater or equal to
 													{{ $event->group_min_pax }}-person)</small>
 											</td>
 											<td>
@@ -262,7 +262,7 @@
 						<div class="card">
 							<div class="card-text">
 								<div class="alert alert-info m-3" role="alert">
-									If you're interested in joining the event as Exhibitor, please click the button bellow to join.
+									If you're interested in joining the event as Exhibitor, please click the button below to join.
 								</div>
 							</div>
 							<div class="card-footer text-center">

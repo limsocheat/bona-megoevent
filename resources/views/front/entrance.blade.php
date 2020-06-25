@@ -23,8 +23,12 @@
 			-webkit-line-clamp: 2;
 			overflow: hidden;
 			}
-			#card-body{
+		#card-body{
 			height: 386.65px;
+			transition: 0.5s;
+		}
+		#card-body:hover {
+		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 		}
 	</style>
 
@@ -75,7 +79,7 @@
 					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">&nbsp;</h1>
 							
 					<div class="card" style="height:300px;">
-						<form class="text-center border border-light p-4" action="#!">
+						<form class="text-center p-4" action="#!">
 							<p class="h4 mb-4">Sign in</p>
 							<input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="EMAI ADDRESS">
 							<input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="PASSWORD">
