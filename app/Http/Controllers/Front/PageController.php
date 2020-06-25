@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Contact;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventCategory;
@@ -110,8 +111,11 @@ class PageController extends Controller
             'email' => 'required',
             'g-recaptcha-response' => 'required|captcha',
         ]);
-
-        return redirect(route('contact'))->with('success', 'Submit Successfully!');
+         $data         = $request->all();
+        $contact = Contact::create($data);
+        if($contact){
+          return redirect(route('contact'))->with('success', 'Submit Successfully!');
+        }
     }
 
     public function manage()

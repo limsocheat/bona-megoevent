@@ -69,7 +69,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('type', 'Type') !!}
-                {!! Form::select('type', ['Enquiry', 'Testimonial', 'Feedback', 'Advertiser'], null,
+                {!! Form::select('type', ['Enquiry'=>'Enquiry', 'Testimonial'=>'Testimonial', 'Feedback'=>'Feedback', 'Advertiser'=>'Advertiser'], null,
                 ['placeholder' => 'Select', 'class' => 'form-control']) !!}
             </div>
             <div class="form-group">

@@ -25,27 +25,29 @@
                     <td>Message</td>
                 </tr>
             </thead>
-            {{-- <tbody>
-                @foreach ($locations as $location)
+            <tbody>
+                @foreach ($contacts as $contact)
                 <tr>
 
-                    <td>{{ $location->id }}</td>
-                    <td>{{ $location->name }}</td>
-                    <td>{{ $location->address}}</td>
-                    <td>{{ $location->description}}</td>
-                    <td>{{ $location->active}}</td>
+                    <td>{{ $contact->name }}</td>
+                    <td>{{ $contact->email }}</td>
+                    <td>{{ $contact->contact_number}}</td>
+                    <td>{{ $contact->country}}</td>
+                    <td>{{ $contact->company_name}}</td>
+                    <td>{{ $contact->type}}</td>
+                    <td>{{ $contact->message}}</td>
 
-                    <td>
-                 <a href="{{ route('admin.location.edit', $location->id) }}" class="btn btn-primary btn-sm"
+                    {{-- <td>
+                 <a href="{{ route('admin.contact.edit', $contact->id) }}" class="btn btn-primary btn-sm"
                     style="float: left; margin-right: 5px">Edit</a>
-                   {!! Form::open(['route' => ['admin.location.destroy', $location->id], 'onsubmit' => "return confirm('Are you sure?')",
+                   {!! Form::open(['route' => ['admin.contact.destroy', $contact->id], 'onsubmit' => "return confirm('Are you sure?')",
                     'method' => 'DELETE']) !!}
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     {!! Form::close() !!}
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
-            </tbody> --}}
+            </tbody>
         </table>
     </div>
 </div>

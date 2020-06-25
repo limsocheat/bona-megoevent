@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('admin.contact.index');
+        $contacts = Contact::select('*')->get();
+        return view('admin.contact.index',[
+            'contacts'  => $contacts
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
