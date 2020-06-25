@@ -85,7 +85,7 @@
         }
 
         .navbar-nav li {
-            border-left: 1px solid #efefef;
+            border-left: 1px solid #ffffff;
         }
 
         .navbar-nav li a {
@@ -207,8 +207,8 @@
                             <img src="{{ asset('images/logo.png') }}" style="width: 100px !important" />
                         </a>
                     </div>
-                    <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0"
-                        style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
+                    <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0">
+                        {{-- style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;"> --}}
                         <div class="container">
                             {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
