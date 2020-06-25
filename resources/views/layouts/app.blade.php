@@ -143,6 +143,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            left:0;
         }
 
         /* .navbar-nav .dropdown-content {
@@ -152,11 +153,10 @@
         .dropdown-content {
             display: none;
             position: fixed;
-            float: left;
+            float: right;
             background-color: #f1f1f1;
             min-width: 170px;
             min-height: 210px;
-            right: 60px;
             border-bottom: none;
             z-index: 1;
         }
@@ -177,16 +177,7 @@
 
         }
 
-        @media (min-width: 576px) {
-            .dropdown-content {
-                display: none;
-                position: fixed;
-                background-color: #f1f1f1;
-                min-width: 200px;
-                min-height: 210px;
-                z-index: 1;
-            }
-        }
+      
         .nav-item a i.fa {
             padding-left: 15px;
             padding-right: 15px;
@@ -265,7 +256,8 @@
                                             </a>
                                         </li>
                                         @else
-                                        <li class="nav-item dropdown">
+                                       
+                                        <li class="nav-item dropdown ">
                                             <a href="{{ route('manage.profile.index') }}"
                                                 class="nav-link dropdown-toggle" data-toggle="dropdown">
                                                 <i class="fa fa-user" aria-hidden="true"></i>
@@ -295,6 +287,7 @@
                                                 </li> --}}
                                             </ul>
                                         </li>
+                                       
                                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                             title="Sign Out">
                                             <a href="#"
