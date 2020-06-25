@@ -238,7 +238,7 @@
                                         <div class="col-xs-3">
                                             <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom"
                                                 title="Search">
-                                                <a href="" class="nav-link">
+                                                <a href="{{ route('search') }}" class="nav-link">
                                                     <i class="fa fa-search" aria-hidden="true"></i>
                                                 </a>
                                             </li>
@@ -246,7 +246,7 @@
                                         <div class="col-xs-3">
                                             <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                 title="Email">
-                                                <a href="" class="nav-link">
+                                                <a href="{{ route('contact') }}" class="nav-link">
                                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                                 </a>
                                             </li>

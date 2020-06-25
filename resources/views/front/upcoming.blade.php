@@ -11,7 +11,11 @@
 	overflow: hidden;
 	}
 	#card-body{
-	height: 338.32px;
+		height: 350.32px;
+		transition: 0.5s;
+	}
+	#card-body:hover {
+		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 	}
 </style>
 	<div class="container">
@@ -52,7 +56,7 @@
 			</div>
 			@foreach ($events as $event)
 				<div class="col-md-3 mb-4">
-					<div class="card border-light" id="card-bordy">
+					<div class="card border-light" id="card-body">
 						<img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top" style="width: auto; height:172px;">
 						<div class="card-body">
 							<div class="row">
