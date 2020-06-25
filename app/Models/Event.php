@@ -89,4 +89,13 @@ class Event extends Model
     {
         return Carbon::createFromFormat('H:i:s', $this->end_time)->format('g:i a');
     }
+
+    public function exhibitors()
+    {
+        return $this->belongsToMany(User::class, 'event_exhibitors', 'event_id', 'user_id')
+            ->using(EventExhibitor::class)
+            ->withPivot([
+                'status'
+            ]);
+    }
 }
