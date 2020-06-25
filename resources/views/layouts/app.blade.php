@@ -156,7 +156,7 @@
             float: right;
             background-color: #f1f1f1;
             min-width: 170px;
-            min-height: 210px;
+            min-height: 150px;
             border-bottom: none;
             z-index: 1;
         }
@@ -174,7 +174,6 @@
 
         .dropdown:hover .dropdown-content {
             display: block;
-
         }
 
       
@@ -265,18 +264,13 @@
                                             {{-- dropdown --}}
                                             <ul class="dropdown-content p-0 mr-auto ml-auto">
                                                 <li>
-                                                    <a href="{{ route('manage.profile.index') }}">Your Profile</a>
+                                                    <a href="{{ route('manage.profile.index') }}">Profile</a>
                                                     </a>
                                                 <li>
-                                                    <a href="{{ route('manage.purchase.index')}}">Manage
-                                                        Purchase</a>
+                                                    <a href="{{ route('manage.purchase.index')}}">Purchase</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
-
-                                                </li>
-                                                <li>
-                                                    <a href="{{ route('manage.event.index')}}">Manage Event</a>
+                                                    <a href="{{ route('manage.event.index')}}">Event</a>
                                                 </li>
                                                 {{-- <li>
                                                     <a href="{{route('manage.order.index')}}">Manage Order</a>

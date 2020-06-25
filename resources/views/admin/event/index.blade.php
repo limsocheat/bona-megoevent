@@ -22,6 +22,7 @@
                     <th>Start</th>
                     <th>End</th>
                     <th>Location</th>
+                    <th>Exhibitors</th>
                     <th>Purchases</th>
                     <th>Tickets</th>
                     <th style="width: 100px;">Action</th>
@@ -41,6 +42,9 @@
                         {{ $event->display_end_time}}
                     </td>
                     <td>{{ $event->location->name}}</td>
+                    <td>
+                        <a href="{{ route('admin.event.exhibitors', $event->id) }}" class="btn btn-outline-primary">{{ count($event->exhibitors) }}</a>
+                    </td>
                     <td>
                         <a href="{{ route('admin.event.purchases', $event->id) }}" class="btn btn-outline-primary">{{ count($event->purchases) }}</a>
                     </td>

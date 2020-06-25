@@ -52,6 +52,17 @@ class EventController extends Controller
         return view('admin.event.tickets', $data);
     }
 
+    public function exhibitors(Request $request, $id)
+    {
+        $event          = Event::findOrFail($id);
+        $exhibitors     = $event->exhibitors;
+        $data           = [
+            'exhibitors' => $exhibitors
+        ];
+
+        return view('admin.event.exhibitors', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

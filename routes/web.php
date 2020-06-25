@@ -46,6 +46,7 @@ Route::namespace('Admin')->group(function () {
 
                 Route::get('/event/{event}/purchases', 'EventController@purchases')->name('event.purchases');
                 Route::get('/event/{event}/tickets', 'EventController@tickets')->name('event.tickets');
+                Route::get('/event/{event}/exhibitors', 'EventController@exhibitors')->name('event.exhibitors');
             });
         });
     });
