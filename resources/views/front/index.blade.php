@@ -19,23 +19,26 @@
 	#card-body:hover {
 		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 	}
+	#h1, #h3{
+		color:#C5B358;
+	}
 </style>
 <div class="container">
 	<div class="row my-4">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Our Partners</h1>
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Our Partners</h1>
 		</div>
 		@include('front.components.exhibitors')
 	</div>
 	<div class="row my-4">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Filter Events</h1>
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Filter Events</h1>
 		</div>
 		@include('front.components.filter')
 	</div>
 	<div class="row my-4">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Latest Events</h1>
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Latest Events</h1>
 		</div>
 		@foreach ($events as $event)
 		<div class="col-md-3 mb-4">
@@ -52,7 +55,7 @@
 							class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
 						{{-- </div> --}}
 					</div>
-					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
+					<h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">{{ $event->name }}</h3>
 					<p class="card-text multi-line-truncate">{!! $event->description !!}</p>
 				</div>
 			</div>
@@ -61,7 +64,7 @@
 	</div>
 	<div class="row my-2">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Highlighted Events</h1>
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Highlighted Events</h1>
 		</div>
 		@foreach ($feature_events as $event)
 		<div class="col-md-3 mb-4">
@@ -79,7 +82,7 @@
 							class="ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
 						{{-- </div> --}}
 					</div>
-					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $event->name }}</h3>
+					<h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">{{ $event->name }}</h3>
 					<p class="card-text multi-line-truncate">{!! $event->description !!}</p>
 				</div>
 			</div>
@@ -89,14 +92,14 @@
 
 	<div class="row my-2">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Featured Exhibitors</h1>
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Featured Exhibitors</h1>
 		</div>
 		@foreach ($exhibitors as $exhibitor)
 		<div class="col-md-3 mb-4">
 			<div class="card border-light">
 				<img src="{{ asset($exhibitor->logo) }}" alt="{{ $exhibitor->name }}" class="card-img-top" style="width: auto; height:172px;">
 				<div class="card-body">
-					<h3 class="card-title multi-line-truncate" style="max-lines: 2">{{ $exhibitor->name }}
+					<h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">{{ $exhibitor->name }}
 					</h3>
 				</div>
 			</div>
