@@ -261,16 +261,26 @@
 
 						<div class="card">
 							<div class="card-text">
-								<div class="alert alert-info m-3" role="alert">
-									If you're interested in joining the event as Exhibitor, please click the button below to join.
-								</div>
+								 @if ($event->exhibitors->contains(Auth::user()->id))
+									<div class="alert alert-info m-3" role="alert">
+										You already requested or you are already an exhibitor!
+									</div>
+								@else 
+									<div class="alert alert-info m-3" role="alert">
+										If you're interested in joining the event as Exhibitor, please click the button below to join.
+									</div>
+								@endif
 							</div>
 							<div class="card-footer text-center">
 								@guest
-								<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
+									<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
 									style="width: 100%">Login To Register</a>
 								@else
-								<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Register</button>
+									@if ($event->exhibitors->contains(Auth::user()->id))
+										<a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View Request List</a>
+									@else 
+										<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Register</button>
+									@endif
 								@endguest
 							</div>
 						</div>
