@@ -95,6 +95,8 @@ Route::namespace('Front')->group(function () {
                 Route::get('/', 'PageController@manage');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+
+                Route::get('/event_exhibitor/{event}', 'EventExhibitorController@show')->name('event_exhibitor.show');
             });
         });
     });

@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Models\Company;
+use App\Models\Event;
+use App\Models\EventExhibitor;
 use App\Models\Exhibitor;
 use App\Models\Organizer;
 use App\Models\Participant;
@@ -76,5 +78,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function company()
     {
         return $this->hasOne(Company::class);
+    }
+
+    public function exhibitions()
+    {
+        return $this->belongsToMany(Event::class, 'event_exhibitors', 'user_id', 'event_id')
+            ->using(EventExhibitor::class)
+            ->withPivot([
+                'status'
+            ]);
     }
 }
