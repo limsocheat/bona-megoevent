@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 class EventExhibitorController extends Controller
 {
+
+    public function show(Request $request, $id) {
+        $event          = Event::findOrFail($id);
+        $exhibitors     = $event->exhibitors;
+
+        $data           = [
+            'event'     => $event,
+            'exhibitors'=> $exhibitors
+        ];
+
+        return view('front.manage.event.exhibitor', $data);
+    }
+
     public function store(Request $request, $id) 
     {
         $event      = Event::findOrFail($id);

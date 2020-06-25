@@ -26,6 +26,7 @@
                             <th>Category</th>
                             <th>Start</th>
                             <th>End</th>
+                            <th>Exhibitors</th>
                             <th>Orders</th>
                             <th>Tickets</th>
                             <th>Action</th>
@@ -38,6 +39,7 @@
                                 <td>{{ $event->category ? $event->category->name : null }}</td>
                                 <td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
                                 <td>{{ $event->display_end_date }} @ {{ $event->display_end_time }}</td>
+                                <td><a href="{{ route('manage.event_exhibitor.show', $event->id) }}" class="btn btn-outline-primary">{{ count($event->exhibitors) }}</a></td>
                                 <td><a href="{{ route('manage.order.index') }}?event_id={{ $event->id }}" class="btn btn-outline-primary">{{ count($event->purchases) }}</a></td>
                                 <td><a href="{{ route('manage.order_ticket.index') }}?event_id={{ $event->id }}" class="btn btn-outline-primary">{{ count($event->tickets) }}</a></td>
                                 <td>

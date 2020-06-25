@@ -75,7 +75,10 @@
             position: absolute;
             top: 10px;
         }
-
+        .fullscreen_slider_image {
+            max-height: 320px;
+            max-width: auto;
+        }
         .home_slider_fullscreen .slick-prev {
             margin-left: 50px !important;
             ;
@@ -102,6 +105,10 @@
             position: absolute;
             top: 10px;
         }
+        .fullscreen_slider_image {
+            min-height: 320px;
+            min-width: auto;
+        }
     }
 
     /* Medium devices (landscape tablets, 768px and up) */
@@ -119,7 +126,11 @@
             position: absolute;
             top: 30px;
         }
-
+        .fullscreen_slider_image {
+            max-width: 100%;
+            max-height: 400px;
+            
+        }
         .slickLightbox img {
             max-width: 200px;
             max-height: 310px;
@@ -140,6 +151,10 @@
         .home_slider_fullscreen_content {
             position: absolute;
             top: 80px;
+        }
+        .fullscreen_slider_image {
+            max-height: 560px;
+            max-width: 100%;
         }
     }
 
