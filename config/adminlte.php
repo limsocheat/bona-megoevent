@@ -288,6 +288,13 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+        [
+            'text'        => 'Contacts',
+            'url'         => 'admin/contact',
+            'icon'        => 'fa fa-user-circle',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
 
         ['header' => 'account_settings'],
         [

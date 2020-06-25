@@ -40,7 +40,8 @@ Route::namespace('Admin')->group(function () {
                     'slide'     => 'SlideController',
                     'purchase'  => 'PurchaseController',
                     'ticket'    => 'TicketController',
-                    'location'  => 'LocationController'
+                    'location'  => 'LocationController',
+                    'contact'   =>  'ContactController'
                 ]);
 
                 Route::get('/event/{event}/purchases', 'EventController@purchases')->name('event.purchases');
