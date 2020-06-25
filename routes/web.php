@@ -61,7 +61,6 @@ Route::namespace('Front')->group(function () {
 
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
-    Route::get('/event/{event}/exhibitor_registration', 'PageController@exhibitor_registration')->name('event.exhibitor_registration');
     // Route::get('/ticket','PageController@ticket')->name('ticket');
 
     Route::get('/sendemail', 'SendEmailController@index');
@@ -77,6 +76,10 @@ Route::namespace('Front')->group(function () {
         Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
         Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
         Route::get('/paypal/cancel', 'PaypalController@cancel')->name('paypal.cancel');
+
+        Route::get('/event/{event}/exhibitor_registration', 'PageController@exhibitor_registration')->name('event.exhibitor_registration');
+        Route::post('/event/{event}/exhibitor_registration', 'ExhibitorRegistrationController@store')->name('event.exhibitor_registration');
+        Route::post('/event_exhibitor/{event}', 'EventExhibitorController@store')->name('event_exhibitor.store');
 
         // Manage 
         Route::prefix('manage')->group(function () {

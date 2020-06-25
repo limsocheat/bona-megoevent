@@ -5,6 +5,15 @@
 @section('content')
     <div class="container py-4">
         <div class="row">
+
+            @if ($event->exhibitors->contains($user->id))
+                <div class="col-md-12">
+                    <div class="alert alert-info" role="alert">
+                        You already requested or you are already an exhibitor!
+                    </div>
+                </div>
+            @endif
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
@@ -48,6 +57,12 @@
                                         {{ $event->location ? $event->location->address : null }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Exhibitors</td>
+                                    <td>
+                                        {{ count($event->exhibitors) }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -80,9 +95,13 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        {!! Form::open(['route' => 'manage.profile.update', 'method' => 'PUT']) !!}
-                            {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']); !!}
-                        {!! Form::close() !!}
+                        @if ($event->exhibitors->contains($user->id))
+                            <a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View Request List</a>
+                        @else 
+                            {!! Form::open(['route' => ['event_exhibitor.store', $event->id], 'method' => 'POST']) !!}
+                                {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']); !!}
+                            {!! Form::close() !!}
+                        @endif
                     </div>
                 </div>
             </div>
