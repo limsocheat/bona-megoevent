@@ -4,41 +4,70 @@
 @section('content')
 
 <style>
-    .preview{
-        padding: 10px;
+    .avatar-wrapper {
         position: relative;
-    }
-    
-    .preview i{
-        color: white;
-        font-size: 20px;
-        transform: translate(7px,60px);
-    }
-    .preview-img{
-        border-radius: 100%;
-        box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.7);
-    }
-    .browse-button{
-        width: 100px;
         height: 100px;
-        border-radius: 100%;
+        width: 100px;
+        margin: 50px auto;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 1px 1px 1px -5px black;
+        transition: all .3s ease;
+        border: 1px solid #7c7676;
+    }
+
+    .avatar-wrapper:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    .avatar-wrapper:hover .profile-pic {
+        opacity: .5;
+    }
+
+    .avatar-wrapper .profile-pic {
+        height: 100%;
+        width: 100%;
+        transition: all .3s ease;
+
+    }
+
+    .avatar-wrapper .profile-pic:after {
+        font-family: FontAwesome;
+        content: "\f007";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         position: absolute;
-        top: 10px;
-        left: 234px;
-        background: linear-gradient(180deg, transparent, #6d6b6b);
-        opacity: 0;
-        transition: 0.3s ease;
+        font-size: 100px;
+        background: #ecf0f1;
+        color: #34495e;
+        text-align: center;
     }
-    
-    .browse-button:hover{
-        opacity: 1;
+
+    .avatar-wrapper .upload-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
     }
-    .browse-input{
-        width: 100px;
-        height: 100px;
-        border-radius: 100%;
-        transform: translate(-1px,-26px);
+
+    .avatar-wrapper .upload-button.fa-arrow-circle-up {
+        position: absolute;
+        font-size: 234px;
+        top: -17px;
+        left: 0;
+        text-align: center;
         opacity: 0;
+        transition: all .3s ease;
+        color: #34495e;
+    }
+
+    .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+        opacity: .9;
     }
 </style>
 
@@ -56,14 +85,13 @@
                 {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT', 'files' => true]) !!}
                 <div class="card-body">
                     <div class="form-group" style="height: 110px;">
-                        <div class="preview text-center" style="height:125px;">
-                            <img id="profilePreview" class="preview-img" src="{{ $user->profile ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" alt="Preview Image"
-                                width="100" height="100" />
-                            <div class="browse-button">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                {{ Form::file('profile[image]', ['id' => "profileImage", "class" => "browse-input"]) }}
+                        <div class="avatar-wrapper">
+                            <img class="profile-pic" src="{{$user->profile ? $user->profile->avatarUrl : null }}" />
+                            <div class="upload-button">
+                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                             </div>
-                            <span class="Error"></span>
+                            {{ Form::file('profile[image]', ['id' => "profileImage", "class" => "file-upload",'type' =>'file','accept'=>'image/*']) }}
+                            {{-- <input class="file-upload" type="file" accept="image/*" /> --}}
                         </div>
                     </div>
                     <div class="row">
@@ -247,17 +275,23 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#profileImage").change(function() {
+       var readURL = function (input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
             
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    $('#profilePreview').attr('src', e.target.result);
-                }
-                
-                reader.readAsDataURL(this.files[0]);
+                reader.onload = function (e) {
+                    $('.profile-pic').attr('src', e.target.result);
+                    }
+                    
+                reader.readAsDataURL(input.files[0]);
             }
+        }  
+        $(".file-upload").on('change', function () {
+        readURL(this);
+        });
+        
+            $(".upload-button").on('click', function () {
+            $(".file-upload").click();
         });
 
         $("#logoImage").change(function() {
