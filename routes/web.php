@@ -54,7 +54,7 @@ Route::namespace('Admin')->group(function () {
 
 Route::namespace('Front')->group(function () {
     Route::get('/', 'PageController@index')->name('index');
-    Route::get('/entrance', 'PageController@entrance')->name('entrance');
+    // Route::get('/entrance', 'PageController@entrance')->name('entrance');
     Route::get('/upcoming', 'PageController@upcoming')->name('upcoming');
     Route::get('/search', 'PageController@search')->name('search');
     Route::get('/contact', 'PageController@contact')->name('contact');

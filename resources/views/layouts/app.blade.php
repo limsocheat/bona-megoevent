@@ -67,12 +67,13 @@
             background-color: #333;
         }
 
-        #navbar-nav .active {
+        #navbar-nav .active{
             border-bottom: 4px solid black;
         }
 
-        .navbar-nav .actives {
+        .navbar-nav .actives, .nav-item {
             border-bottom: 4px solid white;
+            text-align: center;
 
         }
 
@@ -154,7 +155,7 @@
             display: none;
             position: fixed;
             float: right;
-            background-color: #f1f1f1;
+            background-color: #ffffff;
             min-width: 170px;
             min-height: 150px;
             border-bottom: none;
@@ -320,14 +321,16 @@
                 <!-- Left Side Of Navbar -->
                 <ul id="navbar-nav" class="navbar-nav mr-auto">
                     <li class="nav-item active" >
-                        <a href="{{ route('index') }}" class="nav-link" style="padding-left: 0">Home</a>
+                        <a href="{{ route('index') }}" class="nav-link" style="padding-left: 8px;">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
-                    </li>
+                    </li> --}}
+                </ul>
+                <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
                     <li class="nav-item">
                         <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                     </li>
