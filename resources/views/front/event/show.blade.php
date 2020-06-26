@@ -28,6 +28,16 @@
 		font-weight: bold;
 		color: #000;
 	}
+	#card-body{
+		height: 350.32px;
+		transition: 0.5s;
+	}
+	#card-body:hover {
+		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	}
+	#h1, #h3{
+		color:#C5B358;
+	}
 </style>
 <style type="text/css">
 	#NextUpcomingEvent {
@@ -109,13 +119,13 @@
 
 	<div class="row py-2">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mb-3 font-weight-bold">Event Exhibitors</h1>
+			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Event Exhibitors</h1>
 		</div>
 		@include('front.components.entrance.eventexhibitors')
 	</div>
 	<div class="row py-2">
 		<div class="col-md-12 py-2 ">
-			<h1 class="text-left pl-0 mb-3 font-weight-bold">Event</h1>
+			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Event</h1>
 			<h4 class="font-weight-bold">{{ $event->name}}</h4>
 		</div>
 		<div class="col-md-6">
@@ -294,7 +304,7 @@
 		<div class="col-md-8">
 			<div class="row my-2">
 				<div class="col-md-12">
-					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">Highlighted Events</h1>
+					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Highlighted Events</h1>
 				</div>
 				@foreach ($feature_events as $feature_event)
 				<div class="col-md-6 mb-4">
@@ -305,14 +315,16 @@
 							<div class="row">
 								<div class="col-7">
 									<h5 class="text-truncate text-dark font-weight-bold" style=" max-lines: 1">
-										{{\Carbon\Carbon::parse($feature_event->start_date)->format('jS F Y')}}</h5>
+										{{ $event->display_start_date }}
+										{{-- {{\Carbon\Carbon::parse($feature_event->start_date)->format('jS F Y')}} --}}
+									</h5>
 								</div>
-								<div class="col-5 text-right">
+								{{-- <div class="col-5 text-right"> --}}
 									<a href="{{ route('event', $feature_event->id) }}"
-										class="btn btn-sm btn-outline-dark">Join Now</a>
-								</div>
+										class=" ml-auto mr-2 btn btn-sm btn-outline-dark stretched-link">Join Now</a>
+								{{-- </div> --}}
 							</div>
-							<h3 class="card-title multi-line-truncate" style="max-lines: 2">
+							<h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">
 								{{ $feature_event->name }}</h3>
 							<p class="card-text multi-line-truncate">{!! $feature_event->description !!}</p>
 						</div>

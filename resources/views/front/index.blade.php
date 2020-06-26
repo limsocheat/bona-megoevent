@@ -24,12 +24,12 @@
 	}
 </style>
 <div class="container">
-	<div class="row my-4">
+	{{-- <div class="row my-4">
 		<div class="col-md-12">
 			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Our Partners</h1>
 		</div>
 		@include('front.components.exhibitors')
-	</div>
+	</div> --}}
 	<div class="row my-4">
 		<div class="col-md-12">
 			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Filter Events</h1>

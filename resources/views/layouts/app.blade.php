@@ -92,7 +92,7 @@
         .navbar-nav li a {
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2em;
+            /* font-size: 1.2em; */
             color: #000000;
             text-transform: capitalize;
             position: relative;
@@ -182,6 +182,7 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+ 
     </style>
 </head>
 
@@ -203,9 +204,9 @@
                     {{-- <a class="navbar-brand" href="{{ $header_banner->link }}" style="width: 100%;">
                     <img src="{{ asset($header_banner->image) }}" style="width: 100%; height: auto;" />
                     </a> --}}
-                    <div class="float-left">
+                    <div class="float-left" style="padding-top:13px">
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <img src="{{ asset('images/logo.png') }}" style="width: 100px !important" />
+                            <img src="{{ asset('images/2020-06-25.png') }}" style="width: 110px !important" />
                         </a>
                     </div>
                     <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0">
