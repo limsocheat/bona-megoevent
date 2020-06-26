@@ -84,7 +84,8 @@
 <div class="container">
 
 	@if (count($event->banners))
-		
+		<div class="row py-2">
+			<div class="col-md-8" >
 				<div style="position: relative;">
 					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
@@ -93,7 +94,7 @@
 									<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
 										alt="Third slide" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
 								</div>
-								@endfor
+							@endfor
 						</div>
 						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -104,12 +105,27 @@
 							<span class="sr-only">Next</span>
 						</a>
 					</div>
-					<div class="text-block"
-						style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
-						<h4 id="demo">Countdown</h4>
-						<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
+				</div>
+			</div>
+			<div class="col-md-4 " style="background-color:#f1f1f1;height: 450px; margin-left:-15px">
+				<div  style="margin-top: 100px; ">
+					<div class="ml-5">
+						<span class="font-weight-bold">{{ $event->display_start_date }}</span>
+						<h5  class="font-weight-bold mt-3">{{ $event->name}}</h5>
+					</div>
+					<div>
+						<div c class="ml-5" style="padding-top:50px;">
+							<h4 id="demo">Countdown</h4>
+							<p>Event Starts In</p>
+						</div>
+						<div style="text-align: center;">
+							<p><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Exhibitor</a>
+								<span><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Participants</a></span></p>
+						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 	@else
 	<div class="row py-2">
 			<div class="col-md-8" >
@@ -120,23 +136,22 @@
 				</div>
 			</div>
 			<div class="col-md-4 " style="background-color:#f1f1f1;height: 450px; margin-left:-15px">
-					<div  style="margin-top: 100px; ">
-						<div class="ml-5">
-							<span class="font-weight-bold">{{ $event->display_start_date }}</span>
-							<h5  class="font-weight-bold mt-3">{{ $event->name}}</h5>
-							
+				<div  style="margin-top: 100px; ">
+					<div class="ml-5">
+						<span class="font-weight-bold">{{ $event->display_start_date }}</span>
+						<h5  class="font-weight-bold mt-3">{{ $event->name}}</h5>
+					</div>
+					<div>
+						<div c class="ml-5" style="padding-top:50px;">
+							<h4 id="demo">Countdown</h4>
+							<p>Event Starts In</p>
 						</div>
-						<div>
-							<div c class="ml-5" style="padding-top:50px;">
-								<h4 id="demo">Countdown</h4>
-								<p>Event Starts In</p>
-							</div>
-							<div style="text-align: center;">
+						<div style="text-align: center;">
 							<p><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Exhibitor</a>
 								<span><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Participants</a></span></p>
-							</div>
 						</div>
 					</div>
+				</div>
 			</div>
 	</div>
 
