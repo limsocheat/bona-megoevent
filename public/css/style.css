@@ -225,7 +225,6 @@ body a:hover {
     font-weight: bold;
     color: #000;
 }
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .navbar-brand .logo {
