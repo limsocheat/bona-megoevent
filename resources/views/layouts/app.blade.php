@@ -67,12 +67,13 @@
             background-color: #333;
         }
 
-        #navbar-nav .active {
+        #navbar-nav .active{
             border-bottom: 4px solid black;
         }
 
-        .navbar-nav .actives {
+        .navbar-nav .actives, .nav-item {
             border-bottom: 4px solid white;
+            text-align: center;
 
         }
 
@@ -328,6 +329,8 @@
                     {{-- <li class="nav-item">
                         <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
                     </li> --}}
+                </ul>
+                <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
                     <li class="nav-item">
                         <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                     </li>
