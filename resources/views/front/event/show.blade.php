@@ -3,51 +3,69 @@
 @section ('title', $event->name)
 
 @section('content')
+
+<style type="text/css">
+	/* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+		.event-single-header {
+			display: flex; 
+			flex-direction: column; 
+			justify-content: space-between; 
+			width: 100%;
+		}
+    }
+
+	/* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+		.event-single-header {
+			display: flex; 
+			flex-direction: row; 
+			justify-content: space-between; 
+			width: 100%;
+		}
+
+		.event-single-header-left {
+			width: 900px !important;
+		}
+
+		.event-single-header-right {
+			flex: 1;
+		}
+    }
+
+</style>
+
 <div class="container event-single-page">
-
-	@if (count($event->banners))
-		<div class="row py-2">
-			<div class="col-md-8" >
-				<div style="position: relative;">
-					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner">
-							@for ($i = 0; $i < count($event->banners); $i++)
-								<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
-									<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
-										alt="Third slide" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
-								</div>
-							@endfor
-						</div>
-						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
+	<div class="py-2 event-single-header">
+		<div class="event-single-header-left">
+			@if (count($event->banners))
+				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						@for ($i = 0; $i < count($event->banners); $i++)
+							<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
+								<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
+									alt="Third slide" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
+							</div>
+						@endfor
 					</div>
+					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
 				</div>
-			</div>
-			<div class="col-md-4 " style="background-color:#f1f1f1;height: 450px; margin-left:-15px">
-					@include('front.components.event.headline')
-			</div>
+			@else
+				<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="img-fluid" style="width: 100%; height: auto"
+				>
+			@endif
 		</div>
-	@else
-	<div class="row py-2">
-			<div class="col-md-8" >
-				<div style="position: relative;">
-					<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="figure-img img-fluid rounded"
-						style="width:100%; height: 450px; ">
-					
-				</div>
-			</div>
-			<div class="col-md-4 " style="background-color:#f1f1f1;height: 450px; margin-left:-15px">
-				@include('front.components.event.headline')
-			</div>
+		<div class="event-single-header-right" style="background-color:#f1f1f1;">
+			@include('front.components.event.headline')
+		</div>
 	</div>
-
-	@endif
 
 	<div class="row py-2">
 		<div class="col-md-12">
