@@ -32,7 +32,7 @@
             {!! Form::select('type', $event_types, request()->type, ['placeholder' => 'All Types', 'class' =>
             'form-control']) !!}
         </div>
-        <div class="col-sm form-group pr-0">
+        <div class="col-sm form-group">
             {!! Form::label('period', 'Period', ['class' => 'label-control']) !!}
             {!! Form::text('date', request()->date ? request()->date : null, ['class' => 'form-control', 'id' =>
             'daterange']) !!}
