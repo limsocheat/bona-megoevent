@@ -65,44 +65,69 @@
 	.table-event-pricing td {
 		font-size: 18px;
 	}
+	#image{
+		border: 5px solid yellow ;
+    	padding: 0;
+	}
 </style>
 
 <div class="container">
 
 	@if (count($event->banners))
-	<div style="position: relative;">
-		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				@for ($i = 0; $i < count($event->banners); $i++)
-					<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
-						<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
-							alt="Third slide" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
+		
+				<div style="position: relative;">
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							@for ($i = 0; $i < count($event->banners); $i++)
+								<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
+									<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
+										alt="Third slide" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
+								</div>
+								@endfor
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
 					</div>
-					@endfor
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-		<div class="text-block"
-			style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
-			<h4 id="demo">Countdown</h4>
-			<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
-		</div>
-	</div>
+					<div class="text-block"
+						style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
+						<h4 id="demo">Countdown</h4>
+						<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
+					</div>
+				</div>
 	@else
-	<div style="position: relative;">
-		<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="figure-img img-fluid rounded"
-			style="width:100%; height: 450px; ">
-		<div class="text-block" style="position: absolute; bottom: 120px; right: 20px; background-color: black; color: white; padding-left: 20px; padding-right: 20px; padding-top: 30px;">
-			<h4 id="demo">Countdown</h4>
-			<p>Event Starts In <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join Now</a></p>
-		</div>
+	<div class="row py-2">
+			<div class="col-md-8" >
+				<div style="position: relative;">
+					<img src="{{ $event->image_url }}" alt="{{ $event->name }}" id="image" class="figure-img img-fluid rounded"
+						style="width:100%; height: 450px; ">
+					
+				</div>
+			</div>
+			<div class="col-md-4 " style="background-color:#f1f1f1;height: 450px; margin-left:-15px">
+					<div  style="margin-top: 100px; ">
+						<div class="ml-5">
+							<span class="font-weight-bold">{{ $event->display_start_date }}</span>
+							<h5  class="font-weight-bold mt-3">{{ $event->name}}</h5>
+							
+						</div>
+						<div>
+							<div c class="ml-5" style="padding-top:50px;">
+								<h4 id="demo">Countdown</h4>
+								<p>Event Starts In</p>
+							</div>
+							<div style="text-align: center;">
+							<p><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Exhibitor</a>
+								<span><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Participants</a></span></p>
+							</div>
+						</div>
+					</div>
+			</div>
 	</div>
 
 	@endif
@@ -261,7 +286,7 @@
 
 						<div class="card">
 							<div class="card-text">
-								 @if ($event->exhibitors->contains(Auth::user()->id))
+								 @if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
 									<div class="alert alert-info m-3" role="alert">
 										You already requested or you are already an exhibitor!
 									</div>
@@ -276,7 +301,7 @@
 									<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
 									style="width: 100%">Login To Register</a>
 								@else
-									@if ($event->exhibitors->contains(Auth::user()->id))
+									@if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
 										<a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View Request List</a>
 									@else 
 										<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Register</button>
