@@ -70,34 +70,36 @@
 						</div>
 						<div class="card-body">
 							<div class="card-text">
-								<table class="table table-bordered">
-									<thead>
-										<tr>
-											<th scope="col">Event Name</th>
-											<th scope="col">Date/Time</th>
-											<th scope="col">Price</th>
-											<th scope="col">Quantity</th>
-											<th scope="col">Total</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>{{ $event->name }}</td>
-											<td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
-											<td>${{ $price }}</td>
-											<td> {{ $quantity }}</td>
-											<td>${{ $subtotal }}</td>
-										</tr>
-										<tr>
-											<td colspan="4" class="text-right font-weight-bold">
-												Total
-											</td>
-											<td class="font-weight-bold">
-												${{ $subtotal }}
-											</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="table-responsive">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th scope="col">Event Name</th>
+												<th scope="col">Date/Time</th>
+												<th scope="col">Price</th>
+												<th scope="col">Quantity</th>
+												<th scope="col">Total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>{{ $event->name }}</td>
+												<td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
+												<td>${{ $price }}</td>
+												<td> {{ $quantity }}</td>
+												<td>${{ $subtotal }}</td>
+											</tr>
+											<tr>
+												<td colspan="4" class="text-right font-weight-bold">
+													Total
+												</td>
+												<td class="font-weight-bold">
+													${{ $subtotal }}
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>

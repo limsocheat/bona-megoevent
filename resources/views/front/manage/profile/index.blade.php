@@ -200,44 +200,45 @@
         </div>
 
         <div class="col-md-12 mt-5">
-            
             <div class="card">
                 <div class="card-header">
                     Events Registered as Exhibitor
                 </div>
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Event</th>
-                                <th>Organizer</th>
-                                <th>Start</th>
-                                <th>End</th>
-                                <th>View</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($user->exhibitions as $exhibition)
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        {{ $exhibition->name }}
-                                    </td>
-                                    <td>
-                                        {{ $exhibition->organizer ? $exhibition->organizer->name: null}}
-                                    </td>
-                                    <td>
-                                        {{ $exhibition->display_start_date }} @ {{ $exhibition->display_start_time }}
-                                    </td>
-                                    <td>
-                                        {{ $exhibition->display_end_date }} @ {{ $exhibition->display_end_time }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('event', $exhibition->id) }}" class="btn btn-primary">View</a>
-                                    </td>
+                                    <th>Event</th>
+                                    <th>Organizer</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>View</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->exhibitions as $exhibition)
+                                    <tr>
+                                        <td>
+                                            {{ $exhibition->name }}
+                                        </td>
+                                        <td>
+                                            {{ $exhibition->organizer ? $exhibition->organizer->name: null}}
+                                        </td>
+                                        <td>
+                                            {{ $exhibition->display_start_date }} @ {{ $exhibition->display_start_time }}
+                                        </td>
+                                        <td>
+                                            {{ $exhibition->display_end_date }} @ {{ $exhibition->display_end_time }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('event', $exhibition->id) }}" class="btn btn-primary">View</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
