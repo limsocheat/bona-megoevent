@@ -121,12 +121,12 @@
     /* Large devices (laptops/desktops, 992px and up) */
     @media only screen and (min-width: 992px) {
         .home_slider_carousel_item {
-            height: 330px !important;
+            height: 200px !important;
             width: auto !important;
         }
 
         #home_slider_carousel {
-            margin-top: -105px;
+            margin-top: -70px;
         }
 
         .home_slider_fullscreen_content {
