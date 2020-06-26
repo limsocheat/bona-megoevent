@@ -1,52 +1,11 @@
 <style>
-    /* modal */
-    /* .slider-for img {
-        width: 100%;
-        }
-    .modal-content {
-        background-color: rgba(0, 0, 0, 0);
-        border: 0 none;
-        border-radius: 0;
-        margin-left: 1px;
-        .modal-body {
-            padding: 0;
-            iframe {
-                margin-bottom: -5px;
-            }
-        }
-        .modal-header {
-            border: 0 none;
-            height: 0;
-            min-height: 0;
-            padding: 0;
-            .close {
-                background-color: #000000 !important;
-                border: 2px solid #ffffff !important;
-                border-radius: 13px;
-                color: #ffffff;
-                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-                font-size: 20px;
-                font-weight: 700;
-                height: 26px;
-                opacity: 1;
-                padding-bottom: 0;
-                position: absolute;
-                right: -13px;
-                text-shadow: none;
-                top: -13px;
-                width: 26px;
-                z-index: 1;
-            }
-        }
-    } */
-
-    .slick-next:before {
+    /* .slick-next:before {
         color: black;
     }
 
     .slick-prev:before {
         color: black;
-    }
+    } */
 
     .home_slider_fullscreen .slick-prev {
         margin-left: 100px !important;
@@ -56,6 +15,16 @@
 
     .home_slider_fullscreen .slick-next {
         margin-right: 100px !important;
+    }
+
+    .home_slider_carousel .slick-prev {
+        margin-left: 50px !important;
+        ;
+        z-index: 1;
+    }
+
+    .home_slider_carousel .slick-next {
+        margin-right: 50px !important;
     }
 
     .home_slider_modal {}
@@ -88,6 +57,10 @@
         .home_slider_fullscreen .slick-next {
             margin-right: 50px !important;
         }
+
+        .slider-subtitle {
+            display: none;
+        }
     }
 
     /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -108,6 +81,10 @@
         .fullscreen_slider_image {
             min-height: 320px;
             min-width: auto;
+        }
+
+        .slider-subtitle {
+            display: none;
         }
     }
 
@@ -135,6 +112,10 @@
             max-width: 200px;
             max-height: 310px;
         }
+
+        .slider-subtitle {
+            display: block;
+        }
     }
 
     /* Large devices (laptops/desktops, 992px and up) */
@@ -145,7 +126,7 @@
         }
 
         #home_slider_carousel {
-            margin-top: -165px;
+            margin-top: -105px;
         }
 
         .home_slider_fullscreen_content {
@@ -170,11 +151,44 @@
     }
 
     .fullscreen_slider_image {
-        height: 678px;
-        width: 1920px;
+        height: auto;
+        width: 100%;
         background-size: cover;
         background-repeat: no-repeat;
     }
+    .home_slider_carousel_item {
+        margin-left: 15px; 
+        margin-right: 15px;
+    }
+
+    /* .slick-lightbox-slick-item-inner {
+        background: white;
+        height: 100vh;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .slick-lightbox-slick-item-inner img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    } */
+
+    .home_slider_fullscreen .slick-prev:before, .home_slider_fullscreen .slick-next:before {
+        font-size: 30px;
+    }
+
+    .home_slider_carousel .slick-prev:before, .home_slider_carousel .slick-next:before {
+        font-size: 25px;
+        color: black;
+    }
+    
 </style>
 @inject('slider', 'App\Models\Slide')
 @php
@@ -189,7 +203,7 @@
                 <div class="container">
                     <div class="home_slider_fullscreen_content">
                         <h1 class="font-weight-bold">{{ $fullscreen_slider->title }}</h1>
-                        <h3>{{ $fullscreen_slider->sub_title }}</h3>
+                        <h3 class="slider-subtitle">{{ $fullscreen_slider->sub_title }}</h3>
                     </div>
                 </div>
                 <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}" class="fullscreen_slider_image">
