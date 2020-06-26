@@ -20,7 +20,7 @@ class PageController extends Controller
         $data = [
             'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
-            'events'            => Event::select('*')->get(),
+            'events'            => Event::select('*')->limit(8)->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
             'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
             'slides'            => Slide::select('*')->where('location', 'homepage')->get(),
@@ -46,8 +46,6 @@ class PageController extends Controller
             'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
             'events'            => Event::select('*')->get(),
-            'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
-            'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
         ];
 
         return view('front.upcoming', $data);

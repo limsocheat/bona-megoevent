@@ -1,8 +1,267 @@
 @font-face {
-    font-family: CenturyGothic;
-    src: url('/fonts/GOTHIC.TTF');
+    font-family: "Century Gothic";
+    src: url("../fonts/gothic.ttf") format('truetype');
+    /* src: url("<?php echo asset('fonts/GOTHIC.TTF'); ?>"); */
 }
 
 * {
-    font-family: 'Century Gothic' !important;
+    font-family: 'Century Gothic'
+}
+
+.navbar-brand .logo {
+    max-width: 200px;
+    width: 100%;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+#navbar-nav .active {
+    border-bottom: 4px solid black;
+}
+
+.navbar-nav .actives,
+.nav-item {
+    border-bottom: 4px solid white;
+    text-align: center;
+
+}
+
+.accent-cyannavbar-nav ul li:hover {
+    border-bottom: 4px solid black;
+}
+
+.actives a i {
+    font-size: 20px;
+}
+
+.navbar-nav li {
+    border-left: 1px solid #ffffff;
+}
+
+.navbar-nav li a {
+    text-decoration: none;
+    font-weight: 700;
+    /* font-size: 1.2em; */
+    color: #000000;
+    text-transform: capitalize;
+    position: relative;
+    text-align: center;
+    padding: 18px 15px;
+}
+
+a.nav-link-left {
+    padding-left: 0 !important;
+}
+
+a.nav-link-right {
+    padding-right: 0 !important;
+}
+
+.navbar-nav li a::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: black;
+    /* transition: all .1s linear; */
+}
+
+.navbar-nav li a:hover {
+    transition: .05s;
+}
+
+.navbar-nav li a:hover::before {
+    width: 100%;
+    background-color: black;
+}
+
+/* .dropdown-menu {
+            z-index: 1;
+        } */
+
+.container {
+    max-width: 1280px !important;
+}
+
+
+body p,
+a,
+label {
+    font-size: 16px;
+}
+
+body a,
+body a:hover {
+    color: #000;
+}
+
+/* dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    left: 0;
+}
+
+/* .navbar-nav .dropdown-content {
+            y
+        } */
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    float: right;
+    background-color: #ffffff;
+    min-width: 170px;
+    min-height: 150px;
+    border-bottom: none;
+    z-index: 999999;
+}
+
+.dropdown .dropdown-content li {
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    left: 1px;
+}
+
+/* .dropdown-content li {} */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.nav-item a i.fa {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.multi-line-truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.event-card {
+    height: 350.32px;
+    transition: 0.5s;
+}
+
+.event-card:hover {
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#h1,
+#h3 {
+    color: #C5B358;
+}
+
+/* Event Single Page */
+.event-single-page #NextUpcomingEvent {
+    width: auto;
+    height: 250px;
+}
+
+.event-single-page #NextUpcomingEvent #ViewMore {
+    color: red;
+    text-align: right;
+    margin-top: 10%;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.event-single-page .multi-line-truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.event-single-page #card-body {
+    height: 386.65px;
+}
+
+.event-single-page .btn-danger {
+    color: #fff;
+    width: 300px;
+    background-color: #cc0000;
+    border-radius: 35px;
+    border: 1px solid rgba(220, 53, 69, 0.75);
+}
+
+.event-single-page .table-event-pricing td {
+    font-size: 18px;
+}
+
+.event-single-page br {
+    clear: both;
+}
+
+.event-single-page .cntSeparator {
+    font-size: 54px;
+    margin: 10px 7px;
+    color: #000;
+}
+
+.event-single-page .desc {
+    margin: 7px 3px;
+}
+
+.event-single-page .desc div {
+    float: left;
+    font-family: Arial;
+    width: 70px;
+    margin-right: 65px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .navbar-brand .logo {
+        max-width: 170px;
+        width: 100%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .navbar-brand .logo {
+        max-width: 170px;
+        width: 100%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .navbar-brand .logo {
+        max-width: 170px;
+        width: 100%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .navbar-brand .logo {
+        max-width: 200px;
+        width: 100%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .navbar-brand .logo {
+        max-width: 200px;
+        width: 100%;
+    }
 }
