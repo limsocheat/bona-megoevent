@@ -3,7 +3,7 @@
     input {
         text-decoration: none;
         color: black;
-        border: 2px solid black !important;
+        border: 2px solid #efefef !important;
     }
 
     /* #filter_form .group_date{
