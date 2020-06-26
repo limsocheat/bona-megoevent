@@ -8,7 +8,7 @@
 			<div class="container">
 				<div class="row">
 					@if ($header_banner1) 
-						<div class="col-md-6">
+						<div class="col-md-6 pr-0">
 							<a class="navbar-brand" href="{{ $header_banner1->link }}">
 								<img src="{{ asset($header_banner1->image) }}" style="width :100%; height: auto;"/>
 							</a>

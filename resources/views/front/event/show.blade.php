@@ -18,7 +18,7 @@
 								</div>
 							@endfor
 						</div>
-						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+						<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="sr-only">Previous</span>
 						</a>
@@ -30,22 +30,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 " style="background-color:#f1f1f1;height: 450px; margin-left:-15px">
-				<div>
-					<div>
-						<span class="font-weight-bold">{{ $event->display_start_date }}</span>
-						<h5  class="font-weight-bold mt-3">{{ $event->name}}</h5>
-					</div>
-					<div>
-						<div c class="ml-5" style="padding-top:50px;">
-							<h4 id="demo">Countdown</h4>
-							<p>Event Starts In</p>
-						</div>
-						<div style="text-align: center;">
-							<p><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Exhibitor</a>
-								<span><a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Participants</a></span></p>
-						</div>
-					</div>
-				</div>
+					@include('front.components.event.headline')
 			</div>
 		</div>
 	@else
