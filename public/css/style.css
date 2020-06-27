@@ -104,7 +104,7 @@ body a:hover {
 .dropdown {
     position: relative;
     display: inline-block;
-    left: 0;
+    right: 0;
 }
 
 /* .navbar-nav .dropdown-content {
@@ -114,12 +114,12 @@ body a:hover {
 .dropdown-content {
     display: none;
     position: fixed;
-    float: right;
+    float: left;
     background-color: #ffffff;
     min-width: 170px;
     min-height: 150px;
     border-bottom: none;
-    z-index: 999999;
+    z-index: 1111;
 }
 
 .dropdown .dropdown-content li {
@@ -230,6 +230,21 @@ body a:hover {
     .navbar-brand .logo {
         max-width: 170px;
         width: 100%;
+    }
+    .nav-item a i.fa {
+    padding-left: 10px;
+    padding-right: 12.5px;
+}
+    .dropdown-content {
+        display: none;
+        position: fixed;
+        float: left;
+        right:20px;
+        background-color: #ffffff;
+        min-width: 170px;
+        min-height: 150px;
+        border-bottom: none;
+        z-index: 1111;
     }
 }
 

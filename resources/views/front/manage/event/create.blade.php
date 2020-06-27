@@ -72,7 +72,7 @@
                             {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
-                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" alt="Feature Image Previewer">
+                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" class="img-fluid" alt="Feature Image Previewer">
                         </div>
 
                         <div class="col-md-12">
@@ -82,7 +82,6 @@
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">
-
                             <label class="active">Videos</label>
                             <div class="controls"> 
                                 <div class="entry input-group col-xs-3">

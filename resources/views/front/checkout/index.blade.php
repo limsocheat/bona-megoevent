@@ -13,7 +13,7 @@
 					{!! \Session::get('error') !!}
 				</div>
 				@endif
-				<div class="col-md-6">
+				<div class="col-md-6 py-2">
 					{!! Form::model($user, ['route' => 'manage.purchase.store', 'method' => 'POST']) !!}
 					<div class="card">
 						<div class="card-header">
@@ -63,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 py-2">
 					<div class="card">
 						<div class="card-header">
 							<h4 class="font-weight-bold">Your Order</h4>
