@@ -82,43 +82,43 @@
 			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Event</h1>
 			<h4 class="font-weight-bold">{{ $event->name}}</h4>
 		</div>
-		<div class="col-md-6">
 
-			<div class="py-3">
+		<div class="col-md-6">
+			<div class="py-2">
 				<h5 class="font-weight-bold">Venue:</h5>
-				<div><i class="fa fa-map-marker" style="font-size: 25px;color:black;" aria-hidden="true"></i>
+				<div><i class="fa fa-map-marker" style="font-size: 20px;color:black;" aria-hidden="true"></i>
 					<span class="ml-4">{{$event->location ? $event->location->name : "To Be Announced"}}</span>
 					<span class="ml-2">{{$event->location ? $event->location->address : null}}</span></div>
 			</div>
 			<div class="py-2">
 				<h5 class="font-weight-bold">Date:</h5>
-				<div><i class="fa fa-calendar-o" style="font-size: 25px;color: color:black;" aria-hidden="true"></i>
+				<div><i class="fa fa-calendar-o" style="font-size: 20px;color: color:black;" aria-hidden="true"></i>
 					<span class="ml-3 mr-2">Starting-Ending</span>{{ $event->display_start_date }} -
 					{{ $event->display_end_date }}
 				</div>
 			</div>
-			<div class="py-3">
+			<div class="py-2">
 				<h5 class="font-weight-bold">Time:</h5>
-				<div><i class="fa fa-clock-o" style="font-size: 30px;color:black;" aria-hidden="true"></i>
+				<div><i class="fa fa-clock-o" style="font-size: 25px;color:black;" aria-hidden="true"></i>
 					<span class="ml-3">{{ $event->display_start_time }} - {{ $event->display_end_time }}</span></div>
 			</div>
-
 		</div>
+
 		<div class="col-md-6">
-
-			<div class="py-3">
+			<div class="py-2">
 				<h5 class="font-weight-bold">Event Type:</h5>
-				<p>{{$event->type ? $event->type->name :null}}</p>
+				<p class="mb-1">{{$event->type ? $event->type->name :null}}</p>
 			</div>
-			<div class="py-3">
+			<div class="py-1">
 				<h5 class="font-weight-bold">Event Category:</h5>
-				<p>{{$event->category ? $event->category->name :null}}</p>
+				<p class="mb-2">{{$event->category ? $event->category->name :null}}</p>
 			</div>
-			<div class="py-3">
+			<div class="py-1">
 				<h5 class="font-weight-bold">Organiser:</h5>
-				<p>{{$event->organizer ? $event->organizer->name :null}}</p>
+				<p class="mb-2">{{$event->organizer ? $event->organizer->name :null}}</p>
 			</div>
 		</div>
+
 	</div>
 
 	<div class="row py-2">
