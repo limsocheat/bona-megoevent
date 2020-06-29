@@ -93,7 +93,8 @@ body p,
 a,
 label,
 div,
-li {
+li,
+button {
     font-size: 16px;
 }
 
