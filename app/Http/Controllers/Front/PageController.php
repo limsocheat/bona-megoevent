@@ -43,6 +43,7 @@ class PageController extends Controller
     public function upcoming()
     {
         $data = [
+            'categories'        => EventCategory::select('*')->get(),
             'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
             'events'            => Event::select('*')->get(),
