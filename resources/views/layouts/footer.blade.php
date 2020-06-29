@@ -85,7 +85,7 @@
     <!-- Call to action -->
     <ul class="list-unstyled list-inline text-center py-2">
         <li class="list-inline-item">
-            <h5 class="mb-1">Register for free</h5>
+            Register for free
         </li>
         <li class="list-inline-item">
             <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark">Sign up!</a>
@@ -123,8 +123,8 @@
     </ul>
     <!-- Social buttons -->
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://megovents.com/" class="text-white"> megovents.com</a>
+    <div class="text-center py-3">
+        © 2020 Copyright: megoevent.com
     </div>
     <!-- Copyright -->
 </footer>

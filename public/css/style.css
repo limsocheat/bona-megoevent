@@ -91,7 +91,9 @@ a.nav-link-right {
 
 body p,
 a,
-label {
+label,
+div,
+li {
     font-size: 16px;
 }
 
