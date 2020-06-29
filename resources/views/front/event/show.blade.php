@@ -5,25 +5,26 @@
 @section('content')
 
 <style type="text/css">
-	.event-single-page .btn-danger{
+	.event-single-page .btn-danger {
 		border-radius: 4px;
 	}
+
 	/* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 600px) {
 		.event-single-header {
-			display: flex; 
-			flex-direction: column; 
-			justify-content: space-between; 
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 			width: 100%;
 		}
-    }
+	}
 
 	/* Large devices (laptops/desktops, 992px and up) */
-    @media only screen and (min-width: 992px) {
+	@media only screen and (min-width: 992px) {
 		.event-single-header {
-			display: flex; 
-			flex-direction: row; 
-			justify-content: space-between; 
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
 			width: 100%;
 		}
 
@@ -34,35 +35,35 @@
 		.event-single-header-right {
 			flex: 1;
 		}
-    }
-
+	}
 </style>
 
 <div class="container event-single-page">
 	<div class="py-2 event-single-header">
 		<div class="event-single-header-left">
 			@if (count($event->banners))
-				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
-						@for ($i = 0; $i < count($event->banners); $i++)
-							<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
-								<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
-									alt="Third slide" class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
-							</div>
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					@for ($i = 0; $i < count($event->banners); $i++)
+						<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
+							<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
+								alt="Third slide" class="figure-img img-fluid rounded"
+								style="width:100%; height: 450px; ">
+						</div>
 						@endfor
-					</div>
-					<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
 				</div>
+				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
 			@else
-				<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="img-fluid" style="width: 100%; height: auto"
-				>
+			<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="img-fluid"
+				style="width: 100%; height: auto">
 			@endif
 		</div>
 		<div class="event-single-header-right" style="background-color:#f1f1f1;">
@@ -130,44 +131,46 @@
 		<div class="col-md-6 py-4">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link active" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee" aria-selected="true">Event Fee</a>
+					<a class="nav-link active" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee"
+						aria-selected="true">Event Fee</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="exhibitor-tab" data-toggle="tab" href="#exhibitor" role="tab" aria-controls="exhibitor" aria-selected="false">Exhibitor Registration</a>
+					<a class="nav-link" id="exhibitor-tab" data-toggle="tab" href="#exhibitor" role="tab"
+						aria-controls="exhibitor" aria-selected="false">Exhibitor Registration</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="fee" role="tabpanel" aria-labelledby="fee-tab">
-					{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET"]) !!}
-						@guest
-						<div class="alert alert-danger" role="alert">
-							You must login or register first!
-						</div>
-						@endguest
+					{!! Form::open(['route' => ['cart', $event->name], 'method' => "GET"]) !!}
+					@guest
+					<div class="alert alert-danger" role="alert">
+						You must login or register first!
+					</div>
+					@endguest
 
-						<div class="card">
-							<div class="card-text">
-								<table class="table table-event-pricing">
+					<div class="card">
+						<div class="card-text">
+							<table class="table table-event-pricing">
+								<tr>
+									<td>
+										Regular Price
+									</td>
+									<td>
+										${{ number_format($event->price, 2)}}/person
+									</td>
+								</tr>
+								@if ($event->early_bird_price < $event->price)
 									<tr>
 										<td>
-											Regular Price
+											Early Bird Price
+											<br>
+											<small class="text-danger">(When purchased before 12:00am
+												{{ $event->display_early_bird_date }})</small>
 										</td>
 										<td>
-											${{ number_format($event->price, 2)}}/person
+											${{ number_format($event->early_bird_price, 2)}}/person
 										</td>
 									</tr>
-									@if ($event->early_bird_price < $event->price)
-										<tr>
-											<td>
-												Early Bird Price
-												<br>
-												<small class="text-danger">(When purchased before 12:00am
-													{{ $event->display_early_bird_date }})</small>
-											</td>
-											<td>
-												${{ number_format($event->early_bird_price, 2)}}/person
-											</td>
-										</tr>
 									@endif
 									@if ($event->group_price < $event->price)
 										<tr>
@@ -181,69 +184,73 @@
 												${{ number_format($event->group_price, 2)}}/person
 											</td>
 										</tr>
-									@endif
-									<tr>
-										<td>
-											Quantity <br>
-											<small class="text-danger">(pax: {{ $event->pax_min }} =>
-												{{ $event->pax_max }})</small>
-										</td>
-										<td>
-											@php
-											$qualities = [];
-											for ($i=1; $i <= $event->pax_max; $i++) {
-												$qualities[$i] = $i;
-												}
-												@endphp
-												{!! Form::select('quantity', $qualities, null, ['class' =>
-												'form-control']) !!}
-										</td>
-									</tr>
-								</table>
-							</div>
-							<div class="card-footer text-center">
-								@guest
-									<a href="{{ route('login') }}" class="btn btn-danger btn-outline-danger" style="width: 100%">Login To Purchase</a>
-								@else
-									<button type="submit" class="btn btn-danger" style="width: 100%">Buy Ticket</button>
-								@endguest
-							</div>
+										@endif
+										<tr>
+											<td>
+												Quantity <br>
+												<small class="text-danger">(pax: {{ $event->pax_min }} =>
+													{{ $event->pax_max }})</small>
+											</td>
+											<td>
+												@php
+												$qualities = [];
+												for ($i=1; $i <= $event->pax_max; $i++) {
+													$qualities[$i] = $i;
+													}
+													@endphp
+													{!! Form::select('quantity', $qualities, null, ['class' =>
+													'form-control']) !!}
+											</td>
+										</tr>
+							</table>
 						</div>
+						<div class="card-footer text-center">
+							@guest
+							<a href="{{ route('login') }}" class="btn btn-danger btn-outline-danger"
+								style="width: 100%">Login To Purchase</a>
+							@else
+							<button type="submit" class="btn btn-danger" style="width: 100%">Buy Ticket</button>
+							@endguest
+						</div>
+					</div>
 					{!! Form::close() !!}
 				</div>
 				<div class="tab-pane fade" id="exhibitor" role="tabpanel" aria-labelledby="exhibitor-tab">
-					{!! Form::open(['route' => ['event.exhibitor_registration', $event->id], 'method' => "GET"]) !!}
-						@guest
-						<div class="alert alert-danger" role="alert">
-							You must login or register first!
-						</div>
-						@endguest
+					{!! Form::open(['route' => ['event.exhibitor_registration', $event->name], 'method' => "GET"]) !!}
+					@guest
+					<div class="alert alert-danger" role="alert">
+						You must login or register first!
+					</div>
+					@endguest
 
-						<div class="card">
-							<div class="card-text">
-								 @if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
-									<div class="alert alert-info m-3" role="alert">
-										You already requested or you are already an exhibitor!
-									</div>
-								@else 
-									<div class="alert alert-info m-3" role="alert">
-										If you're interested in joining the event as Exhibitor, please click the button below to join.
-									</div>
-								@endif
+					<div class="card">
+						<div class="card-text">
+							@if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
+							<div class="alert alert-info m-3" role="alert">
+								You already requested or you are already an exhibitor!
 							</div>
-							<div class="card-footer text-center">
-								@guest
-									<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
-									style="width: 100%">Login To Register</a>
-								@else
-									@if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
-										<a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View Request List</a>
-									@else 
-										<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Register</button>
-									@endif
-								@endguest
+							@else
+							<div class="alert alert-info m-3" role="alert">
+								If you're interested in joining the event as Exhibitor, please click the button below to
+								join.
 							</div>
+							@endif
 						</div>
+						<div class="card-footer text-center">
+							@guest
+							<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
+								style="width: 100%">Login To Register</a>
+							@else
+							@if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
+							<a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View
+								Request List</a>
+							@else
+							<button type="submit" class="btn btn-block font-weight-bold btn-danger"
+								style="width: 100%">Register</button>
+							@endif
+							@endguest
+						</div>
+					</div>
 					{!! Form::close() !!}
 				</div>
 			</div>
