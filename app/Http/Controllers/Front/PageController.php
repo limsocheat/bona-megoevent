@@ -43,6 +43,7 @@ class PageController extends Controller
     public function upcoming()
     {
         $data = [
+            'categories'        => EventCategory::select('*')->get(),
             'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
             'events'            => Event::select('*')->get(),
@@ -161,13 +162,13 @@ class PageController extends Controller
         return view('front.event.exhibitor_registration', $data);
     }
 
-    public function cart(Request $request, $id)
+    public function cart(Request $request, $name)
     {
         $request->validate([
             'quantity'   => 'required|min:1|numeric'
         ]);
 
-        $event      = Event::findOrFail($id);
+        $event      = Event::where('name', $name)->first();
         $quantity    = $request->input('quantity');
         $price      = $event->price;
 

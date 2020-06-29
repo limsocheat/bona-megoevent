@@ -70,7 +70,7 @@ Route::namespace('Front')->group(function () {
     Route::middleware(['auth', 'verified'])->group(function () {
 
         // Register Event
-        Route::get('/cart/{event}', 'PageController@cart')->name('cart');
+        Route::get('/event/{event}/cart', 'PageController@cart')->name('cart');
         Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
 
         // Paypal Payment

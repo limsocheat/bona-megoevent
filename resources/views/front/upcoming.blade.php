@@ -9,25 +9,19 @@
 		<div class="row my-4">
 			@include('front.components.filter')
 		</div>
-		<div class="row my-4">
-			<div class="col-md-12">
-				<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Category 1</h1>
-			</div>
-			@foreach ($events as $event)
-				<div class="col-md-3 mb-4">
-					@include('front.components.event.card')
+		@foreach ($categories as $category)
+			@if (count($category->upcoming_events))
+				<div class="row my-4">
+					<div class="col-md-12">
+						<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">{{ $category->name }}</h1>
+					</div>
+					@foreach ($category->upcoming_events as $event)
+						<div class="col-md-3 mb-4">
+							@include('front.components.event.card')
+						</div>
+					@endforeach
 				</div>
-			@endforeach
-		</div>
-		<div class="row my-4">
-			<div class="col-md-12">
-				<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Category 2</h1>
-			</div>
-			@foreach ($events as $event)
-				<div class="col-md-3 mb-4">
-					@include('front.components.event.card')
-				</div>
-			@endforeach
-		</div>
+			@endif
+		@endforeach
 	</div>
 @endsection
