@@ -13,7 +13,7 @@
        
     </div>
     <div class="card-body">
-        <table id="example" class="table table-striped" style="width:100%">
+        <table class="table" style="width:100%">
             <thead>
                 <tr>
                     <th>Name</th>
