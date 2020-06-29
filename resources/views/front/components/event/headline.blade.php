@@ -26,7 +26,7 @@
 		<div style="display: flex; flex-direction: row; justify-content: space-between">
 			<a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-danger ml-2">Join
 				as Exhibitor</a>
-			<a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as
+			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as
 				Participants</a>
 		</div>
 	</div>

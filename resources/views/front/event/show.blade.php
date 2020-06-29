@@ -135,7 +135,7 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="fee" role="tabpanel" aria-labelledby="fee-tab">
-					{!! Form::open(['route' => ['cart', $event->id], 'method' => "GET"]) !!}
+					{!! Form::open(['route' => ['cart', $event->name], 'method' => "GET"]) !!}
 						@guest
 						<div class="alert alert-danger" role="alert">
 							You must login or register first!

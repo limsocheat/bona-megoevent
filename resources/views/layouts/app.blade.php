@@ -216,7 +216,7 @@
                             @if (! $loop->last)
                             {{ ucfirst($key) }}
                             @else
-                            @yield ('title')
+                                @yield ('title')
                             @endif
                         </a>
                     </li>
