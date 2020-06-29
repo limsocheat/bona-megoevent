@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-md navbar-default sticky-top navbar-white bg-white pt-0 pb-0"
+    <nav class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0"
         style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
         <div class="container">
             <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
@@ -175,90 +175,33 @@
                         <a href="{{route('contact')}}" class="nav-link nav-link-right">Contact</a>
                     </li>
                 </ul>
-                {{-- right side of navba --}}
-                {{-- <ul class="navbar-nav navbar-right ml-auto">
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
-                            <a href="" class="nav-link">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Email">
-                            <a href="" class="nav-link">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        @guest
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
-                            <a href="{{ route('register') }}" class="nav-link">
-                <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
-                    <a href="{{ route('login') }}" class="nav-link">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    </a>
-                </li>
-                @else
-                <li class="nav-item dropdown">
-                    <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
-                        data-toggle="dropdown">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </a>
-
-                    <ul class="dropdown-content p-0">
-                        <li>
-                            <a href="{{ route('manage.profile.index') }}">Your Profile</a>
-                            </a>
-                        <li>
-                            <a href="{{ route('manage.purchase.index')}}">Manage Purchase</a>
-                        </li>
-                        <li>
-                            <a href="{{route('manage.ticket.index')}}">Manage Ticket</a>
-
-                        </li>
-                        <li>
-                            <a href="{{ route('manage.event.index')}}">Manage Event</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
-                    <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                        class="nav-link">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-                @endguest
-                </ul> --}}
-
-            </div>
-        </div>
-
-        @inject('page', 'App\Models\Page')
-        @php
-        $contact = $page::select('*')->where('slug', 'contact')->first();
-        $about = $page::select('*')->where('slug', 'about')->first();
-        @endphp
-        <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="aboutLabel">
-                            {!! $about->title !!}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @inject('page', 'App\Models\Page')
-                        {!! $about->description !!}
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
+    
+
+    @inject('page', 'App\Models\Page')
+    @php
+    $contact = $page::select('*')->where('slug', 'contact')->first();
+    $about = $page::select('*')->where('slug', 'about')->first();
+    @endphp
+    <div class="modal fade" id="about" tabindex="-1"  role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutLabel">
+                        {!! $about->title !!}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @inject('page', 'App\Models\Page')
+                    {!! $about->description !!}
+                </div>
+            </div>
+        </div>
+    </div>
     @if(!Request::is('/'))
         <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
             <div class="container">

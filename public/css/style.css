@@ -225,21 +225,24 @@ body a:hover {
     font-weight: bold;
     color: #000;
 }
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .navbar-brand .logo {
         max-width: 170px;
         width: 100%;
     }
+
     .nav-item a i.fa {
-    padding-left: 10px;
-    padding-right: 12.5px;
-}
+        padding-left: 10px;
+        padding-right: 12.5px;
+    }
+
     .dropdown-content {
         display: none;
         position: fixed;
         float: left;
-        right:20px;
+        right: 20px;
         background-color: #ffffff;
         min-width: 170px;
         min-height: 150px;
