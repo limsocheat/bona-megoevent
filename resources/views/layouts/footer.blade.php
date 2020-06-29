@@ -88,7 +88,7 @@
             <h5 class="mb-1">Register for free</h5>
         </li>
         <li class="list-inline-item">
-            <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark">Sign up!</a>
+            <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark mb-1 ">Sign up!</a>
         </li>
     </ul>
     <!-- Call to action -->
