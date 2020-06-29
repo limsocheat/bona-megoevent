@@ -9,7 +9,7 @@
 	}
 
 	.event-headline-component h5 {
-		font-size: 20px;
+		font-size: 24px;
 	}
 
 	#btn-event-bg {
