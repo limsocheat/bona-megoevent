@@ -88,7 +88,7 @@
             Register for free
         </li>
         <li class="list-inline-item">
-            <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark">Sign up!</a>
+            <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark mb-1 ">Sign up!</a>
         </li>
     </ul>
     <!-- Call to action -->
