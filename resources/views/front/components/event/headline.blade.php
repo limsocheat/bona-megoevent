@@ -47,7 +47,7 @@
 			<a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-gray ml-2"
 				id="btn-event-bg">Join
 				as Exhibitor</a>
-			<a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-gray ml-2"
+			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn btn-outline-gray ml-2"
 				id="btn-event-bgs">Join as
 				Participants</a>
 		</div>
