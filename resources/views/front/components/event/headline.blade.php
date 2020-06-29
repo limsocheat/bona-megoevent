@@ -7,26 +7,42 @@
 		flex-flow: column;
 		justify-content: space-between;
 	}
+	.event-headline-component h5{
+		font-size: 20px;
+	}
+	#btn-event-bg{
+		color:white;
+		background-color:#C5B358;
+	}
+	#btn-event-bgs{
+		color:white;
+		background-color:#c20000;
+	}
+	/* #btn-event-bg:hover{
+		transform: scale(1.1);
+	}
+	#btn-event-bgs:hover{
+		transform: scale(1.1);
+	} */
 </style>
 
 <div class="event-headline-component">
-	<div class="px-3 pt-5">
-		<span class="font-weight-bold">{{ $event->display_start_date }}</span>
+	<div class="pb-3 px-3">
 		<h5 class="font-weight-bold mt-3">{{ $event->name}}</h5>
+		<span class="font-weight-bold">{{ $event->display_start_date }}</span>
 	</div>
-
+	<div class="pb-3 px-3">
+		<p>{{$event->description}}</p>
+	</div>
 	<div class="px-3 pb-3">
 		<div class="mb-5">
 			<h4 id="demo">Countdown</h4>
 			<p>Event Starts In</p>
 		</div>
-		<div>
-			<p>{{$event->description}}</p>
-		</div>
 		<div style="display: flex; flex-direction: row; justify-content: space-between">
-			<a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-danger ml-2">Join
+			<a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-gray ml-2" id="btn-event-bg">Join
 				as Exhibitor</a>
-			<a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as
+			<a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-gray ml-2" id="btn-event-bgs">Join as
 				Participants</a>
 		</div>
 	</div>

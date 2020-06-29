@@ -5,6 +5,9 @@
 @section('content')
 
 <style type="text/css">
+	.event-single-page .btn-danger{
+		border-radius: 4px;
+	}
 	/* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
 		.event-single-header {
@@ -200,12 +203,9 @@
 							</div>
 							<div class="card-footer text-center">
 								@guest
-								<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
-									style="width: 100%">Login
-									To Purchase</a>
+									<a href="{{ route('login') }}" class="btn btn-danger btn-outline-danger" style="width: 100%">Login To Purchase</a>
 								@else
-								<button type="submit" class="btn btn-block font-weight-bold btn-danger" style="width: 100%">Buy
-									Ticket</button>
+									<button type="submit" class="btn btn-danger" style="width: 100%">Buy Ticket</button>
 								@endguest
 							</div>
 						</div>
