@@ -1,30 +1,35 @@
 <style type="text/css">
-    .event-headline-component{
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
-        flex-flow: column;
-        justify-content: space-between;
-    }
+	.event-headline-component {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		width: 100%;
+		flex-flow: column;
+		justify-content: space-between;
+	}
 </style>
 
 <div class="event-headline-component">
-    <div class="px-3 pt-5">
-        <span class="font-weight-bold">{{ $event->display_start_date }}</span>
-        <h5  class="font-weight-bold mt-3">{{ $event->name}}</h5>
-    </div>
+	<div class="px-3 pt-5">
+		<span class="font-weight-bold">{{ $event->display_start_date }}</span>
+		<h5 class="font-weight-bold mt-3">{{ $event->name}}</h5>
+	</div>
 
-    <div class="px-3 pb-3">
-        <div class="mb-5">
-            <h4 id="demo">Countdown</h4>
-            <p>Event Starts In</p>
-        </div>
-        <div style="display: flex; flex-direction: row; justify-content: space-between">
-            <a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-danger ml-2">Join as Exhibitor</a>
-            <a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as Participants</a>
-        </div>
-    </div>
+	<div class="px-3 pb-3">
+		<div class="mb-5">
+			<h4 id="demo">Countdown</h4>
+			<p>Event Starts In</p>
+		</div>
+		<div>
+			<p>{{$event->description}}</p>
+		</div>
+		<div style="display: flex; flex-direction: row; justify-content: space-between">
+			<a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-danger ml-2">Join
+				as Exhibitor</a>
+			<a href="{{ route('cart', $event->id) }}?quantity=1" class="btn btn-outline-danger ml-2">Join as
+				Participants</a>
+		</div>
+	</div>
 </div>
 <script src="{{ asset('/plugins/countdown/jquery.countdown.js') }}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
