@@ -10,23 +10,23 @@
     }
     #card-product{
         position: relative;
-        width: 372px;
+        width: auto;
         height: 225px;
     }
     #card-product img{
         max-width: auto;
         max-height: 147px;
-        margin: 15px;
+        margin: 15px 0 15px 15px;
     }
     .card-body .card-text{
         color:#45f145;
         font-size: 16px;
     }
     #card-texts{
-        margin-top:9%;
+        margin-top:15%;
     }
     .add-to-cart{
-        margin-top:28%;
+        margin-top:29%;
         margin-right: 15px;
         margin-bottom: 15px;
     }
