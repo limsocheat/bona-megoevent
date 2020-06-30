@@ -60,6 +60,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/upcoming', 'PageController@upcoming')->name('upcoming');
     Route::get('/search', 'PageController@search')->name('search');
     Route::get('/contact', 'PageController@contact')->name('contact');
+    Route::get('/product', 'PageController@product')->name('product');
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
 
     Route::get('/event', 'PageController@events')->name('events');
@@ -82,7 +83,7 @@ Route::namespace('Front')->group(function () {
 
         Route::get('/event/{event}/exhibitor_registration', 'PageController@exhibitor_registration')->name('event.exhibitor_registration');
         Route::post('/event/{event}/exhibitor_registration', 'ExhibitorRegistrationController@store')->name('event.exhibitor_registration');
-        Route::post('/event_exhibitor/{event}', 'EventExhibitorController@store')->name('event_exhibitor.store');
+        Route::post('/event/{event}/event_exhibitor', 'EventExhibitorController@store')->name('event_exhibitor.store');
 
         // Manage 
         Route::prefix('manage')->group(function () {

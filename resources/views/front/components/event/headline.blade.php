@@ -5,7 +5,7 @@
 		height: 100%;
 		width: 100%;
 		flex-flow: column;
-		/* justify-content: space-between; */
+		justify-content: space-between;
 	}
 
 	.event-headline-component h5 {
@@ -54,11 +54,12 @@
 		background: #191a19;
 		display: inline-block;
 	}
-
-	/* .smalltext {
-		padding-top: 5px;
-		font-size: 16px;
-	} */
+	#multi-line-truncate {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 4;
+		overflow: hidden;
+	}
 </style>
 
 <div class="event-headline-component">
@@ -67,7 +68,7 @@
 		<span class="font-weight-bold">{{ $event->display_start_date }}</span>
 	</div>
 	<div class="px-3">
-		<p>{{$event->description}}</p>
+		<p id="multi-line-truncate">{{$event->description}}</p>
 	</div>
 	<div class="px-3 pb-3">
 		<div class="mb-4">
@@ -93,7 +94,7 @@
 			<p class="m-0">Event Starts In</p>
 		</div>
 		<div style="display: flex; flex-direction: row;">
-			<a href="{{ route('event.exhibitor_registration', $event->id) }}" class="btn btn-outline-gray ml-2"
+			<a href="{{ route('event.exhibitor_registration', $event->name) }}" class="btn btn-outline-gray ml-2"
 				id="btn-event-bg">Join
 				as Exhibitor</a>
 			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn btn-outline-gray ml-2"
