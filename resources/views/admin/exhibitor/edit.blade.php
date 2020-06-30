@@ -20,7 +20,6 @@
                 {!! Form::text('last_name', null, ['placeholder' => 'last_name', 'class' => 'form-control']) !!}
 			</div>
 			<div class="form-group">
-                
 				{!! Form::label('new_image', 'Logo :') !!}
                <input name="new_image" type="file" id="new_image" />
                 <img id="imagePreview" class="rounded mx-auto" src="{{ asset($exhibitor->logo) }}" alt="" style="width:200px;height:200px">
