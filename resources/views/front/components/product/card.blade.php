@@ -1,5 +1,5 @@
 <div class="col-sm-4">
-    <div class="card event-card" id="card-product">
+    <div class="card event-card mb-4" id="card-product">
         <div class="card-title pt-3 mb-0">
             <h4 class="ml-5 mb-0 font-weight-bold">Apple iPhone 11pro</h4>
         </div>
@@ -20,7 +20,7 @@
 </div>
         {{--  --}}
 <div class="col-sm-4">
-    <div class="card event-card" id="card-product">
+    <div class="card event-card mb-4" id="card-product">
         <div class="card-title pt-3 mb-0">
             <h4 class="ml-5 mb-0 font-weight-bold">Apple iPhone 11pro</h4>
         </div>
@@ -41,7 +41,7 @@
 </div>
      {{--  --}}
 <div class="col-sm-4">
-    <div class="card event-card" id="card-product">
+    <div class="card event-card mb-4" id="card-product">
         <div class="card-title pt-3 mb-0">
             <h4 class="ml-5 mb-0 font-weight-bold">Apple iPhone 11pro</h4>
         </div>

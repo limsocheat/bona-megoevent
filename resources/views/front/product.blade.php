@@ -20,7 +20,7 @@
     }
     .card-body .card-text{
         color:#45f145;
-        font-size: 20px;
+        font-size: 16px;
     }
     #card-texts{
         margin-top:9%;
