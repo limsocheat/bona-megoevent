@@ -295,6 +295,20 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+        [
+            'text'        => 'Product Categories',
+            'url'         => 'admin/product_category',
+            'icon'        => 'fa fa-list-alt',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Product',
+            'url'         => 'admin/product',
+            'icon'        => 'fa fa-archive',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
 
         ['header' => 'account_settings'],
         [

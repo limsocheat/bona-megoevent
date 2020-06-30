@@ -29,19 +29,21 @@ Route::namespace('Admin')->group(function () {
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
                 Route::resources([
-                    'user'      => 'UserController',
-                    'category'  => 'CategoryController',
-                    'type'      => 'TypeController',
-                    'option'    => 'OptionController',
-                    'exhibitor' => 'ExhibitorController',
-                    'event'     => 'EventController',
-                    'page'      => 'PageController',
-                    'banner'    => 'BannerController',
-                    'slide'     => 'SlideController',
-                    'purchase'  => 'PurchaseController',
-                    'ticket'    => 'TicketController',
-                    'location'  => 'LocationController',
-                    'contact'   =>  'ContactController'
+                    'user'               => 'UserController',
+                    'category'           => 'CategoryController',
+                    'type'               => 'TypeController',
+                    'option'             => 'OptionController',
+                    'exhibitor'          => 'ExhibitorController',
+                    'event'              => 'EventController',
+                    'page'               => 'PageController',
+                    'banner'             => 'BannerController',
+                    'slide'              => 'SlideController',
+                    'purchase'           => 'PurchaseController',
+                    'ticket'             => 'TicketController',
+                    'location'           => 'LocationController',
+                    'contact'            =>  'ContactController',
+                    'product_category'   => 'ProductCategoryController',
+                    'product'            => 'ProductController'
                 ]);
 
                 Route::get('/event/{event}/purchases', 'EventController@purchases')->name('event.purchases');
@@ -86,12 +88,13 @@ Route::namespace('Front')->group(function () {
         Route::prefix('manage')->group(function () {
             Route::name('manage.')->group(function () {
                 Route::resources([
-                    'company'   => 'CompanyController',
-                    'event'     => 'EventController',
-                    'purchase'  => 'PurchaseController',
-                    'ticket'    => 'TicketController',
-                    'order'     => 'OrderController',
-                    'order_ticket'  => 'OrderTicketController'
+                    'company'             => 'CompanyController',
+                    'event'               => 'EventController',
+                    'purchase'            => 'PurchaseController',
+                    'ticket'              => 'TicketController',
+                    'order'               => 'OrderController',
+                    'order_ticket'        => 'OrderTicketController',
+                    
                 ]);
                 Route::get('/', 'PageController@manage');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
