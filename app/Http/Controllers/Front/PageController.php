@@ -52,6 +52,8 @@ class PageController extends Controller
         return view('front.upcoming', $data);
     }
 
+
+
     public function search(Request $request)
     {
 
@@ -110,10 +112,10 @@ class PageController extends Controller
             'email' => 'required',
             'g-recaptcha-response' => 'required|captcha',
         ]);
-         $data         = $request->all();
+        $data         = $request->all();
         $contact = Contact::create($data);
-        if($contact){
-          return redirect(route('contact'))->with('success', 'Submit Successfully!');
+        if ($contact) {
+            return redirect(route('contact'))->with('success', 'Submit Successfully!');
         }
     }
 
@@ -148,10 +150,10 @@ class PageController extends Controller
         return view('front.event.show', $data);
     }
 
-    public function exhibitor_registration(Request $request, $id) 
+    public function exhibitor_registration(Request $request, $name)
     {
 
-        $event      = Event::findOrFail($id);
+        $event      = Event::where('name', $name)->first();
         $user       = auth()->user();
 
         $data       = [
@@ -211,10 +213,10 @@ class PageController extends Controller
 
         $token          = $request->input('token');
         $payer_id       = $request->input('PayerID');
-        if($token && $payer_id) {
-            $provider   = new ExpressCheckout(); 
+        if ($token && $payer_id) {
+            $provider   = new ExpressCheckout();
             $name       = $event->name;
-            $description= $event->description;
+            $description = $event->description;
             $data = [];
             $data['items'] = [
                 [
@@ -224,17 +226,17 @@ class PageController extends Controller
                     'qty'   => $quantity,
                 ],
             ];
-            $data['invoice_id'] = time().$event->id;
+            $data['invoice_id'] = time() . $event->id;
             $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
 
             $total = 0;
-            foreach($data['items'] as $item) {
+            foreach ($data['items'] as $item) {
                 $total += $item['price'] * $item['qty'];
             }
 
             $data['total'] = $total;
             $response = $provider->doExpressCheckoutPayment($data, $token, $payer_id);
-            if($response) {
+            if ($response) {
                 return redirect()->route('manage.purchase.store')->withInput([
                     'event_id'  => $event->id,
                     'quantity'  => $quantity,
@@ -249,7 +251,11 @@ class PageController extends Controller
             'price'     => $price,
             'subtotal'  => $quantity * $price,
         ];
-        
+
         return view('front.checkout.index', $data);
+    }
+    public function product()
+    {
+        return view('front.product');
     }
 }
