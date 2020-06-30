@@ -8,6 +8,8 @@ use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\EventType;
 use App\Models\Exhibitor;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Slide;
 use App\User;
 use Illuminate\Http\Request;
@@ -144,7 +146,7 @@ class PageController extends Controller
         $data       = [
             'entrances'         => Slide::select('*')->where('location', 'entrance')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
-            'event' => $event,
+            'event'             => $event,
         ];
 
         return view('front.event.show', $data);
@@ -256,6 +258,10 @@ class PageController extends Controller
     }
     public function product()
     {
-        return view('front.product');
+        $data =[
+            'products'            => Product::select('*')->limit(12)->get(),
+            'product_categories'  => ProductCategory::select('id', 'name')->pluck('name', 'id'),
+        ];
+        return view('front.product',$data);
     }
 }

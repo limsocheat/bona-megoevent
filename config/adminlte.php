@@ -309,6 +309,13 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+         [
+            'text'        => 'Booth Types',
+            'url'         => 'admin/booth_type',
+            'icon'        => 'fa fa-archive',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
 
         ['header' => 'account_settings'],
         [
