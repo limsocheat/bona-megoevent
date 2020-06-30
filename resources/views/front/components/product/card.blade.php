@@ -1,6 +1,6 @@
   <div class="card event-card mb-4" id="card-product">
         <div class="card-title pt-3 mb-0">
-        <h4 class="ml-5 mb-0 font-weight-bold">{{$product->name}}</h4>
+        <h4 class="ml-5 mr-5 mb-0 font-weight-bold text-truncate">{{$product->name}}</h4>
         </div>
         <div class="card-horizontal">
             <div class="img-square-wrapper">
