@@ -10,7 +10,7 @@
     }
     #card-product{
         position: relative;
-        width:400px;
+        width: 372px;
         height: 225px;
     }
     #card-product img{
@@ -32,11 +32,14 @@
     }
 
 </style>
-    <div class="container">
-		<div class="row my-4">
-            {{-- <div class="col-md-4 mb-4"> --}}
-                @include('front.components.product.card')
-            {{-- </div> --}}
-		</div>
-	</div>
+<div class="container">
+    <div class="row my-2">
+        <div class="col-md-12">
+			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Highlighted Events</h1>
+        </div>
+        <div class="col-md-4 mb-4">
+            @include('front.components.product.card')
+        </div>
+    </div>
+</div>
 @endsection
