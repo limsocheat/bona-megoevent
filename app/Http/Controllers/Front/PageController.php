@@ -256,12 +256,24 @@ class PageController extends Controller
 
         return view('front.checkout.index', $data);
     }
-    public function product()
+    public function products()
     {
-        $data =[
+        $data = [
             'products'            => Product::select('*')->limit(12)->get(),
             'product_categories'  => ProductCategory::select('id', 'name')->pluck('name', 'id'),
         ];
-        return view('front.product',$data);
+        return view('front.product', $data);
+    }
+    public function product(Request $request, $id)
+    {
+
+        $product      = Product::findOrFail($id);
+
+        $data       = [
+            'product_categories'  => ProductCategory::select('id', 'name')->pluck('name', 'id'),
+            'product'             => $product,
+        ];
+
+        return view('front.components.product.show', $data);
     }
 }

@@ -91,8 +91,20 @@
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
-                        <div class="col-md-12 pt-3">
 
+                        <div class="col-md-12 pt-3">
+                            <label class="active">Floor Plan</label>
+                            <button type="button" class="btn btn-secondary" id="floor-plan-image-chooser">Choose
+                                Image</button>
+                            {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
+                            'display: none;']) !!}
+                        </div>
+                        <div class="col-md-12">
+                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer"
+                                class="img-fluid" alt="Feature Image Previewer">
+                        </div>
+
+                        <div class="col-md-12 pt-3">
                             <label class="active">Videos</label>
                             <div class="controls"> 
                                 <div class="entry input-group col-xs-3">
@@ -304,6 +316,23 @@
                     $('#feature-image-previewer').attr('src', e.target.result);
                 }
                 
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        $("#floor-plan-image-chooser").click(function() {
+            $("#floor-plan-image-uploader").click();
+        });
+        
+        $("#floor-plan-image-uploader").change(function() {
+        
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#floor-plan-image-previewer').attr('src', e.target.result);
+                }
+            
                 reader.readAsDataURL(this.files[0]);
             }
         });

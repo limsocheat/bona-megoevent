@@ -51,6 +51,12 @@
 								style="width:100%; height: 450px; ">
 						</div>
 						@endfor
+						@if($event->floor_image)
+						<div class="carousel-item">
+							<img class="d-block w-100" src="{{ $event->floor_image }}" alt="Floor Image"
+								class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
+						</div>
+						@endif
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>

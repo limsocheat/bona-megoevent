@@ -113,7 +113,12 @@ class EventController extends Controller
             $image->move('uploads', $name);
             $data['image'] = '/uploads/'.$name;
         }
-
+        if ($image   = $request->file('floor_plan_image')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time() . '_' . $name;
+            $image->move('uploads', $name);
+            $data['floor_plan_image'] = '/uploads/' . $name;
+        }
         $event                      = Event::create($data);
 
         $banners    = [];
@@ -216,7 +221,12 @@ class EventController extends Controller
             $image->move('uploads', $name);
             $data['image'] = '/uploads/'.$name;
         }
-
+        if ($image   = $request->file('floor_plan_image')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time() . '_' . $name;
+            $image->move('uploads', $name);
+            $data['floor_plan_image'] = '/uploads/' . $name;
+        }
         $event->update($data);
 
         if(count($event->banners)) {

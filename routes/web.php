@@ -61,12 +61,14 @@ Route::namespace('Front')->group(function () {
     Route::get('/upcoming', 'PageController@upcoming')->name('upcoming');
     Route::get('/search', 'PageController@search')->name('search');
     Route::get('/contact', 'PageController@contact')->name('contact');
-    Route::get('/product', 'PageController@product')->name('product');
+    Route::get('/product', 'PageController@products')->name('product');
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
 
     Route::get('/event', 'PageController@events')->name('events');
-    Route::get('/event/{event}', 'PageController@event')->name('event');
+    Route::get('/event/{event}', 'PageControllere@vent')->name('event');
     // Route::get('/ticket','PageController@ticket')->name('ticket');
+    // product show
+    Route::get('product/{product}', 'PageController@product')->name('show.product');
 
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
@@ -100,7 +102,7 @@ Route::namespace('Front')->group(function () {
                     'ticket'              => 'TicketController',
                     'order'               => 'OrderController',
                     'order_ticket'        => 'OrderTicketController',
-                    
+
                 ]);
                 Route::get('/', 'PageController@manage');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
