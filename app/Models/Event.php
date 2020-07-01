@@ -10,7 +10,7 @@ class Event extends Model
 {
 
     protected $fillable = [
-        'mode', 'organizer_id', 'image',
+        'mode', 'organizer_id', 'image', 'floor_plan_image',
         'event_experience_id', 'event_team_id', 'event_frequency_id',
         'event_attendance_id', 'location_id', 'type_id', 'category_id',
         'name', 'start_date', 'start_time', 'end_date', 'end_time',
@@ -63,6 +63,9 @@ class Event extends Model
     public function getImageUrlAttribute()
     {
         return $this->image ? url($this->image) : asset('/images/event_feature_image_placeholder.png');
+    }
+    public function getFloorImageAttribute(){
+        return $this->floor_plan_image ? url($this->floor_plan_image) : asset('/images/event_feature_image_placeholder.png');
     }
 
     public function getDisplayStartDateAttribute()

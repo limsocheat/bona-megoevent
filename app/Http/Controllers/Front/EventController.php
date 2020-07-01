@@ -88,24 +88,30 @@ class EventController extends Controller
         $data                       = $request->all();
         $data['organizer_id']       = $organizer->id;
 
-        if($image   = $request->file('image')) {
+        if ($image   = $request->file('image')) {
             $name   = $image->getClientOriginalName();
-            $name   = time().'_'.$name;
+            $name   = time() . '_' . $name;
             $image->move('uploads', $name);
-            $data['image'] = '/uploads/'.$name;
+            $data['image'] = '/uploads/' . $name;
+        }
+        if ($image   = $request->file('floor_plan_image')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time() . '_' . $name;
+            $image->move('uploads', $name);
+            $data['floor_plan_image'] = '/uploads/' . $name;
         }
 
         $event                      = Event::create($data);
 
         $banners    = [];
-        if($files= $request->file('images')){
+        if ($files = $request->file('images')) {
 
-            foreach($files as $file){
-                $name= $file->getClientOriginalName();
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
                 $file->move('upload', $name);
                 $images[] = $name;
 
-                $banners[] = New Banner([
+                $banners[] = new Banner([
                     'name'      => $event->name,
                     'location'  => 'event',
                     'image'     => $name,
@@ -113,21 +119,21 @@ class EventController extends Controller
             }
         }
 
-        if(count($banners)) {
+        if (count($banners)) {
             $event->banners()->saveMany($banners);
         }
 
         $event->videos()->delete();
         $videos     = [];
-        foreach($request->videos as $video) {
-            if($video) {
+        foreach ($request->videos as $video) {
+            if ($video) {
                 $videos[] = new Video([
                     'url'   => $video,
                 ]);
             }
         }
 
-        if(count($videos)) {
+        if (count($videos)) {
             $event->videos()->saveMany($videos);
         }
 
@@ -191,28 +197,35 @@ class EventController extends Controller
 
         $data       = $request->all();
 
-        if($image   = $request->file('image')) {
+        if ($image   = $request->file('image')) {
             $name   = $image->getClientOriginalName();
-            $name   = time().'_'.$name;
+            $name   = time() . '_' . $name;
             $image->move('uploads', $name);
-            $data['image'] = '/uploads/'.$name;
+            $data['image'] = '/uploads/' . $name;
+        }
+
+        if ($image   = $request->file('floor_plan_image')) {
+            $name   = $image->getClientOriginalName();
+            $name   = time() . '_' . $name;
+            $image->move('uploads', $name);
+            $data['floor_plan_image'] = '/uploads/' . $name;
         }
 
         $event->update($data);
 
-        if(count($event->banners)) {
+        if (count($event->banners)) {
             $event->banners()->whereNotIn('id', $request->input('old'))->delete();
         }
-  
-        $banners    = [];
-        if($files= $request->file('images')){
 
-            foreach($files as $file){
-                $name= $file->getClientOriginalName();
+        $banners    = [];
+        if ($files = $request->file('images')) {
+
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
                 $file->move('upload', $name);
                 $images[] = $name;
 
-                $banners[] = New Banner([
+                $banners[] = new Banner([
                     'name'      => $event->name,
                     'location'  => 'event',
                     'image'     => $name,
@@ -220,21 +233,21 @@ class EventController extends Controller
             }
         }
 
-        if(count($banners)) {
+        if (count($banners)) {
             $event->banners()->saveMany($banners);
         }
 
         $event->videos()->delete();
         $videos     = [];
-        foreach($request->videos as $video) {
-            if($video) {
+        foreach ($request->videos as $video) {
+            if ($video) {
                 $videos[] = new Video([
                     'url'   => $video,
                 ]);
             }
         }
 
-        if(count($videos)) {
+        if (count($videos)) {
             $event->videos()->saveMany($videos);
         }
 

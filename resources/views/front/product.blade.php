@@ -8,7 +8,6 @@
         display: flex;
         flex: 1 1 auto;
     }
-
     #card-product {
         position: relative;
         width: auto;
@@ -29,10 +28,13 @@
     #card-texts {
         margin-top: 12%;
     }
-
+    #card-texts a{
+        text-decoration: none;
+    }
     .add-to-cart {
         margin-top: 6rem;
-        margin-right: 15px;
+        float: right;
+        margin-right: 10px;
         margin-bottom: 15px;
 
     }
