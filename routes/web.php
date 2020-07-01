@@ -76,6 +76,10 @@ Route::namespace('Front')->group(function () {
         // Register Event
         Route::get('/event/{event}/cart', 'PageController@cart')->name('cart');
         Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
+        
+       // Cart
+        Route::get('/cart','CartController@index');
+        Route::post('/cart','CartController@store');
 
         // Paypal Payment
         Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
