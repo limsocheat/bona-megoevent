@@ -136,7 +136,7 @@
     }
     
     .add-to-cart, .like {
-        background: #ff9f1a;
+        background: #3490dc;
         padding: 1.2em 1.5em;
         border: none;
         text-transform: UPPERCASE;
@@ -145,8 +145,11 @@
         -webkit-transition: background .3s ease;
         transition: background .3s ease; 
     }
+    .add-to-cart i, .like i{
+        font-size: 20px;
+    }
     .add-to-cart:hover, .like:hover {
-        background: #b36800;
+        background: #646464fd;
         color: #fff;
     }
     
@@ -160,47 +163,17 @@
         color: #fff; 
     }
     
-    .orange {
-    background: #ff9f1a; }
-    
-    .green {
-        background: #85ad00; 
-    }
-    
-    .blue {
-        background: #0076ad;
-    }
-    
     .tooltip-inner {
         padding: 1.3em; 
     }
     
-    /* @-webkit-keyframes opacity {
-    0% {
-    opacity: 0;
-    -webkit-transform: scale(3);
-    transform: scale(3); }
-    100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1); } }
-    
-    @keyframes opacity {
-    0% {
-    opacity: 0;
-    -webkit-transform: scale(3);
-    transform: scale(3); }
-    100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1); } } */
 </style>
 
 <div class="container ">
     {{-- <h3>Product detail</h3> --}}
     {{-- <h1>{{$product->name}}</h1>
     <img src="{{$product->image}}" alt=""> --}}
-        <div class="card mb-5">
+        <div class="card mb-5 p-3">
             <div class="container-fliud">
                 <div class="wrapper row">
                     <div class="preview col-md-6">
@@ -211,34 +184,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="details col-md-6">
+                    <div class="details col-md-6 p-3">
                         <h1>{{$product->name}}</h1>
-                        {{-- <div class="rating">
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
-                            <span class="review-no">41 reviews</span>
-                        </div> --}}
                         <p class="product-description">A transformative triple‑camera system that adds tons of capability without complexity. An unprecedented leap in battery
-                        life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can
-                        do. Welcome to the first iPhone powerful enough to be called Pro.</p>
+                            life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can
+                            do. Welcome to the first iPhone powerful enough to be called Pro.</p>
                         <h4 class="price">current price: <span>$180</span></h4>
-                        {{-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> --}}
-                        {{-- <h5 class="sizes">sizes:</h5> --}}
-                        <h5 class="colors">colors: Black</h5>
+                        <h5 class="colors mb-4">colors: Black</h5>
                         <div class="action">
-                            <button class="add-to-cart btn btn-default" type="button">Add to Cart <i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-                            <button class="like btn btn-default" type="button"> Buy Now <i class="fa fa-shopping-basket" aria-hidden="true"></i></span></button>
+                            <button class="add-to-cart btn btn-default mr-4 mb-4" type="button">Add to Cart  <i class="fa fa-cart-plus pl-3" aria-hidden="true"></i></button>
+                            <button class="like btn btn-default mb-4" type="button"> Buy Now  <i class="fa fa-shopping-basket pl-3" aria-hidden="true"></i></span></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-   
 </div>
 @endsection
