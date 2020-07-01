@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             PagesTableSeeder::class,
             BannersTableSeeder::class,
             SlideTableSeeder::class,
-            ProductTableSeeder::class
+            ProductTableSeeder::class,
+            ProductCategoryTableSeeder::class
 
         ]);
     }

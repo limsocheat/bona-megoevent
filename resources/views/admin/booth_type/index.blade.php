@@ -20,6 +20,7 @@
                     <th>Pricing</th>
                     <th>Total Per Event</th>
                     <th>Description</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
