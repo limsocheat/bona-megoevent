@@ -312,7 +312,7 @@ return [
          [
             'text'        => 'Booth Types',
             'url'         => 'admin/booth_type',
-            'icon'        => 'fa fa-archive',
+            'icon'        => 'fa fa-cogs',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
