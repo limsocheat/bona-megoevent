@@ -12,13 +12,13 @@
     #card-product {
         position: relative;
         width: auto;
-        height: 225px;
+        height: 190px;
     }
 
     #card-product img {
-        width: 160px;
-        height: 140px;
-        margin: 15px 15px 15px 15px;
+        width: 130px;
+        height: 110px;
+        margin: 18px 18px 18px 18px;
     }
 
     .card-body .card-text {
@@ -27,11 +27,11 @@
     }
 
     #card-texts {
-        margin-top: 15%;
+        margin-top: 12%;
     }
 
     .add-to-cart {
-        margin-top: 29%;
+        margin-top: 6rem;
         margin-right: 15px;
         margin-bottom: 15px;
 
