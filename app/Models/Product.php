@@ -22,4 +22,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Sale::class, 'sale_products', 'product_id', 'sale_id');
     }
+
+    public function getSoldQuantityAttribute()
+    {
+        return $this->sales()->sum('quantity');
+    }
+
+    public function getAvailableQuantityAttribute()
+    {
+        return $this->quantity - $this->sold_quantity;
+    }
 }
