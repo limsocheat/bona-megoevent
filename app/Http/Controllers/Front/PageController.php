@@ -257,10 +257,23 @@ class PageController extends Controller
 
         return view('front.checkout.index', $data);
     }
-    public function products()
+    public function products(Request $request)
     {
+
+        $name       = $request->input('name');
+        $category   = $request->input('category');
+        $products   = Product::select('*')
+            ->when($name, function($query, $name) {
+                return $query->where('name', 'LIKE', "%$name%");
+            })
+            ->when($category, function($query, $category) {
+                return $query->where('category_id', $category);
+            })
+            ->limit(12)
+            ->get();
+
         $data = [
-            'products'            => Product::select('*')->limit(12)->get(),
+            'products'            => $products,
             'product_categories'  => ProductCategory::select('id', 'name')->pluck('name', 'id'),
         ];
         return view('front.product', $data);

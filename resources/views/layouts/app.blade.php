@@ -91,6 +91,19 @@
                                                     </a>
                                                 </li>
                                             </div>
+                                            <div class="col-xs-3">
+                                                <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
+                                                    title="Cart">
+                                                    <a href="{{ route('cart.index') }}" class="nav-link">
+                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        <sup>
+                                                            <div class="badge badge-danger">
+                                                                {{ Cart::session(auth()->id())->getTotalQuantity() }}
+                                                            </div>
+                                                        </sup>
+                                                    </a>
+                                                </li>
+                                            </div>
                                             @guest
                                             <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                 title="Sign Up">

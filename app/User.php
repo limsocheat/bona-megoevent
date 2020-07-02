@@ -9,6 +9,7 @@ use App\Models\Exhibitor;
 use App\Models\Organizer;
 use App\Models\Participant;
 use App\Models\Profile;
+use App\Models\Sale;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -87,5 +88,10 @@ class User extends Authenticatable implements MustVerifyEmail
             ->withPivot([
                 'status'
             ]);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
     }
 }

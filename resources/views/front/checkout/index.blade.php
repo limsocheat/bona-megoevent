@@ -9,9 +9,11 @@
 
 			<div class="row">
 				@if (\Session::has('error'))
-				<div class="alert alert-danger">
-					{!! \Session::get('error') !!}
-				</div>
+					<div class="col-md-12">
+						<div class="alert alert-danger">
+							{!! \Session::get('error') !!}
+						</div>
+					</div>
 				@endif
 				<div class="col-md-6 py-2">
 					{!! Form::model($user, ['route' => 'manage.purchase.store', 'method' => 'POST']) !!}

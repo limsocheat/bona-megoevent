@@ -168,6 +168,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Buzz\LaravelGoogleCaptcha\CaptchaFacade::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,  
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
     ],
 
 ];

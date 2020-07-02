@@ -23,7 +23,7 @@
         <div class="row pl-2 pr-2">
             <div class="col-sm form-group">
                 {!! Form::label('name', 'Name', ['class' => 'label-control']) !!}
-                {!! Form::text('name', request()->Name, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+                {!! Form::text('name', request()->name, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
             </div>
             <div class="col-sm form-group">
                 {!! Form::label('category', 'Category', ['class' => 'label-control']) !!}

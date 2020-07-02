@@ -17,6 +17,8 @@ class CreateSaleProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('sale_id')->index();
             $table->unsignedBigInteger('product_id')->index();
+            $table->double('quantity')->default(0);
+            $table->double('price')->default(0);
             $table->timestamps();
 
             $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');

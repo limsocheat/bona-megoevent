@@ -17,8 +17,9 @@
       </a>
     </div>
     <div class="add-to-cart">
-       
-      <a href="{{route('cart.add',$product->id)}}" class="btn btn-primary p-1">Add to Cart</a>
+	  {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+		{!! Form::submit('Add To Cart', ['class' => 'btn btn-primary p-1']) !!}
+      {!! Form::close() !!}
     </div>
   </div>
 </div>

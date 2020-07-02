@@ -65,26 +65,31 @@ Route::namespace('Front')->group(function () {
     Route::post('/contact', 'PageController@submitContact')->name('contact.submit');
 
     Route::get('/event', 'PageController@events')->name('events');
-    Route::get('/event/{event}', 'PageControllere@vent')->name('event');
+    Route::get('/event/{event}', 'PageController@event')->name('event');
     // Route::get('/ticket','PageController@ticket')->name('ticket');
     // product show
     Route::get('product/{product}', 'PageController@product')->name('show.product');
     
-    // Cart
-    Route::get('/cart','CartController@index');
-    Route::get('/add-to-cart/{product}','CartController@add')->name('cart.add');
 
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
 
     Route::middleware(['auth', 'verified'])->group(function () {
 
+        // Cart
+        Route::get('/cart','CartController@index')->name('cart.index');
+        Route::post('/cart/add/{product}','CartController@add')->name('cart.add');
+        Route::put('/cart/update/{row}', 'CartController@update')->name('cart.update');
+        Route::delete('/cart/remove/{row}','CartController@remove')->name('cart.remove');
+        Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+        Route::post('/checkout/paypal/submit', 'CheckoutController@paypal_submit')->name('checkout.paypal.submit');
+        Route::get('/checkout/paypal/success', 'CheckoutController@paypal_success')->name('checkout.paypal.success');
+        Route::get('/checkout/paypal/cancel', 'CheckoutController@paypal_cancel')->name('checkout.paypal.cancel');
+
         // Register Event
         Route::get('/event/{event}/cart', 'PageController@cart')->name('cart');
-        Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
-        
+        Route::get('/event/{event}/checkout', 'PageController@checkout')->name('checkout');
    
-
         // Paypal Payment
         Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
         Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
