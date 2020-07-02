@@ -27,12 +27,12 @@ class PurchaseController extends Controller
         $user       = auth()->user();
 
         $purchases      = Purchase::select('*')->where('user_id', $user->id)->get();
-        $saleproducts   = Sale::select('*')->where('user_id',$user)->get();
+        $sales          = Sale::select('*')->where('user_id', $user->id)->get();
 
 
         $data       = [
-            'purchases'      => $purchases,
-            'saleproducts'   => $saleproducts
+            'purchases' => $purchases,
+            'sales'     => $sales
         ];
 
         return view('front.manage.purchase.index', $data);

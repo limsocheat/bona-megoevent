@@ -45,7 +45,7 @@ Route::namespace('Admin')->group(function () {
                     'product_category'   => 'ProductCategoryController',
                     'product'            => 'ProductController',
                     'booth_type'         => 'BoothTypeController',
-                    'sale_product'       =>  'SaleProductController'
+                    'sales'              =>  'SaleController'
                 ]);
 
                 Route::get('/event/{event}/purchases', 'EventController@purchases')->name('event.purchases');
@@ -117,6 +117,7 @@ Route::namespace('Front')->group(function () {
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
                 Route::get('/event_exhibitor/{event}', 'EventExhibitorController@show')->name('event_exhibitor.show');
+                Route::get('/sale/{sale}', 'SaleController@show')->name('sale.show');
             });
         });
     });

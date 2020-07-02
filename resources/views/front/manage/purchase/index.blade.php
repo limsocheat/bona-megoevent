@@ -7,7 +7,7 @@
 
     <div class="card mb-4">
         <div class="card-header">
-            <h2>Purchase</h2>
+            <h2>Event Purchase</h2>
         </div>
         <div class="card-body">
              <div class="table-responsive">
@@ -38,28 +38,28 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h2>Purchase</h2>
+            <h2>Product Purchase</h2>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Image</th>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Sub Total</th>
+                            <th>#</th>
+                            <th>User</th>
+                            <th>Total</th>
+                            <th>Created At</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($purchases as $purchase)
+                        @foreach ($sales as $sale)
                         <tr>
-                            <td>{{ $purchase->id }}</td>
-                            <td>{{ $purchase->event ? $purchase->event->name : null }}</td>
-                            <td>{{ $purchase->user ? $purchase->user->name : null }}</td>
-                            <td>{{ $purchase->quantity }}</td>
-                            <td>{{ $purchase->display_created_at }}</td>
+                            <td>{{ $sale->id }}</td>
+                            <td>{{ $sale->user ? $sale->user->name : null }}</td>
+                            <td>{{ $sale->total }}</td>
+                            <td>{{ $sale->display_created_at }}</td>
+                            <td><a href="{{ route('manage.sale.show', $sale->id) }}" class="btn btn-primary">View</a></td>
                         </tr>
                         @endforeach
                     </tbody>

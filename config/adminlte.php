@@ -317,8 +317,8 @@ return [
             // 'label_color' => 'success',
         ],
         [
-            'text'        => 'Sale Products',
-            'url'         => 'admin/sale_product',
+            'text'        => 'Sales',
+            'url'         => 'admin/sales',
             'icon'        => 'fa fa-cogs',
             // 'label'       => 4,
             // 'label_color' => 'success',
