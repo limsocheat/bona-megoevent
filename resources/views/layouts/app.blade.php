@@ -96,11 +96,14 @@
                                                     title="Cart">
                                                     <a href="{{ route('cart.index') }}" class="nav-link">
                                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        @guest
+                                                        @else
                                                         <sup>
                                                             <div class="badge badge-danger">
                                                                 {{ Cart::session(auth()->id())->getTotalQuantity() }}
                                                             </div>
                                                         </sup>
+                                                        @endif
                                                     </a>
                                                 </li>
                                             </div>
