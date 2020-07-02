@@ -180,7 +180,7 @@
     
                         <div class="preview-pic tab-content">
                             <div class="tab-pane active" id="pic-1">
-                                <img src="{{$product->image}}" alt="">
+                                <img src="{{$product->image_url}}" alt="">
                             </div>
                         </div>
                     </div>
