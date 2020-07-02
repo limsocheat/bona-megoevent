@@ -21,7 +21,9 @@
                     <th>Category Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Description</th>
+                    <th>Sold</th>
+                    <th>Available </th>
+                    <th style="width: 300px">Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,7 +35,9 @@
                         <td>{{ $product->category ?$product->category->name :null}}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->quantity }}</td>
-                         <td>{{ $product->description }}</td>
+                        <td>{{ $product->sold_quantity }}</td>
+                        <td>{{ $product->available_quantity }}</td>
+                        <td>{{ $product->description }}</td>
                         <td>
                             <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
                             {!! Form::open(['route' => ['admin.product.destroy', $product->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
