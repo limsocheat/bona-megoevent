@@ -15,6 +15,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
+
 class PageController extends Controller
 {
     public function index()
@@ -276,4 +277,5 @@ class PageController extends Controller
 
         return view('front.components.product.show', $data);
     }
+   
 }

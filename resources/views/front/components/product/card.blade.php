@@ -17,7 +17,8 @@
       </a>
     </div>
     <div class="add-to-cart">
-      <a href="#" class="btn btn-primary p-1">Add to Cart</a>
+       
+      <a href="{{route('cart.add',$product->id)}}" class="btn btn-primary p-1">Add to Cart</a>
     </div>
   </div>
 </div>

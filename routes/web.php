@@ -69,6 +69,10 @@ Route::namespace('Front')->group(function () {
     // Route::get('/ticket','PageController@ticket')->name('ticket');
     // product show
     Route::get('product/{product}', 'PageController@product')->name('show.product');
+    
+    // Cart
+    Route::get('/cart','CartController@index');
+    Route::get('/add-to-cart/{product}','CartController@add')->name('cart.add');
 
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
@@ -79,9 +83,7 @@ Route::namespace('Front')->group(function () {
         Route::get('/event/{event}/cart', 'PageController@cart')->name('cart');
         Route::get('/checkout/{event}', 'PageController@checkout')->name('checkout');
         
-       // Cart
-        Route::get('/cart','CartController@index');
-        Route::post('/cart','CartController@store');
+   
 
         // Paypal Payment
         Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
