@@ -10,6 +10,8 @@ use App\Models\EventType;
 use App\Models\Exhibitor;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Sale;
+use App\Models\SaleProduct;
 use App\Models\Slide;
 use App\User;
 use Illuminate\Http\Request;
@@ -290,5 +292,6 @@ class PageController extends Controller
 
         return view('front.components.product.show', $data);
     }
+ 
    
 }

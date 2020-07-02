@@ -44,7 +44,8 @@ Route::namespace('Admin')->group(function () {
                     'contact'            =>  'ContactController',
                     'product_category'   => 'ProductCategoryController',
                     'product'            => 'ProductController',
-                    'booth_type'         => 'BoothTypeController'
+                    'booth_type'         => 'BoothTypeController',
+                    'sale_product'       =>  'SaleProductController'
                 ]);
 
                 Route::get('/event/{event}/purchases', 'EventController@purchases')->name('event.purchases');
@@ -85,7 +86,7 @@ Route::namespace('Front')->group(function () {
         Route::post('/checkout/paypal/submit', 'CheckoutController@paypal_submit')->name('checkout.paypal.submit');
         Route::get('/checkout/paypal/success', 'CheckoutController@paypal_success')->name('checkout.paypal.success');
         Route::get('/checkout/paypal/cancel', 'CheckoutController@paypal_cancel')->name('checkout.paypal.cancel');
-
+      
         // Register Event
         Route::get('/event/{event}/cart', 'PageController@cart')->name('cart');
         Route::get('/event/{event}/checkout', 'PageController@checkout')->name('checkout');

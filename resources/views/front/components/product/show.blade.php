@@ -192,8 +192,10 @@
                         <h4 class="price">current price: <span>$180</span></h4>
                         <h5 class="colors mb-4">colors: Black</h5>
                         <div class="action">
-                            <button class="add-to-cart btn btn-default mr-4 mb-4" type="button">Add to Cart  <i class="fa fa-cart-plus pl-3" aria-hidden="true"></i></button>
-                            <button class="like btn btn-default mb-4" type="button"> Buy Now  <i class="fa fa-shopping-basket pl-3" aria-hidden="true"></i></span></button>
+                             {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
+                                <button type="submit" class="add-to-cart btn btn-default mr-4 mb-4" type="button">Add to Cart  <i class="fa fa-cart-plus pl-3" aria-hidden="true"></i></button>
+                             {!! Form::close() !!}
+                            {{-- <button class="like btn btn-default mb-4" type="button"> Buy Now  <i class="fa fa-shopping-basket pl-3" aria-hidden="true"></i></span></button> --}}
                         </div>
                     </div>
                 </div>

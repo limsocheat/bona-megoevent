@@ -303,15 +303,22 @@ return [
             // 'label_color' => 'success',
         ],
         [
-            'text'        => 'Product',
+            'text'        => 'Products',
             'url'         => 'admin/product',
             'icon'        => 'fa fa-archive',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-         [
+        [
             'text'        => 'Booth Types',
             'url'         => 'admin/booth_type',
+            'icon'        => 'fa fa-cogs',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Sale Products',
+            'url'         => 'admin/sale_product',
             'icon'        => 'fa fa-cogs',
             // 'label'       => 4,
             // 'label_color' => 'success',

@@ -8,6 +8,7 @@ use App\Mail\EventTicket;
 use App\Mail\TicketGenerated;
 use App\Models\Event;
 use App\Models\Purchase;
+use App\Models\SaleProduct;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +25,13 @@ class PurchaseController extends Controller
     {
         $user       = auth()->user();
 
-        $purchases  = Purchase::select('*')->where('user_id', $user->id)->get();
+        $purchases      = Purchase::select('*')->where('user_id', $user->id)->get();
+        $saleproducts   = SaleProduct::select('*')->where('user_id',$user)->get();
+
 
         $data       = [
-            'purchases' => $purchases,
+            'purchases'      => $purchases,
+            'saleproducts'   => $saleproducts
         ];
 
         return view('front.manage.purchase.index', $data);
