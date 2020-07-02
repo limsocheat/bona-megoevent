@@ -8,6 +8,7 @@ use App\Mail\EventTicket;
 use App\Mail\TicketGenerated;
 use App\Models\Event;
 use App\Models\Purchase;
+use App\Models\Sale;
 use App\Models\SaleProduct;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class PurchaseController extends Controller
         $user       = auth()->user();
 
         $purchases      = Purchase::select('*')->where('user_id', $user->id)->get();
-        $saleproducts   = SaleProduct::select('*')->where('user_id',$user)->get();
+        $saleproducts   = Sale::select('*')->where('user_id',$user)->get();
 
 
         $data       = [
