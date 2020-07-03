@@ -35,7 +35,7 @@
                                 <tr>
                                     <td><img src="{{ $item->image_url }}" class="img-thumbnail" /> </td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->quantity }}
+                                    <td>{{ $item->sale_products->quantity }}
                                     </td>
                                     <td>{{ $item->price }}</td>
                                     <td class="text-right">{{ $item->price * $item->quantity }}</td>

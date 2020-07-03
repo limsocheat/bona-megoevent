@@ -32,4 +32,5 @@ class Product extends Model
     {
         return $this->quantity - $this->sold_quantity;
     }
+    
 }
