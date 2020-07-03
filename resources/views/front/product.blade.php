@@ -11,13 +11,13 @@
     #card-product {
         position: relative;
         width: auto;
-        height: 190px;
+        height: 199px;
     }
 
     #card-product img {
-        width: 130px;
-        height: 110px;
-        margin: 18px 18px 18px 18px;
+        width: 100px;
+        height: 120px;
+        margin: 18px 25px 18px 25px;
     }
 
     .card-body .card-text {

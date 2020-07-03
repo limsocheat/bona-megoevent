@@ -19,7 +19,7 @@
 					{!! Form::model($user, ['route' => 'manage.purchase.store', 'method' => 'POST']) !!}
 					<div class="card">
 						<div class="card-header">
-							<h4 class="font-weight-bold">Billing Address</h4>
+							<h4 class="font-weight-bold">Delivery</h4>
 						</div>
 						<div class="card-body">
 							<div class="card-text">
@@ -27,14 +27,14 @@
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											{!! Form::label('profile[first_name]', 'First Name') !!}
-											{!! Form::text('profile[first_name]', null, ['placeholder' => 'Enter first
+											{!! Form::text('profile[first_name]', null, ['placeholder' => 'Enter First
 											name', 'class' => 'form-control', 'readonly' => false]) !!}
 										</div>
 									</div>
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											{!! Form::label('profile[last_name]', 'Last Name') !!}
-											{!! Form::text('profile[last_name]', null, ['placeholder' => 'Enter last
+											{!! Form::text('profile[last_name]', null, ['placeholder' => 'Enter Last
 											name', 'class' => 'form-control', 'readonly' => false]) !!}
 										</div>
 									</div>
@@ -43,7 +43,7 @@
 								<div class="mb-3">
 									<div class="form-group">
 										{!! Form::label('profile[address]', 'Address') !!}
-										{!! Form::text('profile[address]', null, ['placeholder' => 'Enter address',
+										{!! Form::text('profile[address]', null, ['placeholder' => 'Enter Address',
 										'class' => 'form-control', 'readonly' => false]) !!}
 									</div>
 								</div>
@@ -57,7 +57,7 @@
 								<div class="mb-3">
 									<div class="form-group">
 										{!! Form::label('email', 'E-Mail') !!}
-										{!! Form::email('email', null, ['placeholder' => 'Enter email', 'class' =>
+										{!! Form::email('email', null, ['placeholder' => 'Enter Email', 'class' =>
 										'form-control', 'readonly' => true]) !!}
 									</div>
 								</div>
