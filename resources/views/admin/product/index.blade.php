@@ -31,7 +31,7 @@
                 @foreach ($products as $product)
                     <tr>
 						<td>{{ $product->name}}</td>
-                        <td><img src="{{ $product->image_url }}" class="rounded mx-auto" alt="" width="50" height="50"></td>
+                        <td><img src="{{ $product->image_url }}" class="rounded mx-auto" alt="" width="48" height="53"></td>
                         <td>{{ $product->category ?$product->category->name :null}}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->quantity }}</td>

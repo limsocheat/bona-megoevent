@@ -19,7 +19,7 @@
 					{!! Form::model($user, ['route' => 'manage.purchase.store', 'method' => 'POST']) !!}
 					<div class="card">
 						<div class="card-header">
-							<h4 class="font-weight-bold">Delivery</h4>
+							<h4 class="font-weight-bold">Billing Address</h4>
 						</div>
 						<div class="card-body">
 							<div class="card-text">
