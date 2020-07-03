@@ -5,18 +5,9 @@
         color: black;
         border: 2px solid #efefef !important;
     }
-
-    /* #filter_form .group_date{
-        text-decoration: none ;
-        color: black;
-        border-radius: 2px solid black !important;
-    } */
     #filter_form select option:hover {
-        box-shadow: 0 0 10px 100px #1882A8 inset;
+        box-shadow: 0 0 10px 100px #9ee7ff inset;
     }
-    /* #from-controll{
-        margin-left: 15%;
-    } */
 </style>
 
 <form action="" class="col-md-12" id="filter_form">
