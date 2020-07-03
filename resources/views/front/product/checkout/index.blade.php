@@ -108,7 +108,7 @@
                         <p>&nbsp;</p>
 
                         {!! Form::open(['route' => 'checkout.paypal.submit', 'method' => 'POST']) !!}
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Pay With PayPal</button>
+                            <button class="btn btn-dark btn-lg btn-block" type="submit">Pay With PayPal</button>
                         {!! Form::close() !!}
                     </div>
                 </div>
