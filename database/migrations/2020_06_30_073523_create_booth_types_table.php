@@ -18,10 +18,20 @@ class CreateBoothTypesTable extends Migration
             $table->string('name');
             $table->double('pricing')->nullable()->default(0);
             $table->integer('total')->nullable()->default(0);
+            $table->text('vip_speech')->nullable();
+            $table->text('vip_moderator')->nullable();
+            $table->integer('ads_event')->nullable();
+            $table->integer('banner_ads_homepage')->nullable();
+            $table->string('number_products')->nullable();
+            $table->text('auction')->nullable();
+            $table->text('leads')->nullable();
+            $table->text('live_chat')->nullable();
+            $table->text('surveys')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
