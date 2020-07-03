@@ -84,14 +84,14 @@
 				</div>
 				<div>
 					<span class="minutes"></span>
-					<h6 class="text-dark">Mintes</h6>
+					<h6 class="text-dark">Minutes</h6>
 				</div>
 				<div>
 					<span class="seconds"></span>
 					<h6 class="text-dark">Seconds</h6>
 				</div>
 			</div>
-			<p class="m-0">Event Starts In</p>
+			{{-- <p class="m-0">Event Starts In</p> --}}
 		</div>
 		<div style="display: flex; flex-direction: row;">
 			<a href="{{ route('event.exhibitor_registration', $event->name) }}" class="btn btn-outline-gray ml-2"

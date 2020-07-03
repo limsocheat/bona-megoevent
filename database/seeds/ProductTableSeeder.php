@@ -43,12 +43,13 @@ class ProductTableSeeder extends Seeder
                  'quantity'     => '10',
                  'image'        => '/products/product4.png',
              ],
-             [
-                 'name'         => 'IPhone 11 Pro Max',
-                 'price'        => '950',
-                 'quantity'     => '10',
-                 'image'        => '/products/product5.png',
-             ],
+
+            [
+                'name'         => 'Realme-c 11',
+                'price'        => '2500',
+                'quantity'     => '10',
+                'image'        => '/products/realme-c11.jpg',
+            ],
              
 
         ];
