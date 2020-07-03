@@ -32,7 +32,7 @@ class Sale extends Model
     public function getTotalAttribute()
     {
         $total  = 0;
-        $products = $this->products;
+        $products = $this->sale_products;
 
         foreach ($products as $item) {
             $subtotal   = $item['quantity'] * $item['price'];
