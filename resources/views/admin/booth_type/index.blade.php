@@ -19,8 +19,17 @@
                     <th>Name</th>
                     <th>Pricing</th>
                     <th>Total Per Event</th>
+                    <th>Vip Speech</th>
+                    <th>Vip Moderator</th>
+                    <th>Banner Ads on Event Front Page</th>
+                    <th>Banner Ads on Homepage</th>
+                    <th>Number of Products</th>
+                    <th>Auction</th>
+                    <th>Leads</th>
+                    <th>live Chat</th>
+                    <th>Surveys</th>
                     <th>Description</th>
-                    <th>Action</th>
+                    <th style="width: 150px">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +39,15 @@
                         <td>{{ $booth_type->name }}</td>
                         <td>{{ $booth_type->pricing }}</td>
                         <td>{{ $booth_type->total}}</td>
+                        <td>{{ $booth_type->vip_speech}}</td>
+                        <td>{{ $booth_type->vip_moderator}}</td>
+                        <td>{{ $booth_type->ads_event}}</td>
+                        <td>{{ $booth_type->banner_ads_homepage}}</td>
+                        <td>{{ $booth_type->number_products}}</td>
+                        <td>{{ $booth_type->auction}}</td>
+                        <td>{{ $booth_type->leads}}</td>
+                        <td>{{ $booth_type->live_chat}}</td>
+                        <td>{{ $booth_type->surveys}}</td>
                         <td>{{ $booth_type->description}}</td>
                      
                         <td>
