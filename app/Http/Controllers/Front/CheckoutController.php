@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Admin\ProductSold;
+use App\Mail\User\ProductPurchased;
 use App\Models\Sale;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
 class CheckoutController extends Controller
@@ -65,6 +69,9 @@ class CheckoutController extends Controller
 
     public function paypal_success(Request $request)
     {
+
+        $admin      = User::role('administrator')->first();
+
         $request->validate([
             'token'     => 'required',
             'PayerID'   => 'required',
@@ -111,6 +118,13 @@ class CheckoutController extends Controller
                 ]);
             }
 
+
+            // Send Email to Admin
+            Mail::to($admin)->send(new ProductSold($sale));
+
+            // Send Emal to User 
+            Mail::to($user)->send(new ProductPurchased($sale));
+            
             // Reset Cart
             $cart->clear();
             DB::commit();
