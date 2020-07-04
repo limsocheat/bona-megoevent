@@ -51,6 +51,12 @@
 
     <link rel="stylesheet" href="{{ asset('plugins/nice-select/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <style>
+        .navbar-nav #btn-organizer{
+            margin-top:12px;
+            margin-left: 4px;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,6 +80,12 @@
                                 <div class=" navbar-collapse d-flex justify-content-end">
                                     <ul class="navbar-nav navbar-right ml-auto">
                                         <div class="row ">
+
+                                            <div class="col-xs-3">
+                                                <li class="nav-item active mr-2" data-toggle="tooltip" data-placement="bottom" title="Own Event">
+                                                    <button type="button" class="btn btn-outline-secondary" id="btn-organizer">Organizer</button>
+                                                </li>
+                                            </div>
 
                                             <div class="col-xs-3">
                                                 <li class="nav-item actives" data-toggle="tooltip"

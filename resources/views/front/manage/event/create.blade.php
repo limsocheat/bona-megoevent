@@ -35,6 +35,10 @@
                     <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee"
                         aria-selected="false">Fee</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee"
+                        aria-selected="false">Venue</a>
+                </li>
             </ul>
         </div>
         <div class="card-body">
@@ -250,6 +254,14 @@
                                 {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of
                                 Pax', 'class' => 'form-control']) !!}
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="fee" role="tabpanel" aria-labelledby="fee-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>Hello</h1>
                         </div>
                     </div>
                 </div>
