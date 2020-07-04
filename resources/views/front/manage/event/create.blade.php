@@ -36,7 +36,7 @@
                         aria-selected="false">Fee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee"
+                    <a class="nav-link" id="venue-tab" data-toggle="tab" href="#venue" role="tab" aria-controls="venue"
                         aria-selected="false">Venue</a>
                 </li>
             </ul>
@@ -258,10 +258,20 @@
                     </div>
                 </div>
 
-                <div class="tab-pane" id="fee" role="tabpanel" aria-labelledby="fee-tab">
+                <div class="tab-pane" id="venue" role="tabpanel" aria-labelledby="venue-tab">
                     <div class="row">
                         <div class="col-md-6">
-                            <h1>Hello</h1>
+                            <div class="form-group">
+                                {!! Form::label('venue_size', 'Size') !!}
+                                {!! Form::number('size', null, ['placeholder' => 'Choose Size', 'class' =>'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {!! Form::label('diamond_max', 'Diamond Pax') !!}
+                                {!! Form::number('diamond_max', null, ['placeholder' => 'Diamond Pax', 'class' =>
+                                'form-control']) !!}
+                            </div>
                         </div>
                     </div>
                 </div>
