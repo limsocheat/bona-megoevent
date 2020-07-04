@@ -18,12 +18,12 @@
                 <tr>
                     <th>Name</th>
                     <th>Pricing</th>
-                    <th>Total Per Event</th>
+                    <th>Total </th>
                     <th>Vip Speech</th>
                     <th>Vip Moderator</th>
-                    <th>Banner Ads on Event Front Page</th>
-                    <th>Banner Ads on Homepage</th>
-                    <th>Number of Products</th>
+                    <th>Banner Page</th>
+                    <th>Banner Homepage</th>
+                    <th>Number</th>
                     <th>Auction</th>
                     <th>Leads</th>
                     <th>live Chat</th>
