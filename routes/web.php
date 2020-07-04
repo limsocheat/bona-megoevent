@@ -83,7 +83,7 @@ Route::namespace('Front')->group(function () {
         Route::put('/cart/update/{row}', 'CartController@update')->name('cart.update');
         Route::delete('/cart/remove/{row}','CartController@remove')->name('cart.remove');
         Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-        Route::post('/checkout/paypal/submit', 'CheckoutController@paypal_submit')->name('checkout.paypal.submit');
+        Route::put('/checkout/paypal/submit', 'CheckoutController@paypal_submit')->name('checkout.paypal.submit');
         Route::get('/checkout/paypal/success', 'CheckoutController@paypal_success')->name('checkout.paypal.success');
         Route::get('/checkout/paypal/cancel', 'CheckoutController@paypal_cancel')->name('checkout.paypal.cancel');
       

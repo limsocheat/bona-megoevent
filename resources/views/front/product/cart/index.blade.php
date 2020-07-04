@@ -72,15 +72,21 @@
                                 </tr>
                             </tbody>
                         </table>
-                    @else
-                            <div class="col-md-12 py-3" >
-                                <div class="alert alert-success">Your cart is empty</div>
+                    @else 
+                        <div class="col-sm-12 py-3">
+                            <div class="text-center">
+                                <img src="{{asset('images/cart_empty.png')}}" alt="" width="20%">
                             </div>
+                        </div>
+                        <div class="col-md-12 py-3">
+                            <div class="alert alert-success">Your Shopping Cart is empty</div>
+                        </div>
                     @endif
 			</div>
 
 			<div class="col mb-2">
 				<div class="row">
+                   
 					<div class="col-sm-12  col-md-6">
 						<a href="{{ route('product') }}" class="btn btn-lg btn-block btn-dark mb-4">Continue Shopping</a>
                     </div>
