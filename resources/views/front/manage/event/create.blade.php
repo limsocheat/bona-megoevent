@@ -268,9 +268,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {!! Form::label('diamond_max', 'Diamond Pax') !!}
-                                {!! Form::number('diamond_max', null, ['placeholder' => 'Diamond Pax', 'class' =>
-                                'form-control']) !!}
+                                {!! Form::label('level', 'Level') !!}
+                                {!! Form::number('level', null, ['placeholder' => 'Choose Level', 'class' =>'form-control']) !!}
                             </div>
                         </div>
                     </div>
