@@ -261,15 +261,16 @@
                 <div class="tab-pane" id="venue" role="tabpanel" aria-labelledby="venue-tab">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('venue_size', 'Size') !!}
-                                {!! Form::number('size', null, ['placeholder' => 'Choose Size', 'class' =>'form-control']) !!}
+                             <div class="form-group">
+                                {!! Form::label('size', 'Venue') !!}
+                                {!! Form::select('size', $venues, null, ['placeholder' => 'Select', 'class' =>
+                                'form-control']) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('level', 'Level') !!}
-                                {!! Form::number('level', null, ['placeholder' => 'Choose Level', 'class' =>'form-control']) !!}
+                                {!! Form::number('level', null, ['placeholder' => 'Level', 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>

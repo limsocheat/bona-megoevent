@@ -9,6 +9,7 @@ use App\Models\EventCategory;
 use App\Models\EventType;
 use App\Models\Location;
 use App\Models\Option;
+use App\Models\Venue;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -51,14 +52,16 @@ class EventController extends Controller
     public function create()
     {
         $data  = [
-            'event_experiences' => Option::select('id', 'name')->where('type', 'event_experience')->get()->pluck('name', 'id'),
-            'event_teams' => Option::select('id', 'name')->where('type', 'event_team')->get()->pluck('name', 'id'),
-            'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
-            'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
-            'event_attendances' => Option::select('id', 'name')->where('type', 'event_attendance')->get()->pluck('name', 'id'),
-            'event_locations' => Location::select('id', 'name')->get()->pluck('name', 'id'),
-            'types' => EventType::select('id', 'name')->get()->pluck('name', 'id'),
-            'categories' => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
+            'event_experiences'   => Option::select('id', 'name')->where('type', 'event_experience')->get()->pluck('name', 'id'),
+            'event_teams'         => Option::select('id', 'name')->where('type', 'event_team')->get()->pluck('name', 'id'),
+            'event_frequencies'   => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
+            'event_frequencies'   => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
+            'event_attendances'   => Option::select('id', 'name')->where('type', 'event_attendance')->get()->pluck('name', 'id'),
+            'event_locations'     => Location::select('id', 'name')->get()->pluck('name', 'id'),
+            'types'               => EventType::select('id', 'name')->get()->pluck('name', 'id'),
+            'categories'          => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
+            'venues'              => Venue::select('id','size')->get()->pluck('size', 'id'),
+            
         ];
 
         return view('front.manage.event.create', $data);
