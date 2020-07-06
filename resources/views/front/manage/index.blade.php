@@ -16,14 +16,12 @@
     }
    .menu-bar{
             width:100%;
-            /* height: 57px; */
         }
         .menu-bar ul{
             display: inline-flex;
             
         }
         .menu-bar ul li{
-            /* border-left: 1px solid #fff; */
             list-style-type: none;
             padding: 15px 35px;
             text-align: center;
@@ -36,7 +34,7 @@
         .menu-bar ul li a{
             font-size: 16px;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 10px 23.7px;
             color:rgb(12, 11, 11);
             text-decoration: none;
         }
@@ -52,7 +50,7 @@
             margin-left: 20px;
             font-size: 14px;
             z-index: 2;
-            background-color: #bf9000;
+            
         }
         .side-menu .active{
             background-color:white;
@@ -63,8 +61,12 @@
         .side-menu ul li{
             list-style-type: none;
             font-weight: bold;
-            margin-top: 10px;
+            /* margin-top: 10px; */
+            border-bottom:1px solid rgb(211, 211, 211);
             cursor: pointer;
+            background-color: #bf9000;
+            text-align: left;
+            padding: 0 18px;
         }
         .side-menu ul li:hover{
             color:orange;
@@ -90,29 +92,54 @@
         <h1>Manage</h1>
         <div class="top-nav-bar text-center m-0">
             <div class="menu-bar">
-                <ul class="m-0">
-                    <li class="active"><a href="#">Aloysius's Board!</a></li>
-                    <li class="item-active"><a href="#">Visit an Event!</a></li>
-                    <li class="item-active"><a href="#">Visit an Event!</a></li>
-                    <li class="item-active"><a href="#">Exhibit in an Event!</a></li>
-                    <li class="item-active"><a href="#"></i>Organise an Event!</a></li>
-                    <li class="item-active"><a href="#">Megoshopping!</a></li>
+                <ul class="m-0 p-0">
+                    <li class="active">
+                        <a href="#">Aloysius's Board!</a>
+                    </li>
+                    <li class="item-active">
+                        <a href="#">Visit an Event!</a>
+                    </li>
+                    <li class="item-active">
+                        <a href="#">Visit an Event!</a>
+                    </li>
+                    <li class="item-active">
+                        <a href="#">Exhibit in an Event!</a>
+                    </li>
+                    <li class="item-active">
+                        <a href="#"></i>Organise an Event!</a>
+                    </li>
+                    <li class="item-active">
+                        <a href="#">Megoshopping!</a>
+                    </li>
                     
                 </ul>
             </div>
         </div>
-        <div class="card text-center">
-            <section class="herder">
-                <div class="side-menu" id="side-menu">
-                    <ul>
-                        <li class="active">Info</li>
-                        <li class="item-active">Products</li>
-                        <li class="item-active">Activities</li>
-                        <li class="item-active">Account Info</li>
-                        <li class="item-active">History</li>
-                    </ul>
-                </div>
-            </section>
+        <div class="container">
+            <div class="card text-center mr-5 ml-5">
+                <section class="herder my-4">
+                    <div class="side-menu mb-4 border" id="side-menu">
+                        <ul class="pl-0 m-0">
+                            <li class="active">
+                                <a href="#">Info</a>
+                            </li>
+                            <li class="item-active">
+                               <a href="#">Products</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#">Activities</a>
+                                
+                            </li>
+                            <li class="item-active">
+                                <a href="#">Account Info</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#">History</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 @endsection
