@@ -323,6 +323,14 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+         [
+            'text'        => 'Venues',
+            'url'         => 'admin/venue',
+            'icon'        => 'fa fa-cogs',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+
 
         ['header' => 'account_settings'],
         [

@@ -25,7 +25,6 @@ class VenueTableSeeder extends Seeder
                     'size'       => '15 x 15',
                     'width'      => 15,
                     'length'     => 15,
-                    'level'      => 1  
                 ]
         ];
         foreach($venues as $venue){

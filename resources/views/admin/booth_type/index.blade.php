@@ -17,6 +17,8 @@
             <table class="table">
                 <thead>
                     <tr>
+                        
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Pricing</th>
                         <th>Total </th>
@@ -36,7 +38,7 @@
                 <tbody>
                     @foreach ($booth_types as $booth_type)
                         <tr>
-                        
+                            <td><img src="{{ $booth_type->image_url }}" class="rounded mx-auto" alt="" width="48" height="53" ></td>
                             <td>{{ $booth_type->name }}</td>
                             <td>{{ $booth_type->pricing }}</td>
                             <td>{{ $booth_type->total}}</td>

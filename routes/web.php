@@ -45,7 +45,8 @@ Route::namespace('Admin')->group(function () {
                     'product_category'   => 'ProductCategoryController',
                     'product'            => 'ProductController',
                     'booth_type'         => 'BoothTypeController',
-                    'sales'              =>  'SaleController'
+                    'sales'              => 'SaleController',
+                    'venue'              => 'VenueController',
                 ]);
 
                 Route::get('/event/{event}/purchases', 'EventController@purchases')->name('event.purchases');

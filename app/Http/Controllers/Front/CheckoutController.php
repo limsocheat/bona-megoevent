@@ -8,6 +8,7 @@ use App\Mail\User\ProductPurchased;
 use App\Models\Sale;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Srmklive\PayPal\Services\ExpressCheckout;
@@ -31,10 +32,21 @@ class CheckoutController extends Controller
 
     public function paypal_submit(Request $request)
     {
-        
+         $user   = Auth::user();
+
         $request->validate([
-            'profile.first_name'    => 'required'
+            'profile.first_name'    => 'required',
+            'profile.last_name'     => 'required',
+            'profile.address'       => 'required',
+            'profile.phone'         => 'required'
         ]);
+
+         $data       = $request->except('password');
+         $user->update($data);
+
+        $profile    = $request->input('profile');
+
+        $user->profile()->updateOrCreate([], $profile);
 
         $provider       = new ExpressCheckout(); 
         $cart           = \Cart::session(auth()->id());

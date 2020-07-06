@@ -40,6 +40,9 @@
                                                     {!! Form::text('profile[last_name]', null, ['placeholder' => 'Enter Last
                                                     name', 'class' => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                                 </div>
+                                                @if ($errors->has('profile.last_name'))
+                                                    <span class="text-danger">{{ $errors->first('profile.last_name') }}</span>
+                                                @endif
                                             </div>
                                         </div>
 
@@ -49,6 +52,9 @@
                                                 {!! Form::text('profile[address]', null, ['placeholder' => 'Enter Address',
                                                 'class' => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                             </div>
+                                             @if ($errors->has('profile.address'))
+                                                 <span class="text-danger">{{ $errors->first('profile.address') }}</span>
+                                             @endif
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-group">
@@ -56,6 +62,9 @@
                                                 {!! Form::text('profile[phone]', null, ['placeholder' => 'Phone Number', 'class'
                                                 => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                             </div>
+                                            @if ($errors->has('profile.phone'))
+                                                 <span class="text-danger">{{ $errors->first('profile.phone') }}</span>
+                                             @endif
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-group">

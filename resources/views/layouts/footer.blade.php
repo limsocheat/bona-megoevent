@@ -5,7 +5,7 @@
         <!-- Grid row -->
         <div class="row">
             <!-- Grid column -->
-            <div class="col-md-4 mx-auto">
+            <div class="col-md-3 mx-auto">
                 <!-- Content -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
                 <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
@@ -16,7 +16,7 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
+            <div class="col-md-3 mx-auto">
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="list-unstyled">
@@ -37,7 +37,7 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
+            <div class="col-md-3 mx-auto">
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="list-unstyled">
@@ -58,23 +58,24 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                    </li>
-                </ul>
+            <div class="col-md-3 mx-auto">
+               <div class="text-center">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+               </div>
             </div>
             <!-- Grid column -->
         </div>
@@ -83,16 +84,45 @@
     <!-- Footer Links -->
     <hr>
     <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
-        {{-- <li class="list-inline-item">
-            Register for free
-        </li> --}}
-        <li class="list-inline-item">
-            <a href="{{ route('register') }}" class="btn btn-light btn-rounded text-dark"> Register for free
-                {{-- <i class="fa fa-user" aria-hidden="true"></i> --}}
-            </a>
-        </li>
-    </ul>
+    {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
+         <div class="container text-center text-md-left">
+            <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-3 mx-auto  py-2">
+                        <div class="text-center">
+                            <a class="footer-logo" href="{{ url('/') }}">
+                                    <img src="{{ asset('images/megomege.png') }}" style=" max-width: 200px;width: 100%;" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mx-auto py-4" >
+                        <div class="text-center ">
+                             <a class="footer-logo" href="{{ url('/') }}">
+                                 <img src="{{ asset('images/megoshopping.png') }}" style=" max-width: 200px;width: 100%;" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mx-auto py-2">
+                        <div class="text-center">
+                            <a class="footer-logo" href="{{ url('/') }}">
+                                 <img src="{{ asset('images/BonaBot.jpg') }}" style=" max-width: 200px;width: 100%;" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mx-auto  py-2">
+                        <div class="text-center">
+                           <a class="footer-logo" href="{{ url('/') }}">
+                                 <img src="{{ asset('images/singroll-logo.jpg') }}" style=" max-width: 200px;width: 100%;" />
+                            </a>
+                        </div>
+                    </div>
+                    {{-- <div class="col-md-12 mx-auto  py-2">
+                            @include('front.components.footer.logosilder')
+                    </div> --}}
+                </div>
+         </div>
+    {{-- </ul> --}}
     <!-- Call to action -->
     <hr>
     <!-- Social buttons -->
