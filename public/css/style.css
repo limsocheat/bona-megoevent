@@ -162,7 +162,14 @@ body a:hover {
 .event-card:hover {
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
-
+.event-card #event-join{
+    font-size:15px; 
+    background-color:#C5B358; 
+    color:white;
+}
+.event-card #event-join:hover{
+    background-color:#ddd4a5;
+}
 #h1,
 #h3 {
     color: #C5B358;

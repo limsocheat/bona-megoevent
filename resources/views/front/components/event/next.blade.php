@@ -1,5 +1,6 @@
 <div class="card border-light event-card">
-    <img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top" style="width: auto; height:172px;">
+    <img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top"
+        style="width: auto; height:172px;">
     <div class="card-body">
         <div class="row mb-2">
             <div class="col-7 mt-1">
