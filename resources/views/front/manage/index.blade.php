@@ -117,29 +117,37 @@
         </div>
         <div class="container">
             <div class="card text-center mr-5 ml-5">
-                <section class="herder my-4">
-                    <div class="side-menu mb-4 border" id="side-menu">
-                        <ul class="pl-0 m-0">
-                            <li class="active">
-                                <a href="#">Info</a>
-                            </li>
-                            <li class="item-active">
-                               <a href="#">Products</a>
-                            </li>
-                            <li class="item-active">
-                                <a href="#">Activities</a>
-                                
-                            </li>
-                            <li class="item-active">
-                                <a href="#">Account Info</a>
-                            </li>
-                            <li class="item-active">
-                                <a href="#">History</a>
-                            </li>
-                        </ul>
+                <div class="row">
+                    <div class="col-md-3">
+                        <section class="herder my-4">
+                            <div class="side-menu mb-4 border" id="side-menu">
+                                <ul class="pl-0 m-0">
+                                    <li class="active">
+                                        <a href="#">Info</a>
+                                    </li>
+                                    <li class="item-active">
+                                        <a href="#">Products</a>
+                                    </li>
+                                    <li class="item-active">
+                                        <a href="#">Activities</a>
+                        
+                                    </li>
+                                    <li class="item-active">
+                                        <a href="#">Account Info</a>
+                                    </li>
+                                    <li class="item-active">
+                                        <a href="#">History</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
                     </div>
-                </section>
+                    <div class="col-md-9">
+                        
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 @endsection
