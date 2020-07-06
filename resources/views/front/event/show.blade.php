@@ -263,11 +263,11 @@
 		</div>
 	</div>
 
-	<div class="row py-2">
-		<div class="col-md-8">
+	<div class="row py-2 mt-4 mb-4">
+		<div class="col-md-8" style="border-left: solid 2px;">
 			<div class="row my-2">
 				<div class="col-md-12">
-					<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Highlighted Events</h1>
+					<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Upcoming Events</h1>
 				</div>
 				@foreach ($feature_events as $event)
 				<div class="col-md-6 mb-4">
@@ -276,14 +276,17 @@
 				@endforeach
 			</div>
 		</div>
-		<div class="col-md-4">
-
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold">&nbsp;</h1>
-
-			<div id="NextUpcomingEvent" class="card">
-				<h3 style="margin-top: 100px; text-align: center">Next Upcoming Event</h3>
-				<a href="#" id="ViewMore">View More</a>
+		<div class="col-md-4" style="border-left: solid 2px;">
+			<div class="row my-2">
+				<div class="col-md-12">
+					<h1 class="text-left font-weight-bold mb-3" id="h1" style="text-align: center">Next Events</h1>
+				</div>
+				@foreach ($next_events as $event)
+				<div class="col-md-12 mb-4">
+					@include('front.components.event.next')
+				</div>
 			</div>
+			@endforeach
 		</div>
 	</div>
 </div>

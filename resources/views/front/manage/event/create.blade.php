@@ -10,6 +10,7 @@
         .entry:not(:first-of-type) {
             margin-top: 10px;
         }
+        
     </style>
     {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
@@ -286,9 +287,9 @@
 
     {!! Form::close() !!}
 </div>
-
 <script type="text/javascript">
     jQuery(document).ready(function($){
+
 
         $('.input-images-1').imageUploader({
             imagesInputName: 'images',

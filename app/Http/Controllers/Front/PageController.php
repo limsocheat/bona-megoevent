@@ -149,6 +149,7 @@ class PageController extends Controller
         $data       = [
             'entrances'         => Slide::select('*')->where('location', 'entrance')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
+            'next_events'       => Event::select('*')->inRandomOrder()->limit(2)->get(),
             'event'             => $event,
         ];
 
@@ -265,10 +266,10 @@ class PageController extends Controller
         $name       = $request->input('name');
         $category   = $request->input('category');
         $products   = Product::select('*')
-            ->when($name, function($query, $name) {
+            ->when($name, function ($query, $name) {
                 return $query->where('name', 'LIKE', "%$name%");
             })
-            ->when($category, function($query, $category) {
+            ->when($category, function ($query, $category) {
                 return $query->where('category_id', $category);
             })
             ->limit(12)
@@ -292,6 +293,4 @@ class PageController extends Controller
 
         return view('front.components.product.show', $data);
     }
- 
-   
 }
