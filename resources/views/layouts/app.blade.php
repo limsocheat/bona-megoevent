@@ -74,8 +74,7 @@
                                 <img src="{{ asset('images/logo.png') }}" class="logo" />
                             </a>
                         </div>
-                        <nav
-                            class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
+                        <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
                             <div class="container pr-0">
                                 <div class=" navbar-collapse d-flex justify-content-end">
                                     <ul class="navbar-nav navbar-right ml-auto">

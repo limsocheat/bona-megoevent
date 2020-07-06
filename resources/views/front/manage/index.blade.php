@@ -3,70 +3,116 @@
 @section('title', 'Manage')
 
 @section('content')
+<style type="text/css">
+    .top-nav-bar {
+        height:57px;
+        top:0;
+        position: sticky;
+        /* background:#6b6a6a; */
+        margin-bottom: 20px;
+        /* border: 1px solid #0000; */
+        z-index: 2;
+    
+    }
+   .menu-bar{
+            width:100%;
+            height: 57px;
+        }
+        .menu-bar ul{
+            display: inline-flex;
+            
+        }
+        .menu-bar ul li{
+            /* border-left: 1px solid #fff; */
+            list-style-type: none;
+            padding: 15px 35px;
+            text-align: center;
+            padding:5px;
+            margin:0.5px;
+            border:2px solid #817f7f;
+            background-color: #bf9000;
+            cursor: pointer;
+        }
+        .menu-bar ul li a{
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            color:rgb(12, 11, 11);
+            text-decoration: none;
+        }
+        .menu-bar .active{
+            background-color:white;
+        }
+        .fa-shopping-basket{
+            margin-right: 5px;
+        }
+        /* side menu */
+        .side-menu{
+            width: 150px;
+            margin-left: 20px;
+            font-size: 14px;
+            z-index: 2;
+            background-color: #bf9000;
+        }
+        .side-menu .active{
+            background-color:white;
+        }
+        .side-menu ul{
+            /* margin-left: 10px; */
+        }
+        .side-menu ul li{
+            list-style-type: none;
+            font-weight: bold;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .side-menu ul li:hover{
+            color:orange;
+        }
+        .side-menu ul li ul{
+            display: none;
+            z-index: 10;
+            top: 77px;
+        }
+        .side-menu ul li:hover ul{
+            color: blue;
+            display: block;
+            height: 400px;
+            width:100px;
+            margin-left: 10.3%;
+            padding-left: 0 100px 10px 10px;
+            position: fixed;
+            background:#ecececec;
+            box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0, 5);
+        }
+</style>
     <div class="container py-4">
         <h1>Manage</h1>
-        <nav class="navbar navbar-expand-sm   navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item dropdown dmenu">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Our Service
-                        </a>
-                        <div class="dropdown-menu sm-menu">
-                            <a class="dropdown-item" href="#">service2</a>
-                            <a class="dropdown-item" href="#">service 2</a>
-                            <a class="dropdown-item" href="#">service 3</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Call</a>
-                    </li>
-                    <!-- <li class="nav-item dropdown dmenu">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                      Dropdown link
-                    </a>
-                    <div class="dropdown-menu sm-menu">
-                      <a class="dropdown-item" href="#">Link 1</a>
-                      <a class="dropdown-item" href="#">Link 2</a>
-                      <a class="dropdown-item" href="#">Link 3</a>
-                      <a class="dropdown-item" href="#">Link 4</a>
-                      <a class="dropdown-item" href="#">Link 5</a>
-                      <a class="dropdown-item" href="#">Link 6</a>
-                    </div>
-                  </li> -->
+        <div class="top-nav-bar text-center">
+            <div class="menu-bar">
+                <ul>
+                    <li class="active"><a href="#">Aloysius's Board!</a></li>
+                    <li class="item-active"><a href="#">Visit an Event!</a></li>
+                    <li class="item-active"><a href="#">Visit an Event!</a></li>
+                    <li class="item-active"><a href="#">Exhibit in an Event!</a></li>
+                    <li class="item-active"><a href="#"></i>Organise an Event!</a></li>
+                    <li class="item-active"><a href="#">Megoshopping!</a></li>
+                    
                 </ul>
-                <div class="social-part">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                </div>
             </div>
-        </nav>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-        	  $('.navbar-light .dmenu').hover(function () {
-        			  $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
-        		  }, function () {
-        			  $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
-        		  });
-        	  });
-        </script>
+        </div>
+        <div class="card text-center">
+            <section class="herder">
+                <div class="side-menu" id="side-menu">
+                    <ul>
+                        <li class="active">Info</li>
+                        <li class="item-active">Products</li>
+                        <li class="item-active">Activities</li>
+                        <li class="item-active">Account Info</li>
+                        <li class="item-active">History</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
     </div>
 @endsection
