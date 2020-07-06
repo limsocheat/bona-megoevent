@@ -18,6 +18,7 @@ class CreateBoothTypesTable extends Migration
             $table->string('name');
             $table->double('pricing')->nullable()->default(0);
             $table->integer('total')->nullable()->default(0);
+            $table->binary('image')->nullable();
             $table->text('vip_speech')->nullable();
             $table->text('vip_moderator')->nullable();
             $table->integer('ads_event')->nullable();

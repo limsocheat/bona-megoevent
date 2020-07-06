@@ -52,6 +52,7 @@ class BannerController extends Controller
 
             $data['image'] = "/upload/".$imageName;
         }
+        
         $banner = Banner::create($data);
         if($banner){
             return redirect()->route('admin.banner.index');

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BoothType;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 
-class BoothTypeController extends Controller
+class VenueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class BoothTypeController extends Controller
      */
     public function index()
     {
-        $booth_types  = BoothType::select('*')->get();
-        return view('admin.booth_type.index',[
-            'booth_types'    => $booth_types
+        $venues     = Venue::select('*')->get();
+        return view('admin.venue.index',[
+            'venues' => $venues
         ]);
     }
 
@@ -28,7 +28,7 @@ class BoothTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.booth_type.create');
+        return view('admin.venue.create');
     }
 
     /**
@@ -43,18 +43,9 @@ class BoothTypeController extends Controller
             'name' => 'required|string|max:255'
         ]);
         $data         = $request->all();
-
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
-
-            $data['image'] = "/upload/".$imageName;
-        }
-
-        $booth_type = BoothType::create($data);
-
-        if ($booth_type) {
-            return redirect()->route('admin.booth_type.index');
+        $venue = Venue::create($data);
+        if ($venue) {
+            return redirect()->route('admin.venue.index');
         }
     }
 
@@ -77,10 +68,9 @@ class BoothTypeController extends Controller
      */
     public function edit($id)
     {
-        $booth_type  = BoothType::findOrFail($id);
-        return view('admin.booth_type.edit',[
-            'booth_type' => $booth_type
-        ]);
+        $venue   = Venue::findOrFail($id);
+
+        return view('admin.venue.edit', ['venue' => $venue]);
     }
 
     /**
@@ -92,25 +82,16 @@ class BoothTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
-       $request->validate([
+        $request->validate([
             'name'  => 'required',
 
         ]);
-        $booth_type   = BoothType::findOrFail($id);
+        $venue   = Venue::findOrFail($id);
         $data       = $request->all();
+        $venue->update($data);
 
-          if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
-
-            $data['image'] = "/upload/".$imageName;
-        }
-        
-        $booth_type->update($data);
-
-        if ($booth_type) {
-            return redirect()->route('admin.booth_type.index');
+        if ($venue) {
+            return redirect()->route('admin.venue.index');
         }
     }
 
@@ -122,11 +103,12 @@ class BoothTypeController extends Controller
      */
     public function destroy($id)
     {
-        $booth_type   = BoothType::findOrFail($id);
-        $booth_type->delete();
+        
+        $venue   = Venue::findOrFail($id);
+        $venue->delete();
 
-        if ($booth_type) {
-            return redirect()->route('admin.booth_type.index');
+        if ($venue) {
+            return redirect()->route('admin.venue.index');
         }
     }
 }

@@ -31,7 +31,7 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
