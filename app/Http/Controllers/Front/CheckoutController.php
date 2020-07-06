@@ -32,6 +32,10 @@ class CheckoutController extends Controller
     public function paypal_submit(Request $request)
     {
         
+        $request->validate([
+            'profile.first_name'    => 'required'
+        ]);
+
         $provider       = new ExpressCheckout(); 
         $cart           = \Cart::session(auth()->id());
 
