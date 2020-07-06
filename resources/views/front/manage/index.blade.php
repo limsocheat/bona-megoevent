@@ -68,6 +68,10 @@
             text-align: left;
             padding: 0 18px;
         }
+        .side-menu ul li a{
+            text-decoration: none;
+            padding:15px 0px;
+        }
         .side-menu ul li:hover{
             color:orange;
         }
@@ -90,29 +94,33 @@
 </style>
     <div class="container py-4">
         <h1>Manage</h1>
-        <div class="top-nav-bar text-center m-0">
-            <div class="menu-bar">
-                <ul class="m-0 p-0">
-                    <li class="active">
-                        <a href="#">Aloysius's Board!</a>
-                    </li>
-                    <li class="item-active">
-                        <a href="#">Visit an Event!</a>
-                    </li>
-                    <li class="item-active">
-                        <a href="#">Visit an Event!</a>
-                    </li>
-                    <li class="item-active">
-                        <a href="#">Exhibit in an Event!</a>
-                    </li>
-                    <li class="item-active">
-                        <a href="#"></i>Organise an Event!</a>
-                    </li>
-                    <li class="item-active">
-                        <a href="#">Megoshopping!</a>
-                    </li>
-                    
-                </ul>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="top-nav-bar text-center m-0">
+                    <div class="menu-bar">
+                        <ul class="m-0 p-0">
+                            <li class="active">
+                                <a href="#">Aloysius's Board!</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#">Visit an Event!</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#">Visit an Event!</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#">Exhibit in an Event!</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#"></i>Organise an Event!</a>
+                            </li>
+                            <li class="item-active">
+                                <a href="#">Megoshopping!</a>
+                            </li>
+                
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container">

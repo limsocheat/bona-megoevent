@@ -2,7 +2,7 @@
     <img src="{{ asset($event->image_url) }}" alt="{{ $event->name }}" class="card-img-top" style="width: auto; height:172px;">
     <div class="card-body">
         <div class="row mb-2">
-            <div class="col-7 mt-1">
+            <div class="col-7 mt-2">
                 <h5 class="text-truncate font-weight-bold mb-0" style="max-lines: 1">
                     {{ $event->display_start_date }}</h5>
             </div>
