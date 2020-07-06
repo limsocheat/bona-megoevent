@@ -83,7 +83,7 @@
 
                                             <div class="col-xs-3">
                                                 <li class="nav-item active mr-2" data-toggle="tooltip" data-placement="bottom" title="Own Event">
-                                                    <button type="button" class="btn btn-outline-secondary" id="btn-organizer">Organizer</button>
+                                                    <button type="button" class="btn btn-outline-secondary" id="btn-organizer">Create Year Own Event</button>
                                                 </li>
                                             </div>
 
