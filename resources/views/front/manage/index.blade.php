@@ -46,7 +46,8 @@
         }
         /* side menu */
         .side-menu{
-            width: 150px;
+            width: 200px;
+            height: auto;
             margin-left: 20px;
             font-size: 14px;
             z-index: 2;
@@ -66,7 +67,7 @@
             cursor: pointer;
             background-color: #bf9000;
             text-align: left;
-            padding: 0 18px;
+            padding: 10px 18px;
         }
         .side-menu ul li a{
             text-decoration: none;
@@ -151,7 +152,16 @@
                         </section>
                     </div>
                     <div class="col-md-9">
-                        
+                        {{-- <div class="row my-2 mt-5" style="border-left: solid 2px;">
+                            <div class="col-md-12">
+                                <h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Upcoming Events</h1>
+                            </div>
+                            @foreach ($feature_events as $event)
+                            <div class="col-md-3 mb-4">
+                                @include('front.components.event.card')
+                            </div>
+                            @endforeach
+                        </div> --}}
                     </div>
                 </div>
             </div>
