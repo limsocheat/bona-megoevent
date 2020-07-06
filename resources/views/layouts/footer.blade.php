@@ -5,7 +5,7 @@
         <!-- Grid row -->
         <div class="row">
             <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
+            <div class="col-md-4 mx-auto">
                 <!-- Content -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
                 <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
@@ -16,7 +16,7 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
+            <div class="col-md-2 mx-auto">
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="list-unstyled">
@@ -37,7 +37,7 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
+            <div class="col-md-2 mx-auto">
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="list-unstyled">
@@ -58,7 +58,7 @@
             <!-- Grid column -->
             <hr class="clearfix w-100 d-md-none">
             <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
+            <div class="col-md-2 mx-auto">
                <div class="text-center">
                     <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                     <ul class="list-unstyled">
