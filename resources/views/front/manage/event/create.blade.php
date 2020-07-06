@@ -192,6 +192,7 @@
                                 'form-control']) !!}
                             </div>
                         </div>
+                        
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('bronze_max', 'Bronze Pax') !!}
