@@ -5,7 +5,7 @@
 @section('content')
 <style type="text/css">
     .top-nav-bar {
-        height:57px;
+        /* height:57px; */
         top:0;
         position: sticky;
         /* background:#6b6a6a; */
@@ -16,7 +16,7 @@
     }
    .menu-bar{
             width:100%;
-            height: 57px;
+            /* height: 57px; */
         }
         .menu-bar ul{
             display: inline-flex;
@@ -58,7 +58,7 @@
             background-color:white;
         }
         .side-menu ul{
-            /* margin-left: 10px; */
+           margin:0px;
         }
         .side-menu ul li{
             list-style-type: none;
@@ -88,9 +88,9 @@
 </style>
     <div class="container py-4">
         <h1>Manage</h1>
-        <div class="top-nav-bar text-center">
+        <div class="top-nav-bar text-center m-0">
             <div class="menu-bar">
-                <ul>
+                <ul class="m-0">
                     <li class="active"><a href="#">Aloysius's Board!</a></li>
                     <li class="item-active"><a href="#">Visit an Event!</a></li>
                     <li class="item-active"><a href="#">Visit an Event!</a></li>
