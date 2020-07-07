@@ -155,7 +155,7 @@ body a:hover {
 }
 
 .event-card {
-    height: 350.32px;
+    height: 365.32px;
     transition: 0.5s;
 }
 
@@ -164,7 +164,7 @@ body a:hover {
 }
 
 .event-card #event-join {
-    font-size: 20px;
+    font-size: 15px;
     background-color: #C5B358;
     color: white;
 }
@@ -273,14 +273,21 @@ body a:hover {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+    #logo-controll{
+        text-align: center;
+    }
     .navbar-brand .logo {
         max-width: 170px;
         width: 100%;
     }
-
+    .navbar-nav #btn-organizer{
+        font-size: 4vw;
+    }
     .nav-item a i.fa {
-        padding-left: 10px;
-        padding-right: 12.5px;
+        padding-left: 8px;
+        padding-right: 10px;
+        font-size: 4vw;
+        
     }
 
     .dropdown-content {
