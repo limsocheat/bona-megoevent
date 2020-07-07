@@ -256,6 +256,15 @@ img {
     border-top: 8px solid #e53e3e;
 }
 
+.button-gold,
+.button-gold {
+    background-color: #C5B358;
+    border-bottom: 8px solid #C5B358;
+    border-left: 18px solid #C5B358;
+    border-right: 18px solid #C5B358;
+    border-top: 8px solid #C5B358;
+}
+
 /* Panels */
 
 .panel {
