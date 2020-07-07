@@ -163,12 +163,14 @@ body a:hover {
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.event-card #event-join {
+.event-card #btn-gold {
     font-size: 15px;
     background-color: #C5B358;
     color: white;
 }
-
+.btn-gold{
+    background-color: #C5B358;
+}
 .event-card #event-join:hover {
     background-color: #ddd4a5;
 }

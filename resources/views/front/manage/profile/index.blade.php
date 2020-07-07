@@ -4,7 +4,7 @@
 @section('content')
 
 <style>
-    .avatar-wrapper {
+    .avatar-wrapper, .company-wrapper{
         position: relative;
         height: 100px;
         width: 100px;
@@ -20,19 +20,42 @@
         transform: scale(1.05);
         cursor: pointer;
     }
-
+    .company-wrapper:hover{
+        transform: scale(1.05);
+        cursor: pointer;
+    }
     .avatar-wrapper:hover .profile-pic {
         opacity: .5;
     }
-
+    .company-wrapper:hover #preview-logo-pic {
+        opacity: .5;
+    }
     .avatar-wrapper .profile-pic {
         height: 100%;
         width: 100%;
         transition: all .3s ease;
 
     }
-
+    .company-wrapper #preview-logo-pic {
+    height: 100%;
+    width: 100%;
+    transition: all .3s ease;
+    
+    }
     .avatar-wrapper .profile-pic:after {
+        /* font-family: FontAwesome; */
+        content: "\f007";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        font-size: 100px;
+        background: #ecf0f1;
+        color: #34495e;
+        text-align: center;
+    }
+    .company-wrapper #preview-logo-pic:after {
         font-family: FontAwesome;
         content: "\f007";
         top: 0;
@@ -45,7 +68,6 @@
         color: #34495e;
         text-align: center;
     }
-
     .avatar-wrapper .upload-button {
         position: absolute;
         top: 0;
@@ -54,20 +76,12 @@
         width: 100%;
 
     }
-
-    .avatar-wrapper .upload-button.fa-arrow-circle-up {
+    .company-wrapper .logo-upload-button {
         position: absolute;
-        font-size: 234px;
-        top: -17px;
+        top: 0;
         left: 0;
-        text-align: center;
-        opacity: 0;
-        transition: all .3s ease;
-        color: #34495e;
-    }
-
-    .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
-        opacity: .9;
+        height: 100%;
+        width: 100%;
     }
 </style>
 
@@ -75,9 +89,9 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             @if (\Session::has('success'))
-                <div class="alert alert-success">
-                    {!! \Session::get('success') !!}
-                </div>
+            <div class="alert alert-success">
+                {!! \Session::get('success') !!}
+            </div>
             @endif
         </div>
         <div class="col-md-6">
@@ -91,21 +105,22 @@
                                 <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                             </div>
                             {{ Form::file('profile[image]', ['id' => "profileImage", "class" => "file-upload",'type' =>'file','accept'=>'image/*']) }}
-                            {{-- <input class="file-upload" type="file" accept="image/*" /> --}}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('profile[first_name]', 'First Name') !!}
-                                {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' => 'form-control', 'required' => true])
+                                {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' =>
+                                'form-control', 'required' => true])
                                 !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('profile[last_name]', 'Last Name') !!}
-                                {!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' => 'form-control', 'required' => true]) !!}
+                                {!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' =>
+                                'form-control', 'required' => true]) !!}
                             </div>
                         </div>
                     </div>
@@ -117,24 +132,27 @@
 
                     <div class="form-group">
                         {!! Form::label('profile[job_title]', 'Job Title') !!}
-                        {!! Form::text('profile[job_title]', null, ['placeholder' => 'Job Title', 'class' => 'form-control']) !!}
+                        {!! Form::text('profile[job_title]', null, ['placeholder' => 'Job Title', 'class' =>
+                        'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('profile[country_id]', 'Country') !!}
-                        {!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country', 'class' =>
+                        {!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country', 'class'
+                        =>
                         'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('profile[address]', 'Address') !!}
-                        {!! Form::text('profile[address]', null, ['placeholder' => 'Address', 'class' => 'form-control']) !!}
+                        {!! Form::text('profile[address]', null, ['placeholder' => 'Address', 'class' =>
+                        'form-control']) !!}
                     </div>
                     <div class="form-group">
                         {!! Form::label('profile[phone]', 'Tel') !!}
                         {!! Form::text('profile[phone]', null, ['placeholder' => 'Tel', 'class' => 'form-control']) !!}
                     </div>
-                  
+
                     <hr>
-                    
+
                     <div class="form-group">
                         {!! Form::label('name', 'User Name') !!}
                         {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control']) !!}
@@ -160,70 +178,72 @@
         <div class="col-md-6">
 
             @if ($user->type == "company")
-                @if ($user->company)
-                    <div class="card">
-                        {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
-                        'PUT', 'files' => true ]) !!}
-                            <div class="card-body">
-                                <div class="form-group" style="height: 110px;">
-                                    <div class="preview text-center" style="height:125px;">
-                                        <img id="logoPreview" class="preview-img" src="{{ $user->company ? $user->company->logoUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" alt="Preview Image"
-                                            width="100" height="100" />
-                                        <div class="browse-button">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                            {{ Form::file('logo', ['id' => "logoImage", "class" => "browse-input"]) }}
-                                        </div>
-                                        <span class="Error"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    {!! Form::label('name', 'Company Name') !!}
-                                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
-                                </div>
-                                <div class="form-group">
-                                    {!! Form::label('registration_number', 'Registration Number') !!}
-                                    {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
-                                    'form-control']) !!}
-                                </div>
+            @if ($user->company)
+            <div class="card">
+                {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
+                'PUT', 'files' => true ]) !!}
+                <div class="card-body">
+                    <div class="form-group" style="height: 110px;">
+                        <div class="company-wrapper" id="profile-preview">
+                                <img id="logoPreview" class="preview-img"
+                                    src="{{ $user->company ? $user->company->logoUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}"
+                                    alt="Preview Image" width="100" height="100" />
+                            <div class="logo-upload-button">
+                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                             </div>
-                            <div class="card-footer ">
-                                {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
-                            </div>
-                        {!! Form::close() !!}
+                            {{ Form::file('logo', ['id' => "logoImage", "class" => "browse-input"]) }}
+                        </div>
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('name', 'Company Name') !!}
+                        {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('registration_number', 'Registration Number') !!}
+                        {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
+                        'form-control']) !!}
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
 
-                    @else
-                    
-                    <div class="card">
-                        {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST', 'files' => true]) !!}
-                            <div class="card-body">
-                                <div class="form-group" style="height: 110px;">
-                                    <div class="preview text-center" style="height:125px;">
-                                        <img id="logoPreview" class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
-                                            width="100" height="100" />
-                                        <div class="browse-button">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                            {{ Form::file('logo', ['id' => "logoImage", "class" => "browse-input"]) }}
-                                        </div>
-                                        <span class="Error"></span>
-                                    </div>
+            @else
+
+            <div class="card">
+                {!! Form::open(['route' => ['manage.company.store'], 'method' => 'POST', 'files' => true]) !!}
+                <div class="card-body">
+                    <div class="form-group" style="height: 110px;">
+                        <div class="form-group" style="height: 110px;">
+                            <div class="company-wrapper" id="profile-preview">
+                                <img id="logoPreview" class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
+                                    width="100" height="100" />
+                                <div class="logo-upload-button">
+                                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                 </div>
-                                <div class="form-group">
-                                    {!! Form::label('name', 'Company Name') !!}
-                                    {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control', 'required' => true]) !!}
-                                </div>
-                                <div class="form-group">
-                                    {!! Form::label('registration_number', 'Registration Number') !!}
-                                    {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
-                                    'form-control' , 'required' => true]) !!}
-                                </div>
+                                {{ Form::file('logo', ['id' => "logoImage", "class" => "browse-input"]) }}
                             </div>
-                            <div class="card-footer ">
-                                {!! Form::submit('Create', ['class' => 'btn btn-primary']); !!}
-                            </div>
-                        {!! Form::close() !!}
+                        </div>
                     </div>
-                @endif
+                    <div class="form-group">
+                        {!! Form::label('name', 'Company Name') !!}
+                        {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control',
+                        'required' => true]) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('registration_number', 'Registration Number') !!}
+                        {!! Form::text('registration_number', null, ['placeholder' => 'xxxxxxxx', 'class' =>
+                        'form-control' , 'required' => true]) !!}
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    {!! Form::submit('Create', ['class' => 'btn btn-primary']); !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
+            @endif
             @endif
         </div>
 
@@ -246,23 +266,23 @@
                             </thead>
                             <tbody>
                                 @foreach ($user->exhibitions as $exhibition)
-                                    <tr>
-                                        <td>
-                                            {{ $exhibition->name }}
-                                        </td>
-                                        <td>
-                                            {{ $exhibition->organizer ? $exhibition->organizer->name: null}}
-                                        </td>
-                                        <td>
-                                            {{ $exhibition->display_start_date }} @ {{ $exhibition->display_start_time }}
-                                        </td>
-                                        <td>
-                                            {{ $exhibition->display_end_date }} @ {{ $exhibition->display_end_time }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('event', $exhibition->id) }}" class="btn btn-primary">View</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        {{ $exhibition->name }}
+                                    </td>
+                                    <td>
+                                        {{ $exhibition->organizer ? $exhibition->organizer->name: null}}
+                                    </td>
+                                    <td>
+                                        {{ $exhibition->display_start_date }} @ {{ $exhibition->display_start_time }}
+                                    </td>
+                                    <td>
+                                        {{ $exhibition->display_end_date }} @ {{ $exhibition->display_end_time }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('event', $exhibition->id) }}" class="btn btn-primary">View</a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -305,6 +325,11 @@
                 
                 reader.readAsDataURL(this.files[0]);
             }
+               
+        });
+
+        $(".logo-upload-button").on('click', function () {
+        $(".browse-input").click();
         });
     })
 </script>
