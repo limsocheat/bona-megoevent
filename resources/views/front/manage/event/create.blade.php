@@ -10,7 +10,55 @@
         .entry:not(:first-of-type) {
             margin-top: 10px;
         }
-        
+        /* .avatar-wrapper{
+            position: relative;
+            height: 140px;
+            width: 340px;
+            margin: 50px auto; 
+            border-radius: 50%; 
+            overflow: hidden;
+            box-shadow: 1px 1px 1px -5px black;
+            transition: all .3s ease;
+            border: 1px solid #7c7676;
+        } */
+        .company-wrapper{
+            position: relative;
+            height: 141px;
+            width: 358px;
+            overflow: hidden;
+            transition: all .3s ease;
+            }
+            .company-wrapper:hover #preview-logo-pic {
+            opacity: .5;
+            } 
+            .company-wrapper #preview-logo-pic {
+            height: 100%;
+            width: 100%;
+            transition: all .3s ease;
+            
+            }
+            
+            .company-wrapper #preview-logo-pic:after {
+            font-family: FontAwesome;
+            content: "\f007";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 300px;
+            background: #ecf0f1;
+            color: #34495e;
+            text-align: center;
+            }
+           
+            .company-wrapper .logo-upload-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            }
     </style>
     {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
@@ -81,14 +129,17 @@
 
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
-                            <button type="button" class="btn btn-secondary" id="feature-image-chooser">Choose
-                                Image</button>
-                            {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
-                        </div>
-                        <div class="col-md-12">
-                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}"
-                                id="feature-image-previewer" class="img-fluid" alt="Feature Image Previewer">
-                        </div>
+                            <div class="form-group mb-3">
+                                <div class="company-wrapper" id="profile-preview">
+                                    <img id="feature-image-previewer" class="preview-img" src="{{  asset('/images/event_feature_image_placeholder.png') }}"
+                                        alt="Preview Image" width="358" height="141" />
+                                    <div class="logo-upload-button" id="feature-image-chooser">
+                                        <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
+                                    </div>
+                                    {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
+                                </div>
+                            </div>    
+                        </div> 
 
                         <div class="col-md-12">
                             <div class="input-field">
@@ -96,17 +147,35 @@
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
-                        <div class="col-md-12 pt-3">
+                        {{-- <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
-                            <button type="button" class="btn btn-secondary" id="floor-plan-image-chooser">Choose
+                            <button type="button" class="btn btn-gold btn-gold mb-2" id="floor-plan-image-chooser">Choose
                                 Image</button>
                             {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
                             'display: none;']) !!}
+                        </div> --}}
+                        <div class="col-md-12 pt-3">
+                            <label class="active">Floor Plan</label>
+                            <div class="form-group mb-3">
+                                <div class="company-wrapper" id="profile-preview">
+                                    {{-- <img id="feature-image-previewer" class="preview-img"
+                                        src="{{  asset('/images/event_feature_image_placeholder.png') }}" alt="Preview Image" width="358"
+                                        height="141" /> --}}
+                                    <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer" class="img-fluid"
+                                        alt="Preview Image" width="358"
+                                        height="141">    
+                                    <div class="logo-upload-button" id="floor-plan-image-chooser">
+                                        <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
+                                    </div>
+                                    {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
+                                        'display: none;']) !!}
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-12">
+                        {{-- <div class="col-md-12">
                             <img src="{{  asset('/images/event_feature_image_placeholder.png') }}"
                                 id="floor-plan-image-previewer" class="img-fluid" alt="Feature Image Previewer">
-                        </div>
+                        </div> --}}
 
                         <div class="col-md-12 pt-3">
                             <label class="active">Videos</label>
@@ -114,7 +183,7 @@
                                 <div class="entry input-group col-xs-3">
                                     <input class="form-control" name="videos[]" type="text" placeholder="video url" />
                                     <span class="input-group-btn">
-                                        <button class="btn btn-success btn-add" type="button">
+                                        <button class="btn btn-success btn-add" id="btn-gold" type="button">
                                             <span class="fa fa-plus"></span>
                                         </button>
                                     </span>

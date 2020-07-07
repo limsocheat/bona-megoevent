@@ -21,6 +21,11 @@
         {
             margin-top: 10px;
         }
+        .btn-upload {
+            border: 2px solid #C5B358;
+            color: white;
+            background-color: #C5B358;
+        }
     </style>
  {!! Form::model($event, ['route' => ['admin.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
     
@@ -80,7 +85,7 @@
 
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
-                            <button type="button" class="btn btn-secondary" id="feature-image-chooser">Choose Image</button>
+                            <button type="button" class="btn btn-gold btn-upload mb-2" id="feature-image-chooser">Choose Image</button>
                             {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
@@ -96,7 +101,7 @@
 
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
-                            <button type="button" class="btn btn-secondary" id="floor-plan-image-chooser">Choose Image</button>
+                            <button type="button" class="btn btn-gold btn-upload mb-2" id="floor-plan-image-chooser">Choose Image</button>
                             {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
