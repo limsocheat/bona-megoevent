@@ -65,7 +65,7 @@
         @php
         $header_banner = $banner::select('*')->where('location', 'header')->first();
         @endphp
-        <div class="bg-white">
+        <div  class="bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -74,15 +74,15 @@
                                 <img src="{{ asset('images/logo.png') }}" class="logo" />
                             </a>
                         </div>
-                        <nav class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
+                        <nav id="top-navigation" class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
                             <div class="container pr-0">
                                 <div class=" navbar-collapse d-flex justify-content-end">
                                     <ul class="navbar-nav navbar-right ml-auto">
                                         <div class="row ">
 
                                             <div class="col-xs-3">
-                                                <li class="nav-item active mr-2" data-toggle="tooltip" data-placement="bottom" title="Own Event">
-                                                    <button type="button" class="btn btn-outline-secondary" id="btn-organizer">Create Year Own Event</button>
+                                                <li  data-toggle="tooltip" data-placement="bottom" title="Own Event">
+                                                    <a href="{{ route('manage.event.index') }}" class="btn btn-outline-secondary py-2" id="btn-organizer">Be an Organizer, create your own event!</a>
                                                 </li>
                                             </div>
 
@@ -173,7 +173,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0"
+        <nav id="main-navigation" class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0"
             style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
             <div class="container">
                 <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"

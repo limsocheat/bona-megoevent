@@ -85,9 +85,9 @@
     <hr>
     <!-- Call to action -->
     {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
-         <div class="container text-center text-md-left">
+         <div class="container text-center text-md-left bg-white" >
             <!-- Grid row -->
-                <div class="row">
+                <div class="row" >
                     <!-- Grid column -->
                     <div class="col-md-3 mx-auto  py-2">
                         <div class="text-center">

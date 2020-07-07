@@ -8,42 +8,40 @@
     font-family: 'Century Gothic'
 }
 
-.navbar-brand .logo {
+#main-navigation .navbar-brand .logo {
     max-width: 200px;
     width: 100%;
 }
 
-
-
-.navbar {
+#main-navigation .navbar {
     overflow: hidden;
     background-color: #333;
 }
 
-#navbar-nav .active {
+#main-navigation #navbar-nav .active {
     border-bottom: 4px solid black;
 }
 
-.navbar-nav .actives,
-.nav-item {
+#main-navigation .navbar-nav .actives,
+#main-navigation .nav-item {
     border-bottom: 4px solid white;
     text-align: center;
 
 }
 
-.accent-cyannavbar-nav ul li:hover {
+#main-navigation .accent-cyannavbar-nav ul li:hover {
     border-bottom: 4px solid black;
 }
 
-.actives a i {
+#main-navigation .actives a i {
     font-size: 20px;
 }
 
-.navbar-nav li {
+#main-navigation .navbar-nav li {
     border-left: 1px solid #ffffff;
 }
 
-.navbar-nav li a {
+#top-navigation .navbar-nav li a {
     text-decoration: none;
     font-weight: 700;
     /* font-size: 1.2em; */
@@ -54,15 +52,15 @@
     padding: 18px 15px;
 }
 
-a.nav-link-left {
+#top-navigation a.nav-link-left {
     padding-left: 0 !important;
 }
 
-a.nav-link-right {
+#top-navigation a.nav-link-right {
     padding-right: 0 !important;
 }
 
-.navbar-nav li a::before {
+#top-navigation .navbar-nav li a::before {
     content: "";
     position: absolute;
     top: 100%;
@@ -73,11 +71,11 @@ a.nav-link-right {
     /* transition: all .1s linear; */
 }
 
-.navbar-nav li a:hover {
+#top-navigation .navbar-nav li a:hover {
     transition: .05s;
 }
 
-.navbar-nav li a:hover::before {
+#top-navigation .navbar-nav li a:hover::before {
     width: 100%;
     background-color: black;
 }
@@ -164,14 +162,17 @@ body a:hover {
 .event-card:hover {
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
-.event-card #event-join{
-    font-size:20px; 
-    background-color:#C5B358; 
-    color:white;
+
+.event-card #event-join {
+    font-size: 20px;
+    background-color: #C5B358;
+    color: white;
 }
-.event-card #event-join:hover{
-    background-color:#ddd4a5;
+
+.event-card #event-join:hover {
+    background-color: #ddd4a5;
 }
+
 #h1,
 #h3 {
     color: #C5B358;
@@ -236,6 +237,38 @@ body a:hover {
     font-size: 13px;
     font-weight: bold;
     color: #000;
+}
+
+#account-navbar .nav-link {
+    background-color: #bf9000;
+    color: white;
+    border: 1px solid #000;
+}
+
+#account-navbar .nav-link.active,
+#account-navbar .nav-link:hover {
+    background-color: white;
+    color: #817f7f;
+}
+
+#account-nav .nav-link {
+    background-color: #bf9000;
+    color: white;
+    border: 1px solid #000;
+}
+
+#account-nav .nav-link.active,
+#account-nav .nav-link:hover {
+    background-color: white;
+    color: #817f7f;
+}
+
+#account-dashboard .user-company {
+    color: #bf9000;
+}
+
+#account-dashboard .user-name {
+    color: #bf9000;
 }
 
 /* Extra small devices (phones, 600px and down) */

@@ -113,7 +113,7 @@ Route::namespace('Front')->group(function () {
                     'order_ticket'        => 'OrderTicketController',
 
                 ]);
-                Route::get('/', 'PageController@manage');
+                Route::get('/', 'PageController@manage')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 

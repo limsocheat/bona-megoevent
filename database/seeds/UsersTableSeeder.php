@@ -14,10 +14,15 @@ class UsersTableSeeder extends Seeder
     {
         $administrators = [
             [
-                'name'      => 'admin',
+                'name'      => 'itmall',
                 'email'     => 'itmall.com.kh@gmail.com',
                 'password'  => bcrypt('Bona@123'),
-            ]
+            ],
+            [
+                'name'      => 'itbona',
+                'email'     => 'it@bona.com.sg',
+                'password'  => bcrypt('Bona@123'),
+            ],
         ];
 
         foreach($administrators as $administrator) {

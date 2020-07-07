@@ -16,6 +16,11 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
     public function getAvatarUrlAttribute()
     {
         return $this->avatar ? url('/upload/' . $this->avatar) : "http://simpleicon.com/wp-content/uploads/account.png";
