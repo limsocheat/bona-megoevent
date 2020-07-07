@@ -44,7 +44,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 mb-3">
                                 <nav id="account-nav" class="nav flex-column">
                                     <a class="nav-link active" href="{{ route('manage.index') }}">Info</a>
                                     <a class="nav-link" href="{{ route('product') }}">Products</a>
@@ -58,7 +58,7 @@
                                     $user = auth()->user();
                                 @endphp
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mb-2">
                                         <img src="{{ $user->profile ? $user->profile->avatar_url : asset('images/avatar.jpg') }}" alt="{{ $user->name }}" class="img-thumbnail">
                                     </div>
                                     <div class="col-md-9">
