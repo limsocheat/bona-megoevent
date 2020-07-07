@@ -10,17 +10,6 @@
         .entry:not(:first-of-type) {
             margin-top: 10px;
         }
-        /* .avatar-wrapper{
-            position: relative;
-            height: 140px;
-            width: 340px;
-            margin: 50px auto; 
-            border-radius: 50%; 
-            overflow: hidden;
-            box-shadow: 1px 1px 1px -5px black;
-            transition: all .3s ease;
-            border: 1px solid #7c7676;
-        } */
         .company-wrapper{
             position: relative;
             height: 141px;
@@ -147,21 +136,11 @@
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
-                        {{-- <div class="col-md-12 pt-3">
-                            <label class="active">Floor Plan</label>
-                            <button type="button" class="btn btn-gold btn-gold mb-2" id="floor-plan-image-chooser">Choose
-                                Image</button>
-                            {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
-                            'display: none;']) !!}
-                        </div> --}}
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
                             <div class="form-group mb-3">
                                 <div class="company-wrapper" id="profile-preview">
-                                    {{-- <img id="feature-image-previewer" class="preview-img"
-                                        src="{{  asset('/images/event_feature_image_placeholder.png') }}" alt="Preview Image" width="358"
-                                        height="141" /> --}}
-                                    <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer" class="img-fluid"
+                                    <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer"
                                         alt="Preview Image" width="358"
                                         height="141">    
                                     <div class="logo-upload-button" id="floor-plan-image-chooser">
@@ -172,11 +151,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-md-12">
-                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}"
-                                id="floor-plan-image-previewer" class="img-fluid" alt="Feature Image Previewer">
-                        </div> --}}
-
                         <div class="col-md-12 pt-3">
                             <label class="active">Videos</label>
                             <div class="controls">
