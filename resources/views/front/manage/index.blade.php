@@ -59,7 +59,7 @@
                                 @endphp
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img src="{{ $user->profile->avatar_url }}" alt="{{ $user->name }}" class="img-thumbnail">
+                                        <img src="{{ $user->profile ? $user->profile->avatar_url : asset('images/avatar.jpg') }}" alt="{{ $user->name }}" class="img-thumbnail">
                                     </div>
                                     <div class="col-md-9">
                                         <h3 class="user-company">{{ $user->company ? $user->company->name: 'N/A' }}</h3>
