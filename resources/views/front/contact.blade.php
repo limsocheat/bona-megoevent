@@ -87,7 +87,7 @@
                 @endif
             </div>
             <p></p>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn mego-gold-bg">Submit</button>
             <p></p>
             {!! Form::close() !!}
         </div>
