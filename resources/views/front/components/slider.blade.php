@@ -6,7 +6,9 @@
     .slick-prev:before {
         color: black;
     } */
-
+    .home_slider_fullscreen_content h3{
+            width: 80vw;   
+    }
     .home_slider_fullscreen .slick-prev {
         margin-left: 100px !important;
         ;
@@ -31,6 +33,10 @@
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+        .home_slider_fullscreen_content h1{
+            font-size: 6vw;
+        }
+        
         .home_slider_carousel_item {
             height: 80px !important;
             width: auto !important;
@@ -144,6 +150,7 @@
         .example {
             background: pink;
         }
+
     }
 
     .slick-lightbox-slick-item-inner, .slick-lightbox-slick-img {
@@ -202,8 +209,8 @@
             <div class="fluid mx-0 px-0">
                 <div class="container">
                     <div class="home_slider_fullscreen_content">
-                        <h1 class="font-weight-bold">{{ $fullscreen_slider->title }}</h1>
-                        <h3 class="slider-subtitle">{{ $fullscreen_slider->sub_title }}</h3>
+                        <h1 class="font-weight-bold" id="font-title">{{ $fullscreen_slider->title }}</h1>
+                        <h3 class="slider-subtitle" id="sub-title">{{ $fullscreen_slider->sub_title }}</h3>
                     </div>
                 </div>
                 <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}" class="fullscreen_slider_image">
