@@ -100,7 +100,7 @@
                 <div class="card-body">
                     <div class="form-group" style="height: 110px;">
                         <div class="avatar-wrapper">
-                            <img class="profile-pic" src="{{$user->profile ? $user->profile->avatarUrl : null }}" />
+                            <img class="profile-pic" src="{{$user->profile ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" />
                             <div class="upload-button">
                                 <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                             </div>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="card-footer ">
-                    {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+                    {!! Form::submit('Save', ['class' => 'btn mego-gold-bg']); !!}
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -280,7 +280,7 @@
                                         {{ $exhibition->display_end_date }} @ {{ $exhibition->display_end_time }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('event', $exhibition->id) }}" class="btn btn-primary">View</a>
+                                        <a href="{{ route('event', $exhibition->id) }}" class="btn mego-gold-bg">View</a>
                                     </td>
                                 </tr>
                                 @endforeach

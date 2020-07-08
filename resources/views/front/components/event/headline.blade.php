@@ -94,11 +94,11 @@
 			{{-- <p class="m-0">Event Starts In</p> --}}
 		</div>
 		<div style="display: flex; flex-direction: row;">
-			<a href="{{ route('event.exhibitor_registration', $event->name) }}" class="btn btn-outline-gray ml-2"
-				id="btn-event-bg">Join
+			<a href="{{ route('event.exhibitor_registration', $event->name) }}" class="btn mego-gold-bg ml-2"
+				id="mego-gold-bg">Join
 				as Exhibitor</a>
-			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn btn-outline-gray ml-2"
-				id="btn-event-bgs">Join as
+			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn mego-gold-bg ml-2"
+				id="mego-gold-bg">Join as
 				Participants</a>
 		</div>
 	</div>

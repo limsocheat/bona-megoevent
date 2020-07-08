@@ -109,13 +109,13 @@
 					<p>&nbsp;</p>
 					{!! Form::hidden('event_id', $event->id) !!}
 					{!! Form::hidden('quantity', $quantity) !!}
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
+					<button class="btn mego-gold-bg btn-lg btn-block" type="submit">Place Order</button>
 					{!! Form::close() !!}
 					<p>&nbsp;</p>
 					{!! Form::open(['route' => 'paypal.submit', 'method' => 'POST']) !!}
 					{!! Form::hidden('event_id', $event->id) !!}
 					{!! Form::hidden('quantity', $quantity) !!}
-					<button class="btn btn-primary btn-lg btn-block" type="submit">Pay With PayPal</button>
+					<button class="btn mego-gold-bg btn-lg btn-block" type="submit">Pay With PayPal</button>
 					{!! Form::close() !!}
 				</div>
 			</div>

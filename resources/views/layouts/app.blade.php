@@ -83,8 +83,8 @@
                                         <div class="row ">
                                             
                                                 <div class="col-xs-3">
-                                                    <li  data-toggle="tooltip" data-placement="bottom" title="Own Event">
-                                                        <a href="{{ route('manage.event.index') }}" class="btn btn-outline-secondary py-2" id="btn-organizer" style="height:41px;">Be an Organizer, create your own event!</a>
+                                                    <li>
+                                                        <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg py-2" id="btn-organizer" style="height:41px;">Be an Organizer, create your own event!</a>
                                                     </li>
                                                 </div>
 

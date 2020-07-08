@@ -40,8 +40,8 @@
         <div class="col-sm form-group">
             <div class="label-control">&nbsp;</div>
             <div style="margin-top: 11px;">
-                <button type="submit" class="btn btn-dark">Apply</button>
-                <a href="{{ url()->current() }}" type="button" class="btn btn-secondary">Reset</a>
+                <button type="submit" class="btn mego-gold-bg">Apply</button>
+                <a href="{{ url()->current() }}" type="button" class="btn mego-gold-bg">Reset</a>
             </div>
         </div>
     </div>

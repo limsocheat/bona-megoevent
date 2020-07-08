@@ -59,7 +59,7 @@
 				<div class="card-footer text-right">
 					{!! Form::open(['route' => ['checkout', $event->id], 'method' => 'GET', 'id' => 'checkout_form']) !!}
 						{!! Form::hidden('quantity', $quantity) !!}
-						<button type="submit" class="btn btn-primary" form="checkout_form">Checkout</button>
+						<button type="submit" class="btn mego-gold-bg" form="checkout_form">Checkout</button>
 					{!! Form::close() !!}
 				</div>
 			</div>

@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header">
                         Event Details
-                        <a href="{{ route('event', $event->id) }}" class="btn btn-outline-primary float-right">View Event</a>
+                        <a href="{{ route('event', $event->id) }}" class="btn mego-gold-bg float-right">View Event</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -72,7 +72,7 @@
                 <div class="card">
                     <div class="card-header">
                         Exhibitor Information
-                        <a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary float-right">Update Information</a>
+                        <a href="{{ route('manage.profile.index') }}" class="btn mego-gold-bg float-right">Update Information</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -99,7 +99,7 @@
                             <a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View Request List</a>
                         @else 
                             {!! Form::open(['route' => ['event_exhibitor.store', $event->id], 'method' => 'POST']) !!}
-                                {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']); !!}
+                                {!! Form::submit('Submit', ['class' => 'btn mego-gold-bg btn-block']); !!}
                             {!! Form::close() !!}
                         @endif
                     </div>

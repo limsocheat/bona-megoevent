@@ -212,10 +212,10 @@
 						</div>
 						<div class="card-footer text-center">
 							@guest
-							<a href="{{ route('login') }}" class="btn btn-danger btn-outline-danger"
+							<a href="{{ route('login') }}" class="btn mego-gold-bg "
 								style="width: 100%">Login To Purchase</a>
 							@else
-							<button type="submit" class="btn btn-danger" style="width: 100%">Buy Ticket</button>
+							<button type="submit" class="btn mego-gold-bg" style="width: 100%">Buy Ticket</button>
 							@endguest
 						</div>
 					</div>
@@ -244,14 +244,14 @@
 						</div>
 						<div class="card-footer text-center">
 							@guest
-							<a href="{{ route('login') }}" class="btn btn-block font-weight-bold btn-danger"
+							<a href="{{ route('login') }}" class="btn btn-block font-weight-bold mego-gold-bg"
 								style="width: 100%">Login To Register</a>
 							@else
 							@if (Auth::user() && $event->exhibitors->contains(Auth::user()->id))
 							<a href="{{ route('manage.profile.index') }}" class="btn btn-outline-primary btn-block">View
 								Request List</a>
 							@else
-							<button type="submit" class="btn btn-block font-weight-bold btn-danger"
+							<button type="submit" class="btn btn-block font-weight-bold mego-gold-bg"
 								style="width: 100%">Register</button>
 							@endif
 							@endguest
