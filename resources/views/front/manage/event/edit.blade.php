@@ -41,51 +41,6 @@
         @endif
     </div>
 
-    <style>
-        .entry:not(:first-of-type)
-        {
-            margin-top: 10px;
-        }
-        .company-wrapper{
-            position: relative;
-            height: 141px;
-            width: 358px;
-            overflow: hidden;
-            transition: all .3s ease;
-        }
-        .company-wrapper:hover #preview-logo-pic {
-            opacity: .5;
-        }
-        .company-wrapper #preview-logo-pic {
-            height: 100%;
-            width: 100%;
-            transition: all .3s ease;
-        
-        }
-        
-        .company-wrapper #preview-logo-pic:after {
-            font-family: FontAwesome;
-            content: "\f007";
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            font-size: 300px;
-            background: #ecf0f1;
-            color: #34495e;
-            text-align: center;
-        }
-        
-        .company-wrapper .logo-upload-button {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-        }
-    </style>
-
     {!! Form::model($event, ['route' => ['manage.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
 
     <div class="card">
@@ -143,23 +98,10 @@
 
                 <div class="tab-pane" id="image" role="tabpanel" aria-labelledby="image-tab">
                     <div class="row">
-{{-- 
-                        <div class="col-md-12 pt-3">
-                            <label class="active">Feature Image</label>
-                            <button type="button" class="btn mego-gold-bg mego-gold-bg mb-2" id="feature-image-chooser">Choose Image</button>
-                            {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
-                        </div>
-
-                        <div class="col-md-12">
-                            <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" alt="Feature Image Previewer">
-                        </div> --}}
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
                             <div class="form-group mb-3">
-                                <div class="company-wrapper" id="profile-preview">
-                                    {{-- <img id="feature-image-previewer" class="preview-img"
-                                        src="{{  asset('/images/event_feature_image_placeholder.png') }}" alt="Preview Image" width="358"
-                                        height="141" /> --}}
+                                <div class="feature-image-wrapper" id="profile-preview">
                                         <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}"
                                             id="feature-image-previewer" alt="Feature Image Previewer" width="358"
                                             height="141">
@@ -170,27 +112,16 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-12 pt-3">
                             <div class="input-field">
                                 <label class="active">Banners</label>
                                 <div class="banners-uploader" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
-
-                        {{-- <div class="col-md-12 pt-3">
-                            <label class="active">Floor Plan</label>
-                            <button type="button" class="btn mego-gold-bg mego-gold-bg mb-2" id="floor-plan-image-chooser">Choose Image</button>
-                            {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' => 'display: none;']) !!}
-                        </div>
-                        <div class="col-md-12">
-                            <img src="{{ $event->floorImage ? $event->floorImage : asset('/images/event_feature_image_placeholder.png') }}"
-                                id="floor-plan-image-previewer" alt="Feature Image Previewer">
-                        </div> --}}
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
                             <div class="form-group mb-3">
-                                <div class="company-wrapper" id="profile-preview">
+                                <div class="feature-image-wrapper" id="profile-preview">
                                     <img src="{{ $event->floorImage ? $event->floorImage : asset('/images/event_feature_image_placeholder.png') }}"
                                         id="floor-plan-image-previewer" alt="Feature Image Previewer" width="358" height="141">
                                     <div class="logo-upload-button" id="floor-plan-image-chooser">

@@ -85,43 +85,46 @@
     <hr>
     <!-- Call to action -->
     {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
-         <div class="container text-center text-md-left bg-white" >
-            <!-- Grid row -->
-                <div class="row" >
+        <div class="container py-5">
+            <div class="container text-center text-md-left bg-white">
+                <!-- Grid row -->
+                <div class="row">
                     <!-- Grid column -->
                     <div class="col-md-3 mx-auto  py-2">
                         <div class="text-center">
                             <a class="footer-logo" href="{{ url('/') }}">
-                                    <img src="{{ asset('images/megomege.png') }}" style=" max-width: 200px;width: 100%;" />
+                                <img src="{{ asset('images/megomege.png') }}" style=" max-width: 200px;width: 100%;" />
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3 mx-auto py-4" >
+                    <div class="col-md-3 mx-auto py-4">
                         <div class="text-center ">
-                             <a class="footer-logo" href="{{ url('/') }}">
-                                 <img src="{{ asset('images/megoshopping.png') }}" style=" max-width: 200px;width: 100%;" />
+                            <a class="footer-logo" href="{{ url('/') }}">
+                                <img src="{{ asset('images/megoshopping.png') }}" style=" max-width: 200px;width: 100%;" />
                             </a>
                         </div>
                     </div>
                     <div class="col-md-3 mx-auto py-2">
                         <div class="text-center">
                             <a class="footer-logo" href="{{ url('/') }}">
-                                 <img src="{{ asset('images/BonaBot.jpg') }}" style=" max-width: 200px;width: 100%;" />
+                                <img src="{{ asset('images/BonaBot.jpg') }}" style=" max-width: 200px;width: 100%;" />
                             </a>
                         </div>
                     </div>
                     <div class="col-md-3 mx-auto  py-2">
                         <div class="text-center">
-                           <a class="footer-logo" href="{{ url('/') }}">
-                                 <img src="{{ asset('images/singroll-logo.jpg') }}" style=" max-width: 200px;width: 100%;" />
+                            <a class="footer-logo" href="{{ url('/') }}">
+                                <img src="{{ asset('images/singroll-logo.jpg') }}" style=" max-width: 200px;width: 100%;" />
                             </a>
                         </div>
                     </div>
                     {{-- <div class="col-md-12 mx-auto  py-2">
-                            @include('front.components.footer.logosilder')
-                    </div> --}}
+                                        @include('front.components.footer.logosilder')
+                                </div> --}}
                 </div>
-         </div>
+            </div>
+        </div>
+        
     {{-- </ul> --}}
     <!-- Call to action -->
     <hr>
