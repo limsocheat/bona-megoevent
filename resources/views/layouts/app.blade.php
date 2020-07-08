@@ -175,71 +175,65 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 col-xs-2">
-                <nav id="main-navigation" class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0 "
-                    style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
-                    <div class="container">
-                        <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"><i class="fa fa-bars"
-                                    style="color:#1f1c1c; font-size:28px;"></i></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <!-- Left Side Of Navbar -->
-                            <ul id="navbar-nav" class="navbar-nav mr-auto">
-                                <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
-                                    <a href="{{ route('index') }}" class="nav-link nav-link-left">Home</a>
-                                </li>
-                                <li class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
-                                    <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
-                                </li>
-                                <li class="nav-item {{ Route::currentRouteName() == 'product' || Route::currentRouteName() == 'show.product' ? 'active' : ''}}">
-                                    <a href="{{ route('product') }}" class="nav-link">Products</a>
-                                </li>
-                                {{-- <li class="nav-item">
-                                <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
-                                </li> --}}
-                            </ul>
-                            <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
-                                <li class="nav-item ">
-                                    <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
-                                </li>
-                                <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
-                                    <a href="{{route('contact')}}" class="nav-link nav-link-right">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+
+        <nav id="main-navigation" class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0 "
+            style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fa fa-bars"
+                            style="color:#1f1c1c; font-size:28px;"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul id="navbar-nav" class="navbar-nav mr-auto">
+                        <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
+                            <a href="{{ route('index') }}" class="nav-link nav-link-left">Home</a>
+                        </li>
+                        <li class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
+                            <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
+                        </li>
+                        <li class="nav-item {{ Route::currentRouteName() == 'product' || Route::currentRouteName() == 'show.product' ? 'active' : ''}}">
+                            <a href="{{ route('product') }}" class="nav-link">Products</a>
+                        </li>
+                    </ul>
+                    <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
+                        <li class="nav-item ">
+                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
+                            <a href="{{route('contact')}}" class="nav-link nav-link-right">Contact</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-12 col-xs-10 ">
-                @if(!Request::is('/'))
-                <nav class="bg-white shadow-sm pt-0 pb-0 " aria-label="breadcrumb">
-                    <div class="container">
-                        <ul class="breadcrumb"
-                            style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
-                            <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a
-                                    href="{{ route('index') }}" style="padding: 0">Home</a></li>
-                            @foreach ($breadcrumbs as $key => $url)
-                            <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
-                                aria-current="{{ $loop->last ? 'page' : '' }}">
-                                <a href="{{ url($url) }}" style="padding: 0">
-                                    @if (! $loop->last)
-                                    {{ ucfirst($key) }}
-                                    @else
-                                    @yield ('title')
-                                    @endif
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </nav>
-                @endif
+        </nav>
+    
+        @if(!Request::is('/'))
+        <nav class="bg-white shadow-sm pt-0 pb-0 " aria-label="breadcrumb">
+            <div class="container">
+                <ul class="breadcrumb"
+                    style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
+                    <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a
+                            href="{{ route('index') }}" style="padding: 0">Home</a></li>
+                    @foreach ($breadcrumbs as $key => $url)
+                    <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
+                        aria-current="{{ $loop->last ? 'page' : '' }}">
+                        <a href="{{ url($url) }}" style="padding: 0">
+                            @if (! $loop->last)
+                            {{ ucfirst($key) }}
+                            @else
+                            @yield ('title')
+                            @endif
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
+        </nav>
+        @endif
+
 
         @inject('page', 'App\Models\Page')
         @php
