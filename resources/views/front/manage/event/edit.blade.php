@@ -109,7 +109,7 @@
 {{-- 
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
-                            <button type="button" class="btn btn-gold btn-gold mb-2" id="feature-image-chooser">Choose Image</button>
+                            <button type="button" class="btn mego-gold-bg mego-gold-bg mb-2" id="feature-image-chooser">Choose Image</button>
                             {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
 
@@ -143,7 +143,7 @@
 
                         {{-- <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
-                            <button type="button" class="btn btn-gold btn-gold mb-2" id="floor-plan-image-chooser">Choose Image</button>
+                            <button type="button" class="btn mego-gold-bg mego-gold-bg mb-2" id="floor-plan-image-chooser">Choose Image</button>
                             {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
@@ -313,7 +313,7 @@
         </div>
 
         <div class="card-footer">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+            {!! Form::submit('Save', ['class' => 'btn mego-gold-bg']); !!}
         </div>
     </div>
         

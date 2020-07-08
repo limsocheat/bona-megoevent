@@ -18,7 +18,7 @@
     </div>
     <div class="add-to-cart">
 	  {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-		     {!! Form::submit('Add To Cart', ['class' => 'btn btn-primary p-1','id' => 'btn-gold']) !!}
+		     {!! Form::submit('Add To Cart', ['class' => 'btn btn-primary p-1','id' => 'mego-gold-bg']) !!}
       {!! Form::close() !!}
     </div>
   </div>

@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h2 class="float-left">Manage Event</h2>
-                    <a class="btn btn-primary float-right" href="{{ route('manage.event.create') }}">New Event</a>
+                    <a class="btn  float-right mego-gold-bg" href="{{ route('manage.event.create') }}">New Event</a>
                 </div>
 
                 <div class="card-body">
@@ -36,7 +36,7 @@
                             <div class="col-md-3 form-group">
                                 <div class="label-control">&nbsp;</div>
                                     <div style="margin-top: 9px;">
-                                        {!! Form::submit('Filter', ['class' => 'btn btn-primary btn-block']) !!}
+                                        {!! Form::submit('Filter', ['class' => 'btn mego-gold-bg btn-block']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                     <td>{{ $event->status }}</td>
                                     <td>
                                         <a href="{{ route('manage.event.edit', $event->id) }}"
-                                            class="btn btn-sm btn-primary">Edit</a>
+                                            class="btn btn-sm mego-gold-bg">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach
