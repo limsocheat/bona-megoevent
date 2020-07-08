@@ -129,9 +129,9 @@
 
                             <p>&nbsp;</p>
                             @if (Cart::getContent()->count() > 0)
-                                <button class="btn  btn-lg btn-block btn-gold" type="submit">Pay With PayPal</button>
+                                <button class="btn  btn-lg btn-block mego-gold-bg" type="submit">Pay With PayPal</button>
                             @else
-                                <a href="{{ route('product') }}" class="btn btn-lg btn-block btn-gold mb-4">Continue Shopping</a>
+                                <a href="{{ route('product') }}" class="btn btn-lg btn-block mego-gold-bg mb-4">Continue Shopping</a>
                             @endif
                         {!! Form::close() !!}
                     </div>

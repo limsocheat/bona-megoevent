@@ -85,7 +85,7 @@
 
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
-                            <button type="button" class="btn btn-gold btn-upload mb-2" id="feature-image-chooser">Choose Image</button>
+                            <button type="button" class="btn mego-gold-bg btn-upload mb-2" id="feature-image-chooser">Choose Image</button>
                             {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
@@ -101,7 +101,7 @@
 
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
-                            <button type="button" class="btn btn-gold btn-upload mb-2" id="floor-plan-image-chooser">Choose Image</button>
+                            <button type="button" class="btn mego-gold-bg btn-upload mb-2" id="floor-plan-image-chooser">Choose Image</button>
                             {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
