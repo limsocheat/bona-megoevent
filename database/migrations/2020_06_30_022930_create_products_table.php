@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->binary('image')->nullable();
             $table->double('price')->nullable()->default(0);
             $table->integer('quantity')->nullable()->default(0);
+            $table->string('color')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
 

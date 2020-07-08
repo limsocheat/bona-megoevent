@@ -88,11 +88,11 @@
 				<div class="row">
                    
 					<div class="col-sm-12  col-md-6">
-						<a href="{{ route('product') }}" class="btn btn-lg btn-block btn-dark mb-4">Continue Shopping</a>
+						<a href="{{ route('product') }}" class="btn btn-lg btn-block btn-gold mb-4">Continue Shopping</a>
                     </div>
                     @if (Cart::getContent()->count() > 0)
                         <div class="col-sm-12 col-md-6 text-right">
-						    <a href="{{ route('checkout.index') }}" class="btn btn-lg btn-block btn-dark">Checkout</a>
+						    <a href="{{ route('checkout.index') }}" class="btn btn-lg btn-block btn-gold">Checkout</a>
 					    </div>
                     @endif
 					
