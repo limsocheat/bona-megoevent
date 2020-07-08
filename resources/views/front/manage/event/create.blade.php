@@ -5,7 +5,15 @@
 @section('content')
 <div class="container py-4">
     <h1 class="pb-3">Create Event</h1>
-
+    @if (count($errors->all()))
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <style>
         .entry:not(:first-of-type) {
             margin-top: 10px;

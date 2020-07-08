@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\EventSchedule;
 use App\Models\EventType;
 use App\Models\Location;
 use App\Models\Option;
 use App\Models\Venue;
 use App\Models\Video;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -95,7 +97,6 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $organizer      = auth()->user();
-
         $request->validate([
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
@@ -106,6 +107,7 @@ class EventController extends Controller
             'end_date'              => 'required',
             'end_time'              => 'required',
         ]);
+
 
         $data                       = $request->all();
         $data['organizer_id']       = $organizer->id;
@@ -123,10 +125,24 @@ class EventController extends Controller
             $data['floor_plan_image'] = '/uploads/' . $name;
         }
 
-        $event                      = Event::create($data);
+        $event       = Event::create($data);
 
+        // SCHEDULE
+        $period = CarbonPeriod::create($data['start_date'], $data['end_date']);
+        // Iterate over the period
+        foreach ($period as $date) {
+            $event->schedules()->save(
+                new EventSchedule([
+                    'date'          => $date,
+                    'start_time'    => $data['start_time'],
+                    'end_time'      => $data['end_time'],
+                ])
+            );
+        }
+
+        // BANNER
         $banners    = [];
-        if ($files = $request->file('images')) {
+        if ($files  = $request->file('images')) {
 
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
@@ -145,6 +161,7 @@ class EventController extends Controller
             $event->banners()->saveMany($banners);
         }
 
+        // VIDEO
         $event->videos()->delete();
         $videos     = [];
         foreach ($request->videos as $video) {
