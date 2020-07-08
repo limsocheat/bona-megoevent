@@ -123,8 +123,8 @@
                         <p class="product-description">A transformative triple‑camera system that adds tons of capability without complexity. An unprecedented leap in battery
                             life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can
                             do. Welcome to the first iPhone powerful enough to be called Pro.</p>
-                        <p class="price">current price: <span>${{ $product->price }}</span></p>
-                        <p class="colors mb-4">colors: Black</p>
+                        <p class="price">Current Price: <span>${{ $product->price }}</span></p>
+                        <p class="colors mb-4">Colors: Black</p>
                         <div class="action">
                              {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
                                 <button type="submit" class="add-to-cart btn btn-default mb-4" type="button">Add to Cart  <i class="fa fa-cart-plus pl-2 pr-2" aria-hidden="true"></i></button>
