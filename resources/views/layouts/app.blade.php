@@ -189,7 +189,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul id="navbar-nav" class="navbar-nav mr-auto">
                         <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
-                            <a href="{{ route('index') }}" class="nav-link nav-link-left">Home</a>
+                            <a href="{{ route('index') }}" class="nav-link nav-link-left pl-0 ml-0">Home</a>
                         </li>
                         <li class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
                             <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
@@ -203,7 +203,7 @@
                             <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                         </li>
                         <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
-                            <a href="{{route('contact')}}" class="nav-link nav-link-right">Contact</a>
+                            <a href="{{route('contact')}}" class="nav-link nav-link-right pr-0 mr-0">Contact</a>
                         </li>
                     </ul>
                 </div>
