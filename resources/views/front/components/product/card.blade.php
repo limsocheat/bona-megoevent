@@ -1,4 +1,4 @@
-<div class="card event-card" id="card-product">
+<div class="card event-card " id="card-product">
   <div class="card-title pt-3 mb-0">
     <a href="{{ route('show.product', $product->id) }}" class="text-decoration-none">
       <h4 class="ml-5 mr-5 mb-0 font-weight-bold text-truncate ">{{$product->name}}</h4>
@@ -22,4 +22,5 @@
       {!! Form::close() !!}
     </div>
   </div>
+  <a href="{{ route('show.product', $product->id) }}" class="stretched-link"></a>
 </div>

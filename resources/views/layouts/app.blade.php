@@ -56,6 +56,12 @@
             margin-top:12px;
             margin-left: 4px;
         }
+        #text-hover i{
+            color:black;
+        }
+        #text-hover i:hover{
+        color:#9b9b9b;
+        }
     </style>
 </head>
 
@@ -91,7 +97,7 @@
                                                 <div class="col-xs-3">
                                                     <li class="nav-item actives" data-toggle="tooltip"
                                                         data-placement="bottom" title="Search">
-                                                        <a href="{{ route('search') }}" class="nav-link">
+                                                        <a href="{{ route('search') }}" class="nav-link .heavy-rain-gradient" id="text-hover">
                                                             <i class="fa fa-search" aria-hidden="true"></i>
                                                         </a>
                                                     </li>
@@ -99,7 +105,7 @@
                                                 <div class="col-xs-3">
                                                     <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                         title="Email">
-                                                        <a href="{{ route('contact') }}" class="nav-link">
+                                                        <a href="{{ route('contact') }}" class="nav-link" id="text-hover">
                                                             <i class="fa fa-envelope" aria-hidden="true"></i>
                                                         </a>
                                                     </li>
@@ -107,7 +113,7 @@
                                                 <div class="col-xs-3">
                                                     <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                         title="Cart">
-                                                        <a href="{{ route('cart.index') }}" class="nav-link">
+                                                        <a href="{{ route('cart.index') }}" class="nav-link" id="text-hover">
                                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                             @guest
                                                             @else
@@ -123,13 +129,13 @@
                                                 @guest
                                                 <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                     title="Sign Up">
-                                                    <a href="{{ route('register') }}" class="nav-link">
+                                                    <a href="{{ route('register') }}" class="nav-link" id="text-hover">
                                                         <i class="fa fa-user-plus" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                     title="Sign in">
-                                                    <a href="{{ route('login') }}" class="nav-link">
+                                                    <a href="{{ route('login') }}" class="nav-link" id="text-hover">
                                                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
@@ -137,7 +143,7 @@
 
                                                 <li class="nav-item dropdown ">
                                                     <a href="{{ route('manage.profile.index') }}"
-                                                        class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                                        class="nav-link dropdown-toggle" data-toggle="dropdown" id="text-hover">
                                                         <i class="fa fa-user" aria-hidden="true"></i>
                                                     </a>
                                                     <ul class="dropdown-content p-0 mr-auto ml-auto">
@@ -157,7 +163,7 @@
                                                     title="Sign Out">
                                                     <a href="#"
                                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                                        class="nav-link">
+                                                        class="nav-link" id="text-hover">
                                                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                                                     </a>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
