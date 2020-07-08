@@ -138,6 +138,7 @@ class PageController extends Controller
             'events'            => Event::select('*')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
             'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
+            'categories'        => EventCategory::select('*')->get(),
         ];
 
         return view('front.event.index', $data);
