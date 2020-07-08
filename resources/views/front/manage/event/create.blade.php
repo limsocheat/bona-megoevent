@@ -16,18 +16,18 @@
             width: 358px;
             overflow: hidden;
             transition: all .3s ease;
-            }
-            .company-wrapper:hover #preview-logo-pic {
+        }
+        .company-wrapper:hover #preview-logo-pic {
             opacity: .5;
-            } 
-            .company-wrapper #preview-logo-pic {
+        } 
+        .company-wrapper #preview-logo-pic {
             height: 100%;
             width: 100%;
             transition: all .3s ease;
             
-            }
+        }
             
-            .company-wrapper #preview-logo-pic:after {
+        .company-wrapper #preview-logo-pic:after {
             font-family: FontAwesome;
             content: "\f007";
             top: 0;
@@ -39,15 +39,15 @@
             background: #ecf0f1;
             color: #34495e;
             text-align: center;
-            }
+        }
            
-            .company-wrapper .logo-upload-button {
+        .company-wrapper .logo-upload-button {
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
-            }
+        }
     </style>
     {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
@@ -157,7 +157,7 @@
                                 <div class="entry input-group col-xs-3">
                                     <input class="form-control" name="videos[]" type="text" placeholder="video url" />
                                     <span class="input-group-btn">
-                                        <button class="btn btn-success btn-add" id="btn-gold" type="button">
+                                        <button class="btn btn-gold btn-add" id="btn-gold" type="button">
                                             <span class="fa fa-plus"></span>
                                         </button>
                                     </span>
