@@ -286,6 +286,13 @@ body a:hover {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+    #account-navbar .nav-link {
+       
+        border: 1px solid #000;
+    }
+    #account-navbar #account-link{
+        width: 73vw;
+    }
     #logo-controll {
         text-align: center;
     }
@@ -333,6 +340,10 @@ body a:hover {
         max-width: 170px;
         width: 100%;
     }
+     #account-navbar #account-link{
+        position: relative;
+        display: flex;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -348,5 +359,8 @@ body a:hover {
     .navbar-brand .logo {
         max-width: 200px;
         width: 100%;
+    }
+    #account-submenu{
+        max-width: 992;
     }
 }
