@@ -16,17 +16,67 @@
 
     <h1 class="pb-3">Create Event</h1>
 
-    <style>
-        .entry:not(:first-of-type)
-        {
-            margin-top: 10px;
-        }
-        .btn-upload {
-            border: 2px solid #C5B358;
-            color: white;
-            background-color: #C5B358;
-        }
-    </style>
+<style>
+    .entry:not(:first-of-type){
+        margin-top: 10px;
+    }
+    .btn-upload {
+        border: 2px solid #C5B358;
+        color: white;
+        background-color: #C5B358;
+    }
+    .entry:not(:first-of-type) {
+        margin-top: 10px;
+    }
+    .preview-wrapper{
+        position: relative;
+        height: auto;
+        width: 900px;
+        max-width: 100%;
+        overflow: hidden;
+        transition: all .2s ease;
+    }
+    .preview-wrapper img{
+        height: auto;
+        width: 900px;
+        max-width: 100%;
+    }
+    .preview-wrapper:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+    .preview-wrapper:hover #preview-logo-pic {
+        opacity: .5;
+    }
+    .preview-wrapper #preview-logo-pic {
+        height: 100%;
+        width: 100%;
+        transition: all .3s ease;
+    
+    }
+    
+    .preview-wrapper #preview-logo-pic:after {
+        font-family: FontAwesome;
+        content: "\f007";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        font-size: 300px;
+        background: #ecf0f1;
+        color: #34495e;
+        text-align: center;
+    }
+    
+    .preview-wrapper .logo-upload-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+</style>
 {!! Form::open(['route' => 'admin.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
         <div class="card-header">
@@ -80,14 +130,18 @@
 
                 <div class="tab-pane " id="image" role="tabpanel" aria-labelledby="image-tab">
                     <div class="row">
-
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
-                            <button type="button" class="btn btn-upload mb-2" id="feature-image-chooser">Choose Image</button>
-                            {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
-                        </div>
-                        <div class="col-md-12">
-                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" alt="Feature Image Previewer">
+                            <div class="form-group mb-3">
+                                <div class="preview-wrapper" id="profile-preview">
+                                    <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer"
+                                        alt="Feature Image Previewer">
+                                    <div class="logo-upload-button" id="feature-image-chooser">
+                                        <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
+                                    </div>
+                                    {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-12">
@@ -96,17 +150,19 @@
                                 <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
-
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
-                            <button type="button" class="btn btn-upload mb-2" id="floor-plan-image-chooser">Choose
-                                Image</button>
-                            {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
-                            'display: none;']) !!}
-                        </div>
-                        <div class="col-md-12">
-                            <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer"
-                                class="img-fluid" alt="Feature Image Previewer">
+                            <div class="form-group mb-3">
+                                <div class="preview-wrapper" id="profile-preview">
+                                    <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer"
+                                        alt="Preview Image" width="358" height="141">
+                                    <div class="logo-upload-button" id="floor-plan-image-chooser">
+                                        <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
+                                    </div>
+                                    {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
+                                    'display: none;']) !!}
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-12 pt-3">

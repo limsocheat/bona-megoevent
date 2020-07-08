@@ -11,258 +11,376 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('/plugins/image-uploader/image-uploader.css') }}">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <h1 class="pb-3">Create Event</h1>
+<h1 class="pb-3">Create Event</h1>
 
-    <style>
-        .entry:not(:first-of-type)
-        {
-            margin-top: 10px;
-        }
-        .btn-upload {
-            border: 2px solid #C5B358;
-            color: white;
-            background-color: #C5B358;
-        }
-    </style>
- {!! Form::model($event, ['route' => ['admin.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
-    
-    
-    <div class="card">
-        <div class="card-header">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item ">
-                    <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="home" aria-selected="true">Details</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="false">Image & Video</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="date-tab" data-toggle="tab" href="#date" role="tab" aria-controls="date" aria-selected="false">Date and Time</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="booth-tab" data-toggle="tab" href="#booth" role="tab" aria-controls="booth" aria-selected="false">Booth</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee" aria-selected="false">Fee</a>
-                </li>
-            </ul>
-        </div>
-        <div class="card-body">
-            <div class="tab-content">
-                <div class="tab-pane active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
-                    
-                    <div class="form-group">
-                        {!! Form::label('name', 'Event Name') !!}
-                        {!! Form::text('name', null, ['placeholder' => 'Event Name', 'class' => 'form-control']) !!}
-                    </div>
+<style>
+    .entry:not(:first-of-type) {
+        margin-top: 10px;
+    }
 
-                    <div class="form-group">
-                        {!! Form::label('type_id', 'Type') !!}
-                        {!! Form::select('type_id', $types, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
-                    </div>
+    .btn-upload {
+        border: 2px solid #C5B358;
+        color: white;
+        background-color: #C5B358;
+    }
 
-                    <div class="form-group">
-                        {!! Form::label('category_id', 'Category') !!}
-                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
-                    </div>
+    .entry:not(:first-of-type) {
+        margin-top: 10px;
+    }
 
-                    <div class="form-group">
-                        {!! Form::label('location_id', 'Event Location') !!}
-                        {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
-                    </div>
+    .btn-upload {
+        border: 2px solid #C5B358;
+        color: white;
+        background-color: #C5B358;
+    }
 
-                    <div class="form-group">
-                        {!! Form::label('description', 'Description') !!}
-                        {!! Form::textarea('description', null, ['placeholder' => 'Description', 'class' => 'form-control']) !!}
-                    </div>
+    .entry:not(:first-of-type) {
+        margin-top: 10px;
+    }
+
+    .preview-wrapper {
+        position: relative;
+        height: auto;
+        width: 900px;
+        max-width: 100%;
+        overflow: hidden;
+        transition: all .2s ease;
+    }
+
+    .preview-wrapper img {
+        height: auto;
+        width: 900px;
+        max-width: 100%;
+    }
+
+    .preview-wrapper:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+
+    .preview-wrapper:hover #preview-logo-pic {
+        opacity: .5;
+    }
+
+    .preview-wrapper #preview-logo-pic {
+        height: 100%;
+        width: 100%;
+        transition: all .3s ease;
+
+    }
+
+    .preview-wrapper #preview-logo-pic:after {
+        font-family: FontAwesome;
+        content: "\f007";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        font-size: 300px;
+        background: #ecf0f1;
+        color: #34495e;
+        text-align: center;
+    }
+
+    .preview-wrapper .logo-upload-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+{!! Form::model($event, ['route' => ['admin.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
+
+
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item ">
+                <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab"
+                    aria-controls="home" aria-selected="true">Details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image"
+                    aria-selected="false">Image & Video</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="date-tab" data-toggle="tab" href="#date" role="tab" aria-controls="date"
+                    aria-selected="false">Date and Time</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="booth-tab" data-toggle="tab" href="#booth" role="tab" aria-controls="booth"
+                    aria-selected="false">Booth</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee"
+                    aria-selected="false">Fee</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+
+                <div class="form-group">
+                    {!! Form::label('name', 'Event Name') !!}
+                    {!! Form::text('name', null, ['placeholder' => 'Event Name', 'class' => 'form-control']) !!}
                 </div>
 
-                <div class="tab-pane" id="image" role="tabpanel" aria-labelledby="image-tab">
-                    <div class="row">
+                <div class="form-group">
+                    {!! Form::label('type_id', 'Type') !!}
+                    {!! Form::select('type_id', $types, null, ['placeholder' => 'Select', 'class' => 'form-control'])
+                    !!}
+                </div>
 
-                        <div class="col-md-12 pt-3">
+                <div class="form-group">
+                    {!! Form::label('category_id', 'Category') !!}
+                    {!! Form::select('category_id', $categories, null, ['placeholder' => 'Select', 'class' =>
+                    'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('location_id', 'Event Location') !!}
+                    {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'Select', 'class' =>
+                    'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('description', 'Description') !!}
+                    {!! Form::textarea('description', null, ['placeholder' => 'Description', 'class' => 'form-control'])
+                    !!}
+                </div>
+            </div>
+
+            <div class="tab-pane" id="image" role="tabpanel" aria-labelledby="image-tab">
+                <div class="row">
+
+                    {{-- <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
                             <button type="button" class="btn mego-gold-bg btn-upload mb-2" id="feature-image-chooser">Choose Image</button>
                             {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
-                            <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}" id="feature-image-previewer" alt="Feature Image Previewer">
-                        </div>
-
-                        <div class="col-md-12 pt-3">
-                            <div class="input-field">
-                                <label class="active">Banners</label>
-                                <div class="banners-uploader" style="padding-top: .5rem;"></div>
+                            <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}"
+                    id="feature-image-previewer" alt="Feature Image Previewer">
+                </div> --}}
+                <div class="col-md-12 pt-3">
+                    <label class="active">Feature Image</label>
+                    <div class="form-group mb-3">
+                        <div class="preview-wrapper" id="profile-preview">
+                            {{-- <img id="feature-image-previewer" class="preview-img"
+                                                                src="{{  asset('/images/event_feature_image_placeholder.png') }}"
+                            alt="Preview
+                            Image" width="358"
+                            height="141" /> --}}
+                            <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}"
+                                id="feature-image-previewer" alt="Feature Image Previewer" width="358" height="141">
+                            <div class="logo-upload-button" id="feature-image-chooser">
+                                <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
                             </div>
+                            {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
+                    </div>
+                </div>
 
-                        <div class="col-md-12 pt-3">
+                <div class="col-md-12 pt-3">
+                    <div class="input-field">
+                        <label class="active">Banners</label>
+                        <div class="banners-uploader" style="padding-top: .5rem;"></div>
+                    </div>
+                </div>
+
+                {{-- <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
                             <button type="button" class="btn mego-gold-bg btn-upload mb-2" id="floor-plan-image-chooser">Choose Image</button>
                             {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' => 'display: none;']) !!}
                         </div>
                         <div class="col-md-12">
                             <img src="{{ $event->floorImage ? $event->floorImage : asset('/images/event_feature_image_placeholder.png') }}"
-                                id="floor-plan-image-previewer" alt="Feature Image Previewer">
+                id="floor-plan-image-previewer" alt="Feature Image Previewer">
+            </div> --}}
+            <div class="col-md-12 pt-3">
+                <label class="active">Floor Plan</label>
+                <div class="form-group mb-3">
+                    <div class="preview-wrapper" id="profile-preview">
+                        <img src="{{ $event->floorImage ? $event->floorImage : asset('/images/event_feature_image_placeholder.png') }}"
+                            id="floor-plan-image-previewer" alt="Feature Image Previewer" width="358" height="141">
+                        <div class="logo-upload-button" id="floor-plan-image-chooser">
+                            <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
                         </div>
-
-                        <div class="col-md-12 pt-3">
-                            <label class="active">Videos</label>
-                            <div class="controls"> 
-                                @foreach ($event->videos as $video)
-                                    <div class="entry input-group col-xs-3">
-                                        <input class="form-control" name="videos[]" value="{{ $video->url }}" type="text" placeholder="video url" />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-danger btn-remove" type="button">
-                                                <span class="fa fa-minus"></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                @endforeach
-                                <div class="entry input-group col-xs-3">
-                                    <input class="form-control" name="videos[]" type="text" placeholder="video url" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success btn-add" type="button">
-                                            <span class="fa fa-plus"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
+                        'display: none;']) !!}
                     </div>
                 </div>
-                <div class="tab-pane" id="date" role="tabpanel" aria-labelledby="date-tab">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('start_date', 'Start Date') !!}
-                                {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control', 'id' => 'StartDate']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('start_time', 'Start Time') !!}
-                                {!! Form::time('start_time', null, ['placeholder' => 'Start Time', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+            </div>
+
+            <div class="col-md-12 pt-3">
+                <label class="active">Videos</label>
+                <div class="controls">
+                    @foreach ($event->videos as $video)
+                    <div class="entry input-group col-xs-3">
+                        <input class="form-control" name="videos[]" value="{{ $video->url }}" type="text"
+                            placeholder="video url" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger btn-remove" type="button">
+                                <span class="fa fa-minus"></span>
+                            </button>
+                        </span>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('end_date', 'End Date') !!}
-                                {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control', 'id' => 'EndDate']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('end_time', 'End Time') !!}
-                                {!! Form::time('end_time', null, ['placeholder' => 'End Time', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('early_bird_date', 'Early Bird Last Date') !!}
-                                {!! Form::date('early_bird_date', null, ['placeholder' => 'Early Bird Last Date', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="booth" role="tabpanel" aria-labelledby="booth-tab">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('diamond_max', 'Diamond Pax') !!}
-                                {!! Form::number('diamond_max', null, ['placeholder' => 'Diamond Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('gold_max', 'Gold Pax') !!}
-                                {!! Form::number('gold_max', null, ['placeholder' => 'Gold Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('silver_max', 'Silver Pax') !!}
-                                {!! Form::number('silver_max', null, ['placeholder' => 'Silver Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('bronze_max', 'Bronze Pax') !!}
-                                {!! Form::number('bronze_max', null, ['placeholder' => 'Bronze Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="tab-pane" id="fee" role="tabpanel" aria-labelledby="fee-tab">
-                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('pax_min', 'Min Pax') !!}
-                                {!! Form::number('pax_min', null, ['placeholder' => 'Min Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {!! Form::label('pax_max', 'Max Pax') !!}
-                                {!! Form::number('pax_max', null, ['placeholder' => 'Max Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('pax_min_last_date', 'Min Pax Last Date') !!}
-                                {!! Form::number('pax_min_last_date', null, ['placeholder' => 'Min Pax Last Date', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('price', 'Event Price') !!}
-                                {!! Form::number('price', null, ['placeholder' => 'Event Price', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('early_bird_price', 'Early Bird Price') !!}
-                                {!! Form::number('early_bird_price', null, ['placeholder' => 'Early Bird Price', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('group_price', 'Group Price Per Pax') !!}
-                                {!! Form::number('group_price', null, ['placeholder' => 'Group Price Per Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
-                                {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of Pax', 'class' => 'form-control']) !!}
-                            </div>
-                        </div>
+                    @endforeach
+                    <div class="entry input-group col-xs-3">
+                        <input class="form-control" name="videos[]" type="text" placeholder="video url" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="fa fa-plus"></span>
+                            </button>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="tab-pane" id="date" role="tabpanel" aria-labelledby="date-tab">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('start_date', 'Start Date') !!}
+                    {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control', 'id'
+                    => 'StartDate']) !!}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('start_time', 'Start Time') !!}
+                    {!! Form::time('start_time', null, ['placeholder' => 'Start Time', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
 
-        <div class="card-footer">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('end_date', 'End Date') !!}
+                    {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control', 'id' =>
+                    'EndDate']) !!}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('end_time', 'End Time') !!}
+                    {!! Form::time('end_time', null, ['placeholder' => 'End Time', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('early_bird_date', 'Early Bird Last Date') !!}
+                    {!! Form::date('early_bird_date', null, ['placeholder' => 'Early Bird Last Date', 'class' =>
+                    'form-control']) !!}
+                </div>
+            </div>
         </div>
     </div>
-        
-        
-    {!! Form::close() !!}
+    <div class="tab-pane" id="booth" role="tabpanel" aria-labelledby="booth-tab">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('diamond_max', 'Diamond Pax') !!}
+                    {!! Form::number('diamond_max', null, ['placeholder' => 'Diamond Pax', 'class' => 'form-control'])
+                    !!}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('gold_max', 'Gold Pax') !!}
+                    {!! Form::number('gold_max', null, ['placeholder' => 'Gold Pax', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('silver_max', 'Silver Pax') !!}
+                    {!! Form::number('silver_max', null, ['placeholder' => 'Silver Pax', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('bronze_max', 'Bronze Pax') !!}
+                    {!! Form::number('bronze_max', null, ['placeholder' => 'Bronze Pax', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane" id="fee" role="tabpanel" aria-labelledby="fee-tab">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('pax_min', 'Min Pax') !!}
+                    {!! Form::number('pax_min', null, ['placeholder' => 'Min Pax', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {!! Form::label('pax_max', 'Max Pax') !!}
+                    {!! Form::number('pax_max', null, ['placeholder' => 'Max Pax', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('pax_min_last_date', 'Min Pax Last Date') !!}
+                    {!! Form::number('pax_min_last_date', null, ['placeholder' => 'Min Pax Last Date', 'class' =>
+                    'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('price', 'Event Price') !!}
+                    {!! Form::number('price', null, ['placeholder' => 'Event Price', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('early_bird_price', 'Early Bird Price') !!}
+                    {!! Form::number('early_bird_price', null, ['placeholder' => 'Early Bird Price', 'class' =>
+                    'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('group_price', 'Group Price Per Pax') !!}
+                    {!! Form::number('group_price', null, ['placeholder' => 'Group Price Per Pax', 'class' =>
+                    'form-control']) !!}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
+                    {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of Pax', 'class'
+                    => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="card-footer">
+    {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+</div>
+</div>
+
+
+{!! Form::close() !!}
 
 @stop
 
@@ -273,9 +391,9 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script>
-   $(document).ready(function(){
+    $(document).ready(function(){
 		var banners   = <?php echo json_encode($event->banners); ?>;
         var preloaded = [];
         banners.forEach((element, index) => {
