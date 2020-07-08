@@ -187,13 +187,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul id="navbar-nav" class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                         <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
                             <a href="{{ route('index') }}" class="nav-link nav-link-left">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
                             <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::currentRouteName() == 'product' || Route::currentRouteName() == 'show.product' ? 'active' : ''}}">
                             <a href="{{ route('product') }}" class="nav-link">Products</a>
                         </li>
                         {{-- <li class="nav-item">
@@ -201,10 +201,10 @@
                         </li> --}}
                     </ul>
                     <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
                             <a href="{{route('contact')}}" class="nav-link nav-link-right">Contact</a>
                         </li>
                     </ul>

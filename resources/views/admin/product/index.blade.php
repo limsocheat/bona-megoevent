@@ -20,11 +20,12 @@
 					<th>Image</th>
                     <th>Category Name</th>
                     <th>Price</th>
+                    <th>Color</th>
                     <th>Quantity</th>
                     <th>Sold</th>
                     <th>Available </th>
                     <th style="width: 300px">Description</th>
-                    <th>Action</th>
+                    <th style="width: 150px">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@
                         <td><img src="{{ $product->image_url }}" class="rounded mx-auto" alt="" width="48" height="53"></td>
                         <td>{{ $product->category ?$product->category->name :null}}</td>
                         <td>{{ $product->price }}</td>
+                        <td>{{ $product->color}}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->sold_quantity }}</td>
                         <td>{{ $product->available_quantity }}</td>

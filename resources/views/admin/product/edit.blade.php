@@ -35,10 +35,16 @@
 			<div class="form-group">
                 {!! Form::label('quantity', 'Quantity') !!}
                 {!! Form::text('quantity', null, ['placeholder' => 'Quantity', 'class' => 'form-control','id' => 'digitsOnly']) !!}
-			</div>
+            </div>
+            
+            <div class="form-group">
+                {!! Form::label('color', 'Color') !!}
+                {!! Form::text('color', null, ['placeholder' => 'color', 'class' => 'form-control']) !!}
+            </div>
+            
 			 <div class="form-group">
                 {!! Form::label('description', 'Description') !!}
-                {!! Form::text('description', null, ['placeholder' => 'Description', 'class' => 'form-control']) !!}
+                {!! Form::textarea('description', null, ['placeholder' => 'Description', 'class' => 'form-control']) !!}
             </div>
            
         </div>
