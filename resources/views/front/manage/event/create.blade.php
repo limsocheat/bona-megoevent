@@ -14,49 +14,6 @@
             </ul>
         </div>
     @endif
-    <style>
-        .entry:not(:first-of-type) {
-            margin-top: 10px;
-        }
-        .company-wrapper{
-            position: relative;
-            height: 141px;
-            width: 358px;
-            overflow: hidden;
-            transition: all .3s ease;
-        }
-        .company-wrapper:hover #preview-logo-pic {
-            opacity: .5;
-        } 
-        .company-wrapper #preview-logo-pic {
-            height: 100%;
-            width: 100%;
-            transition: all .3s ease;
-            
-        }
-            
-        .company-wrapper #preview-logo-pic:after {
-            font-family: FontAwesome;
-            content: "\f007";
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            font-size: 300px;
-            background: #ecf0f1;
-            color: #34495e;
-            text-align: center;
-        }
-           
-        .company-wrapper .logo-upload-button {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-        }
-    </style>
     {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
         <div class="card-header">
@@ -127,7 +84,7 @@
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
                             <div class="form-group mb-3">
-                                <div class="company-wrapper" id="profile-preview">
+                                <div class="feature-image-wrapper" id="profile-preview">
                                     <img id="feature-image-previewer" class="preview-img" src="{{  asset('/images/event_feature_image_placeholder.png') }}"
                                         alt="Preview Image" width="358" height="141" />
                                     <div class="logo-upload-button" id="feature-image-chooser">
@@ -147,7 +104,7 @@
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
                             <div class="form-group mb-3">
-                                <div class="company-wrapper" id="profile-preview">
+                                <div class="feature-image-wrapper" id="profile-preview">
                                     <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer"
                                         alt="Preview Image" width="358"
                                         height="141">    
