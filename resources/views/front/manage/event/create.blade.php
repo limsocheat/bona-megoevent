@@ -5,8 +5,6 @@
 @section('content')
 <div class="container py-4">
     <h1 class="pb-3">Create Event</h1>
-
-
     {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
         <div class="card-header">
