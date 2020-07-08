@@ -103,8 +103,7 @@
                             <div class="form-group mb-3">
                                 <div class="feature-image-wrapper" id="profile-preview">
                                         <img src="{{ $event->imageUrl ? $event->imageUrl : asset('/images/event_feature_image_placeholder.png') }}"
-                                            id="feature-image-previewer" alt="Feature Image Previewer" width="358"
-                                            height="141">
+                                            id="feature-image-previewer" alt="Feature Image Previewer">
                                     <div class="logo-upload-button" id="feature-image-chooser">
                                         <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
                                     </div>
@@ -123,7 +122,7 @@
                             <div class="form-group mb-3">
                                 <div class="feature-image-wrapper" id="profile-preview">
                                     <img src="{{ $event->floorImage ? $event->floorImage : asset('/images/event_feature_image_placeholder.png') }}"
-                                        id="floor-plan-image-previewer" alt="Feature Image Previewer" width="358" height="141">
+                                        id="floor-plan-image-previewer" alt="Feature Image Previewer">
                                     <div class="logo-upload-button" id="floor-plan-image-chooser">
                                         <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
                                     </div>

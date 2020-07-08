@@ -249,30 +249,42 @@ body a:hover {
     font-weight: bold;
     color: #000;
 }
+
 .entry:not(:first-of-type) {
     margin-top: 10px;
 }
-.feature-image-wrapper{
+
+.feature-image-wrapper {
     position: relative;
-    height: 141px;
-    width: 358px;
+    height: auto;
+    width: 900px;
+    max-width: 100%;
     overflow: hidden;
     transition: all .3s ease;
 }
-.feature-image-wrapper:hover{
+
+.feature-image-wrapper img {
+    height: auto;
+    width: 900px;
+    max-width: 100%;
+}
+
+.feature-image-wrapper:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
+
 .feature-image-wrapper:hover #preview-logo-pic {
     opacity: .5;
-} 
+}
+
 .feature-image-wrapper #preview-logo-pic {
     height: 100%;
     width: 100%;
     transition: all .3s ease;
-    
+
 }
-    
+
 .feature-image-wrapper #preview-logo-pic:after {
     font-family: FontAwesome;
     content: "\f007";
@@ -286,7 +298,7 @@ body a:hover {
     color: #34495e;
     text-align: center;
 }
-    
+
 .feature-image-wrapper.logo-upload-button {
     position: absolute;
     top: 0;
@@ -294,6 +306,7 @@ body a:hover {
     height: 100%;
     width: 100%;
 }
+
 #account-navbar .nav-link {
     background-color: #bf9000;
     color: white;
