@@ -73,19 +73,6 @@
         margin-left: 20px; 
     }
     
-    .add-to-cart, .like {
-        padding: 0.5em 0.5em;
-        border: none;
-
-        color: #fff;
-    }
-    .add-to-cart i, .like i{
-        font-size: 20px;
-    }
-    .add-to-cart:hover, .like:hover {
-        background: #646464fd;
-        color: #fff;
-    }
     
     .not-available {
         text-align: center;
@@ -124,7 +111,7 @@
                         <p class="colors mb-4">Colors: {{ $product->color }}</p>
                         <div class="action">
                              {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-                                <button type="submit" class="add-to-cart btn mb-4 mego-gold-bg"  type="button">Add to Cart  <i class="fa fa-cart-plus pl-2 pr-2" aria-hidden="true"></i></button>
+                                <button type="submit" class="btn mb-4 mego-gold-bg"  type="button">Add to Cart  <i class="fa fa-cart-plus pl-2 pr-2" aria-hidden="true"></i></button>
                              {!! Form::close() !!}
                             {{-- <button class="like btn btn-default mb-4" type="button"> Buy Now  <i class="fa fa-shopping-basket pl-3" aria-hidden="true"></i></span></button> --}}
                         </div>
