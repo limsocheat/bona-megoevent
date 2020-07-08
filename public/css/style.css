@@ -178,6 +178,12 @@ body a:hover {
 
 .mego-gold-bg {
     background-color: #C5B358;
+    color: white;
+}
+
+.mego-gold-bg:hover {
+    background-color: #C5B358;
+    color: white;
 }
 
 .event-card #event-join:hover {

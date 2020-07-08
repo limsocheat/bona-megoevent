@@ -111,7 +111,7 @@
                         <p class="colors mb-4">Colors: {{ $product->color }}</p>
                         <div class="action">
                              {!! Form::open(['route' => ['cart.add', $product->id], 'method' => 'POST']) !!}
-                                <button type="submit" class="btn mb-4 mego-gold-bg"  type="button">Add to Cart  <i class="fa fa-cart-plus pl-2 pr-2" aria-hidden="true"></i></button>
+                                <button type="submit" class="btn mb-4 mego-gold-bg">Add to Cart <i class="fa fa-cart-plus pl-2 pr-2" aria-hidden="true"></i></button>
                              {!! Form::close() !!}
                             {{-- <button class="like btn btn-default mb-4" type="button"> Buy Now  <i class="fa fa-shopping-basket pl-3" aria-hidden="true"></i></span></button> --}}
                         </div>
