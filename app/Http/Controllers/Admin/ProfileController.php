@@ -14,7 +14,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         
-        return view('admin.setting.index', ['user' => $user]);
+        return view('admin.profile.index', ['user' => $user]);
     }
 
     public function update(Request $request)

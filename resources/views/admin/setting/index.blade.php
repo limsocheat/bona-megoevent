@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Setting')
 
 @section('content_header')
     <h1>Setting</h1>
@@ -8,20 +8,17 @@
 
 @section('content')
 <div class="card">
-    {!! Form::model($user, ['route' => ['admin.profile.update'], 'method' => 'PUT']) !!}
+    {!! Form::model($setting, ['route' => ['admin.setting.update'], 'method' => 'PUT']) !!}
         <div class="card-body">
-            <div class="form-group">
-                {!! Form::label('name', 'User Name') !!}
-                {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('email', 'E-Mail Address') !!}
-                {!! Form::email('email', null, ['placeholder' => 'enter email address', 'class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('password', 'Password') !!}
-                {!! Form::password('password', ['class' => 'form-control']) !!}
-                <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
+            <div class="row">
+                <div class="col-xs-12 col-md-3 form-group">
+                    {!! Form::label("event[grid_block_value]", 'Grid Block Value') !!}
+                    {!! Form::number('event[grid_block_value]', null, ['placeholder' => 'Grid Block Value', 'min' => 0, 'class' => 'form-control', 'required' => true]) !!}
+                </div>
+                <div class="col-xs-12 col-md-3 form-group">
+                    {!! Form::label('event[tax_percentage]', 'Tax Percentage') !!}
+                    {!! Form::number('event[tax_percentage]', null, ['placeholder' => 'Tax Percentage', 'min' => 0, 'class' => 'form-control', 'required' => true]) !!}
+                </div>
             </div>
         </div>
         <div class="card-footer ">

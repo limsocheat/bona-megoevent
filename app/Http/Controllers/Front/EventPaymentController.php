@@ -28,13 +28,16 @@ class EventPaymentController extends Controller
      */
     public function create(Request $request)
     {
-
         $request->validate([
             'event_id'  => 'required|exists:events,id'
         ]);
-
+        
         $event_id   = $request->input('event_id');
         $event      = Event::findOrFail($event_id);
+
+        if(!$event->venue_id || !$event->venue_level) {
+            return redirect()->back();
+        }
 
         $data       = [
             'event' => $event,

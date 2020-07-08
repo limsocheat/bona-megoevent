@@ -27,6 +27,9 @@ Route::namespace('Admin')->group(function () {
                 Route::get('/', 'DashboardController@index')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+                
+                Route::get('/setting', 'SettingController@index')->name('setting.index');
+                Route::put('/setting', 'SettingController@update')->name('setting.update');
 
                 Route::resources([
                     'user'               => 'UserController',

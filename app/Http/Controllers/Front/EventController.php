@@ -133,7 +133,6 @@ class EventController extends Controller
 
             // SCHEDULE
             $period = CarbonPeriod::create($data['start_date'], $data['end_date']);
-            // Iterate over the period
             foreach ($period as $date) {
                 $event->schedules()->save(
                     new EventSchedule([
@@ -243,65 +242,83 @@ class EventController extends Controller
             'location_id'           => 'required|exists:locations,id',
         ]);
 
-        $data       = $request->all();
+        DB::beginTransaction();
+        try {
+            $data       = $request->all();
 
-        if ($image   = $request->file('image')) {
-            $name   = $image->getClientOriginalName();
-            $name   = time() . '_' . $name;
-            $image->move('uploads', $name);
-            $data['image'] = '/uploads/' . $name;
-        }
-
-        if ($image   = $request->file('floor_plan_image')) {
-            $name   = $image->getClientOriginalName();
-            $name   = time() . '_' . $name;
-            $image->move('uploads', $name);
-            $data['floor_plan_image'] = '/uploads/' . $name;
-        }
-
-        $event->update($data);
-
-        if (count($event->banners)) {
-            $event->banners()->whereNotIn('id', $request->input('old'))->delete();
-        }
-
-        $banners    = [];
-        if ($files = $request->file('images')) {
-
-            foreach ($files as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move('upload', $name);
-                $images[] = $name;
-
-                $banners[] = new Banner([
-                    'name'      => $event->name,
-                    'location'  => 'event',
-                    'image'     => $name,
-                ]);
+            if ($image   = $request->file('image')) {
+                $name   = $image->getClientOriginalName();
+                $name   = time() . '_' . $name;
+                $image->move('uploads', $name);
+                $data['image'] = '/uploads/' . $name;
             }
-        }
 
-        if (count($banners)) {
-            $event->banners()->saveMany($banners);
-        }
-
-        $event->videos()->delete();
-        $videos     = [];
-        foreach ($request->videos as $video) {
-            if ($video) {
-                $videos[] = new Video([
-                    'url'   => $video,
-                ]);
+            if ($image   = $request->file('floor_plan_image')) {
+                $name   = $image->getClientOriginalName();
+                $name   = time() . '_' . $name;
+                $image->move('uploads', $name);
+                $data['floor_plan_image'] = '/uploads/' . $name;
             }
-        }
 
-        if (count($videos)) {
-            $event->videos()->saveMany($videos);
-        }
+            $event->update($data);
 
-        if ($event) {
+            $event->schedules()->delete();
+            $period = CarbonPeriod::create($data['start_date'], $data['end_date']);
+            foreach ($period as $date) {
+                $event->schedules()->save(
+                    new EventSchedule([
+                        'date'          => $date,
+                        'start_time'    => $data['start_time'],
+                        'end_time'      => $data['end_time'],
+                    ])
+                );
+            }
+
+            if (count($event->banners)) {
+                $event->banners()->whereNotIn('id', $request->input('old'))->delete();
+            }
+
+            $banners    = [];
+            if ($files = $request->file('images')) {
+
+                foreach ($files as $file) {
+                    $name = $file->getClientOriginalName();
+                    $file->move('upload', $name);
+                    $images[] = $name;
+
+                    $banners[] = new Banner([
+                        'name'      => $event->name,
+                        'location'  => 'event',
+                        'image'     => $name,
+                    ]);
+                }
+            }
+
+            if (count($banners)) {
+                $event->banners()->saveMany($banners);
+            }
+
+            $event->videos()->delete();
+            $videos     = [];
+            foreach ($request->videos as $video) {
+                if ($video) {
+                    $videos[] = new Video([
+                        'url'   => $video,
+                    ]);
+                }
+            }
+
+            if (count($videos)) {
+                $event->videos()->saveMany($videos);
+            }
+
+            DB::commit();
             return redirect()->route('manage.event.index');
+        } catch(\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
