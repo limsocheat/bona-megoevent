@@ -45,6 +45,7 @@ class CreateEventsTable extends Migration
             $table->double('group_price')->nullable()->default(0);
             $table->integer('group_min_pax')->nullable()->default(0);
             $table->boolean('active')->nullable()->default(1);
+            $table->enum('status', ['draft', 'publised'])->default('draft');
             $table->timestamps();
 
             $table->foreign('event_experience_id')->references('id')->on('options')->onDelete('set null');

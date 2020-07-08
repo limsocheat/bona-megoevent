@@ -60,6 +60,16 @@ class Event extends Model
         return $this->hasManyThrough(Ticket::class, Purchase::class);
     }
 
+    public function schedules()
+    {
+        return $this->hasMany(EventSchedule::class);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(EventPayment::class);
+    }
+
     public function getImageUrlAttribute()
     {
         return $this->image ? url($this->image) : asset('/images/event_feature_image_placeholder.png');

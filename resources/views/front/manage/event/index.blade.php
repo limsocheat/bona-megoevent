@@ -14,10 +14,35 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
                     @endif
+
+                    {!! Form::open(['route' => 'manage.event.index', 'method' => 'GET']) !!}
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('name', 'Name', ['class' => 'label-control']) !!}
+                                {!! Form::text('name', request()->name, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('status', 'Status', ['class' => 'label-control']) !!}
+                                {!! Form::select('status', ['draft' => 'Draft', 'published' => 'Published'], request()->status, ['placeholder' => 'Status', 'class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('payment', 'Payment', ['class' => 'label-control']) !!}
+                                {!! Form::select('payment', ['paid' => 'Paid', 'unpaid' => 'Unpaid'], request()->payment, ['placeholder' => 'Payment Status', 'class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <div class="label-control">&nbsp;</div>
+                                    <div style="margin-top: 9px;">
+                                        {!! Form::submit('Filter', ['class' => 'btn btn-primary btn-block']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {!! Form::close() !!}
+
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -29,6 +54,7 @@
                                 <th>Exhibitors</th>
                                 <th>Orders</th>
                                 <th>Tickets</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
@@ -45,6 +71,7 @@
                                             class="btn btn-outline-primary">{{ count($event->purchases) }}</a></td>
                                     <td><a href="{{ route('manage.order_ticket.index') }}?event_id={{ $event->id }}"
                                             class="btn btn-outline-primary">{{ count($event->tickets) }}</a></td>
+                                    <td>{{ $event->status }}</td>
                                     <td>
                                         <a href="{{ route('manage.event.edit', $event->id) }}"
                                             class="btn btn-sm btn-primary">Edit</a>

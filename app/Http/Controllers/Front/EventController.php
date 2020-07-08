@@ -32,11 +32,30 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $organizer      = auth()->user();
+        $organizer  = auth()->user();
+        
+        $name       = $request->input('name');
+        $status     = $request->input('status');
+        $payment    = $request->input('payment');
 
-        $events     = Event::select('*')->where('organizer_id', $organizer->id)->get();
+        $events     = Event::select('*')
+            ->when($name, function($query, $name){
+                return $query->where('name', 'LIKE', "%$name%");
+            })
+            ->when($status, function($query, $status) {
+                return $query->where('status', $status);
+            })
+            ->when($payment == 'paid', function($query) {
+                return $query->whereHas('payment');
+            })
+            ->when($payment == 'unpaid', function($query) {
+                return $query->whereDoesntHave('payment');
+            })
+            ->where('organizer_id', $organizer->id)
+            ->get();
+
         $data       = [
             'events'    => $events,
         ];
