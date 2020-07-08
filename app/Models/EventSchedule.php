@@ -30,4 +30,13 @@ class EventSchedule extends Model
     {
         return Carbon::createFromFormat('H:i:s', $this->end_time)->format('g:i a');
     }
+
+    public function getTotalHoursAttribute()
+    {
+        $start_time     = strtotime($this->start_time);
+        $end_time       = strtotime($this->end_time);
+        $difference     = round(abs($end_time - $start_time) / 3600, 0, PHP_ROUND_HALF_UP);
+        
+        return $difference;
+    }
 }

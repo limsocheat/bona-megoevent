@@ -9,6 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "akaunting/money": "^1.2",
+        "akaunting/setting": "^1.1",
         "appstract/laravel-bootstrap-components": "^2.0",
         "buzz/laravel-google-captcha": "^2.3",
         "darryldecode/cart": "^4.1",

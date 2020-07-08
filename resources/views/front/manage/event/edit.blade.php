@@ -4,7 +4,26 @@
 
 <div class="container py-4">
 
-    <h1 class="pb-3">Edit Event</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="float-left">Edit Event</h1>
+            <div class="btn {{ $event->status == 'published' ? 'btn-success' : 'btn-outline-primary'  }} float-left ml-5">{{ $event->status }}</div>
+        </div>
+        <div class="col-md-6 text-right">
+            @if ($event->payment)
+                You have paid <strong>{{ Money::SGD($event->payment->total) }}</strong>
+            @else
+                <a href="{{ route('manage.event_payment.create') }}?event_id={{ $event->id }}" class="btn btn-primary">Make Payment & Publish</a>
+            @endif
+        </div>
+        @if ($event->readonly)
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    You have made payment & published this event! Some fields will be disable.
+                </div>
+            </div>
+        @endif
+    </div>
 
     <style>
         .entry:not(:first-of-type)
@@ -52,8 +71,7 @@
     </style>
 
     {!! Form::model($event, ['route' => ['manage.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
-    
-    
+
     <div class="card">
         <div class="card-header">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -71,6 +89,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee" aria-selected="false">Fee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="schedule-venue-tab" data-toggle="tab" href="#schedule-venue" role="tab" aria-controls="schedule-venue" aria-selected="false">Schedule & Venue</a>
                 </li>
             </ul>
         </div>
@@ -195,13 +216,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('start_date', 'Start Date') !!}
-                                {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control', 'id' => 'StartDate']) !!}
+                                {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control', 'id' => 'StartDate', 'readonly' => $event->readonly]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('start_time', 'Start Time') !!}
-                                {!! Form::time('start_time', null, ['placeholder' => 'Start Time', 'class' => 'form-control']) !!}
+                                {!! Form::time('start_time', null, ['placeholder' => 'Start Time', 'class' => 'form-control', 'readonly' => $event->readonly]) !!}
                             </div>
                         </div>
                     </div>
@@ -210,13 +231,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('end_date', 'End Date') !!}
-                                {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control', 'id' => 'EndDate']) !!}
+                                {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control', 'id' => 'EndDate', 'readonly' => $event->readonly]) !!}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('end_time', 'End Time') !!}
-                                {!! Form::time('end_time', null, ['placeholder' => 'End Time', 'class' => 'form-control']) !!}
+                                {!! Form::time('end_time', null, ['placeholder' => 'End Time', 'class' => 'form-control', 'readonly' => $event->readonly]) !!}
                             </div>
                         </div>
 
@@ -309,6 +330,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane" id="schedule-venue" role="tabpanel" aria-labelledby="schedule-venue">
+                    @include('front.components.event.tab.schedule_venue')
+                </div>
             </div>
         </div>
 
@@ -317,112 +341,7 @@
         </div>
     </div>
         
-        
     {!! Form::close() !!}
-
-    {{-- <div class="row justify-content-center">
-        <div class="col-md-8">
-            {!! Form::model($event, ['route' => ['manage.event.update', $event->id], 'method' => 'PUT']) !!}
-                <div class="card">
-                    <div class="card-header">
-                        {{ __('Update Event') }}
-                    </div>
-
-                    <div class="card-body">
-                        <div class="form-group">
-                            {!! Form::label('event_experience_id', 'What\'s your level of experience hosting events?') !!}
-                            {!! Form::select('event_experience_id', $event_experiences, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('event_team_id', 'How many people help plan your events online?') !!}
-                            {!! Form::select('event_team_id', $event_teams, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('event_frequency_id', 'How often do you plan to host events?') !!}
-                            {!! Form::select('event_frequency_id', $event_frequencies, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('event_attendance_id', 'How many people do you expect will attend this event?') !!}
-                            {!! Form::select('event_attendance_id', $event_attendances, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('type_id', 'What type of event are you hosting today?') !!}
-                            {!! Form::select('type_id', $types, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('category_id', 'How would you categorize your event?') !!}
-                            {!! Form::select('category_id', $categories, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('name', 'Name of your event') !!}
-                            {!! Form::text('name', null, ['placeholder' => 'event name', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('mode', 'Mode') !!}
-                            {!! Form::select('mode', ['single' => 'Single Event', 'recurring' => 'Recurring Event'], null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('start_date', 'Start Date') !!}
-                                    {!! Form::date('start_date', null, ['placeholder' => 'Start Date', 'class' => 'form-control', 'id' => 'StartDate']) !!}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('start_time', 'Start Time') !!}
-                                    {!! Form::time('start_time', null, ['placeholder' => 'Start Time', 'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('end_date', 'End Date') !!}
-                                    {!! Form::date('end_date', null, ['placeholder' => 'End Date', 'class' => 'form-control', 'id' => 'EndDate']) !!}
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    {!! Form::label('end_time', 'End Time') !!}
-                                    {!! Form::time('end_time', null, ['placeholder' => 'End Time', 'class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('location_id', 'Event Location') !!}
-                            {!! Form::select('location_id', $event_locations, null, ['placeholder' => 'select', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('location', 'Location Details') !!}
-                            {!! Form::text('location', null, ['placeholder' => 'location details', 'class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('description', 'Description') !!}
-                            {!! Form::textarea('description', null, ['placeholder' => 'description', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
-                    </div>
-                </div>
-            
-            {!! Form::close() !!}
-        </div>
-    </div> --}}
 </div>
 
 <script type="text/javascript">

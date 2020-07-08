@@ -111,7 +111,7 @@ Route::namespace('Front')->group(function () {
                     'ticket'              => 'TicketController',
                     'order'               => 'OrderController',
                     'order_ticket'        => 'OrderTicketController',
-
+                    'event_payment'       => 'EventPaymentController',
                 ]);
                 Route::get('/', 'PageController@manage')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');

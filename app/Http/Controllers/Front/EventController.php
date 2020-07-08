@@ -14,6 +14,7 @@ use App\Models\Venue;
 use App\Models\Video;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -109,75 +110,82 @@ class EventController extends Controller
         ]);
 
 
-        $data                       = $request->all();
-        $data['organizer_id']       = $organizer->id;
+        DB::beginTransaction();
+        try {
 
-        if ($image   = $request->file('image')) {
-            $name   = $image->getClientOriginalName();
-            $name   = time() . '_' . $name;
-            $image->move('uploads', $name);
-            $data['image'] = '/uploads/' . $name;
-        }
-        if ($image   = $request->file('floor_plan_image')) {
-            $name   = $image->getClientOriginalName();
-            $name   = time() . '_' . $name;
-            $image->move('uploads', $name);
-            $data['floor_plan_image'] = '/uploads/' . $name;
-        }
+            $data                       = $request->all();
+            $data['organizer_id']       = $organizer->id;
 
-        $event       = Event::create($data);
-
-        // SCHEDULE
-        $period = CarbonPeriod::create($data['start_date'], $data['end_date']);
-        // Iterate over the period
-        foreach ($period as $date) {
-            $event->schedules()->save(
-                new EventSchedule([
-                    'date'          => $date,
-                    'start_time'    => $data['start_time'],
-                    'end_time'      => $data['end_time'],
-                ])
-            );
-        }
-
-        // BANNER
-        $banners    = [];
-        if ($files  = $request->file('images')) {
-
-            foreach ($files as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move('upload', $name);
-                $images[] = $name;
-
-                $banners[] = new Banner([
-                    'name'      => $event->name,
-                    'location'  => 'event',
-                    'image'     => $name,
-                ]);
+            if ($image   = $request->file('image')) {
+                $name   = $image->getClientOriginalName();
+                $name   = time() . '_' . $name;
+                $image->move('uploads', $name);
+                $data['image'] = '/uploads/' . $name;
             }
-        }
-
-        if (count($banners)) {
-            $event->banners()->saveMany($banners);
-        }
-
-        // VIDEO
-        $event->videos()->delete();
-        $videos     = [];
-        foreach ($request->videos as $video) {
-            if ($video) {
-                $videos[] = new Video([
-                    'url'   => $video,
-                ]);
+            if ($image   = $request->file('floor_plan_image')) {
+                $name   = $image->getClientOriginalName();
+                $name   = time() . '_' . $name;
+                $image->move('uploads', $name);
+                $data['floor_plan_image'] = '/uploads/' . $name;
             }
-        }
 
-        if (count($videos)) {
-            $event->videos()->saveMany($videos);
-        }
+            $event       = Event::create($data);
 
-        if ($event) {
-            return redirect()->route('manage.event.index');
+            // SCHEDULE
+            $period = CarbonPeriod::create($data['start_date'], $data['end_date']);
+            // Iterate over the period
+            foreach ($period as $date) {
+                $event->schedules()->save(
+                    new EventSchedule([
+                        'date'          => $date,
+                        'start_time'    => $data['start_time'],
+                        'end_time'      => $data['end_time'],
+                    ])
+                );
+            }
+
+            // BANNER
+            $banners    = [];
+            if ($files  = $request->file('images')) {
+
+                foreach ($files as $file) {
+                    $name = $file->getClientOriginalName();
+                    $file->move('upload', $name);
+                    $images[] = $name;
+
+                    $banners[] = new Banner([
+                        'name'      => $event->name,
+                        'location'  => 'event',
+                        'image'     => $name,
+                    ]);
+                }
+            }
+
+            if (count($banners)) {
+                $event->banners()->saveMany($banners);
+            }
+
+            // VIDEO
+            $event->videos()->delete();
+            $videos     = [];
+            foreach ($request->videos as $video) {
+                if ($video) {
+                    $videos[] = new Video([
+                        'url'   => $video,
+                    ]);
+                }
+            }
+
+            if (count($videos)) {
+                $event->videos()->saveMany($videos);
+            }
+
+            DB::commit();
+            return redirect()->route('manage.event.edit', $event->id);
+            
+        } catch(\Exception $e) {
+            DB::rollback();
+            return redirect()->back();
         }
     }
 
@@ -204,14 +212,15 @@ class EventController extends Controller
 
         $data  = [
             'event' => $event,
-            'event_experiences' => Option::select('id', 'name')->where('type', 'event_experience')->get()->pluck('name', 'id'),
-            'event_teams' => Option::select('id', 'name')->where('type', 'event_team')->get()->pluck('name', 'id'),
-            'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
-            'event_frequencies' => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
-            'event_attendances' => Option::select('id', 'name')->where('type', 'event_attendance')->get()->pluck('name', 'id'),
-            'event_locations'   => Location::select('id', 'name')->get()->pluck('name', 'id'),
-            'types' => EventType::select('id', 'name')->get()->pluck('name', 'id'),
-            'categories' => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
+            'event_experiences'     => Option::select('id', 'name')->where('type', 'event_experience')->get()->pluck('name', 'id'),
+            'event_teams'           => Option::select('id', 'name')->where('type', 'event_team')->get()->pluck('name', 'id'),
+            'event_frequencies'     => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
+            'event_frequencies'     => Option::select('id', 'name')->where('type', 'event_frequency')->get()->pluck('name', 'id'),
+            'event_attendances'     => Option::select('id', 'name')->where('type', 'event_attendance')->get()->pluck('name', 'id'),
+            'event_locations'       => Location::select('id', 'name')->get()->pluck('name', 'id'),
+            'types'                 => EventType::select('id', 'name')->get()->pluck('name', 'id'),
+            'categories'            => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
+            'venues'                => Venue::select('id','size')->get()->pluck('size', 'id'),
         ];
 
         return view('front.manage.event.edit', $data);

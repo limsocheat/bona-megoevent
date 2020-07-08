@@ -12,10 +12,11 @@ class Event extends Model
     protected $fillable = [
         'mode', 'organizer_id', 'image', 'floor_plan_image',
         'event_experience_id', 'event_team_id', 'event_frequency_id',
-        'event_attendance_id', 'location_id', 'type_id', 'category_id',
-        'name', 'start_date', 'start_time', 'end_date', 'end_time',
+        'event_attendance_id', 'location_id', 'type_id', 'category_id', 'venue_id',
+        'name', 'start_date', 'start_time', 'end_date', 'end_time', 'venue_level',
         'description', 'diamond_max', 'gold_max', 'silver_max', 'bronze_max', 'pax_min', 'pax_max',
-        'pax_min_last_date', 'price', 'early_bird_price', 'early_bird_date', 'group_price', 'group_min_pax'
+        'pax_min_last_date', 'price', 'early_bird_price', 'early_bird_date', 'group_price', 'group_min_pax',
+        'status'
     ];
     public function location()
     {
@@ -69,6 +70,11 @@ class Event extends Model
     {
         return $this->hasOne(EventPayment::class);
     }
+    
+    public function venue()
+    {
+        return $this->belongsTo(Venue::class);
+    }
 
     public function getImageUrlAttribute()
     {
@@ -110,5 +116,54 @@ class Event extends Model
             ->withPivot([
                 'status'
             ]);
+    }
+
+    public function getTotalHoursAttribute()
+    {
+        $total_hours = 0;
+        foreach($this->schedules as $schedule) {
+            $total_hours += $schedule->total_hours;
+        }
+    
+        return $total_hours;
+    }
+
+    public function getTotalGridBlockAttribute()
+    {
+        $grid = 0;
+        if($this->venue && $this->venue_level) {
+            $grid   = $this->venue->width * $this->venue->length * $this->venue_level;
+        }
+        return $grid;
+    }
+
+    public function getTotalGridBlockPriceAttribute()
+    {
+        return $this->total_grid_block * $this->total_hours * \Setting::get('event.grid_block_value');
+    }
+
+    public function getTotalNetPriceAttribute()
+    {
+        return $this->total_grid_block_price;
+    }
+
+    public function getTotalTaxAttribute() 
+    {
+        return $this->total_net_price * \Setting::get('event.tax_percentage') / 100;
+    }
+
+    public function getTotalFinalPriceAttribute()
+    {
+        return $this->total_net_price + $this->total_tax;
+    }
+
+    public function getReadOnlyAttribute()
+    {
+        $readonly   = false;
+
+        if($this->payment && $this->payment->status == 'paid') {
+            $readonly   = true;
+        }
+        return $readonly;
     }
 }

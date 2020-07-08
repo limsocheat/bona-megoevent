@@ -169,6 +169,8 @@ return [
         Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
+        Akaunting\Setting\Provider::class,
+        Akaunting\Money\Provider::class,
         /*
          * Application Service Providers...
          */
@@ -232,6 +234,8 @@ return [
         'Captcha' => Buzz\LaravelGoogleCaptcha\CaptchaFacade::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,  
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Setting' => Akaunting\Setting\Facade::class,
+        'Money' => Akaunting\Money\Money::class,
     ],
 
 ];

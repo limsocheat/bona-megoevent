@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -25,19 +26,28 @@ class CartController extends Controller
     public function add(Request $request, $id)
     {
         $user           = auth()->user();
-        $product        = Product::findOrFail($id);
+        if($request->input('type') == 'event') {
+            $item       = Event::findOrFail($id);
+            $name       = $item->name;
+            $price      = $item->total_final_price;
+        } else {
+            $item       = Product::findOrFail($id);
+            $name       = $item->name;
+            $price      = $item->price;
+        }
 
         try {
             \Cart::session($user->id)->add(array(
-                'id' => $product->id,
-                'name' => $product->name,
-                'price' => $product->price,
+                'id' => $item->id,
+                'name' => $name,
+                'price' => $price,
                 'quantity' => 1,
                 'attributes' => array(),
-                'associatedModel' => $product
+                'associatedModel' => $item
             ));
 
             return redirect()->route('cart.index');
+
         } catch(\Exception $e) {
             return redirect()->back();
         }

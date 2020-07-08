@@ -33,7 +33,6 @@
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th class="text-right">Sub Total</th>
-                                    {{-- <th>Total</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,19 +45,22 @@
                                         </td>
                                         <td><img src="{{ $item->associatedModel->image_url }}" class="img-thumbnail" /> </td>
                                         <td class="text-truncate">{{ $item->name }}</td>
-                                        <td>
-                                            {!! Form::open(['route' => ['cart.update', $item->id], 'method' => "PUT", 'id' => 'cart_form']) !!}	
-                                                @php
-                                                    $qualities	= [];
-                                                    for ($i=1; $i <= $item->associatedModel->quantity; $i++) { 
-                                                        $qualities[$i] = $i;
-                                                    }
-                                                @endphp
-                                                {!! Form::select('quantity', $qualities, $item->quantity, ['class' => 'form-control', 'onChange' => 'this.form.submit()']) !!}
-                                            {!! Form::close() !!}
-                                        </td>
+                                        @if ($item->associatedModel->quantity)
+                                            <td>
+                                                {!! Form::open(['route' => ['cart.update', $item->id], 'method' => "PUT", 'id' => 'cart_form']) !!}	
+                                                    @php
+                                                        $qualities	= [];
+                                                        for ($i=1; $i <= $item->associatedModel->quantity; $i++) { 
+                                                            $qualities[$i] = $i;
+                                                        }
+                                                    @endphp
+                                                    {!! Form::select('quantity', $qualities, $item->quantity, ['class' => 'form-control', 'onChange' => 'this.form.submit()']) !!}
+                                                {!! Form::close() !!}
+                                            </td>
+                                        @else 
+                                            <td>1</td>
+                                        @endif
                                         <td>{{ $item->price }}</td>
-                                        {{-- <td class="text-right">{{ Cart::session(auth()->id())->getTotal() }}</td> --}}
                                         <td class="text-right">{{ $item->price * $item->quantity }}</td>
                                     </tr>
                                 @endforeach

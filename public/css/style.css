@@ -168,9 +168,11 @@ body a:hover {
     background-color: #C5B358;
     color: white;
 }
-.btn-gold{
+
+.btn-gold {
     background-color: #C5B358;
 }
+
 .event-card #event-join:hover {
     background-color: #ddd4a5;
 }
@@ -273,23 +275,30 @@ body a:hover {
     color: #bf9000;
 }
 
+.spacer {
+    padding: 25px 0;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    #logo-controll{
+    #logo-controll {
         text-align: center;
     }
+
     .navbar-brand .logo {
         max-width: 170px;
         width: 100%;
     }
-    .navbar-nav #btn-organizer{
+
+    .navbar-nav #btn-organizer {
         font-size: 4vw;
     }
+
     .nav-item a i.fa {
         padding-left: 8px;
         padding-right: 10px;
         font-size: 4vw;
-        
+
     }
 
     .dropdown-content {

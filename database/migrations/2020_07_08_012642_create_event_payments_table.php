@@ -16,6 +16,8 @@ class CreateEventPaymentsTable extends Migration
         Schema::create('event_payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('event_id')->index();
+            $table->enum('status', ['unpaid', 'paid'])->default('unpaid');
+            $table->double('total')->default(0);
             $table->timestamps();
 
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
