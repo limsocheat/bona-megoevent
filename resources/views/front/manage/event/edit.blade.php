@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Edit Event")
+
 @section('content')
 
 <div class="container py-4">
@@ -20,6 +22,20 @@
             <div class="col-md-12">
                 <div class="alert alert-info">
                     You have made payment & published this event! Some fields will be disable.
+                </div>
+            </div>
+        @endif
+        @if (!count($event->schedules))
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    Please select start date & time and end date & time!
+                </div>
+            </div>
+        @endif
+        @if (!$event->venue_id || !$event->venue_level)
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    Please select venue and level!
                 </div>
             </div>
         @endif
