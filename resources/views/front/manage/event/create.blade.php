@@ -5,15 +5,8 @@
 @section('content')
 <div class="container py-4">
     <h1 class="pb-3">Create Event</h1>
-    @if (count($errors->all()))
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
+
     {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
     <div class="card">
         <div class="card-header">
@@ -84,7 +77,7 @@
                         <div class="col-md-12 pt-3">
                             <label class="active">Feature Image</label>
                             <div class="form-group mb-3">
-                                <div class="feature-image-wrapper" id="profile-preview">
+                                <div class="preview-wrapper" id="profile-preview">
                                     <img id="feature-image-previewer" class="preview-img" src="{{  asset('/images/event_feature_image_placeholder.png') }}"
                                         alt="Preview Image" width="358" height="141" />
                                     <div class="logo-upload-button" id="feature-image-chooser">
@@ -104,7 +97,7 @@
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
                             <div class="form-group mb-3">
-                                <div class="feature-image-wrapper" id="profile-preview">
+                                <div class="preview-wrapper" id="profile-preview">
                                     <img src="{{  asset('/images/event_feature_image_placeholder.png') }}" id="floor-plan-image-previewer"
                                         alt="Preview Image" width="358"
                                         height="141">    
@@ -122,7 +115,7 @@
                                 <div class="entry input-group col-xs-3">
                                     <input class="form-control" name="videos[]" type="text" placeholder="video url" />
                                     <span class="input-group-btn">
-                                        <button class="btn mego-gold-bg btn-add" id="mego-gold-bg" type="button">
+                                        <button class="btn btn-success btn-add" id="btn-gold" type="button">
                                             <span class="fa fa-plus"></span>
                                         </button>
                                     </span>
@@ -289,7 +282,7 @@
         </div>
 
         <div class="card-footer">
-            {!! Form::submit('Save', ['class' => 'btn mego-gold-bg']); !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
         </div>
     </div>
 

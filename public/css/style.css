@@ -255,43 +255,43 @@ body a:hover {
     font-weight: bold;
     color: #000;
 }
-
+#account-navbar .nav-link {
+    background-color: #bf9000;
+    color: white;
+    border: 1px solid #000;
+}
+/* create event */
 .entry:not(:first-of-type) {
     margin-top: 10px;
 }
-
-.feature-image-wrapper {
+.preview-wrapper{
     position: relative;
     height: auto;
     width: 900px;
     max-width: 100%;
     overflow: hidden;
-    transition: all .3s ease;
-}
-
-.feature-image-wrapper img {
+    transition: all .2s ease;
+    }
+.preview-wrapper img{
     height: auto;
     width: 900px;
     max-width: 100%;
 }
-
-.feature-image-wrapper:hover {
-    transform: scale(1.05);
+.preview-wrapper:hover {
+    transform: scale(1.02);
     cursor: pointer;
 }
-
-.feature-image-wrapper:hover #preview-logo-pic {
+.preview-wrapper:hover #preview-logo-pic {
     opacity: .5;
-}
-
-.feature-image-wrapper #preview-logo-pic {
+} 
+.preview-wrapper #preview-logo-pic {
     height: 100%;
     width: 100%;
     transition: all .3s ease;
-
+    
 }
-
-.feature-image-wrapper #preview-logo-pic:after {
+    
+.preview-wrapper #preview-logo-pic:after {
     font-family: FontAwesome;
     content: "\f007";
     top: 0;
@@ -304,22 +304,14 @@ body a:hover {
     color: #34495e;
     text-align: center;
 }
-
-.feature-image-wrapper.logo-upload-button {
+    
+.preview-wrapper .logo-upload-button {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
 }
-
-#account-navbar .nav-link {
-    background-color: #bf9000;
-    color: white;
-    border: 1px solid #000;
-}
-
-
 
 #account-navbar .nav-link.active,
 #account-navbar .nav-link:hover {
