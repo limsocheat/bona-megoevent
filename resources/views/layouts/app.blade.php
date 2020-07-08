@@ -90,7 +90,7 @@
                                             
                                                 <div class="col-xs-3">
                                                     <li>
-                                                        <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg py-2" id="btn-organizer" style="height:41px;">Be an Organizer, create your own event!</a>
+                                                        <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg py-2" id="btn-organizer" style="height:41px; color: #fff;">Be an Organizer, create your own event!</a>
                                                     </li>
                                                 </div>
 
