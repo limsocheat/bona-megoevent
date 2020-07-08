@@ -9,7 +9,7 @@
             </div>
             {{-- <div class="col-5 text-right"> --}}
             <a href="{{ route('event', $event->id) }}"
-                class="ml-auto mr-2 btn btn-sm btn-outline-secondary stretched-link" id="event-join">Join Now</a>
+                class="ml-auto mr-2 btn btn-sm stretched-link" id="mego-gold-bg">Join Now</a>
             {{-- </div> --}}
         </div>
         <h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">{{ $event->name }}</h3>

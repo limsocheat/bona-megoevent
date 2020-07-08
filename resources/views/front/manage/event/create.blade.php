@@ -165,7 +165,7 @@
                                 <div class="entry input-group col-xs-3">
                                     <input class="form-control" name="videos[]" type="text" placeholder="video url" />
                                     <span class="input-group-btn">
-                                        <button class="btn btn-gold btn-add" id="btn-gold" type="button">
+                                        <button class="btn mego-gold-bg btn-add" id="mego-gold-bg" type="button">
                                             <span class="fa fa-plus"></span>
                                         </button>
                                     </span>
@@ -332,7 +332,7 @@
         </div>
 
         <div class="card-footer">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+            {!! Form::submit('Save', ['class' => 'btn mego-gold-bg']); !!}
         </div>
     </div>
 

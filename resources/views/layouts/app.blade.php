@@ -175,7 +175,8 @@
                 </div>
             </div>
         </div>
-        <nav id="main-navigation" class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0"
+
+        <nav id="main-navigation" class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0 "
             style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
             <div class="container">
                 <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
@@ -187,7 +188,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul id="navbar-nav" class="navbar-nav mr-auto">
-                         <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
+                        <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
                             <a href="{{ route('index') }}" class="nav-link nav-link-left">Home</a>
                         </li>
                         <li class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
@@ -196,9 +197,6 @@
                         <li class="nav-item {{ Route::currentRouteName() == 'product' || Route::currentRouteName() == 'show.product' ? 'active' : ''}}">
                             <a href="{{ route('product') }}" class="nav-link">Products</a>
                         </li>
-                        {{-- <li class="nav-item">
-                        <a href="{{ route('entrance') }}" class="nav-link">Entrance</a>
-                        </li> --}}
                     </ul>
                     <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
                         <li class="nav-item ">
@@ -212,6 +210,29 @@
             </div>
         </nav>
 
+        @if(!Request::is('/'))
+            <nav class="bg-white shadow-sm pt-0 pb-0 " aria-label="breadcrumb">
+                <div class="container">
+                    <ul class="breadcrumb"
+                        style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
+                        <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a
+                                href="{{ route('index') }}" style="padding: 0">Home</a></li>
+                        @foreach ($breadcrumbs as $key => $url)
+                        <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
+                            aria-current="{{ $loop->last ? 'page' : '' }}">
+                            <a href="{{ url($url) }}" style="padding: 0">
+                                @if (! $loop->last)
+                                {{ ucfirst($key) }}
+                                @else
+                                @yield ('title')
+                                @endif
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </nav>
+        @endif
 
         @inject('page', 'App\Models\Page')
         @php
@@ -235,29 +256,6 @@
                 </div>
             </div>
         </div>
-        @if(!Request::is('/'))
-        <nav class="bg-white shadow-sm pt-0 pb-0" aria-label="breadcrumb">
-            <div class="container">
-                <ul class="breadcrumb"
-                    style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
-                    <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a
-                            href="{{ route('index') }}" style="padding: 0">Home</a></li>
-                    @foreach ($breadcrumbs as $key => $url)
-                    <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
-                        aria-current="{{ $loop->last ? 'page' : '' }}">
-                        <a href="{{ url($url) }}" style="padding: 0">
-                            @if (! $loop->last)
-                            {{ ucfirst($key) }}
-                            @else
-                            @yield ('title')
-                            @endif
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </nav>
-        @endif
 
         <main>
             @yield('content')
