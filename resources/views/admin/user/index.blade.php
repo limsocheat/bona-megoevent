@@ -34,7 +34,7 @@
                         <td>
                             <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
                             {!! Form::open(['route' => ['admin.user.destroy', $user->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn mego-gold-bg btn-sm">Delete</button>
                             {!! Form::close() !!}
                         </td>
                     </tr>

@@ -91,7 +91,7 @@
 
                         {!! Form::open(['route' => ['manage.event_payment.store'], 'method' => 'POST']) !!}
                             {!! Form::hidden('event_id', $event->id) !!}
-                            {!! Form::submit('Place Order & Publish', ['class' => 'btn btn-primary btn-block']); !!}
+                            {!! Form::submit('Place Order & Publish', ['class' => 'btn mego-gold-bg btn-block']); !!}
                         {!! Form::close() !!}
                     </div>
                 </div>
