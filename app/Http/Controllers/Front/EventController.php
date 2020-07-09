@@ -107,6 +107,7 @@ class EventController extends Controller
             'start_time'            => 'required',
             'end_date'              => 'required',
             'end_time'              => 'required',
+            'venue_id'              => 'required',
         ]);
 
 

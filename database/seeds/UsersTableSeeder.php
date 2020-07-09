@@ -23,6 +23,11 @@ class UsersTableSeeder extends Seeder
                 'email'     => 'it@bona.com.sg',
                 'password'  => bcrypt('Bona@123'),
             ],
+            [
+                'name'      => 'support',
+                'email'     => 'support@bona.com.sg',
+                'password'  => bcrypt('Bona@123'),
+            ],
         ];
 
         foreach($administrators as $administrator) {
