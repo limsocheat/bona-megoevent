@@ -87,7 +87,7 @@
                             <div class="container lst">
                                 @if (count($errors) > 0)
                                 <div class="alert alert-danger">
-                                    <strong>Sorry!</strong> Please check your iput again.<br><br>
+                                    <strong>Sorry!</strong> Please check your input again.<br><br>
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>

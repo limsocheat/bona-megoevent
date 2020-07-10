@@ -3,6 +3,26 @@
 @section('title', 'Events')
 
 @section('content')
+<style>
+    .mego-btn{
+        border:1px solid black;
+        border-radius: 0.2rem;
+        background-color:white;
+        color:black;
+        padding:0.25rem 0.5rem;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .mego-outline-gold{
+        border-color: #C5B358;
+        color: #C5B358;
+    }
+    .mego-outline-gold:hover{
+        background: #C5B358;
+        color: white;
+    }
+</style>
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -66,16 +86,16 @@
                                     <td>{{ $event->display_start_date }} @ {{ $event->display_start_time }}</td>
                                     <td>{{ $event->display_end_date }} @ {{ $event->display_end_time }}</td>
                                     <td><a href="{{ route('manage.event_exhibitor.show', $event->id) }}"
-                                            class="btn btn-sm btn-outline-primary">{{ count($event->exhibitors) }}</a></td>
+                                            class="mego-btn btn-sm mego-outline-gold text-capitalize text-decoration-none">{{ count($event->exhibitors) }}</a></td>
                                     <td><a href="{{ route('manage.order.index') }}?event_id={{ $event->id }}"
-                                            class="btn btn-sm btn-outline-primary">{{ count($event->purchases) }}</a></td>
+                                            class="mego-btn btn-sm mego-outline-gold text-capitalize text-decoration-none">{{ count($event->purchases) }}</a></td>
                                     <td><a href="{{ route('manage.order_ticket.index') }}?event_id={{ $event->id }}"
-                                            class="btn btn-sm btn-outline-primary">{{ count($event->tickets) }}</a></td>
+                                            class="mego-btn btn-sm mego-outline-gold text-capitalize text-decoration-none">{{ count($event->tickets) }}</a></td>
                                     <td>
-                                        <div class="btn btn-sm {{ $event->status == 'published' ? 'btn-success' : 'btn-outline-primary'  }}">{{ $event->status }}</div>
+                                        <div class="mego-btn btn-sm {{ $event->status == 'published' ? 'btn-success' : 'mego-outline-gold text-capitalize'  }}">{{ $event->status }}</div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('manage.event.edit', $event->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="{{ route('manage.event.edit', $event->id) }}" class="btn btn-sm mego-gold-bg">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach

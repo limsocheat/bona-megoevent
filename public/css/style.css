@@ -180,7 +180,6 @@ body a:hover {
     background-color: #C5B358;
     color: white;
 }
-
 .mego-gold-bg:hover {
     background-color: #C5B358;
     color: white;
@@ -189,7 +188,22 @@ body a:hover {
 .event-card #event-join:hover {
     background-color: #ddd4a5;
 }
-
+.mego-btn{
+    border:1px solid black;
+    border-radius: 5%;
+    background-color:white;
+    color:black;
+    padding: 6px 15px;
+    cursor: pointer;
+}
+.mego-outline-gold{
+    border-color: #C5B358;
+    color: #C5B358;
+}
+.mego-outline-gold:hover{
+    background: #C5B358;
+    color: white;
+}
 #h1,
 #h3 {
     color: #C5B358;

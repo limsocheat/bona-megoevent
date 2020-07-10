@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                             <div class="col-md-8 offset-md-4 mb-3">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn mego-gold-bg">
                                     {{ __('Login') }}
                                 </button>
 

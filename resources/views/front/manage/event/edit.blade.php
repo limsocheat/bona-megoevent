@@ -1,19 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+    .mego-btn{
+    border:1px solid black;
+    border-radius: 5%;
+    background-color:white;
+    color:black;
+    padding: 6px 15px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    }
+    .mego-outline-gold{
+    border-color: #C5B358;
+    color: #C5B358;
+    }
+    .mego-outline-gold:hover{
+    background: #C5B358;
+    color: white;
+    }
+</style>
 <div class="container py-4">
 
     <div class="row">
         <div class="col-md-6">
             <h1 class="float-left">Edit Event</h1>
-            <div class="btn {{ $event->status == 'published' ? 'btn-success' : 'btn-outline-primary'  }} float-left ml-5">{{ $event->status }}</div>
+            <div class="mego-btn {{ $event->status == 'published' ? 'btn-success' : 'mego-outline-gold text-capitalize'  }} float-left ml-5">{{ $event->status }}</div>
         </div>
         <div class="col-md-6 text-right">
             @if ($event->payment)
                 You have paid <strong>{{ Money::SGD($event->payment->total) }}</strong>
             @else
-                <a href="{{ route('manage.event_payment.create') }}?event_id={{ $event->id }}" class="btn btn-primary">Make Payment & Publish</a>
+                <a href="{{ route('manage.event_payment.create') }}?event_id={{ $event->id }}" class="btn mego-gold-bg">Make Payment & Publish</a>
             @endif
         </div>
         @if ($event->readonly)
@@ -147,7 +166,7 @@
                                     <div class="entry input-group col-xs-3">
                                         <input class="form-control" name="videos[]" value="{{ $video->url }}" type="text" placeholder="video url" />
                                         <span class="input-group-btn">
-                                            <button class="btn btn-danger btn-remove" type="button">
+                                            <button class="btn mego-gold-bg btn-remove" type="button">
                                                 <span class="fa fa-minus"></span>
                                             </button>
                                         </span>
@@ -156,7 +175,7 @@
                                 <div class="entry input-group col-xs-3">
                                     <input class="form-control" name="videos[]" type="text" placeholder="video url" />
                                     <span class="input-group-btn">
-                                        <button class="btn btn-success btn-add" type="button">
+                                        <button class="btn mego-gold-bg btn-add" type="button">
                                             <span class="fa fa-plus"></span>
                                         </button>
                                     </span>

@@ -27,7 +27,7 @@
             </div>
             
             <div class="card-footer ">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+                {!! Form::submit('Save', ['class' => 'btn mego-gold-bg']); !!}
             </div>
         {!! Form::close() !!}
         
