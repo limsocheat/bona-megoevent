@@ -265,8 +265,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
-                                {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of
-                                Pax', 'class' => 'form-control']) !!}
+                                {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of Pax', 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
