@@ -81,7 +81,7 @@ class Event extends Model
         return $this->image ? url($this->image) : asset('/images/event_feature_image_placeholder.png');
     }
     public function getFloorImageAttribute(){
-        return $this->floor_plan_image ? url($this->floor_plan_image) : asset('/images/event_feature_image_placeholder.png');
+        return $this->floor_plan_image ? url($this->floor_plan_image) : '';
     }
 
     public function getDisplayStartDateAttribute()
