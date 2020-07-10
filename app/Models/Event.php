@@ -117,7 +117,7 @@ class Event extends Model
                 'status'
             ]);
     }
-
+    
     public function getTotalHoursAttribute()
     {
         $total_hours = 0;
