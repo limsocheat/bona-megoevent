@@ -21,6 +21,18 @@
                                 <div class="card-header">
                                     <h4 class="font-weight-bold">Delivery</h4>
                                 </div>
+                                
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger text-center">
+                                    
+                                    Please input delivery information to proceed<br><br>
+                                    {{-- <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul> --}}
+                                </div>
+                                @endif
                                 <div class="card-body">
                                     <div class="card-text">
                                         <div class="row">
@@ -30,9 +42,9 @@
                                                     {!! Form::text('profile[first_name]', null, ['placeholder' => 'Enter First
                                                     name', 'class' => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                                 </div>
-                                                @if ($errors->has('profile.first_name'))
+                                                {{-- @if ($errors->has('profile.first_name'))
                                                     <span class="text-danger">{{ $errors->first('profile.first_name') }}</span>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <div class="form-group">
@@ -40,9 +52,9 @@
                                                     {!! Form::text('profile[last_name]', null, ['placeholder' => 'Enter Last
                                                     name', 'class' => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                                 </div>
-                                                @if ($errors->has('profile.last_name'))
+                                                {{-- @if ($errors->has('profile.last_name'))
                                                     <span class="text-danger">{{ $errors->first('profile.last_name') }}</span>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                         </div>
 
@@ -52,9 +64,9 @@
                                                 {!! Form::text('profile[address]', null, ['placeholder' => 'Enter Address',
                                                 'class' => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                             </div>
-                                             @if ($errors->has('profile.address'))
+                                             {{-- @if ($errors->has('profile.address'))
                                                  <span class="text-danger">{{ $errors->first('profile.address') }}</span>
-                                             @endif
+                                             @endif --}}
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-group">
@@ -62,9 +74,9 @@
                                                 {!! Form::text('profile[phone]', null, ['placeholder' => 'Phone Number', 'class'
                                                 => 'form-control', 'readonly' => false, 'required' => false]) !!}
                                             </div>
-                                            @if ($errors->has('profile.phone'))
+                                            {{-- @if ($errors->has('profile.phone'))
                                                  <span class="text-danger">{{ $errors->first('profile.phone') }}</span>
-                                             @endif
+                                             @endif --}}
                                         </div>
                                         <div class="mb-3">
                                             <div class="form-group">
