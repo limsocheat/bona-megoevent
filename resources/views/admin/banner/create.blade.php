@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Create Banner</h1>
+<h1>Create Banner</h1>
 @stop
 
 @section('content')
@@ -23,31 +23,32 @@
 </div>
 <div class="card">
     {!! Form::open(['route' => ['admin.banner.store'], 'method' => 'POST','enctype'=>'multipart/form-data']) !!}
-          @csrf
-        <div class="card-body">
-            <div class="form-group">
-                {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ['class' => 'form-control']) !!}
-            </div>
-			<div class="form-group">
-                {!! Form::label('link', 'Link') !!}
-                {!! Form::text('link', null, ['class' => 'form-control']) !!}
-			</div>
-			<div class="form-group">
-				{!! Form::label('new_image', 'Logo :') !!}
-               <input name="new_image" type="file" id="new_image" />
-                <img id="imagePreview" class="rounded mx-auto" src="{{ asset('upload/camera.png') }}" alt="" style="height:200px">
-            </div>
-			<div class="form-group">
-                {!! Form::label('location', 'Location :') !!}
-                 {{ Form::select('location', ['header' => 'header', 'subheader1' => 'subheader1', 'subheader2' => 'subheader2'], null, ['id' => 'location','class' => 'form-control']) }}
-            </div>
+    @csrf
+    <div class="card-body">
+        <div class="form-group">
+            {!! Form::label('name', 'Name') !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('link', 'Link') !!}
+            {!! Form::text('link', null, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('new_image', 'Logo :') !!}
+            <input name="new_image" type="file" id="new_image" />
+            <img id="imagePreview" class="rounded mx-auto" src="{{ asset('uploads/camera.png') }}" alt=""
+                style="height:200px">
+        </div>
+        <div class="form-group">
+            {!! Form::label('location', 'Location :') !!}
+            {{ Form::select('location', ['header' => 'header', 'subheader1' => 'subheader1', 'subheader2' => 'subheader2'], null, ['id' => 'location','class' => 'form-control']) }}
+        </div>
 
-        </div>
-         
-        <div class="card-footer ">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
-        </div>
+    </div>
+
+    <div class="card-footer ">
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+    </div>
     {!! Form::close() !!}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

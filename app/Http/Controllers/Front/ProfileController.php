@@ -50,10 +50,10 @@ class ProfileController extends Controller
         $user->update($data);
         $profile    = $request->input('profile');
 
-        if($image = $request->file('profile.image')) {
-            $name= $image->getClientOriginalName();
-            $name = time().'_'.$name;
-            $image->move('upload', $name);
+        if ($image = $request->file('profile.image')) {
+            $name = $image->getClientOriginalName();
+            $name = time() . '_' . $name;
+            $image->move('uploads', $name);
             $profile['avatar'] = $name;
         }
 

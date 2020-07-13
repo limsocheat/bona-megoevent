@@ -16,7 +16,7 @@ class BoothTypeController extends Controller
     public function index()
     {
         $booth_types  = BoothType::select('*')->get();
-        return view('admin.booth_type.index',[
+        return view('admin.booth_type.index', [
             'booth_types'    => $booth_types
         ]);
     }
@@ -39,16 +39,16 @@ class BoothTypeController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255'
         ]);
         $data         = $request->all();
 
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
 
         $booth_type = BoothType::create($data);
@@ -78,7 +78,7 @@ class BoothTypeController extends Controller
     public function edit($id)
     {
         $booth_type  = BoothType::findOrFail($id);
-        return view('admin.booth_type.edit',[
+        return view('admin.booth_type.edit', [
             'booth_type' => $booth_type
         ]);
     }
@@ -92,21 +92,21 @@ class BoothTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
-       $request->validate([
+
+        $request->validate([
             'name'  => 'required',
 
         ]);
         $booth_type   = BoothType::findOrFail($id);
         $data       = $request->all();
 
-          if ($request->file('new_image')) {
+        if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
-        
+
         $booth_type->update($data);
 
         if ($booth_type) {

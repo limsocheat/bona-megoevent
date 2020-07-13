@@ -15,8 +15,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners  =Banner::select('*')->get();
-        return view('admin.banner.index',[
+        $banners  = Banner::select('*')->get();
+        return view('admin.banner.index', [
             'banners'   => $banners
         ]);
     }
@@ -28,7 +28,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-       return view('admin.banner.create');
+        return view('admin.banner.create');
     }
 
     /**
@@ -39,22 +39,22 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'name'      => 'required',
             // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-            
+
         ]);
-          $data  = $request->all();
+        $data  = $request->all();
 
-          if ($request->file('new_image')) {
+        if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
-        
+
         $banner = Banner::create($data);
-        if($banner){
+        if ($banner) {
             return redirect()->route('admin.banner.index');
         }
     }
@@ -78,7 +78,7 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-         $banner = Banner::findOrFail($id);
+        $banner = Banner::findOrFail($id);
         return view('admin.banner.edit', ['banner' => $banner]);
     }
 
@@ -96,15 +96,15 @@ class BannerController extends Controller
         $request->validate([
             'name'      => 'required',
             // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-            
+
         ]);
 
         $data       = $request->all();
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
 
 
@@ -123,7 +123,7 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $banner   = Banner::findOrFail($id);
         $banner->delete();
 

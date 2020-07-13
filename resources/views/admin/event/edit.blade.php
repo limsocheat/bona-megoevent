@@ -135,14 +135,15 @@
                     aria-selected="false">Fee</a>
             </li>
             <li class="nav-item">
-                 <a class="nav-link" id="schedule-venue-tab" data-toggle="tab" href="#schedule-venue" role="tab" aria-controls="schedule-venue" aria-selected="false">Schedule & Venue</a>
+                <a class="nav-link" id="schedule-venue-tab" data-toggle="tab" href="#schedule-venue" role="tab"
+                    aria-controls="schedule-venue" aria-selected="false">Schedule & Venue</a>
             </li>
         </ul>
     </div>
     <div class="card-body">
         <div class="tab-content">
             <div class="tab-pane active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
-                 @include('front.components.event.tab.detail')
+                @include('front.components.event.tab.detail')
             </div>
 
             <div class="tab-pane" id="image" role="tabpanel" aria-labelledby="image-tab">
@@ -234,13 +235,13 @@
         </div>
     </div>
     <div class="tab-pane" id="date" role="tabpanel" aria-labelledby="date-tab">
-       @include('front.components.event.tab.date_time')
+        @include('front.components.event.tab.date_time')
     </div>
     <div class="tab-pane" id="booth" role="tabpanel" aria-labelledby="booth-tab">
         @include('front.components.event.tab.booth')
     </div>
     <div class="tab-pane" id="fee" role="tabpanel" aria-labelledby="fee-tab">
-       @include('front.components.event.tab.fee')
+        @include('front.components.event.tab.fee')
     </div>
     <div class="tab-pane" id="schedule-venue" role="tabpanel" aria-labelledby="schedule-venue">
         @include('front.components.event.tab.schedule_venue')
@@ -271,7 +272,7 @@
 		var banners   = <?php echo json_encode($event->banners); ?>;
         var preloaded = [];
         banners.forEach((element, index) => {
-            preloaded.push({id: element.id, src: "<?php echo asset('/upload/') ?>" +"/"+ element.image});
+            preloaded.push({id: element.id, src: "<?php echo asset('/uploads/') ?>" +"/"+ element.image});
         });
 
         $('.banners-uploader').imageUploader({

@@ -152,7 +152,7 @@ class EventController extends Controller
 
                 foreach ($files as $file) {
                     $name = $file->getClientOriginalName();
-                    $file->move('upload', $name);
+                    $file->move('uploads', $name);
                     $images[] = $name;
 
                     $banners[] = new Banner([
@@ -286,7 +286,7 @@ class EventController extends Controller
 
                 foreach ($files as $file) {
                     $name = $file->getClientOriginalName();
-                    $file->move('upload', $name);
+                    $file->move('uploads', $name);
                     $images[] = $name;
 
                     $banners[] = new Banner([

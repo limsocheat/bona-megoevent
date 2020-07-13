@@ -19,7 +19,7 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? url($this->image) : url('/upload/camera.png');
+        return $this->image ? url($this->image) : url('/uploads/camera.png');
     }
 
     public function sales()

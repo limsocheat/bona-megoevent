@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
-     protected $fillable = [
-        'name', 'link','image','location'
+    protected $fillable = [
+        'name', 'link', 'image', 'location'
     ];
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? url($this->image) : url('/upload/camera.png');
+        return $this->image ? url($this->image) : url('/uploads/camera.png');
     }
 
-    public function bannerable() 
+    public function bannerable()
     {
         return $this->morphTo();
     }

@@ -44,7 +44,7 @@
         <div class="form-group">
             {!! Form::label('new_image', ' Booth Image :') !!}
             <input name="new_image" type="file" id="new_image" />
-            <img id="imagePreview" class="rounded mx-auto" src="{{ asset('upload/camera.png') }}" alt=""
+            <img id="imagePreview" class="rounded mx-auto" src="{{ asset('uploads/camera.png') }}" alt=""
                 style="height:200px">
         </div>
 

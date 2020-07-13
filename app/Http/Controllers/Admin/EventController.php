@@ -32,7 +32,7 @@ class EventController extends Controller
             'events' => $events
         ]);
     }
-    
+
 
     public function purchases(Request $request, $id)
     {
@@ -83,7 +83,7 @@ class EventController extends Controller
             'event_locations' => Location::select('id', 'name')->get()->pluck('name', 'id'),
             'types' => EventType::select('id', 'name')->get()->pluck('name', 'id'),
             'categories' => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
-             'venues'              => Venue::select('id','size')->get()->pluck('size', 'id'),
+            'venues'              => Venue::select('id', 'size')->get()->pluck('size', 'id'),
         ];
         return view('admin.event.create', $data);
     }
@@ -149,7 +149,7 @@ class EventController extends Controller
 
                 foreach ($files as $file) {
                     $name = $file->getClientOriginalName();
-                    $file->move('upload', $name);
+                    $file->move('uploads', $name);
                     $images[] = $name;
 
                     $banners[] = new Banner([
@@ -181,8 +181,7 @@ class EventController extends Controller
 
             DB::commit();
             return redirect()->route('admin.event.edit', $event->id);
-            
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back();
         }
@@ -207,7 +206,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-         $event  = Event::findOrFail($id);
+        $event  = Event::findOrFail($id);
 
         $data  = [
             'event' => $event,
@@ -219,7 +218,7 @@ class EventController extends Controller
             'event_locations'   => Location::select('id', 'name')->get()->pluck('name', 'id'),
             'types' => EventType::select('id', 'name')->get()->pluck('name', 'id'),
             'categories' => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
-             'venues'                => Venue::select('id','size')->get()->pluck('size', 'id'),
+            'venues'                => Venue::select('id', 'size')->get()->pluck('size', 'id'),
         ];
 
         return view('admin.event.edit', $data);
@@ -234,7 +233,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-          $event  = Event::findOrFail($id);
+        $event  = Event::findOrFail($id);
         $request->validate([
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
@@ -283,7 +282,7 @@ class EventController extends Controller
 
                 foreach ($files as $file) {
                     $name = $file->getClientOriginalName();
-                    $file->move('upload', $name);
+                    $file->move('uploads', $name);
                     $images[] = $name;
 
                     $banners[] = new Banner([
@@ -314,7 +313,7 @@ class EventController extends Controller
 
             DB::commit();
             return redirect()->route('admin.event.index');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', $e->getMessage());
         }

@@ -46,7 +46,7 @@
 				<div class="carousel-inner">
 					@for ($i = 0; $i < count($event->banners); $i++)
 						<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
-							<img class="d-block w-100" src="{{ url('/upload/' . $event->banners[$i]["image"]) }}"
+							<img class="d-block w-100" src="{{ url('/uploads/' . $event->banners[$i]["image"]) }}"
 								alt="Third slide" class="figure-img img-fluid rounded"
 								style="width:100%; height: 450px; ">
 						</div>
@@ -57,7 +57,7 @@
 								class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
 						</div>
 						@else
-						
+
 						@endif
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -214,8 +214,8 @@
 						</div>
 						<div class="card-footer text-center">
 							@guest
-							<a href="{{ route('login') }}" class="btn mego-gold-bg "
-								style="width: 100%">Login To Purchase</a>
+							<a href="{{ route('login') }}" class="btn mego-gold-bg " style="width: 100%">Login To
+								Purchase</a>
 							@else
 							<button type="submit" class="btn mego-gold-bg" style="width: 100%">Buy Ticket</button>
 							@endguest

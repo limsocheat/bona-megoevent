@@ -51,9 +51,9 @@ class ProductController extends Controller
 
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/" . $imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
         $product = Product::create($data);
         if ($product) {
@@ -112,9 +112,9 @@ class ProductController extends Controller
         $data       = $request->all();
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/" . $imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
 
 

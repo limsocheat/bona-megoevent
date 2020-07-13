@@ -23,6 +23,6 @@ class Profile extends Model
 
     public function getAvatarUrlAttribute()
     {
-        return $this->avatar ? url('/upload/' . $this->avatar) : url('/upload/camera.png');
+        return $this->avatar ? url('/uploads/' . $this->avatar) : url('/uploads/camera.png');
     }
 }

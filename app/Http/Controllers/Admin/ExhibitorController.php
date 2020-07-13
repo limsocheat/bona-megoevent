@@ -45,8 +45,8 @@ class ExhibitorController extends Controller
     {
         $request->validate([
 
-            'first_name'    =>'required',
-            'last_name'     =>'required',
+            'first_name'    => 'required',
+            'last_name'     => 'required',
             'name'          => 'required|string|max:255',
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|string|min:8|confirmed'
@@ -61,9 +61,9 @@ class ExhibitorController extends Controller
 
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['logo'] = "/upload/".$imageName;
+            $data['logo'] = "/uploads/" . $imageName;
         }
 
         $data['user_id'] = $user->id;
@@ -113,9 +113,9 @@ class ExhibitorController extends Controller
         $data       = $request->all();
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['logo'] = "/upload/".$imageName;
+            $data['logo'] = "/uploads/" . $imageName;
         }
 
 

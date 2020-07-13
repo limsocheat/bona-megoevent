@@ -17,7 +17,7 @@ class Exhibitor extends Model
     }
     public function getImageUrlAttribute()
     {
-        return $this->logo ? url( $this->logo) : url('/upload/camera.png');
+        return $this->logo ? url($this->logo) : url('/uploads/camera.png');
     }
 }
 // return $this->image ? url($this->image) : url('/images/placeholder.png');

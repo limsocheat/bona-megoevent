@@ -15,9 +15,9 @@ class SlideController extends Controller
      */
     public function index()
     {
-        $slides =Slide::select('*')->get();
+        $slides = Slide::select('*')->get();
 
-        return view('admin.slide.index',[
+        return view('admin.slide.index', [
             'slides' => $slides
         ]);
     }
@@ -43,22 +43,22 @@ class SlideController extends Controller
         $request->validate([
             'title'      => 'required',
             // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-            
+
         ]);
-          $data  = $request->all();
+        $data  = $request->all();
 
-          if ($request->file('new_image')) {
+        if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
         $banner = Slide::create($data);
-        if($banner){
+        if ($banner) {
             return redirect()->route('admin.slide.index');
         }
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -79,10 +79,10 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        $slide =Slide::findOrFail($id);
-             return view('admin.slide.edit',[
-                 'slide' => $slide
-             ]);
+        $slide = Slide::findOrFail($id);
+        return view('admin.slide.edit', [
+            'slide' => $slide
+        ]);
     }
 
     /**
@@ -99,15 +99,15 @@ class SlideController extends Controller
         $request->validate([
             'title'      => 'required',
             // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-            
+
         ]);
 
         $data       = $request->all();
         if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('upload'), $imageName);
+            request()->new_image->move(public_path('uploads'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/uploads/" . $imageName;
         }
 
 
@@ -126,7 +126,7 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-         $banner   = Slide::findOrFail($id);
+        $banner   = Slide::findOrFail($id);
         $banner->delete();
 
         if ($banner) {
