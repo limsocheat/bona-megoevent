@@ -27,7 +27,7 @@ Route::namespace('Admin')->group(function () {
                 Route::get('/', 'DashboardController@index')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
-                
+
                 Route::get('/setting', 'SettingController@index')->name('setting.index');
                 Route::put('/setting', 'SettingController@update')->name('setting.update');
 
@@ -74,7 +74,7 @@ Route::namespace('Front')->group(function () {
     // Route::get('/ticket','PageController@ticket')->name('ticket');
     // product show
     Route::get('product/{product}', 'PageController@product')->name('show.product');
-    
+
 
     Route::get('/sendemail', 'SendEmailController@index');
     Route::post('/sendemail/send', 'SendEmailController@send');
@@ -82,19 +82,19 @@ Route::namespace('Front')->group(function () {
     Route::middleware(['auth', 'verified'])->group(function () {
 
         // Cart
-        Route::get('/cart','CartController@index')->name('cart.index');
-        Route::post('/cart/add/{product}','CartController@add')->name('cart.add');
+        Route::get('/cart', 'CartController@index')->name('cart.index');
+        Route::post('/cart/add/{product}', 'CartController@add')->name('cart.add');
         Route::put('/cart/update/{row}', 'CartController@update')->name('cart.update');
-        Route::delete('/cart/remove/{row}','CartController@remove')->name('cart.remove');
+        Route::delete('/cart/remove/{row}', 'CartController@remove')->name('cart.remove');
         Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
         Route::put('/checkout/paypal/submit', 'CheckoutController@paypal_submit')->name('checkout.paypal.submit');
         Route::get('/checkout/paypal/success', 'CheckoutController@paypal_success')->name('checkout.paypal.success');
         Route::get('/checkout/paypal/cancel', 'CheckoutController@paypal_cancel')->name('checkout.paypal.cancel');
-      
+
         // Register Event
         Route::get('/event/{event}/cart', 'PageController@cart')->name('cart');
         Route::get('/event/{event}/checkout', 'PageController@checkout')->name('checkout');
-   
+
         // Paypal Payment
         Route::post('/paypal/submit', 'PaypalController@submit')->name('paypal.submit');
         Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
@@ -103,6 +103,9 @@ Route::namespace('Front')->group(function () {
         Route::get('/event/{event}/exhibitor_registration', 'PageController@exhibitor_registration')->name('event.exhibitor_registration');
         Route::post('/event/{event}/exhibitor_registration', 'ExhibitorRegistrationController@store')->name('event.exhibitor_registration');
         Route::post('/event/{event}/event_exhibitor', 'EventExhibitorController@store')->name('event_exhibitor.store');
+
+        Route::post('/event/{event}/add_product', 'EventProductController@store')->name('event.event_product.add');
+        Route::delete('/event/{event}/remove_product', 'EventProductController@destroy')->name('event.event_product.remove');
 
         // Manage 
         Route::prefix('manage')->group(function () {

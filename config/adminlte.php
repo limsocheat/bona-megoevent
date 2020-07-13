@@ -225,7 +225,6 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        
         [
             'text'        => 'Event Categories',
             'url'         => 'admin/category',

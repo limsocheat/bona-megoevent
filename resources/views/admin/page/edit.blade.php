@@ -8,6 +8,20 @@
 @stop
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Sorry!</strong> Please check your input again.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+        </div>
+    </div>
     <div class="card">
         {!! Form::model($page, ['route' => ['admin.page.update', $page->id], 'method' => 'PUT']) !!}
         
@@ -27,7 +41,7 @@
             </div>
             
             <div class="card-footer ">
-                {!! Form::submit('Save', ['class' => 'btn mego-gold-bg']); !!}
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
             </div>
         {!! Form::close() !!}
         
@@ -38,7 +52,6 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 @stop
-
 @section('js')
     <script type="text/javascript" src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script>

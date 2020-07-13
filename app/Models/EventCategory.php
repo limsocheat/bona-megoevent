@@ -17,6 +17,6 @@ class EventCategory extends Model
 
     public function upcoming_events()
     {
-        return $this->hasMany(Event::class, 'category_id')->whereDate('start_date', '>', date('Y-m-d'));
+        return $this->hasMany(Event::class, 'category_id')->published()->upcoming();
     }
 }

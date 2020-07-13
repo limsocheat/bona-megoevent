@@ -51,7 +51,7 @@ class PageController extends Controller
             'categories'        => EventCategory::select('*')->get(),
             'event_categories'  => EventCategory::select('id', 'name')->pluck('name', 'id'),
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
-            'events'            => Event::select('*')->get(),
+            'events'            => Event::select('*')->published()->get(),
         ];
 
         return view('front.upcoming', $data);
@@ -92,6 +92,7 @@ class PageController extends Controller
             ->when($end_date, function ($query, $end_date) {
                 return $query->whereDate('end_date', '<=', date('Y-m-d', strtotime($end_date)));
             })
+            ->published()
             ->get();
 
         $data = [

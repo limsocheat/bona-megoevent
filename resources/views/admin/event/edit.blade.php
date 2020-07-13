@@ -14,7 +14,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<h1 class="pb-3">Create Event</h1>
+<h1 class="pb-3">Edit Event</h1>
 
 <style>
     .entry:not(:first-of-type) {
@@ -94,6 +94,20 @@
         width: 100%;
     }
 </style>
+<div class="row">
+    <div class="col-md-12">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> Please check your input again.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+</div>
 {!! Form::model($event, ['route' => ['admin.event.update', $event->id], 'method' => 'PUT', 'files' => true]) !!}
 
 

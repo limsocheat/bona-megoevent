@@ -100,6 +100,7 @@
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
 
                             <div class="col-md-12">
                                 <div class="input-field">
@@ -118,9 +119,21 @@
                                         </div>
                                         {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
                                         'display: none;']) !!}
+=======
+                        </div>
+                        <div class="col-md-12 pt-3">
+                            <label class="active">Floor Plan</label>
+                            <div class="form-group mb-3">
+                                <div class="preview-wrapper" id="profile-preview">
+                                    <img src="{{  asset('/images/event_feature_image_placeholder.png') }}"
+                                        id="floor-plan-image-previewer" alt="Preview Image" width="358" height="141">
+                                    <div class="logo-upload-button" id="floor-plan-image-chooser">
+                                        <i class="fa fa-arrow-circle-up d-none" aria-hidden="true"></i>
+>>>>>>> f5978f002ed7b14369c79c0a5cf19f6f1128fbe1
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="col-md-12 pt-3">
                                 <label class="active">Videos</label>
                                 <div class="controls">
@@ -132,6 +145,25 @@
                                             </button>
                                         </span>
                                     </div>
+=======
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-field">
+                                <label class="active">Banners</label>
+                                <div class="input-images-1" style="padding-top: .5rem;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-3">
+                            <label class="active">Videos</label>
+                            <div class="controls">
+                                <div class="entry input-group col-xs-3">
+                                    <input class="form-control" name="videos[]" type="text" placeholder="video url" />
+                                    <span class="input-group-btn">
+                                        <button class="btn mego-gold-bg btn-add" id="btn-gold" type="button">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
+                                    </span>
+>>>>>>> f5978f002ed7b14369c79c0a5cf19f6f1128fbe1
                                 </div>
                             </div>
                         </div>
@@ -263,11 +295,20 @@
                                     => 'form-control']) !!}
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="col-md-12">
                                 <div class="form-group">
                                     {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
                                     {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of Pax', 'class' => 'form-control']) !!}
                                 </div>
+=======
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
+                                {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of
+                                Pax', 'class' => 'form-control']) !!}
+>>>>>>> f5978f002ed7b14369c79c0a5cf19f6f1128fbe1
                             </div>
                         </div>
                     </div>
@@ -300,6 +341,20 @@
 <script type="text/javascript">
     jQuery(document).ready(function($){
 
+
+        if( document.getElementById("feature-image-uploader").files.length == 0 ){
+            $(':input[type="submit"]').prop('disabled', true);
+        } else {
+            $(':input[type="submit"]').prop('disabled', false);
+        }
+
+        $("#feature-image-uploader").change(function() {
+            if( document.getElementById("feature-image-uploader").files.length == 0 ){
+                $(':input[type="submit"]').prop('disabled', true);
+            } else {
+                $(':input[type="submit"]').prop('disabled', false);
+            }
+        })
 
         $('.input-images-1').imageUploader({
             imagesInputName: 'images',

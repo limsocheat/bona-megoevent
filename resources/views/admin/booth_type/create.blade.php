@@ -7,6 +7,20 @@
 @stop
 
 @section('content')
+<div class="row">
+    <div class="col-md-12">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Sorry!</strong> Please check your input again.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+</div>
 <div class="card">
     {!! Form::open(['route' => ['admin.booth_type.store'], 'method' => 'POST','enctype'=>'multipart/form-data']) !!}
         <div class="card-body">
@@ -22,7 +36,7 @@
 
 			<div class="form-group">
                 {!! Form::label('total', 'Total Per Event') !!}
-                {!! Form::text('total', null, ['placeholder' => 'Total Per Event', 'class' => 'form-control','id' => 'digitsOnly']) !!}
+                {!! Form::number('total', null, ['placeholder' => 'Total Per Event', 'class' => 'form-control','id' => 'digitsOnly']) !!}
             </div>
 
             <div class="form-group">

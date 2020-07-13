@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\EventProduct;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
 
-    protected $fillable = [
+    protected $fillable =
+    [
         'mode', 'organizer_id', 'image', 'floor_plan_image',
         'event_experience_id', 'event_team_id', 'event_frequency_id',
         'event_attendance_id', 'location_id', 'type_id', 'category_id', 'venue_id',
@@ -18,10 +20,12 @@ class Event extends Model
         'pax_min_last_date', 'price', 'early_bird_price', 'early_bird_date', 'group_price', 'group_min_pax',
         'status'
     ];
+
     public function location()
     {
         return $this->belongsTo(Location::class, 'location_id');
     }
+
     public function type()
     {
         return $this->belongsTo(EventType::class, 'type_id');
@@ -70,7 +74,7 @@ class Event extends Model
     {
         return $this->hasOne(EventPayment::class);
     }
-    
+
     public function venue()
     {
         return $this->belongsTo(Venue::class);
@@ -80,7 +84,8 @@ class Event extends Model
     {
         return $this->image ? url($this->image) : asset('/images/event_feature_image_placeholder.png');
     }
-    public function getFloorImageAttribute(){
+    public function getFloorImageAttribute()
+    {
         return $this->floor_plan_image ? url($this->floor_plan_image) : '';
     }
 
@@ -117,21 +122,21 @@ class Event extends Model
                 'status'
             ]);
     }
-    
+
     public function getTotalHoursAttribute()
     {
         $total_hours = 0;
-        foreach($this->schedules as $schedule) {
+        foreach ($this->schedules as $schedule) {
             $total_hours += $schedule->total_hours;
         }
-    
+
         return $total_hours;
     }
 
     public function getTotalGridBlockAttribute()
     {
         $grid = 0;
-        if($this->venue && $this->venue_level) {
+        if ($this->venue && $this->venue_level) {
             $grid   = $this->venue->width * $this->venue->length * $this->venue_level;
         }
         return $grid;
@@ -142,28 +147,62 @@ class Event extends Model
         return $this->total_grid_block * $this->total_hours * \Setting::get('event.grid_block_value');
     }
 
-    public function getTotalNetPriceAttribute()
-    {
-        return $this->total_grid_block_price;
-    }
-
-    public function getTotalTaxAttribute() 
+    public function getTotalTaxAttribute()
     {
         return $this->total_net_price * \Setting::get('event.tax_percentage') / 100;
     }
 
-    public function getTotalFinalPriceAttribute()
-    {
-        return $this->total_net_price + $this->total_tax;
-    }
 
     public function getReadOnlyAttribute()
     {
         $readonly   = false;
 
-        if($this->payment && $this->payment->status == 'paid') {
+        if ($this->payment && $this->payment->status == 'paid') {
             $readonly   = true;
         }
         return $readonly;
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'published');
+    }
+
+    public function scopeUpcoming($query)
+    {
+        return $query->whereDate('start_date', '>', date('Y-m-d'));
+    }
+
+    public function products()
+    {
+        return $this
+            ->belongsToMany(Product::class, 'event_products', 'event_id', 'product_id')
+            ->withPivot('quantity', 'price');
+    }
+
+    public function event_products()
+    {
+        return $this->hasMany(EventProduct::class, 'event_id');
+    }
+
+    public function getTotalProductPriceAttribute()
+    {
+        $total = 0;
+        foreach ($this->event_products as $product) {
+            $subtotal   = $product['quantity'] * $product['price'];
+            $total      += $subtotal;
+        }
+
+        return $total;
+    }
+
+    public function getTotalNetPriceAttribute()
+    {
+        return $this->total_grid_block_price + $this->total_product_price;
+    }
+
+    public function getTotalFinalPriceAttribute()
+    {
+        return $this->total_net_price + $this->total_tax;
     }
 }

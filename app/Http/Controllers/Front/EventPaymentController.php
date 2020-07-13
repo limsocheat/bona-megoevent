@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventPayment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Srmklive\PayPal\Services\ExpressCheckout;
@@ -31,16 +32,17 @@ class EventPaymentController extends Controller
         $request->validate([
             'event_id'  => 'required|exists:events,id'
         ]);
-        
+
         $event_id   = $request->input('event_id');
         $event      = Event::findOrFail($event_id);
 
-        if(!$event->venue_id || !$event->venue_level) {
+        if (!$event->venue_id || !$event->venue_level) {
             return redirect()->back();
         }
 
         $data       = [
             'event' => $event,
+            'products'              => Product::select('*')->get()->pluck('display_name', 'id'),
         ];
 
         return view('front.manage.event.payment.create', $data);
@@ -96,10 +98,10 @@ class EventPaymentController extends Controller
             $data['return_url'] = url("/manage/event_payment/$event_payment->id/edit");
             $data['cancel_url'] = url('/manage/event_payment/cancel');
             $response = $provider->setExpressCheckout($data);
-            
+
             DB::commit();
             return redirect($response['paypal_link']);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -171,7 +173,7 @@ class EventPaymentController extends Controller
 
             DB::commit();
             return redirect()->route('manage.event.index');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             dd($e->getMessage());
         }
