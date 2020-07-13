@@ -3,41 +3,43 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Edit Exhibitor</h1>
+<h1>Edit Exhibitor</h1>
 @stop
 
 @section('content')
 <div class="card">
-    {!! Form::model($exhibitor,['route' => ['admin.exhibitor.update',$exhibitor->id], 'method' => 'PUT','enctype'=>'multipart/form-data']) !!}
-          @csrf
-        <div class="card-body">
-             <div class="form-group">
-                {!! Form::label('first_name', 'Frist Name') !!}
-                {!! Form::text('first_name', null, ['placeholder' => 'first_name', 'class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('last_name', 'Last Name') !!}
-                {!! Form::text('last_name', null, ['placeholder' => 'last_name', 'class' => 'form-control']) !!}
-			</div>
-			<div class="form-group">
-				{!! Form::label('new_image', 'Logo :') !!}
-               <input name="new_image" type="file" id="new_image" />
-                <img id="imagePreview" class="rounded mx-auto" src="{{ asset($exhibitor->logo) }}" alt="" style="width:200px;height:200px">
-            </div>
-			<div class="form-group">
-                {!! Form::label('phone', 'Phone') !!}
-                {!! Form::text('phone', null, ['placeholder' => 'phone', 'class' => 'form-control']) !!}
-            </div>
-    
-			<div class="form-group">
-                {!! Form::label('address', 'Address') !!}
-                {!! Form::text('address', null, ['placeholder' => 'address', 'class' => 'form-control']) !!}
-			</div>
-			 <div class="form-group">
-                {!! Form::label('active', 'Active') !!}
-                {!! Form::select('active', [true => 'Active', false => 'Inactive'], null, [ 'class' => 'form-control']) !!}
-            </div>
-            {{-- <div>
+    {!! Form::model($exhibitor,['route' => ['admin.exhibitor.update',$exhibitor->id], 'method' =>
+    'PUT','enctype'=>'multipart/form-data']) !!}
+    @csrf
+    <div class="card-body">
+        <div class="form-group">
+            {!! Form::label('first_name', 'Frist Name') !!}
+            {!! Form::text('first_name', null, ['placeholder' => 'Frist Name', 'class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('last_name', 'Last Name') !!}
+            {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('new_image', 'Logo :') !!}
+            <input name="new_image" type="file" id="new_image" />
+            <img id="imagePreview" class="rounded mx-auto" src="{{ asset($exhibitor->logo) }}" alt=""
+                style="width:200px;height:200px">
+        </div>
+        <div class="form-group">
+            {!! Form::label('phone', 'Phone') !!}
+            {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('address', 'Address') !!}
+            {!! Form::text('address', null, ['placeholder' => 'Address', 'class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('active', 'Active') !!}
+            {!! Form::select('active', [true => 'Active', false => 'Inactive'], null, [ 'class' => 'form-control']) !!}
+        </div>
+        {{-- <div>
                 <div class="form-group">
                    <h5 class="text-primary">Create User</h5>
                 </div>
@@ -56,11 +58,11 @@
                 <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
             </div> --}}
 
-        </div>
-         
-        <div class="card-footer ">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
-        </div>
+    </div>
+
+    <div class="card-footer ">
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+    </div>
     {!! Form::close() !!}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
