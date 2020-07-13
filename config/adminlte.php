@@ -229,8 +229,8 @@ return [
             'text'        => 'Event Categories',
             'url'         => 'admin/category',
             'icon'        => 'fa fa-list-alt',
-       
-                    
+
+
         ],
         [
             'text'        => 'Event Types',
@@ -507,6 +507,17 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'admincss',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/admin.css',
                 ],
             ],
         ],
