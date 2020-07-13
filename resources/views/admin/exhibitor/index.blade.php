@@ -33,11 +33,17 @@
                         <td>{{ $exhibitor->user ? $exhibitor->user->name:null }}</td>
                          <td>{{ $exhibitor->user ?$exhibitor->user->email :null}}</td>
                         <td>{{ $exhibitor->first_name }}</td>
-                         <td>{{ $exhibitor->last_name }}</td>
+                        <td>{{ $exhibitor->last_name }}</td>
                         <td><img src="{{ $exhibitor->image_url }}" class="rounded mx-auto" alt="" width="50" height="50"></td>
                         <td>{{ $exhibitor->phone}}</td>
                         <td>{{ $exhibitor->address}}</td>
-                        <td>{{ $exhibitor->active}}</td>
+                        <td>
+                            @if ($exhibitor->active)
+                            <div class="badge badge-primary">Active</div>
+                            @else
+                            <div class="badge badge-secondary">Inactive</div>
+                            @endif
+                        </td>
                      
                         <td>
                             <a href="{{ route('admin.exhibitor.edit', $exhibitor->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>

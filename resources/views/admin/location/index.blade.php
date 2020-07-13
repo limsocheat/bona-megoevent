@@ -32,7 +32,13 @@
                     <td>{{ $location->name }}</td>
                     <td>{{ $location->address}}</td>
                     <td>{{ $location->description}}</td>
-                    <td>{{ $location->active}}</td>
+                    <td>
+                        @if ($location->active)
+                        <div class="badge badge-primary">Active</div>
+                        @else
+                        <div class="badge badge-secondary">Inactive</div>
+                        @endif
+                    </td>
 
                     <td>
                  <a href="{{ route('admin.location.edit', $location->id) }}" class="btn btn-primary btn-sm"

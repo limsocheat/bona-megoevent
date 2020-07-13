@@ -27,7 +27,13 @@
                     <tr>
                         <td>{{ $product_category->name }}</td>
 						<td>{{ $product_category->description}}</td>
-						<td>{{ $product_category->active}}</td>
+						<td>
+                            @if ($product_category->active)
+                            <div class="badge badge-primary">Active</div>
+                            @else
+                            <div class="badge badge-secondary">Inactive</div>
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('admin.product_category.edit', $product_category->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
                             {!! Form::open(['route' => ['admin.product_category.destroy', $product_category->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}

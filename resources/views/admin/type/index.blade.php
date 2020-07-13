@@ -29,7 +29,13 @@
 						
                         <td>{{ $type->name }}</td>
                         <td>{{ $type->description }}</td>
-                        <td>{{ $type->active}}</td>
+                        <td>
+                            @if ($type->active)
+                            <div class="badge badge-primary">Active</div>
+                            @else
+                            <div class="badge badge-secondary">Inactive</div>
+                            @endif
+                        </td>
                      
                         <td>
                             <a href="{{ route('admin.type.edit', $type->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>

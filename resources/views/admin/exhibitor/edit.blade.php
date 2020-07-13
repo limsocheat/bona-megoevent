@@ -35,7 +35,7 @@
 			</div>
 			 <div class="form-group">
                 {!! Form::label('active', 'Active') !!}
-                {!! Form::text('active', null, ['placeholder' => 'description', 'class' => 'form-control']) !!}
+                {!! Form::select('active', [true => 'Active', false => 'Inactive'], null, [ 'class' => 'form-control']) !!}
             </div>
             {{-- <div>
                 <div class="form-group">

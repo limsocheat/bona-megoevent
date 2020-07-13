@@ -30,7 +30,13 @@
 						<td>{{ $option->name }}</td>
 						<td>{{ $option->type}}</td>
                         <td>{{ $option->description }}</td>
-                        <td>{{ $option->active}}</td>
+                        <td>
+                            @if ($option->active)
+                            <div class="badge badge-primary">Active</div>
+                            @else
+                            <div class="badge badge-secondary">Inactive</div>
+                            @endif
+                        </td>
                      
                         <td>
                             <a href="{{ route('admin.option.edit', $option->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
