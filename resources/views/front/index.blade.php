@@ -34,7 +34,7 @@
 		</div>
 		@foreach ($feature_events as $event)
 		<div class="col-md-3 mb-4">
-			@include('front.components																																					.event.card')
+			@include('front.components.event.card')
 		</div>
 		@endforeach
 	</div>
@@ -46,7 +46,8 @@
 		@foreach ($exhibitors as $exhibitor)
 		<div class="col-md-3 mb-4">
 			<div class="card border-light">
-				<img src="{{ asset($exhibitor->logo) }}" alt="{{ $exhibitor->name }}" class="card-img-top" style="width: auto; height:172px;">
+				<img src="{{ asset($exhibitor->logo) }}" alt="{{ $exhibitor->name }}" class="card-img-top"
+					style="width: auto; height:172px;">
 				<div class="card-body">
 					<h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">{{ $exhibitor->name }}
 					</h3>
