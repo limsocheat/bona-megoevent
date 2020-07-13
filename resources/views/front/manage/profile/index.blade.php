@@ -5,7 +5,8 @@
 @section('content_profile')
 
 <style>
-    .avatar-wrapper, .company-wrapper{
+    .avatar-wrapper,
+    .company-wrapper {
         position: relative;
         height: 100px;
         width: 100px;
@@ -21,28 +22,34 @@
         transform: scale(1.05);
         cursor: pointer;
     }
-    .company-wrapper:hover{
+
+    .company-wrapper:hover {
         transform: scale(1.05);
         cursor: pointer;
     }
+
     .avatar-wrapper:hover .profile-pic {
         opacity: .5;
     }
+
     .company-wrapper:hover #preview-logo-pic {
         opacity: .5;
     }
+
     .avatar-wrapper .profile-pic {
         height: 100%;
         width: 100%;
         transition: all .3s ease;
 
     }
+
     .company-wrapper #preview-logo-pic {
-    height: 100%;
-    width: 100%;
-    transition: all .3s ease;
-    
+        height: 100%;
+        width: 100%;
+        transition: all .3s ease;
+
     }
+
     .avatar-wrapper .profile-pic:after {
         /* font-family: FontAwesome; */
         content: "\f007";
@@ -56,6 +63,7 @@
         color: #34495e;
         text-align: center;
     }
+
     .company-wrapper #preview-logo-pic:after {
         font-family: FontAwesome;
         content: "\f007";
@@ -69,6 +77,7 @@
         color: #34495e;
         text-align: center;
     }
+
     .avatar-wrapper .upload-button {
         position: absolute;
         top: 0;
@@ -77,6 +86,7 @@
         width: 100%;
 
     }
+
     .company-wrapper .logo-upload-button {
         position: absolute;
         top: 0;
@@ -85,7 +95,7 @@
         width: 100%;
     }
 </style>
- <div class="col-md-10" style="margin-top: -25px">
+<div class="col-md-10" style="margin-top: -25px">
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -97,11 +107,13 @@
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT', 'files' => true]) !!}
+                    {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT', 'files' => true])
+                    !!}
                     <div class="card-body">
                         <div class="form-group" style="height: 110px;">
                             <div class="avatar-wrapper">
-                                <img class="profile-pic" src="{{$user->profile ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" />
+                                <img class="profile-pic"
+                                    src="{{$user->profile ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" />
                                 <div class="upload-button">
                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                 </div>
@@ -112,7 +124,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('profile[first_name]', 'First Name') !!}
-                                    {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' =>
+                                    {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class'
+                                    =>
                                     'form-control', 'required' => true])
                                     !!}
                                 </div>
@@ -128,7 +141,7 @@
                         <div class="form-group">
                             {!! Form::label('type', 'Type') !!}
                             {!! Form::select('type', ['individual' => 'Individual', 'company' => 'Company'], null,
-                            ['placeholder' => 'select', 'class' => 'form-control']) !!}
+                            ['placeholder' => 'Select', 'class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
@@ -138,7 +151,8 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('profile[country_id]', 'Country') !!}
-                            {!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country', 'class'
+                            {!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country',
+                            'class'
                             =>
                             'form-control']) !!}
                         </div>
@@ -149,7 +163,8 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('profile[phone]', 'Tel') !!}
-                            {!! Form::text('profile[phone]', null, ['placeholder' => 'Tel', 'class' => 'form-control']) !!}
+                            {!! Form::text('profile[phone]', null, ['placeholder' => 'Tel', 'class' => 'form-control'])
+                            !!}
                         </div>
 
                         <hr>
@@ -181,14 +196,15 @@
                 @if ($user->type == "company")
                 @if ($user->company)
                 <div class="card">
-                    {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method' =>
+                    {!! Form::model($user->company, ['route' => ['manage.company.update', $user->company->id], 'method'
+                    =>
                     'PUT', 'files' => true ]) !!}
                     <div class="card-body">
                         <div class="form-group" style="height: 110px;">
                             <div class="company-wrapper" id="profile-preview">
-                                    <img id="logoPreview" class="preview-img"
-                                        src="{{ $user->company ? $user->company->logoUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}"
-                                        alt="Preview Image" width="100" height="100" />
+                                <img id="logoPreview" class="preview-img"
+                                    src="{{ $user->company ? $user->company->logoUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}"
+                                    alt="Preview Image" width="100" height="100" />
                                 <div class="logo-upload-button">
                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                 </div>
@@ -197,7 +213,8 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('name', 'Company Name') !!}
-                            {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control']) !!}
+                            {!! Form::text('name', null, ['placeholder' => 'Company Name', 'class' => 'form-control'])
+                            !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('registration_number', 'Registration Number') !!}
@@ -219,7 +236,8 @@
                         <div class="form-group" style="height: 110px;">
                             <div class="form-group" style="height: 110px;">
                                 <div class="company-wrapper" id="profile-preview">
-                                    <img id="logoPreview" class="preview-img" src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
+                                    <img id="logoPreview" class="preview-img"
+                                        src="http://simpleicon.com/wp-content/uploads/account.png" alt="Preview Image"
                                         width="100" height="100" />
                                     <div class="logo-upload-button">
                                         <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
@@ -230,7 +248,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('name', 'Company Name') !!}
-                            {!! Form::text('name', null, ['placeholder' => 'company name', 'class' => 'form-control',
+                            {!! Form::text('name', null, ['placeholder' => 'Company Name', 'class' => 'form-control',
                             'required' => true]) !!}
                         </div>
                         <div class="form-group">
@@ -275,13 +293,15 @@
                                             {{ $exhibition->organizer ? $exhibition->organizer->name: null}}
                                         </td>
                                         <td>
-                                            {{ $exhibition->display_start_date }} @ {{ $exhibition->display_start_time }}
+                                            {{ $exhibition->display_start_date }} @
+                                            {{ $exhibition->display_start_time }}
                                         </td>
                                         <td>
                                             {{ $exhibition->display_end_date }} @ {{ $exhibition->display_end_time }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('event', $exhibition->id) }}" class="btn mego-gold-bg">View</a>
+                                            <a href="{{ route('event', $exhibition->id) }}"
+                                                class="btn mego-gold-bg">View</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -293,7 +313,7 @@
             </div>
         </div>
     </div>
- </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function() {
