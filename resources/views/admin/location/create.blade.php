@@ -26,15 +26,15 @@
     <div class="card-body">
         <div class="form-group">
             {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', null, ['placeholder' => 'name', 'class' => 'form-control']) !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('address', 'Address') !!}
-            {!! Form::text('address', null, ['placeholder' => 'Address', 'class' => 'form-control']) !!}
+            {!! Form::text('address', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('description', 'Descrition') !!}
-            {!! Form::text('description', null, ['placeholder' => 'description', 'class' => 'form-control']) !!}
+            {!! Form::text('description', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('active', 'Active') !!}

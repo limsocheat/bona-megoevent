@@ -26,11 +26,11 @@
         <div class="card-body">
             <div class="form-group">
                 {!! Form::label('name', 'User Name') !!}
-                {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('email', 'E-Mail Address') !!}
-                {!! Form::email('email', null, ['placeholder' => 'enter email address', 'class' => 'form-control']) !!}
+                {!! Form::email('email', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('password', 'Password') !!}

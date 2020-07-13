@@ -27,11 +27,11 @@
         <div class="card-body">
             <div class="form-group">
                 {!! Form::label('title', 'Title') !!}
-                {!! Form::text('title', null, ['placeholder' => 'title', 'class' => 'form-control']) !!}
+                {!! Form::text('title', null, [ 'class' => 'form-control']) !!}
             </div>
 			<div class="form-group">
                 {!! Form::label('sub_title', 'Sub Title') !!}
-                {!! Form::text('sub_title', null, ['placeholder' => 'sub_title', 'class' => 'form-control']) !!}
+                {!! Form::text('sub_title', null, ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group">
                 

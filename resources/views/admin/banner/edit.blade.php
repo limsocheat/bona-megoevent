@@ -27,11 +27,11 @@
         <div class="card-body">
             <div class="form-group">
                 {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ['placeholder' => 'name', 'class' => 'form-control']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
 			<div class="form-group">
                 {!! Form::label('link', 'Link') !!}
-                {!! Form::text('link', null, ['placeholder' => 'link', 'class' => 'form-control']) !!}
+                {!! Form::text('link', null, ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group">
                 

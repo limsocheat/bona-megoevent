@@ -14,11 +14,11 @@
     <div class="card-body">
         <div class="form-group">
             {!! Form::label('first_name', 'Frist Name') !!}
-            {!! Form::text('first_name', null, ['placeholder' => 'Frist Name', 'class' => 'form-control']) !!}
+            {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('last_name', 'Last Name') !!}
-            {!! Form::text('last_name', null, ['placeholder' => 'Last Name', 'class' => 'form-control']) !!}
+            {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('new_image', 'Logo :') !!}
@@ -28,12 +28,12 @@
         </div>
         <div class="form-group">
             {!! Form::label('phone', 'Phone') !!}
-            {!! Form::text('phone', null, ['placeholder' => 'Phone', 'class' => 'form-control']) !!}
+            {!! Form::text('phone', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('address', 'Address') !!}
-            {!! Form::text('address', null, ['placeholder' => 'Address', 'class' => 'form-control']) !!}
+            {!! Form::text('address', null, [ 'class' => 'form-control']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('active', 'Active') !!}
