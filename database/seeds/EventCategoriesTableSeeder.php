@@ -23,7 +23,6 @@ class EventCategoriesTableSeeder extends Seeder
             'Health & Wellness',
             'Hobbies & Special Interest',
             'Home & Lifestyle',
-            'Music',
             'Other',
         ];
 

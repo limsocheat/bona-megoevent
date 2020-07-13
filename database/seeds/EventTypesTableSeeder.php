@@ -17,12 +17,9 @@ class EventTypesTableSeeder extends Seeder
             'Seminar or Talk',
             'Tradeshow, Consumer Show, or Expo',
             'Convention',
-            'Festival or Fair',
             'Concert or Performance',
             'Screening',
-            'Dinner or Gala',
             'Festival or Fair',
-            'Game or Competition',
             'Meeting or Networking Event',
             'Other',
         ];
