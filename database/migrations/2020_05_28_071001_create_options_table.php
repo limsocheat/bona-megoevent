@@ -18,7 +18,7 @@ class CreateOptionsTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->text('description')->nullable();
-            $table->boolean('active')->default(1);
+            $table->boolean('active')->default(1)->nullable();
             $table->timestamps();
         });
     }

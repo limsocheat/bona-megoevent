@@ -17,7 +17,7 @@ class CreateEventCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->boolean('active')->default(1);
+            $table->boolean('active')->default(1)->nullable();
             $table->timestamps();
         });
     }

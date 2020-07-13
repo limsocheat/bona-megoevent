@@ -22,7 +22,7 @@ class CreateExhibitorsTable extends Migration
             $table->binary('logo')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->boolean('active')->default(1);
+            $table->boolean('active')->default(1)->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
 
