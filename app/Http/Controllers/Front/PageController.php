@@ -179,7 +179,7 @@ class PageController extends Controller
         ]);
 
         $event      = Event::where('name', $name)->first();
-        $quantity    = $request->input('quantity');
+        $quantity   = $request->input('quantity');
         $price      = $event->price;
 
         if (strtotime($event->early_bird_date) > strtotime(date('Y-m-d'))) {
