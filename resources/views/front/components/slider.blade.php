@@ -40,6 +40,7 @@
     @media only screen and (max-width: 600px) {
         .home_slider_fullscreen_content h1 {
             font-size: 6vw;
+            margin-top: -30px;
         }
 
         .home_slider_carousel_item {
