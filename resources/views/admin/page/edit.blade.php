@@ -52,7 +52,6 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 @stop
-
 @section('js')
     <script type="text/javascript" src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script>
