@@ -99,13 +99,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-12">
-                            <div class="input-field">
-                                <label class="active">Banners</label>
-                                <div class="input-images-1" style="padding-top: .5rem;"></div>
-                            </div>
-                        </div>
                         <div class="col-md-12 pt-3">
                             <label class="active">Floor Plan</label>
                             <div class="form-group mb-3">
@@ -118,6 +111,12 @@
                                     {!! Form::file('floor_plan_image', ['id' => 'floor-plan-image-uploader', 'style' =>
                                     'display: none;']) !!}
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-field">
+                                <label class="active">Banners</label>
+                                <div class="input-images-1" style="padding-top: .5rem;"></div>
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">
@@ -265,7 +264,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
-                                {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of Pax', 'class' => 'form-control']) !!}
+                                {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of
+                                Pax', 'class' => 'form-control']) !!}
                             </div>
                         </div>
                     </div>
@@ -298,6 +298,20 @@
 <script type="text/javascript">
     jQuery(document).ready(function($){
 
+
+        if( document.getElementById("feature-image-uploader").files.length == 0 ){
+            $(':input[type="submit"]').prop('disabled', true);
+        } else {
+            $(':input[type="submit"]').prop('disabled', false);
+        }
+
+        $("#feature-image-uploader").change(function() {
+            if( document.getElementById("feature-image-uploader").files.length == 0 ){
+                $(':input[type="submit"]').prop('disabled', true);
+            } else {
+                $(':input[type="submit"]').prop('disabled', false);
+            }
+        })
 
         $('.input-images-1').imageUploader({
             imagesInputName: 'images',

@@ -10,6 +10,7 @@ use App\Models\EventSchedule;
 use App\Models\EventType;
 use App\Models\Location;
 use App\Models\Option;
+use App\Models\Product;
 use App\Models\Venue;
 use App\Models\Video;
 use Carbon\CarbonPeriod;
@@ -38,22 +39,22 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $organizer  = auth()->user();
-        
+
         $name       = $request->input('name');
         $status     = $request->input('status');
         $payment    = $request->input('payment');
 
         $events     = Event::select('*')
-            ->when($name, function($query, $name){
+            ->when($name, function ($query, $name) {
                 return $query->where('name', 'LIKE', "%$name%");
             })
-            ->when($status, function($query, $status) {
+            ->when($status, function ($query, $status) {
                 return $query->where('status', $status);
             })
-            ->when($payment == 'paid', function($query) {
+            ->when($payment == 'paid', function ($query) {
                 return $query->whereHas('payment');
             })
-            ->when($payment == 'unpaid', function($query) {
+            ->when($payment == 'unpaid', function ($query) {
                 return $query->whereDoesntHave('payment');
             })
             ->where('organizer_id', $organizer->id)
@@ -82,8 +83,8 @@ class EventController extends Controller
             'event_locations'     => Location::select('id', 'name')->get()->pluck('name', 'id'),
             'types'               => EventType::select('id', 'name')->get()->pluck('name', 'id'),
             'categories'          => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
-            'venues'              => Venue::select('id','size')->get()->pluck('size', 'id'),
-            
+            'venues'              => Venue::select('id', 'size')->get()->pluck('size', 'id'),
+
         ];
 
         return view('front.manage.event.create', $data);
@@ -108,6 +109,7 @@ class EventController extends Controller
             'end_date'              => 'required',
             'end_time'              => 'required',
             'venue_id'              => 'required',
+            'image'                 => 'required',
         ]);
 
 
@@ -182,8 +184,7 @@ class EventController extends Controller
 
             DB::commit();
             return redirect()->route('manage.event.edit', $event->id);
-            
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back();
         }
@@ -220,7 +221,8 @@ class EventController extends Controller
             'event_locations'       => Location::select('id', 'name')->get()->pluck('name', 'id'),
             'types'                 => EventType::select('id', 'name')->get()->pluck('name', 'id'),
             'categories'            => EventCategory::select('id', 'name')->get()->pluck('name', 'id'),
-            'venues'                => Venue::select('id','size')->get()->pluck('size', 'id'),
+            'venues'                => Venue::select('id', 'size')->get()->pluck('size', 'id'),
+            'products'              => Product::select('*')->get()->pluck('display_name', 'id'),
         ];
 
         return view('front.manage.event.edit', $data);
@@ -315,11 +317,10 @@ class EventController extends Controller
 
             DB::commit();
             return redirect()->route('manage.event.index');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', $e->getMessage());
         }
-        
     }
 
     /**

@@ -4,27 +4,29 @@
 
 @section('content')
 <div id="account-dashboard">
-<style>
-    #text-small small{
-        font-size: 16px;
-    }
-    #text-small a:hover{
-        color: #bf9000;
-    }
-</style>
+    <style>
+        #text-small small {
+            font-size: 16px;
+        }
+
+        #text-small a:hover {
+            color: #bf9000;
+        }
+    </style>
     <div class="container py-4">
         <div class="row">
             <div class="col-md-12 text-right mb-3" id="text-small">
-                <small><a href="#"><small>MegoCoins</small></a> | <a href="#"><small>My Account</small></a> | <a href="#"><small>Contact Us</small></a></small>
+                <small><a href="#"><small>MegoCoins</small></a> | <a href="#"><small>My Account</small></a> | <a
+                        href="#"><small>Contact Us</small></a></small>
             </div>
             <div class="col-md-6">
                 <p style="font-size: 120%">
                     Hello <strong>{{ auth()->user()->name }} <br></strong>
                     How are you today?
-                </p>   
+                </p>
             </div>
             <div class="col-md-6 text-right">
-                <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg px-5 mb-2" >My Events</a>
+                <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg px-5 mb-2">My Events</a>
             </div>
             <div class="col-md-12">
                 <div class="card">
@@ -33,7 +35,8 @@
                             <ul id="account-navbar" class="navbar navbar-nav nav-fill w-100 pr-0">
                                 <li class="nav-item">
                                     <a class="nav-link active text-capitalize" id="account-link"
-                                        href="{{ route('manage.index') }}">{{ auth()->user()->name }}'s Board! <span class="sr-only">(current)</span></a>
+                                        href="{{ route('manage.index') }}">{{ auth()->user()->name }}'s Board! <span
+                                            class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-capitalize" id="account-link"
@@ -114,28 +117,32 @@
                             </div>
                             <div class="col-md-10">
                                 @php
-                                    $user = auth()->user();
+                                $user = auth()->user();
                                 @endphp
                                 <div class="row">
                                     <div class="col-md-3 mb-2">
-                                        <img src="{{ $user->profile ? $user->profile->avatar_url : asset('images/avatar.jpg') }}" alt="{{ $user->name }}" class="img-thumbnail">
+                                        <img src="{{ $user->profile ? $user->profile->avatar_url : asset('images/avatar.jpg') }}"
+                                            alt="{{ $user->name }}" class="img-thumbnail">
                                     </div>
                                     <div class="col-md-9">
                                         <h3 class="user-company">{{ $user->company ? $user->company->name: 'N/A' }}</h3>
                                         <p class="user-name">{{ $user->name }}</p>
-                                        <p>{{ $user->profile && $user->profile->country ? $user->profile->country->name  : 'N/A' }} | {{ $user->profile ? $user->profile->phone : 'N/A' }} | {{ $user->email }}</p>
+                                        <p>{{ $user->profile && $user->profile->country ? $user->profile->country->name  : 'N/A' }}
+                                            | {{ $user->profile ? $user->profile->phone : 'N/A' }} | {{ $user->email }}
+                                        </p>
                                     </div>
                                     <div class="col-md-12 mt-5">
                                         <h3 id="h1"><strong> Upcoming Events</strong></h3>
                                         @inject('event', 'App\Models\Event')
                                         @php
-                                            $upcoming_events = $event::select('*')->whereDate('start_date', '>', date('Y-m-d'))->limit(3)->get();
+                                        $upcoming_events = $event::select('*')->published()->whereDate('start_date',
+                                        '>', date('Y-m-d'))->limit(3)->get();
                                         @endphp
                                         <div class="row">
                                             @foreach ($upcoming_events as $event)
-                                                <div class="col-md-4">
-                                                    @include('front.components.event.card')
-                                                </div>
+                                            <div class="col-md-4">
+                                                @include('front.components.event.card')
+                                            </div>
                                             @endforeach
                                         </div>
                                     </div>
