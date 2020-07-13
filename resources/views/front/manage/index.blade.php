@@ -24,7 +24,7 @@
                 </p>   
             </div>
             <div class="col-md-6 text-right">
-                <a href="{{ route('manage.event.index') }}" class="btn btn-danger px-5 mb-2" style="background-color: #C5B358; color:white; border: 1px solid #000;">My Events</a>
+                <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg px-5 mb-2" >My Events</a>
             </div>
             <div class="col-md-12">
                 <div class="card">

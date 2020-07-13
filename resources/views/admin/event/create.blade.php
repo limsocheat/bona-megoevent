@@ -96,6 +96,10 @@
                 <li class="nav-item">
                     <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee" aria-selected="false">Fee</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="venue-tab" data-toggle="tab" href="#venue" role="tab" aria-controls="venue"
+                        aria-selected="false">Venue</a>
+                </li>
             </ul>
         </div>
         <div class="card-body">
@@ -251,7 +255,7 @@
                     
                 </div>
                 <div class="tab-pane" id="fee" role="tabpanel" aria-labelledby="fee-tab">
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 {!! Form::label('pax_min', 'Min Pax') !!}
@@ -296,6 +300,20 @@
                                 {!! Form::label('group_min_pax', 'Group Price Minimum No of Pax') !!}
                                 {!! Form::number('group_min_pax', null, ['placeholder' => 'Group Price Minimum No of Pax', 'class' => 'form-control']) !!}
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="venue" role="tabpanel" aria-labelledby="venue-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {!! Form::label('venue_id', 'Venue Block') !!}
+                            {!! Form::select('venue_id', $venues, null, ['placeholder' => 'Venue Block', 'class' =>
+                            'form-control']) !!}
+                        </div>
+                        <div class="col-md-12">
+                            {!! Form::label('venue_level', 'Venue Level') !!}
+                            {!! Form::select('venue_level', [1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5], null,
+                            ['placeholder' => 'Venue Level', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                 </div>

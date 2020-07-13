@@ -120,6 +120,9 @@
                 <a class="nav-link" id="fee-tab" data-toggle="tab" href="#fee" role="tab" aria-controls="fee"
                     aria-selected="false">Fee</a>
             </li>
+            <li class="nav-item">
+                 <a class="nav-link" id="schedule-venue-tab" data-toggle="tab" href="#schedule-venue" role="tab" aria-controls="schedule-venue" aria-selected="false">Schedule & Venue</a>
+            </li>
         </ul>
     </div>
     <div class="card-body">
@@ -370,6 +373,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="tab-pane" id="schedule-venue" role="tabpanel" aria-labelledby="schedule-venue">
+        @include('front.components.event.tab.schedule_venue')
     </div>
 </div>
 </div>

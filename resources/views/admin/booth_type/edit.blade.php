@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-				{!! Form::label('new_image', 'Logo :') !!}
+				{!! Form::label('new_image', 'Booth Image :') !!}
                <input name="new_image" type="file" id="new_image" />
                 <img id="imagePreview" class="rounded mx-auto" src="{{ asset($booth_type->image_url) }}" alt="" style="height:200px" >
             </div>
