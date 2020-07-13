@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 <div class="card">
     <div class="card-body">
         <table id="datatable" class="table table-striped">
@@ -20,14 +21,14 @@
             </thead>
             <tbody>
                 @foreach ($exhibitors as $exhibitor)
-                    <tr>
-                        <td>
-                            {{ $exhibitor->name }}
-                        </td>
-                        <td>{{ $exhibitor->email }}</td>
-                        <td>{{ $exhibitor->profile ? $exhibitor->profile->phone : null }}</td>
-                        <td>{{ $exhibitor->company ? $exhibitor->company->name : null }}</td>
-                    </tr>
+                <tr>
+                    <td>
+                        {{ $exhibitor->name }}
+                    </td>
+                    <td>{{ $exhibitor->email }}</td>
+                    <td>{{ $exhibitor->profile ? $exhibitor->profile->phone : null }}</td>
+                    <td>{{ $exhibitor->company ? $exhibitor->company->name : null }}</td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

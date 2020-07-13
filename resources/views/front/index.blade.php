@@ -34,7 +34,7 @@
 		</div>
 		@foreach ($feature_events as $event)
 		<div class="col-md-3 mb-4">
-			@include('front.components.event.card')
+			@include('front.components																																					.event.card')
 		</div>
 		@endforeach
 	</div>

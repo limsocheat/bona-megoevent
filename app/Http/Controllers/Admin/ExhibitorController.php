@@ -44,10 +44,12 @@ class ExhibitorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+
+            'first_name'    =>'required',
+            'last_name'     =>'required',
+            'name'          => 'required|string|max:255',
+            'email'         => 'required|string|email|max:255|unique:users',
+            'password'      => 'required|string|min:8|confirmed'
         ]);
         $data       = $request->except('password', 'role');
         $data['password']   = bcrypt($request->input('password'));
@@ -105,9 +107,8 @@ class ExhibitorController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $exhibitor = Exhibitor::findOrFail($id);
-
-
 
         $data       = $request->all();
         if ($request->file('new_image')) {
