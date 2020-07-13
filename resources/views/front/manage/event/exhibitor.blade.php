@@ -1,8 +1,10 @@
-@extends('layouts.app')
+
+@extends('front.manage.layout.index')
 
 @section('title', $event->name)
 
-@section('content')
+@section('content_profile')
+<div class="col-md-10" style="margin-top: -25px">
     <div class="container py-4">
         <div class="card">
             <div class="card-header">
@@ -34,4 +36,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

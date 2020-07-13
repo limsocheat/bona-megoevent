@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => 'Megoevent',
+    'logo_img' => 'images/logo_responsive.png',
+    'logo_img_xl' => 'images/logo_dasboard.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Megoevent',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,7 +167,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -225,12 +225,13 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
+        
         [
             'text'        => 'Event Categories',
             'url'         => 'admin/category',
             'icon'        => 'fa fa-list-alt',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
+       
+                    
         ],
         [
             'text'        => 'Event Types',

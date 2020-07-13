@@ -180,6 +180,7 @@ body a:hover {
     background-color: #C5B358;
     color: white;
 }
+
 .mego-gold-bg:hover {
     background-color: #C5B358;
     color: white;
@@ -188,22 +189,26 @@ body a:hover {
 .event-card #event-join:hover {
     background-color: #ddd4a5;
 }
-.mego-btn{
-    border:1px solid black;
+
+.mego-btn {
+    border: 1px solid black;
     border-radius: 5%;
-    background-color:white;
-    color:black;
+    background-color: white;
+    color: black;
     padding: 6px 15px;
     cursor: pointer;
 }
-.mego-outline-gold{
+
+.mego-outline-gold {
     border-color: #C5B358;
     color: #C5B358;
 }
-.mego-outline-gold:hover{
+
+.mego-outline-gold:hover {
     background: #C5B358;
     color: white;
 }
+
 #h1,
 #h3 {
     color: #C5B358;
@@ -269,42 +274,49 @@ body a:hover {
     font-weight: bold;
     color: #000;
 }
+
 #account-navbar .nav-link {
     background-color: #bf9000;
     color: white;
     border: 1px solid #000;
 }
+
 /* create event */
 .entry:not(:first-of-type) {
     margin-top: 10px;
 }
-.preview-wrapper{
+
+.preview-wrapper {
     position: relative;
     height: auto;
     width: 900px;
     max-width: 100%;
     overflow: hidden;
     transition: all .2s ease;
-    }
-.preview-wrapper img{
+}
+
+.preview-wrapper img {
     height: auto;
     width: 900px;
     max-width: 100%;
 }
+
 .preview-wrapper:hover {
     transform: scale(1.02);
     cursor: pointer;
 }
+
 .preview-wrapper:hover #preview-logo-pic {
     opacity: .5;
-} 
+}
+
 .preview-wrapper #preview-logo-pic {
     height: 100%;
     width: 100%;
     transition: all .3s ease;
-    
+
 }
-    
+
 .preview-wrapper #preview-logo-pic:after {
     font-family: FontAwesome;
     content: "\f007";
@@ -318,7 +330,7 @@ body a:hover {
     color: #34495e;
     text-align: center;
 }
-    
+
 .preview-wrapper .logo-upload-button {
     position: absolute;
     top: 0;
@@ -365,7 +377,7 @@ body a:hover {
     }
 
     #account-navbar #account-link {
-        width: 73vw;
+        width: 80vw;
     }
 
     #logo-controll {
