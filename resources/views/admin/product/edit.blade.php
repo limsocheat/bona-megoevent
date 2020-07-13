@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Create Product</h1>
+<h1>Create Product</h1>
 @stop
 
 @section('content')
@@ -22,50 +22,52 @@
     </div>
 </div>
 <div class="card">
-    {!! Form::model($product,['route' => ['admin.product.update',$product->id], 'method' => 'PUT','enctype'=>'multipart/form-data']) !!}
-          @csrf
-        <div class="card-body">
-            <div class="form-group">
-                {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
-            </div>
-
-			<div class="form-group">
-				{!! Form::label('new_image', 'Logo :') !!}
-               <input name="new_image" type="file" id="new_image" />
-                <img id="imagePreview" class="rounded mx-auto" src="{{ asset($product->image) }}" alt="" style="width:200px;height:200px">
-            </div>
-
-             <div class="form-group">
-                        {!! Form::label('category_id', 'Category') !!}
-                        {!! Form::select('category_id', $categories, null, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
-             </div>
-
-			<div class="form-group">
-                {!! Form::label('price', 'Price') !!}
-                {!! Form::text('price', null, ['placeholder' => 'Price', 'class' => 'form-control','id' => 'digitsOnly']) !!}
-            </div>
-    
-			<div class="form-group">
-                {!! Form::label('quantity', 'Quantity') !!}
-                {!! Form::text('quantity', null, ['placeholder' => 'Quantity', 'class' => 'form-control','id' => 'digitsOnly']) !!}
-            </div>
-            
-            <div class="form-group">
-                {!! Form::label('color', 'Color') !!}
-                {!! Form::text('color', null, ['placeholder' => 'color', 'class' => 'form-control']) !!}
-            </div>
-            
-			 <div class="form-group">
-                {!! Form::label('description', 'Description') !!}
-                {!! Form::textarea('description', null, ['placeholder' => 'Description', 'class' => 'form-control']) !!}
-            </div>
-           
+    {!! Form::model($product,['route' => ['admin.product.update',$product->id], 'method' =>
+    'PUT','enctype'=>'multipart/form-data']) !!}
+    @csrf
+    <div class="card-body">
+        <div class="form-group">
+            {!! Form::label('name', 'Name') !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
-         
-        <div class="card-footer ">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+
+        <div class="form-group">
+            {!! Form::label('new_image', 'Logo :') !!}
+            <input name="new_image" type="file" id="new_image" />
+            <img id="imagePreview" class="rounded mx-auto" src="{{ asset($product->image) }}" alt=""
+                style="width:200px;height:200px">
         </div>
+
+        <div class="form-group">
+            {!! Form::label('category_id', 'Category') !!}
+            {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('price', 'Price') !!}
+            {!! Form::text('price', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('quantity', 'Quantity') !!}
+            {!! Form::text('quantity', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('color', 'Color') !!}
+            {!! Form::text('color', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('description', 'Description') !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+        </div>
+
+    </div>
+
+    <div class="card-footer ">
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
+    </div>
     {!! Form::close() !!}
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
