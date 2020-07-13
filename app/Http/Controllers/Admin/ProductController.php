@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products   = Product::select('*')->get();
-        return view('admin.product.index',[
+        return view('admin.product.index', [
             'products'  => $products
         ]);
     }
@@ -29,10 +29,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data =[
+        $data = [
             'categories' => ProductCategory::select('id', 'name')->get()->pluck('name', 'id'),
         ];
-        return view('admin.product.create',$data);
+        return view('admin.product.create', $data);
     }
 
     /**
@@ -43,20 +43,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'name'      => 'required',
-            
-        ]);
-          $data  = $request->all();
 
-          if ($request->file('new_image')) {
+        ]);
+        $data  = $request->all();
+
+        if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
             request()->new_image->move(public_path('upload'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/upload/" . $imageName;
         }
         $product = Product::create($data);
-        if($product){
+        if ($product) {
             return redirect()->route('admin.product.index');
         }
     }
@@ -81,13 +81,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $data=[
 
-        'product'  => Product::findOrFail($id),
-        'categories' => ProductCategory::select('id', 'name')->get()->pluck('name', 'id'),
+        $data = [
+            'product'  => Product::findOrFail($id),
+            'categories' => ProductCategory::select('id', 'name')->get()->pluck('name', 'id'),
 
         ];
-        return view('admin.product.edit',$data);
+        return view('admin.product.edit', $data);
     }
 
     /**
@@ -99,16 +99,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $product = Product::findOrFail($id);
+
+        $request->validate([
+            'name'      => 'required',
+
+        ]);
+
+        $product = Product::findOrFail($id);
 
 
 
         $data       = $request->all();
-         if ($request->file('new_image')) {
+        if ($request->file('new_image')) {
             $imageName = $request->file('new_image')->getClientOriginalName();
             request()->new_image->move(public_path('upload'), $imageName);
 
-            $data['image'] = "/upload/".$imageName;
+            $data['image'] = "/upload/" . $imageName;
         }
 
 
