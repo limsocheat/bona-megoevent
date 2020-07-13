@@ -6,9 +6,14 @@
     .slick-prev:before {
         color: black;
     } */
-    .home_slider_fullscreen_content h3{
-            width: 80vw;   
+    .home_slider_fullscreen_content h3 {
+        width: 40vw;
+        margin-left: 60px;
+        padding: 15px;
+        color: white;
+        background-color: #02020242;
     }
+
     .home_slider_fullscreen .slick-prev {
         margin-left: 100px !important;
         ;
@@ -33,10 +38,10 @@
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
-        .home_slider_fullscreen_content h1{
+        .home_slider_fullscreen_content h1 {
             font-size: 6vw;
         }
-        
+
         .home_slider_carousel_item {
             height: 80px !important;
             width: auto !important;
@@ -50,10 +55,12 @@
             position: absolute;
             top: 10px;
         }
+
         .fullscreen_slider_image {
             max-height: 320px;
             max-width: auto;
         }
+
         .home_slider_fullscreen .slick-prev {
             margin-left: 50px !important;
             ;
@@ -84,6 +91,7 @@
             position: absolute;
             top: 10px;
         }
+
         .fullscreen_slider_image {
             min-height: 320px;
             min-width: auto;
@@ -109,11 +117,13 @@
             position: absolute;
             top: 30px;
         }
+
         .fullscreen_slider_image {
             max-width: 100%;
             max-height: 400px;
-            
+
         }
+
         .slickLightbox img {
             max-width: 200px;
             max-height: 310px;
@@ -139,6 +149,7 @@
             position: absolute;
             top: 80px;
         }
+
         .fullscreen_slider_image {
             max-height: 560px;
             max-width: 100%;
@@ -153,7 +164,8 @@
 
     }
 
-    .slick-lightbox-slick-item-inner, .slick-lightbox-slick-img {
+    .slick-lightbox-slick-item-inner,
+    .slick-lightbox-slick-img {
         max-height: auto !important;
     }
 
@@ -163,8 +175,9 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
+
     .home_slider_carousel_item {
-        margin-left: 15px; 
+        margin-left: 15px;
         margin-right: 15px;
     }
 
@@ -187,51 +200,59 @@
         margin: auto;
     } */
 
-    .home_slider_fullscreen .slick-prev:before, .home_slider_fullscreen .slick-next:before {
+    .home_slider_fullscreen .slick-prev:before,
+    .home_slider_fullscreen .slick-next:before {
         font-size: 30px;
     }
 
-    .home_slider_carousel .slick-prev:before, .home_slider_carousel .slick-next:before {
+    .home_slider_carousel .slick-prev:before,
+    .home_slider_carousel .slick-next:before {
         font-size: 25px;
         color: black;
     }
-    
 </style>
 @inject('slider', 'App\Models\Slide')
 @php
-    $fullscreen_sliders = $slider::select('*')->where('location', 'fullscreen')->get();
-    $thumb_sliders      = $slider::select('*')->where('location', 'thumbnail')->get();
+$fullscreen_sliders = $slider::select('*')->where('location', 'fullscreen')->get();
+$thumb_sliders = $slider::select('*')->where('location', 'thumbnail')->get();
 @endphp
 @if (count($fullscreen_sliders))
-    <div class="home_slider_fullscreen">
+<div class="home_slider_fullscreen">
 
-        @foreach ($fullscreen_sliders as $fullscreen_slider)
-            <div class="fluid mx-0 px-0">
-                <div class="container">
-                    <div class="home_slider_fullscreen_content">
-                        <h1 class="font-weight-bold" id="font-title">{{ $fullscreen_slider->title }}</h1>
+    @foreach ($fullscreen_sliders as $fullscreen_slider)
+    <div class="fluid mx-0 px-0">
+        <div class="container">
+            <div class="home_slider_fullscreen_content ">
+                <div class="row mt-5">
+                    <div class="col-md-7">
+                        <h1 class="font-weight-bold text-white" id="font-title">{{ $fullscreen_slider->title }}</h1>
+                    </div>
+                    <div class="col-md-5">
                         <h3 class="slider-subtitle" id="sub-title">{{ $fullscreen_slider->sub_title }}</h3>
                     </div>
                 </div>
-                <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}" class="fullscreen_slider_image">
             </div>
-        @endforeach
+        </div>
+        <img src="{{ $fullscreen_slider->image_url }}" alt="{{ $fullscreen_slider->title }}"
+            class="fullscreen_slider_image">
     </div>
+    @endforeach
+</div>
 @endif
 
 @if (count($thumb_sliders))
 
-    <div id="home_slider_carousel" class="container">
-        <div class="home_slider_carousel">
-            @foreach ($thumb_sliders as $thumb_slider)
-                <a href="{{ $thumb_slider->image_url }}" target="_blank">
-                    <img src="{{ $thumb_slider->image_url }}" alt="{{ $thumb_slider->title }}"
-                        class="home_slider_carousel_item">
-                </a>
-            @endforeach
-        </div>
+<div id="home_slider_carousel" class="container">
+    <div class="home_slider_carousel">
+        @foreach ($thumb_sliders as $thumb_slider)
+        <a href="{{ $thumb_slider->image_url }}" target="_blank">
+            <img src="{{ $thumb_slider->image_url }}" alt="{{ $thumb_slider->title }}"
+                class="home_slider_carousel_item">
+        </a>
+        @endforeach
     </div>
-    
+</div>
+
 @endif
 <script type="text/javascript">
     jQuery(document).ready(function($){
