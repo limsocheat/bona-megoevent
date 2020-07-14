@@ -10,40 +10,18 @@
 
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
-    </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js"></script>
-    <script type="text/javascript" src="{{ asset('plugins/nice-select/js/jquery.nice-select.js') }}"></script>
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-
     <link type="text/css" rel="stylesheet" href="{{ asset('/plugins/image-uploader/image-uploader.css') }}">
-    <script type="text/javascript" src="{{ asset('/plugins/image-uploader/image-uploader.js') }}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <!---icon--->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/circle.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css">
@@ -51,20 +29,10 @@
 
     <link rel="stylesheet" href="{{ asset('plugins/nice-select/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-    <style>
-        .navbar-nav #btn-organizer {
-            margin-top: 12px;
-            margin-left: 4px;
-        }
 
-        #text-hover i {
-            color: black;
-        }
-
-        #text-hover i:hover {
-            color: #9b9b9b;
-        }
-    </style>
+    <!-- Scripts -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -104,7 +72,7 @@
                                                 <li class="nav-item actives" data-toggle="tooltip"
                                                     data-placement="bottom" title="Search">
                                                     <a href="{{ route('search') }}"
-                                                        class="nav-link .heavy-rain-gradient" id="text-hover">
+                                                        class="nav-link .heavy-rain-gradient mego-text-hover">
                                                         <i class="fa fa-search" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
@@ -112,7 +80,7 @@
                                             <div class="col-xs-3">
                                                 <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                     title="Email">
-                                                    <a href="{{ route('contact') }}" class="nav-link" id="text-hover">
+                                                    <a href="{{ route('contact') }}" class="nav-link mego-text-hover">
                                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                                     </a>
                                                 </li>
@@ -120,8 +88,8 @@
                                             <div class="col-xs-3">
                                                 <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                     title="Cart">
-                                                    <a href="{{ route('cart.index') }}" class="nav-link"
-                                                        id="text-hover">
+                                                    <a href="{{ route('cart.index') }}"
+                                                        class="nav-link mego-text-hover">
                                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                                         @guest
                                                         @else
@@ -137,13 +105,13 @@
                                             @guest
                                             <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                 title="Sign Up">
-                                                <a href="{{ route('register') }}" class="nav-link" id="text-hover">
+                                                <a href="{{ route('register') }}" class="nav-link mego-text-hover">
                                                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                                                 </a>
                                             </li>
                                             <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
                                                 title="Sign in">
-                                                <a href="{{ route('login') }}" class="nav-link" id="text-hover">
+                                                <a href="{{ route('login') }}" class="nav-link mego-text-hover">
                                                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                                                 </a>
                                             </li>
@@ -151,8 +119,8 @@
 
                                             <li class="nav-item dropdown ">
                                                 <a href="{{ route('manage.profile.index') }}"
-                                                    class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                                    id="text-hover">
+                                                    class="nav-link dropdown-toggle"
+                                                    data-toggle="dropdown mego-text-hover">
                                                     <i class="fa fa-user" aria-hidden="true"></i>
                                                 </a>
                                                 <ul class="dropdown-content p-0 mr-auto ml-auto">
@@ -172,7 +140,7 @@
                                                 title="Sign Out">
                                                 <a href="#"
                                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                                    class="nav-link" id="text-hover">
+                                                    class="nav-link mego-text-hover">
                                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                                 </a>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -281,6 +249,21 @@
 
         @include('layouts.footer')
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
+    </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js">
+    </script>
+    <script type="text/javascript" src="{{ asset('plugins/nice-select/js/jquery.nice-select.js') }}"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/plugins/image-uploader/image-uploader.js') }}">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    </script>
     @yield('script')
     <script type="text/javascript">
         $(document).ready(function(){
