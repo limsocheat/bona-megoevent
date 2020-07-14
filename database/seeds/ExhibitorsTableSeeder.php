@@ -13,7 +13,7 @@ class ExhibitorsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 8; $i++) {
 
             $user           = User::create([
                 'name'      => "Exhibitor $i",
@@ -22,11 +22,11 @@ class ExhibitorsTableSeeder extends Seeder
             ]);
 
             $user->assignRole('exhibitor');
-        
+
             Exhibitor::create([
                 'user_id'   => $user->id,
                 'name'      => "Exhibitor $i",
-                'logo'      => "/exhibitors/$i.jpg",
+                'logo'      => "/images/exhibitors/$i.jpg",
             ]);
         }
     }
