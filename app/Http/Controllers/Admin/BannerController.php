@@ -4,10 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Utils\Uploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BannerController extends Controller
 {
+
+    protected $uploader;
+
+    public function __construct(Uploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,21 +51,25 @@ class BannerController extends Controller
     {
         $request->validate([
             'name'      => 'required',
-            // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
 
         ]);
-        $data  = $request->all();
 
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
+        DB::beginTransaction();
+        try {
 
-            $data['image'] = "/uploads/" . $imageName;
-        }
+            $data  = $request->all();
 
-        $banner = Banner::create($data);
-        if ($banner) {
+            if ($request->file('new_image')) {
+                $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
+
+            Banner::create($data);
+
+            DB::commit();
             return redirect()->route('admin.banner.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -95,18 +109,12 @@ class BannerController extends Controller
 
         $request->validate([
             'name'      => 'required',
-            // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-
         ]);
 
         $data       = $request->all();
         if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
-
-            $data['image'] = "/uploads/" . $imageName;
+            $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
         }
-
 
         $banner->update($data);
 
