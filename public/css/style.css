@@ -175,10 +175,12 @@ body a:hover {
     background-color: #C5B358;
     color: white;
 }
+
 #btn-mego #btn-organizer:hover {
     background-color: #c20000;
     border-bottom: 0;
 }
+
 .mego-gold-bg {
     background-color: #C5B358;
     color: white;
@@ -349,6 +351,7 @@ body a:hover {
 }
 
 #account-nav .nav-link {
+    width: 200px;
     background-color: #bf9000;
     color: white;
     /* border: 1px solid #000; */
