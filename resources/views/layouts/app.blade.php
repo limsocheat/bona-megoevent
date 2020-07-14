@@ -4,277 +4,44 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
+    @include('layouts.styles')
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/plugins/image-uploader/image-uploader.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!---icon--->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
-    <link rel="stylesheet" href="{{ asset('plugins/nice-select/css/nice-select.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-
-    <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>
     <div id="app">
-        @inject('banner', 'App\Models\Banner')
-        @php
-        $header_banner = $banner::select('*')->where('location', 'header')->first();
-        @endphp
         <div class="bg-white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col">
-                        <div id="logo-controll" style="padding-top:13px">
-                            <a class="navbar-brand" href="{{ url('/') }}">
-                                <img src="{{ asset('images/logo.png') }}" class="logo" />
-                            </a>
-                        </div>
+                    <div class="col-md-4">
+                        @include('layouts.partials.logo')
                     </div>
                     <div class="col-md-8">
-                        <nav id="top-navigation"
-                            class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
-                            <div class="container pr-0">
-                                <div class=" navbar-collapse d-flex justify-content-end">
-                                    <ul class="navbar-nav navbar-right ml-auto">
-                                        <div class="row ">
-
-                                            <div class="col-xs-3">
-                                                <li id="btn-mego">
-                                                    <a href="{{ route('manage.event.index') }}"
-                                                        class="btn mego-gold-bg py-2" id="btn-organizer"
-                                                        style="height:41px; color: #fff;">Be an Organizer, create your
-                                                        own event!</a>
-                                                </li>
-                                            </div>
-
-                                            <div class="col-xs-3">
-                                                <li class="nav-item actives" data-toggle="tooltip"
-                                                    data-placement="bottom" title="Search">
-                                                    <a href="{{ route('search') }}"
-                                                        class="nav-link .heavy-rain-gradient mego-text-hover">
-                                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
-                                                    title="Email">
-                                                    <a href="{{ route('contact') }}" class="nav-link mego-text-hover">
-                                                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                    </a>
-                                                </li>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
-                                                    title="Cart">
-                                                    <a href="{{ route('cart.index') }}"
-                                                        class="nav-link mego-text-hover">
-                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        @guest
-                                                        @else
-                                                        <sup>
-                                                            <div class="badge badge-danger">
-                                                                {{ Cart::session(auth()->id())->getTotalQuantity() }}
-                                                            </div>
-                                                        </sup>
-                                                        @endif
-                                                    </a>
-                                                </li>
-                                            </div>
-                                            @guest
-                                            <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
-                                                title="Sign Up">
-                                                <a href="{{ route('register') }}" class="nav-link mego-text-hover">
-                                                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
-                                                title="Sign in">
-                                                <a href="{{ route('login') }}" class="nav-link mego-text-hover">
-                                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                                </a>
-                                            </li>
-                                            @else
-
-                                            <li class="nav-item dropdown ">
-                                                <a href="{{ route('manage.profile.index') }}"
-                                                    class="nav-link dropdown-toggle"
-                                                    data-toggle="dropdown mego-text-hover">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                </a>
-                                                <ul class="dropdown-content p-0 mr-auto ml-auto">
-                                                    <li>
-                                                        <a href="{{ route('manage.profile.index') }}">Profile</a>
-                                                        </a>
-                                                    <li>
-                                                        <a href="{{ route('manage.purchase.index')}}">Purchase</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('manage.event.index')}}">Event</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="nav-item" data-toggle="tooltip" data-placement="bottom"
-                                                title="Sign Out">
-                                                <a href="#"
-                                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                                                    class="nav-link mego-text-hover">
-                                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                                </a>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                    style="display: none;">
-                                                    {{ csrf_field() }}
-                                                </form>
-                                            </li>
-                                            @endguest
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
+                        @include('layouts.partials.top_navigation')
                     </div>
                 </div>
             </div>
         </div>
 
-        <nav id="main-navigation"
-            class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0 "
-            style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
-            <div class="container">
-                <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"><i class="fa fa-bars"
-                            style="color:#1f1c1c; font-size:28px;"></i></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul id="navbar-nav" class="navbar-nav mr-auto">
-                        <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
-                            <a href="{{ route('index') }}" class="nav-link nav-link-left pl-0 ml-0">Home</a>
-                        </li>
-                        <li
-                            class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
-                            <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
-                        </li>
-                        <li
-                            class="nav-item {{ Route::currentRouteName() == 'product' || Route::currentRouteName() == 'show.product' ? 'active' : ''}}">
-                            <a href="{{ route('product') }}" class="nav-link">Products</a>
-                        </li>
-                    </ul>
-                    <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
-                        <li class="nav-item ">
-                            <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
-                        </li>
-                        <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
-                            <a href="{{route('contact')}}" class="nav-link nav-link-right pr-0 mr-0">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @include('layouts.partials.main_navigation')
 
         @if(!Request::is('/'))
-        <nav class="bg-white shadow-sm pt-0 pb-0 " aria-label="breadcrumb">
-            <div class="container">
-                <ul class="breadcrumb"
-                    style="margin-bottom: 0; padding-left: 0; padding-top: 3px; padding-bottom: 3px; background-color: transparent;">
-                    <li class="breadcrumb-item text-capitalize{{ $breadcrumbs->isEmpty() ? 'active' : '' }}"><a
-                            href="{{ route('index') }}" style="padding: 0">Home</a></li>
-                    @foreach ($breadcrumbs as $key => $url)
-                    <li class="breadcrumb-item {{ $loop->last ? 'active' : '' }}"
-                        aria-current="{{ $loop->last ? 'page' : '' }}">
-                        <a href="{{ url($url) }}" style="padding: 0">
-                            @if (! $loop->last)
-                            {{ ucfirst($key) }}
-                            @else
-                            @yield ('title')
-                            @endif
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-        </nav>
+        @include('layouts.partials.breadcrumb')
         @endif
-
-        @inject('page', 'App\Models\Page')
-        @php
-        $contact = $page::select('*')->where('slug', 'contact')->first();
-        $about = $page::select('*')->where('slug', 'about')->first();
-        @endphp
-        <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="aboutLabel">
-                            {!! $about->title !!}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @inject('page', 'App\Models\Page')
-                        {!! $about->description !!}
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <main>
             @yield('content')
         </main>
 
+        @include('layouts.partials.about')
         @include('layouts.footer')
     </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js">
-    </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js">
-    </script>
-    <script type="text/javascript" src="{{ asset('plugins/nice-select/js/jquery.nice-select.js') }}"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="{{ asset('/plugins/image-uploader/image-uploader.js') }}">
-    </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-    </script>
-    @yield('script')
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".nav-item").on("click", function(){
-            $(".collapse").find(".active").removeClass("active");
-            $(this).addClass("active");
-            });
-            $('[data-toggle="tooltip"]').tooltip();
-           
-        });
-    </script>
+    @include('layouts.scripts')
 </body>
 
 </html>

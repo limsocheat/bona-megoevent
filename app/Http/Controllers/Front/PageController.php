@@ -150,8 +150,8 @@ class PageController extends Controller
         $event      = Event::findOrFail($id);
         $data       = [
             'entrances'         => Slide::select('*')->where('location', 'entrance')->get(),
-            'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
-            'next_events'       => Event::select('*')->inRandomOrder()->limit(2)->get(),
+            'feature_events'    => Event::select('*')->published()->upcoming()->inRandomOrder()->limit(4)->get(),
+            'next_events'       => Event::select('*')->published()->upcoming()->inRandomOrder()->limit(2)->get(),
             'event'             => $event,
         ];
 

@@ -170,7 +170,7 @@ class Event extends Model
 
     public function scopeUpcoming($query)
     {
-        return $query->whereDate('start_date', '>', date('Y-m-d'));
+        return $query->whereDate('start_date', '>=', date('Y-m-d'));
     }
 
     public function products()

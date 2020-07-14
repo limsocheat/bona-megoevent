@@ -3,41 +3,6 @@
 @section ('title', $event->name)
 
 @section('content')
-
-<style type="text/css">
-	.event-single-page .btn-danger {
-		border-radius: 4px;
-	}
-
-	/* Extra small devices (phones, 600px and down) */
-	@media only screen and (max-width: 600px) {
-		.event-single-header {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			width: 100%;
-		}
-	}
-
-	/* Large devices (laptops/desktops, 992px and up) */
-	@media only screen and (min-width: 992px) {
-		.event-single-header {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			width: 100%;
-		}
-
-		.event-single-header-left {
-			width: 900px !important;
-		}
-
-		.event-single-header-right {
-			flex: 1;
-		}
-	}
-</style>
-
 <div class="container event-single-page">
 	<div class="py-2 event-single-header">
 		<div class="event-single-header-left">
@@ -150,11 +115,6 @@
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="fee" role="tabpanel" aria-labelledby="fee-tab">
 					{!! Form::open(['route' => ['cart', $event->name], 'method' => "GET"]) !!}
-					@guest
-					<div class="alert alert-danger" role="alert">
-						You must login or register first!
-					</div>
-					@endguest
 
 					<div class="card">
 						<div class="card-text">

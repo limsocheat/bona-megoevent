@@ -168,23 +168,6 @@
             imagesInputName: 'images',
         });
 
-        $('#StartDate').datepicker({
-            todayBtn:  1,
-            autoclose: true,
-            format: "yyyy-mm-dd"
-        }).on('changeDate', function (selected) {
-            var minDate = new Date(selected.date.valueOf());
-            $('#EndDate').datepicker('setStartDate', minDate);
-        });
-
-        $('#EndDate').datepicker({
-            autoclose: true,
-            format: "yyyy-mm-dd"
-        }).on('changeDate', function (selected) {
-            var maxDate = new Date(selected.date.valueOf());
-            $('#StartDate').datepicker('setEndDate', maxDate);
-        });
-
         $(document).on('click', '.btn-add', function(e)
         {
             e.preventDefault();
