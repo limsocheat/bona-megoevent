@@ -414,13 +414,18 @@ return [
             ],
         ],
         [
-            'name' => 'admincss',
+            'name' => 'adminscripts',
             'active' => true,
             'files' => [
                 [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'css/admin.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/admin.js',
                 ],
             ],
         ],

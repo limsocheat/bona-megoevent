@@ -24,23 +24,7 @@
 <div class="card">
     {!! Form::open(['route' => ['admin.location.store'], 'method' => 'POST']) !!}
     <div class="card-body">
-        <div class="form-group">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('address', 'Address') !!}
-            {!! Form::text('address', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('description', 'Descrition') !!}
-            {!! Form::text('description', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('active', 'Active') !!}
-            {!! Form::select('active', [true => 'Active', false => 'Inactive'], null, [ 'class' => 'form-control']) !!}
-        </div>
-
+        @include('admin.location.form')
     </div>
     <div class="card-footer ">
         {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}

@@ -232,7 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Buzz\LaravelGoogleCaptcha\CaptchaFacade::class,
-        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,  
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Setting' => Akaunting\Setting\Facade::class,
         'Money' => Akaunting\Money\Money::class,
