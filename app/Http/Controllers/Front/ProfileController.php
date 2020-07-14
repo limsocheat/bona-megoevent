@@ -37,11 +37,12 @@ class ProfileController extends Controller
             'email' => 'required|unique:users,email,' . $id
         ]);
 
+
         $data       = $request->except('password');
 
         if ($request->input('password')) {
             $request->validate([
-                'password'  => 'required|min:8'
+                'password'  => 'required|min:8|'
             ]);
 
             $data['password']   = bcrypt($request->input('password'));

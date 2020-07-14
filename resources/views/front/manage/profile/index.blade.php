@@ -171,7 +171,7 @@
 
                         <div class="form-group">
                             {!! Form::label('name', 'User Name') !!}
-                            {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control']) !!}
+                            {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control' ,'readonly' => true]) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('email', 'E-Mail Address') !!}
@@ -181,6 +181,11 @@
                         <div class="form-group">
                             {!! Form::label('password', 'Password') !!}
                             {!! Form::password('password', ['class' => 'form-control']) !!}
+                            <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('password', 'Retype Password') !!}
+                            {!! Form::password('password-confirm', ['class' => 'form-control']) !!}
                             <small id="passwordHelp" class="form-text text-muted">Leave empty to keep unchanged.</small>
                         </div>
                     </div>
