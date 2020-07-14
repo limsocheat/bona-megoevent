@@ -23,6 +23,6 @@ class Profile extends Model
 
     public function getAvatarUrlAttribute()
     {
-        return $this->avatar ? url('/uploads/' . $this->avatar) :'http://simpleicon.com/wp-content/uploads/account.png';
+        return $this->avatar ? asset($this->avatar) : 'http://simpleicon.com/wp-content/uploads/account.png';
     }
 }

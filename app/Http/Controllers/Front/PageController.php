@@ -27,7 +27,7 @@ class PageController extends Controller
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
             'events'            => Event::select('*')->limit(8)->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
-            'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
+            'exhibitors'        => User::isExhibitored()->get(),
             'slides'            => Slide::select('*')->where('location', 'homepage')->get(),
 
         ];
@@ -138,7 +138,7 @@ class PageController extends Controller
             'event_types'       => EventType::select('id', 'name')->pluck('name', 'id'),
             'events'            => Event::select('*')->get(),
             'feature_events'    => Event::select('*')->inRandomOrder()->limit(4)->get(),
-            'exhibitors'        => Exhibitor::select('*')->inRandomOrder()->limit(4)->get(),
+            'exhibitors'        => User::isExhibitored()->get(),
             'categories'        => EventCategory::select('*')->get(),
         ];
 

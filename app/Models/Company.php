@@ -18,6 +18,6 @@ class Company extends Model
 
     public function getLogoUrlAttribute()
     {
-        return $this->logo ? url('/uploads/' . $this->logo) : "http://simpleicon.com/wp-content/uploads/account.png";
+        return $this->logo ? asset($this->logo) : "http://simpleicon.com/wp-content/uploads/account.png";
     }
 }

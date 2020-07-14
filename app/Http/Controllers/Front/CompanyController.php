@@ -4,11 +4,20 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Utils\Uploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
+
+    protected $uploader;
+
+    public function __construct(Uploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,11 +53,8 @@ class CompanyController extends Controller
 
         $data       = $request->all();
         $data['user_id']    = Auth::user()->id;
-        if ($image   = $request->file('logo')) {
-            $name   = $image->getClientOriginalName();
-            $name   = time() . '_' . $name;
-            $image->move('uploads', $name);
-            $data['logo'] = $name;
+        if ($request->file('logo')) {
+            $data['logo'] =  $this->uploader->uploadImage($request->file('logo'));
         }
         $company    = Company::create($data);
 
@@ -96,11 +102,8 @@ class CompanyController extends Controller
         ]);
 
         $data       = $request->all();
-        if ($image   = $request->file('logo')) {
-            $name   = $image->getClientOriginalName();
-            $name   = time() . '_' . $name;
-            $image->move('uploads', $name);
-            $data['logo'] = $name;
+        if ($request->file('logo')) {
+            $data['logo'] =  $this->uploader->uploadImage($request->file('logo'));
         }
         $company->update($data);
 

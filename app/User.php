@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Participant::class);
     }
 
-    public function profile() 
+    public function profile()
     {
         return $this->hasOne(Profile::class);
     }
@@ -93,5 +93,53 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sales()
     {
         return $this->hasMany(Sale::class);
+    }
+
+    public function scopeIsExhibitored($query)
+    {
+        return $query->whereHas('exhibitions');
+    }
+
+    public function getIsExhibitorAttribute()
+    {
+        $result = false;
+
+        if (count($this->exhibitions)) {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    public function getExhibitorImageAttribute()
+    {
+        $image  = asset('/images/camera.png');
+
+        if ($this->type == 'company' && $this->company && $this->company->logo) {
+            $image  = asset($this->company->logo);
+        } else if ($this->type == 'individual' && $this->profile->avatar_url) {
+            $image  = asset($this->profile->avatar_url);
+        }
+
+        return $image;
+    }
+
+    public function getExhibitorNameAttribute()
+    {
+        $name   = $this->name;
+
+        if ($this->type == 'company' && $this->company) {
+            if ($this->company->name) {
+                $name = $this->company->name;
+            }
+        }
+
+        if ($this->type == 'individual') {
+            if ($this->profile->first_name || $this->profile->last_name) {
+                $name = $this->profile->first_name . " " . $this->profile->last_name;
+            }
+        }
+
+        return $name;
     }
 }
