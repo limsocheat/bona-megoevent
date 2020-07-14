@@ -48,7 +48,9 @@
 		<div class="col-md-12">
 			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Event Exhibitors</h1>
 		</div>
-		@include('front.components.entrance.eventexhibitors')
+		@include('front.components.exhibitor.carousel', [
+		'exhibitors' => $event->exhibitors
+		])
 	</div>
 	<div class="row py-2">
 		<div class="col-md-12 py-2 ">
