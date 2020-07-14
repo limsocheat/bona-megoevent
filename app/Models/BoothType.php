@@ -11,6 +11,6 @@ class BoothType extends Model
     ];
     public function getImageUrlAttribute()
     {
-        return $this->image ? url($this->image) : url('/uploads/camera.png');
+        return $this->image ? url($this->image) : url('/images/camera.png');
     }
 }
