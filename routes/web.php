@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::namespace('Admin')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::name('admin.')->group(function () {
@@ -62,7 +59,6 @@ Route::namespace('Admin')->group(function () {
 
 Route::namespace('Front')->group(function () {
     Route::get('/', 'PageController@index')->name('index');
-    // Route::get('/entrance', 'PageController@entrance')->name('entrance');
     Route::get('/upcoming', 'PageController@upcoming')->name('upcoming');
     Route::get('/search', 'PageController@search')->name('search');
     Route::get('/contact', 'PageController@contact')->name('contact');
@@ -71,14 +67,8 @@ Route::namespace('Front')->group(function () {
 
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
-    // Route::get('/ticket','PageController@ticket')->name('ticket');
-    // product show
+
     Route::get('product/{product}', 'PageController@product')->name('show.product');
-
-
-    Route::get('/sendemail', 'SendEmailController@index');
-    Route::post('/sendemail/send', 'SendEmailController@send');
-
     Route::middleware(['auth', 'verified'])->group(function () {
 
         // Cart

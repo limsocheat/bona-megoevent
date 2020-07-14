@@ -209,119 +209,79 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text'        => 'Users',
             'url'         => 'admin/user',
             'icon'        => 'far fa-fw fa-user',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Event Categories',
             'url'         => 'admin/category',
             'icon'        => 'fa fa-list-alt',
-
-
         ],
         [
             'text'        => 'Event Types',
             'url'         => 'admin/type',
             'icon'        => 'fa fa-cogs',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Options',
             'url'         => 'admin/option',
             'icon'        => 'fa fa-cog',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Exhibitors',
             'url'         => 'admin/exhibitor',
             'icon'        => 'fa fa-user-plus',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Events',
             'url'         => 'admin/event',
             'icon'        => 'fa fa-user-plus',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Pages',
             'url'         => 'admin/page',
             'icon'        => 'fa fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Banners',
             'url'         => 'admin/banner',
             'icon'        => 'fa fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Slides',
             'url'         => 'admin/slide',
             'icon'        => 'fa fa-video',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Locations',
             'url'         => 'admin/location',
             'icon'        => 'fa fa-map-marker',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Contacts',
             'url'         => 'admin/contact',
             'icon'        => 'fa fa-user-circle',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Product Categories',
             'url'         => 'admin/product_category',
             'icon'        => 'fa fa-list-alt',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Products',
             'url'         => 'admin/product',
             'icon'        => 'fa fa-archive',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Booth Types',
             'url'         => 'admin/booth_type',
             'icon'        => 'fa fa-cogs',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Sales',
             'url'         => 'admin/sales',
             'icon'        => 'fa fa-cogs',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
         [
             'text'        => 'Venues',
@@ -341,62 +301,6 @@ return [
             'url'  => 'admin/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        // [
-        //     'text' => 'change_password',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        // ],
-        // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'level_one',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'level_two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //     ],
-        // ],
-        // ['header' => 'labels'],
-        // [
-        //     'text'       => 'important',
-        //     'icon_color' => 'red',
-        // ],
-        // [
-        //     'text'       => 'warning',
-        //     'icon_color' => 'yellow',
-        // ],
-        // [
-        //     'text'       => 'information',
-        //     'icon_color' => 'cyan',
-        // ],
     ],
 
     /*
@@ -415,7 +319,6 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\SubmenuFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
