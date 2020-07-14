@@ -51,12 +51,10 @@ class BannerController extends Controller
     {
         $request->validate([
             'name'      => 'required',
-
         ]);
 
         DB::beginTransaction();
         try {
-
             $data  = $request->all();
 
             if ($request->file('new_image')) {
@@ -111,15 +109,20 @@ class BannerController extends Controller
             'name'      => 'required',
         ]);
 
-        $data       = $request->all();
-        if ($request->file('new_image')) {
-            $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
-        }
+        DB::beginTransaction();
+        try {
+            $data       = $request->all();
 
-        $banner->update($data);
+            if ($request->file('new_image')) {
+                $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
 
-        if ($banner) {
+            $banner->update($data);
+            DB::commit();
             return redirect()->route('admin.banner.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -133,10 +136,15 @@ class BannerController extends Controller
     {
 
         $banner   = Banner::findOrFail($id);
-        $banner->delete();
+        DB::beginTransaction();
+        try {
+            $banner->delete();
 
-        if ($banner) {
+            DB::commit();
             return redirect()->route('admin.banner.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

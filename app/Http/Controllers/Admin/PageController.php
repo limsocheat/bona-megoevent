@@ -15,9 +15,7 @@ class PageController extends Controller
      */
     public function index()
     {
-
         $pages  = Page::select('*')->get();
-
         return view('admin.page.index', ['pages' => $pages]);
     }
 
@@ -49,7 +47,7 @@ class PageController extends Controller
 
         $page       = Page::create($data);
 
-        if($page) {
+        if ($page) {
             return redirect()->route('admin.page.index');
         }
     }
@@ -60,7 +58,7 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function ap($id)
+    public function show($id)
     {
         //
     }
@@ -90,8 +88,8 @@ class PageController extends Controller
         $page   = Page::findOrFail($id);
 
         $request->validate([
-            'slug'          => 'required|unique:pages,slug,'.$id,
-            'title'         => 'required|unique:pages,title,'.$id,
+            'slug'          => 'required|unique:pages,slug,' . $id,
+            'title'         => 'required|unique:pages,title,' . $id,
             'description'   => 'required'
         ]);
 
@@ -99,7 +97,7 @@ class PageController extends Controller
 
         $page   = $page->update($data);
 
-        if($page) {
+        if ($page) {
             return redirect()->route('admin.page.index');
         }
     }
