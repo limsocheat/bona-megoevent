@@ -16,7 +16,6 @@
         </div>
         {!! Form::file('new_image', ['id' => 'mego-image-uploader', 'style' => 'display: none;']) !!}
     </div>
-
 </div>
 <div class="form-group">
     {!! Form::label('location', 'Location :') !!}

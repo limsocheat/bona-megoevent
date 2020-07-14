@@ -21,7 +21,7 @@
                     <th>Width</th>
                     <th>Length</th>
                     <th>Description</th>
-                    <th>Action</th>
+                    <th class="mego-action-button">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +36,7 @@
 
                      
                         <td>
-                            <a href="{{ route('admin.venue.edit', $venue->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
+                            <a href="{{ route('admin.venue.edit', $venue->id) }}" class="btn btn-primary btn-sm mego-button-edit" >Edit</a>
                             {!! Form::open(['route' => ['admin.venue.destroy', $venue->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             {!! Form::close() !!}

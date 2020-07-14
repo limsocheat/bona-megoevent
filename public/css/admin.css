@@ -58,3 +58,16 @@
     height: auto;
     width: auto;
 }
+
+.mego-action-button {
+    width: 200px;
+}
+
+.mego-button-edit {
+    float: left;
+    margin-right: 5px
+}
+
+.mego-action-description {
+    width: 300px;
+}

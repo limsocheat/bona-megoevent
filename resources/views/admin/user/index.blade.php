@@ -18,7 +18,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Roles</th>
-                    <th>Action</th>
+                    <th class="mego-action-button">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,11 +32,10 @@
                         @endforeach
                     </td>
                     <td>
-                        <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-sm"
-                            style="float: left; margin-right: 5px">Edit</a>
+                        <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-sm mego-button-edit">Edit</a>
                         {!! Form::open(['route' => ['admin.user.destroy', $user->id], 'onsubmit' => "return confirm('Are
-                        you sure?')", 'method' => 'DELETE']) !!}
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            you sure?')", 'method' => 'DELETE']) !!}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -52,7 +51,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+        $('#example').DataTable();
+     } );
 </script>
 @endsection

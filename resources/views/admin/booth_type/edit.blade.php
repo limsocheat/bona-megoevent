@@ -25,109 +25,12 @@
     {!! Form::model($booth_type,['route' => ['admin.booth_type.update',$booth_type->id], 'method' =>
     'PUT','enctype'=>'multipart/form-data']) !!}
     <div class="card-body">
-        <div class="form-group">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('pricing', 'Pricing') !!}
-            {!! Form::text('pricing', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('total', 'Total Per Event') !!}
-            {!! Form::text('total', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('new_image', 'Booth Image :') !!}
-            <input name="new_image" type="file" id="new_image" />
-            <img id="imagePreview" class="rounded mx-auto" src="{{ asset($booth_type->image_url) }}" alt=""
-                style="height:200px">
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('vip_speech', 'Vip Speech :') !!}
-            {{ Form::select('vip_speech', ['Yes' => 'Yes', 'No' => 'No'], null, ['class' => 'form-control']) }}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('vip_moderator', 'Vip Moderator:') !!}
-            {{ Form::select('vip_moderator', ['Yes' => 'Yes', 'No' => 'No'], null, ['class' => 'form-control']) }}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('ads_event', 'Banner Ads on Event Front Page') !!}
-            {!! Form::number('ads_event', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('banner_ads_homepage', 'Banner Ads on Homepage') !!}
-            {!! Form::number('banner_ads_homepage', null, [ 'class' => 'form-control','id' => 'digitsOnly']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('number_products', 'Number of Products') !!}
-            {!! Form::text('number_products', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('auction', 'auction :') !!}
-            {{ Form::select('auction', ['Yes' => 'Yes', 'No' => 'No'], null, ['class' => 'form-control']) }}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('leads', 'Leads') !!}
-            {!! Form::text('leads', null, ['class' => 'form-control','id' => 'digitsOnly']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('live_chat', 'live Chat:') !!}
-            {{ Form::select('live_chat', ['Yes' => 'Yes', 'No' => 'No'], null, ['class' => 'form-control']) }}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('surveys', 'Surveys :') !!}
-            {{ Form::select('surveys', ['Yes' => 'Yes', 'No' => 'No'], null, ['class' => 'form-control']) }}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('description', 'Description') !!}
-            {!! Form::text('description', null, ['class' => 'form-control']) !!}
-        </div>
-
+       @include('admin.booth_type.form')
     </div>
     <div class="card-footer ">
         {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}
     </div>
     {!! Form::close() !!}
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript">
-    jQuery('#digitsOnly').keypress(function(event){
-	if(event.which !=8 && isNaN(String.fromCharCode(event.which))){
-		event.preventDefault();
-	}
-		console.log(event.which);
 
-    });
-    $(document).ready(function() {
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    $('#imagePreview').attr('src', e.target.result);
-                }
-                
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        
-        $("#new_image").change(function() {
-            readURL(this);
-        });
-    })
-</script>
 @stop

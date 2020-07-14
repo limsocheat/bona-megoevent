@@ -13,14 +13,14 @@
        
     </div>
     <div class="card-body">
-        <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th>Title</th>
-                    <th style="width: 300px">Sub Title</th>
+                    <th class="mego-action-button">Sub Title</th>
 					<th>Image</th>
 					<th>Location</th>
-                    <th style="width: 120px">Action</th>
+                    <th class="mego-action-button">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,10 +28,10 @@
                     <tr>
                         <td>{{ $slide->title }}</td>
 						<td>{{ $slide->sub_title}}</td>
-						<td><img src="{{ $slide->image_url }}" class="rounded mx-auto" alt=""  style="height:100px;"></td>
+						<td><img src="{{ $slide->image_url }}"  alt=""  class="rounded mx-auto mego-datatable-image"></td>
 						<td>{{ $slide->location}}</td>
                         <td>
-                            <a href="{{ route('admin.slide.edit', $slide->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
+                            <a href="{{ route('admin.slide.edit', $slide->id) }}" class="btn btn-primary btn-sm mego-button-edit">Edit</a>
                             {!! Form::open(['route' => ['admin.slide.destroy', $slide->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             {!! Form::close() !!}

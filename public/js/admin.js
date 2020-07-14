@@ -29,3 +29,9 @@ $("#mego-image-uploader").change(function () {
         reader.readAsDataURL(this.files[0]);
     }
 });
+
+$(document).ready(function () {
+    $('#summernote').summernote({
+        height: 200
+    });
+});
