@@ -14,18 +14,20 @@
 </style>
     <div class="container py-4">
         <div class="row">
-            <div class="col-md-12 text-right mb-3" id="text-small">
-                <small><a href="#"><small>MegoCoins</small></a> | <a href="#"><small>My Account</small></a> | <a href="#"><small>Contact Us</small></a></small>
-            </div>
+           
             <div class="col-md-6">
                 <p style="font-size: 120%">
                     Hello <strong>{{ auth()->user()->name }} <br></strong>
                     How are you today?
                 </p>   
             </div>
-            <div class="col-md-6 text-right">
-                <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg px-5 mb-2" >My Events</a>
+             <div class="col-md-6 text-right mb-3" id="text-small">
+                <small><a href="#"><small>MegoCoins</small></a> | <a href="#"><small>My Account</small></a> | <a href="#"><small>Contact Us</small></a></small>
+                 <div class="mt-3">
+                  <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg px-5 mb-2" >My Events</a>
+                   </div>
             </div>
+           
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header py-0 px-0">

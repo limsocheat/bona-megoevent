@@ -67,12 +67,19 @@
                                 <button type="submit" class="btn mego-gold-bg">
                                     {{ __('Login') }}
                                 </button>
-
+                            </div>
+                           
+                        </div>
+                        <div class="form-group row">
+                             <div class="col-md-8 offset-md-4 mb-3">
+                                
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" style="margin-left: -12px" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                <a href="{{ route('register') }}" class="btn mego-gold-bg"> Register </a>
+                               
                             </div>
                         </div>
                     </form>

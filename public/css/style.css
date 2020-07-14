@@ -281,7 +281,7 @@ body a:hover {
 #account-navbar .nav-link {
     background-color: #bf9000;
     color: white;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
 }
 
 /* create event */
@@ -351,7 +351,7 @@ body a:hover {
 #account-nav .nav-link {
     background-color: #bf9000;
     color: white;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
 }
 
 #account-nav .nav-link.active,
@@ -374,10 +374,10 @@ body a:hover {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    #account-navbar .nav-link {
+    /* #account-navbar .nav-link {
 
         border: 1px solid #000;
-    }
+    } */
 
     #account-navbar #account-link {
         width: 80vw;
