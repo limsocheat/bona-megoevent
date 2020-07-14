@@ -18,7 +18,7 @@
                 <tr>
                     <th>Slug</th>
                     <th>Title</th>
-                    <th>Action</th>
+                    <th class="mego-action-button">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,11 +27,10 @@
 						
                         <td>{{ $page->slug }}</td>
                         <td>{{ $page->title }}</td>
-            
                         <td>
-                            <a href="{{ route('admin.page.edit', $page->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
+                            <a href="{{ route('admin.page.edit', $page->id) }}" class="btn btn-primary btn-sm mego-button-edit">Edit</a>
                             {!! Form::open(['route' => ['admin.page.destroy', $page->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn mego-gold-bg btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             {!! Form::close() !!}
                         </td>
                     </tr>

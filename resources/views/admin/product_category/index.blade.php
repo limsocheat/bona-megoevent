@@ -19,7 +19,7 @@
                     <th>Name</th>
                     <th>Description</th>
 					<th>Active</th>
-					<th>Action</th>
+					<th class="mego-action-button">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.product_category.edit', $product_category->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
+                            <a href="{{ route('admin.product_category.edit', $product_category->id) }}" class="btn btn-primary btn-sm mego-button-edit">Edit</a>
                             {!! Form::open(['route' => ['admin.product_category.destroy', $product_category->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             {!! Form::close() !!}

@@ -25,19 +25,7 @@
     {!! Form::model($product_category, ['route' => ['admin.product_category.update',$product_category->id], 'method' =>
     'PUT']) !!}
     <div class="card-body">
-        <div class="form-group">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('description', 'Descrition') !!}
-            {!! Form::text('description', null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('active', 'Active') !!}
-            {!! Form::select('active', [true => 'Active', false => 'Inactive'], null, [ 'class' => 'form-control']) !!}
-        </div>
-
+         @include('admin.product_category.form')
     </div>
     <div class="card-footer ">
         {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}

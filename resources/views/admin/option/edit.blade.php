@@ -24,24 +24,7 @@
 <div class="card">
     {!! Form::model($option,['route' => ['admin.option.update',$option->id], 'method' => 'PUT']) !!}
         <div class="card-body">
-            <div class="form-group">
-                {!! Form::label('name', 'Name') !!}
-                {!! Form::text('name', null, ['class' => 'form-control']) !!}
-			</div>
-			 <div class="form-group">
-                {!! Form::label('type', 'Type :') !!}
-                 {{ Form::select('type', ['event_team' => 'event_team', 'event_attendance' => 'event_attendance', 'event_frequency' => 'event_frequency','event_location'=>'event_location'], null, ['id' => 'type','class' => 'form-control']) }}
-               </div>
-
-           <div class="form-group">
-                {!! Form::label('description', 'Descrition') !!}
-                {!! Form::text('description', null, ['class' => 'form-control']) !!}
-			</div>
-			 <div class="form-group">
-                {!! Form::label('active', 'Active') !!}
-                {!! Form::select('active', [true => 'Active', false => 'Inactive'], null, [ 'class' => 'form-control']) !!}
-            </div>
-           
+            @include('admin.option.form')
         </div>
         <div class="card-footer ">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']); !!}

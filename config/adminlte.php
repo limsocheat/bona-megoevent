@@ -418,14 +418,24 @@ return [
             'active' => true,
             'files' => [
                 [
-                    'type' => 'css',
-                    'asset' => true,
-                    'location' => 'css/admin.css',
+                    'type'      => 'css',
+                    'asset'     => true,
+                    'location'  => 'css/admin.css',
+                ],
+                 [
+                    'type'      => 'css',
+                    'asset'     => true,
+                    'location'  => 'plugins/summernote/summernote-bs4.min.css',
                 ],
                 [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'js/admin.js',
+                    'type'      => 'js',
+                    'asset'     => true,
+                    'location'  => 'js/admin.js',
+                ],
+                [
+                    'type'      => 'js',
+                    'asset'     => true,
+                    'location'  => 'plugins/summernote/summernote-bs4.min.js',
                 ],
             ],
         ],

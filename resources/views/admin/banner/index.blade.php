@@ -20,7 +20,7 @@
                     <th>Link</th>
                     <th>Image</th>
                     <th>Location</th>
-                    <th style="width: 120px">Action</th>
+                    <th class="mego-action-button">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,8 +31,7 @@
                     <td><img src="{{ $banner->image_url }}" class="rounded mx-auto mego-datatable-image"></td>
                     <td>{{ $banner->location}}</td>
                     <td>
-                        <a href="{{ route('admin.banner.edit', $banner->id) }}" class="btn btn-primary btn-sm"
-                            style="float: left; margin-right: 5px">Edit</a>
+                        <a href="{{ route('admin.banner.edit', $banner->id) }}" class="btn btn-primary btn-sm mego-button-edit">Edit</a>
                         {!! Form::open(['route' => ['admin.banner.destroy', $banner->id], 'onsubmit' => "return
                         confirm('Are you sure?')", 'method' => 'DELETE']) !!}
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>

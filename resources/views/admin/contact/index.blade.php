@@ -10,7 +10,7 @@
 <div class="card">
 
     <div class="card-body">
-        <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -33,16 +33,6 @@
                     <td>{{ $contact->company_name}}</td>
                     <td>{{ $contact->type}}</td>
                     <td>{{ $contact->message}}</td>
-
-                    {{-- <td>
-                 <a href="{{ route('admin.contact.edit', $contact->id) }}" class="btn btn-primary btn-sm"
-                    style="float: left; margin-right: 5px">Edit</a>
-                    {!! Form::open(['route' => ['admin.contact.destroy', $contact->id], 'onsubmit' => "return
-                    confirm('Are you sure?')",
-                    'method' => 'DELETE']) !!}
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    {!! Form::close() !!}
-                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>

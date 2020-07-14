@@ -32,13 +32,13 @@
                         <th>live_Chat</th>
                         <th>Surveys</th>
                         <th>Description</th>
-                        <th style="width: 150px">Action</th>
+                        <th class="mego-action-button">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($booth_types as $booth_type)
                         <tr>
-                            <td><img src="{{ $booth_type->image_url }}" class="rounded mx-auto" alt="" width="48" height="53" ></td>
+                            <td><img src="{{ $booth_type->image_url }}" class="rounded mx-auto mego-datatable-image" ></td>
                             <td>{{ $booth_type->name }}</td>
                             <td>{{ $booth_type->pricing }}</td>
                             <td>{{ $booth_type->total}}</td>
@@ -54,7 +54,7 @@
                             <td>{{ $booth_type->description}}</td>
                         
                             <td>
-                                <a href="{{ route('admin.booth_type.edit', $booth_type->id) }}" class="btn btn-primary btn-sm" style="float: left; margin-right: 5px">Edit</a>
+                                <a href="{{ route('admin.booth_type.edit', $booth_type->id) }}" class="btn btn-primary btn-sm mego-button-edit" >Edit</a>
                                 {!! Form::open(['route' => ['admin.booth_type.destroy', $booth_type->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 {!! Form::close() !!}

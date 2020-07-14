@@ -26,18 +26,7 @@
         {!! Form::model($page, ['route' => ['admin.page.update', $page->id], 'method' => 'PUT']) !!}
         
             <div class="card-body">
-                <div class="form-group">
-                    {!! Form::label('slug', 'Slug') !!}
-                    {!! Form::text('slug', null, [ 'class' => 'form-control']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::label('title', 'Title') !!}
-                    {!! Form::text('title', null, [ 'class' => 'form-control']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::label('description', 'Description') !!}
-                    {!! Form::textarea('description', null, [ 'class' => 'form-control', 'id' => 'summernote']) !!}
-                </div>
+                 @include('admin.page.form')
             </div>
             
             <div class="card-footer ">
@@ -47,18 +36,4 @@
         
     </div>
 
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-@stop
-@section('js')
-    <script type="text/javascript" src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            height: 200
-        });
-    });
-  </script>
 @stop
