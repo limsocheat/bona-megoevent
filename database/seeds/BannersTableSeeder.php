@@ -16,21 +16,21 @@ class BannersTableSeeder extends Seeder
             'location'  => 'header',
             'name'      => 'Header Banner',
             'link'      => 'https://facebook.com',
-            'image'     => '/banners/header.png',
+            'image'     => '/images/banners/header.png',
         ]);
 
         Banner::create([
             'location'  => 'subheader1',
             'name'      => 'Subheader 1 Banner',
             'link'      => 'https://facebook.com',
-            'image'     => '/banners/subheader1.png',
+            'image'     => '/images/banners/subheader1.png',
         ]);
 
         Banner::create([
             'location'  => 'subheader2',
             'name'      => 'Subheader 2 Banner',
             'link'      => 'https://facebook.com',
-            'image'     => '/banners/subheader2.png',
+            'image'     => '/images/banners/subheader2.png',
         ]);
     }
 }
