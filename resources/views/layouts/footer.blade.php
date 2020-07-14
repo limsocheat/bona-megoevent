@@ -85,8 +85,8 @@
     <hr>
     <!-- Call to action -->
     {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
-    <div class="container py-5">
-        <div class="container text-center text-md-left bg-white">
+    <div class="bg-white p-5 m-auto">
+        <div class="text-center text-md-left">
             <!-- Grid row -->
             <div class="row">
                 <!-- Grid column -->
