@@ -14,32 +14,32 @@
 	</div> --}}
 	<div class="row my-4">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mt-5 mb-3 font-weight-bold" id="h1">Filter Events</h1>
+			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Filter Events</h1>
 		</div>
 		@include('front.components.filter')
 	</div>
-	<div class="row my-4 mt-5">
+	<div class="row my-4">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Latest Events</h1>
+			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1" style="margin-top: -19px;">Latest Events</h1>
 		</div>
 		@foreach ($events as $event)
-		<div class="col-md-3 mb-4">
+		<div class="col-md-3 mb-2">
 			@include('front.components.event.card')
 		</div>
 		@endforeach
 	</div>
-	<div class="row my-2 mt-5" style="border-left: solid 2px;">
+	<div class="row my-4">
 		<div class="col-md-12">
-			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Upcoming Events</h1>
+			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1" style="margin-top: -9px;">Upcoming Events</h1>
 		</div>
 		@foreach ($feature_events as $event)
-		<div class="col-md-3 mb-4">
+		<div class="col-md-3">
 			@include('front.components.event.card')
 		</div>
 		@endforeach
 	</div>
 
-	<div class="row my-2 mt-5">
+	<div class="row my-4">
 		<div class="col-md-12">
 			<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Featured Exhibitors</h1>
 		</div>

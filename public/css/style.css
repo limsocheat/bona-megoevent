@@ -175,7 +175,10 @@ body a:hover {
     background-color: #C5B358;
     color: white;
 }
-
+#btn-mego #btn-organizer:hover {
+    background-color: #c20000;
+    border-bottom: 0;
+}
 .mego-gold-bg {
     background-color: #C5B358;
     color: white;
