@@ -61,9 +61,7 @@
                         <div class="form-group">
                             {!! Form::label('profile[country_id]', 'Country') !!}
                             {!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country',
-                            'class'
-                            =>
-                            'form-control']) !!}
+                            'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('profile[address]', 'Address') !!}
