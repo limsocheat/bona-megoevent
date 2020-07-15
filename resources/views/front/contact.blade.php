@@ -3,34 +3,10 @@
 @section ('title', "Contact")
 
 @section('content')
-<style>
-    .hero-image {
-        background-image: url(https://bona.com.sg/wp-content/uploads/2019/04/bg-image-12-1920x238.png);
-        background-color: #cccccc;
-        height: 130px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-    }
 
-    .hero-text {
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-    }
-
-    .txt-line-height p {
-        margin-bottom: 2px;
-        line-height: 1.5;
-    }
-</style>
 <div class="container">
-    <div class="hero-image mt-4">
-        <div class="hero-text">
+    <div class="mego-hero-image mt-4">
+        <div class="mego-hero-text">
             <h1 style="font-size:48px">Contact Us</h1>
         </div>
     </div>
@@ -69,7 +45,8 @@
             </div>
             <div class="form-group">
                 {!! Form::label('type', 'Type') !!}
-                {!! Form::select('type', ['Enquiry'=>'Enquiry', 'Testimonial'=>'Testimonial', 'Feedback'=>'Feedback', 'Advertiser'=>'Advertiser'], null,
+                {!! Form::select('type', ['Enquiry'=>'Enquiry', 'Testimonial'=>'Testimonial', 'Feedback'=>'Feedback',
+                'Advertiser'=>'Advertiser'], null,
                 ['placeholder' => 'Select', 'class' => 'form-control']) !!}
             </div>
             <div class="form-group">
@@ -91,7 +68,7 @@
             <p></p>
             {!! Form::close() !!}
         </div>
-        <div class="col-sm-6 mt-4 p-auto txt-line-height">
+        <div class="col-sm-6 mt-4 p-auto mego-txt-line-height">
             <p style="font-size: 1.2rem;">If you have a question regarding a specific development project or IT funding
                 please let us know how we can be of
                 service to you.</p>
