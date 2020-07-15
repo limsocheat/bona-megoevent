@@ -54,6 +54,7 @@
 		background: #191a19;
 		display: inline-block;
 	}
+
 	#multi-line-truncate {
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
@@ -97,9 +98,9 @@
 			<a href="{{ route('event.exhibitor_registration', $event->name) }}" class="btn mego-gold-bg ml-2"
 				id="mego-gold-bg">Join
 				as Exhibitor</a>
-			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn mego-gold-bg ml-2"
-				id="mego-gold-bg">Join as
-				Participants</a>
+			<a href="{{ route('cart', $event->name) }}?quantity=1" class="btn mego-gold-bg ml-2" id="mego-gold-bg">Join
+				as
+				Participant</a>
 		</div>
 	</div>
 </div>
