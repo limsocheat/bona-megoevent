@@ -56,13 +56,10 @@ class BannerController extends Controller
         DB::beginTransaction();
         try {
             $data  = $request->all();
-
             if ($request->file('new_image')) {
                 $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
             }
-
             Banner::create($data);
-
             DB::commit();
             return redirect()->route('admin.banner.index');
         } catch (\Exception $e) {

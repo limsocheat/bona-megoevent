@@ -4,10 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slide;
+use App\Utils\Uploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SlideController extends Controller
 {
+
+    protected $uploader;
+
+    public function __construct(Uploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,20 +52,19 @@ class SlideController extends Controller
     {
         $request->validate([
             'title'      => 'required',
-            // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-
         ]);
-        $data  = $request->all();
-
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
-
-            $data['image'] = "/uploads/" . $imageName;
-        }
-        $banner = Slide::create($data);
-        if ($banner) {
+        DB::beginTransaction();
+        try {
+            $data  = $request->all();
+            if ($request->file('new_image')) {
+                $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
+            Slide::create($data);
+            DB::commit();
             return redirect()->route('admin.slide.index');
+         } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -98,23 +107,19 @@ class SlideController extends Controller
 
         $request->validate([
             'title'      => 'required',
-            // 'image'     => 'required | mimes:jpeg,jpg,png | max:1000'
-
         ]);
-
-        $data       = $request->all();
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
-
-            $data['image'] = "/uploads/" . $imageName;
-        }
-
-
-        $slide->update($data);
-
-        if ($slide) {
+        DB::beginTransaction();
+        try {
+            $data       = $request->all();
+            if ($request->file('new_image')) {
+                $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
+            $slide->update($data);
+            DB::commit();
             return redirect()->route('admin.slide.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -127,10 +132,15 @@ class SlideController extends Controller
     public function destroy($id)
     {
         $banner   = Slide::findOrFail($id);
-        $banner->delete();
-
-        if ($banner) {
+        DB::beginTransaction();
+        try {
+            $banner->delete();
+            DB::commit();
             return redirect()->route('admin.slide.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+            
     }
 }

@@ -54,11 +54,9 @@ class SaleController extends Controller
     public function show($id)
     {
         $sale       = Sale::findOrFail($id);
-
         $data       = [
             'sale'  => $sale,
         ];
-
         return view('admin.sales.show', $data);
     }
 

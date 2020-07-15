@@ -106,7 +106,7 @@ class CategoryController extends Controller
          }catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
-        }
+         }
        
     }
 

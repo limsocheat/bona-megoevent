@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\EventType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TypeController extends Controller
 {
@@ -42,10 +43,15 @@ class TypeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $data         = $request->all();
-        $type = EventType::create($data);
-        if ($type) {
+        DB::beginTransaction();
+        try {
+            $data         = $request->all();
+            EventType::create($data);
+            DB::commit();
             return redirect()->route('admin.type.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -69,7 +75,6 @@ class TypeController extends Controller
     public function edit($id)
     {
         $type   = EventType::findOrFail($id);
-
         return view('admin.type.edit', ['type' => $type]);
     }
 
@@ -86,13 +91,18 @@ class TypeController extends Controller
             'name'  => 'required',
 
         ]);
-        $type   = EventType::findOrFail($id);
-        $data       = $request->all();
-        $type->update($data);
-
-        if ($type) {
+        DB::beginTransaction();
+        try {
+            $type   = EventType::findOrFail($id);
+            $data       = $request->all();
+            $type->update($data);
+            DB::commit();
             return redirect()->route('admin.type.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+            
     }
 
     /**
@@ -104,10 +114,15 @@ class TypeController extends Controller
     public function destroy($id)
     {
         $type   = EventType::findOrFail($id);
-        $type->delete();
-
-        if ($type) {
+        DB::beginTransaction();
+        try {
+            $type->delete();
+            DB::commit();
             return redirect()->route('admin.type.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 }

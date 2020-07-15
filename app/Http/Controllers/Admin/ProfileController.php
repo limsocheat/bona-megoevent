@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -27,20 +28,23 @@ class ProfileController extends Controller
             'email' => 'required|unique:users,email,' . $id
         ]);
 
-        $data       = $request->except('password');
+        DB::beginTransaction();
+        try {
+            $data       = $request->except('password');
 
-        if ($request->input('password')) {
-            $request->validate([
-                'password'  => 'required|min:8'
-            ]);
-
-            $data['password']   = bcrypt($request->input('password'));
-        }
-
-        $user->update($data);
-
-        if ($user) {
+            if ($request->input('password')) {
+                $request->validate([
+                    'password'  => 'required|min:8'
+                ]);
+                $data['password']   = bcrypt($request->input('password'));
+            }
+            $user->update($data);
+            DB::commit();
             return redirect()->route('admin.profile.index');
+        }catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 }

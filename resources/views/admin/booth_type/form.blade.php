@@ -16,7 +16,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('new_image', 'Image') !!}
+    {!! Form::label('new_image', 'Booth Image') !!}
     <div class="mego-image-upload-preview-wrapper">
         <img id="mego-image-previewer" class="mego-image-upload-preview-img"
             src="{{ @$booth_type ? asset($booth_type->image_url) : asset('/images/event_feature_image_placeholder.png') }}" />

@@ -117,13 +117,13 @@ class BoothTypeController extends Controller
         ]);
         DB::beginTransaction();
         try{
-             $data       = $request->all();
-
+            $data       = $request->all();
+            
             if ($request->file('new_image')) {
                 $data['image'] =$this->uploader->uploadImage($request->file('new_image'));
             }
-
             $booth_type->update($data);
+
             DB::commit();
             return redirect()->route('admin.booth_type.index');
             

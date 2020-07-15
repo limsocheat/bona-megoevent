@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VenueController extends Controller
 {
@@ -42,11 +43,17 @@ class VenueController extends Controller
          $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $data         = $request->all();
-        $venue = Venue::create($data);
-        if ($venue) {
+        DB::beginTransaction();
+        try{
+            $data  = $request->all();
+            Venue::create($data);
+            DB::commit();
             return redirect()->route('admin.venue.index');
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error',$e->getMessage());
         }
+       
     }
 
     /**
@@ -69,7 +76,6 @@ class VenueController extends Controller
     public function edit($id)
     {
         $venue   = Venue::findOrFail($id);
-
         return view('admin.venue.edit', ['venue' => $venue]);
     }
 
@@ -86,13 +92,18 @@ class VenueController extends Controller
             'name'  => 'required',
 
         ]);
-        $venue   = Venue::findOrFail($id);
-        $data       = $request->all();
-        $venue->update($data);
-
-        if ($venue) {
+        DB::beginTransaction();
+        try{
+            $venue   = Venue::findOrFail($id);
+            $data    = $request->all();
+            $venue->update($data);
+            DB::commit();
             return redirect()->route('admin.venue.index');
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error',$e->getMessage());
         }
+        
     }
 
     /**
@@ -105,10 +116,14 @@ class VenueController extends Controller
     {
         
         $venue   = Venue::findOrFail($id);
-        $venue->delete();
-
-        if ($venue) {
+        DB::beginTransaction();
+        try{
+            $venue->delete();
+            DB::commit();
             return redirect()->route('admin.venue.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }
