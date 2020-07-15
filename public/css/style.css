@@ -413,15 +413,15 @@ td .mego-btn {
 }
 /* slider */
 .home_slider_fullscreen_content{
+    max-width: 600px;
+    padding: 15px;
     background-color: #02020242;
-    margin-left: 60px;
+    color: white;
 }
+
 .home_slider_fullscreen_content h1 {
     width: 40vw;
-    margin-left: 60px;
-    padding: 15px;
     color: white;
-   
 }
 
 .home_slider_fullscreen .slick-prev {
@@ -643,7 +643,7 @@ td .mego-btn {
     margin-bottom: 2px;
     line-height: 1.5;
 }
-/* footer */
+
 .mego-logo-footer{
     max-height: 100%;
     max-width: 100%;
@@ -652,6 +652,14 @@ td .mego-btn {
     max-width: 200px;
     width: 100%;
 }
+
+.max-line-3 {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;  
+    overflow: hidden !important;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     /* #account-navbar .nav-link {
