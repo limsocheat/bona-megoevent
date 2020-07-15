@@ -86,13 +86,13 @@
     <!-- Call to action -->
     {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
     <div class="bg-white pr-5 pl-5 m-auto mego-logo-footer">
-        <div class="text-center text-md-left">
+        <div class="container text-center text-md-left">
             <!-- Grid row -->
             <div class="row">
                 <!-- Grid column -->
-                <div class="col-md-3 p-2">
+                <div class="col-md-3 pl-0 py-2">
                     <div class="text-center">
-                        <a class="footer-logo" href="{{ url('/') }}">
+                        <a class="footer-logo float-left" href="{{ url('/') }}">
                             <img src="{{ asset('images/megomege-footer.png') }}" />
                         </a>
                     </div>
@@ -111,16 +111,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 p-2">
+                <div class="col-md-3 pr-0 py-2">
                     <div class="text-center">
-                        <a class="footer-logo" href="{{ url('/') }}">
+                        <a class="footer-logo float-right" href="{{ url('/') }}">
                             <img src="{{ asset('images/singro-logo-footer.png') }}" />
                         </a>
                     </div>
                 </div>
-                {{-- <div class="col-md-12 mx-auto  py-2">
-                                        @include('front.components.footer.logosilder')
-                                </div> --}}
             </div>
         </div>
     </div>
