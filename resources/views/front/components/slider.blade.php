@@ -37,13 +37,6 @@ $thumb_sliders = $slider::select('*')->where('location', 'thumbnail')->get();
 @endif
 <script type="text/javascript">
     jQuery(document).ready(function($){
-        // $('.slider-for').slick({
-        //     slidesToShow: 1,
-        //     slidesToScroll: 1,
-        //     fade: true,
-        //     asNavFor: '.home_slider_carouse'
-        // });
-
         $('.home_slider_fullscreen').slick({
             infinite: true,
             adaptiveHeight: true,
@@ -92,39 +85,5 @@ $thumb_sliders = $slider::select('*')->where('location', 'thumbnail')->get();
 
         $('.home_slider_carousel').slickLightbox({
         });
-
-        // $('.home_slider_carousel').slickLightbox({
-        //     infinite: true,
-        //     dots: false,
-        //     autoplay: true,
-        //     autoplaySpeed: 2000,
-        //     centerPadding: '0px',
-        //     centerMode: true,
-        //     variableWidth: true,
-        //     responsive: [
-        //         {
-        //             breakpoint: 1024,
-        //             settings: {
-        //                 slidesToShow: 3,
-        //                 slidesToScroll: 3,
-        //                 infinite: true,
-        //             }
-        //         },
-        //         {
-        //             breakpoint: 600,
-        //             settings: {
-        //                 slidesToShow: 2,
-        //                 slidesToScroll: 2
-        //             }
-        //         },
-        //         {
-        //             breakpoint: 480,
-        //             settings: {
-        //                 slidesToShow: 1,
-        //                 slidesToScroll: 1
-        //             }
-        //         }
-        //     ]
-        // });
     });
 </script>

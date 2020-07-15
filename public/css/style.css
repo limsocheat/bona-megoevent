@@ -450,6 +450,44 @@ body a:hover {
     font-size: 25px;
     color: black;
 }
+/* product */
+ .mego-card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+#mego-card-product {
+    position: relative;
+    width: auto;
+    height: 199px;
+}
+
+#mego-card-product img {
+    width: 100px;
+    height: 120px;
+    margin: 18px 25px 18px 25px;
+}
+
+.mego-card-body .card-text {
+    color: #45f145;
+    font-size: 16px;
+}
+
+.mogo-card-body {
+    margin-top: 12%;
+}
+
+.mogo-card-body a {
+    text-decoration: none;
+}
+
+.add-to-cart {
+    margin-top: 6rem;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 15px;
+
+}
 /* footer */
 .mego-logo-footer{
     max-height: 100%;
