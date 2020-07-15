@@ -4,28 +4,6 @@
 
 @section('content_profile')
 
-<style>
-    .mego-btn {
-        border: 1px solid black;
-        border-radius: 5%;
-        background-color: white;
-        color: black;
-        padding: 6px 15px;
-        text-align: center;
-        vertical-align: middle;
-        cursor: pointer;
-    }
-
-    .mego-outline-gold {
-        border-color: #C5B358;
-        color: #C5B358;
-    }
-
-    .mego-outline-gold:hover {
-        background: #C5B358;
-        color: white;
-    }
-</style>
 <div class="col-md-10" style="margin-top: -25px">
     <div class="container py-4">
 
@@ -192,7 +170,7 @@
         var banners   = <?php echo json_encode($event->banners); ?>;
         var preloaded = [];
         banners.forEach((element, index) => {
-            preloaded.push({id: element.id, src: "<?php echo asset('/upload/') ?>" +"/"+ element.image});
+            preloaded.push({id: element.id, src: "<?php echo asset('/uploads/') ?>" +"/"+ element.image});
         });
 
         $('.banners-uploader').imageUploader({
