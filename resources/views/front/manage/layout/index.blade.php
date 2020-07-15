@@ -4,15 +4,6 @@
 
 @section('content')
 <div id="account-dashboard">
-    <style>
-        #text-small small {
-            font-size: 16px;
-        }
-
-        #text-small a:hover {
-            color: #bf9000;
-        }
-    </style>
     <div class="container py-4">
         <div class="row">
 
@@ -22,7 +13,7 @@
                     How are you today?
                 </p>
             </div>
-            <div class="col-md-6 text-right mb-3" id="text-small">
+            <div class="col-md-6 text-right mb-3" id="mego-mego-text-small">
                 <small><a href="#"><small>MegoCoins</small></a> | <a href="#"><small>My Account</small></a> | <a
                         href="#"><small>Contact Us</small></a></small>
                 <div class="mt-3">
