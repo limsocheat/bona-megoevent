@@ -51,11 +51,3 @@
 @stop
 
 @section('plugins.Datatables', true)
-
-@section('js')
-<script>
-    $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-</script>
-@endsection

@@ -15,9 +15,9 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Contact Number</th>
+                    <th>Contact_number</th>
                     <th>Country</th>
-                    <td>Conpany Name</td>
+                    <td>Conpany_name</td>
                     <td>Type</td>
                     <td>Message</td>
                 </tr>
@@ -43,10 +43,3 @@
 
 @section('plugins.Datatables', true)
 
-@section('js')
-<script>
-    $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-</script>
-@endsection
