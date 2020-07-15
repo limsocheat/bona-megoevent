@@ -10,7 +10,7 @@ $thumb_sliders = $slider::select('*')->where('location', 'thumbnail')->get();
     <div class="fluid mx-0 px-0">
         <div class="container">
             <div class="home_slider_fullscreen_content ">
-                <h1 class="font-weight-bold text-white">{{ $fullscreen_slider->title }}</h1>
+                <h1 class="font-weight-bold text-white slide-title">{{ $fullscreen_slider->title }}</h1>
                 <h4 class="slider-subtitle max-line-3">{{ $fullscreen_slider->sub_title}}</h4>
             </div>
         </div>

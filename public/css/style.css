@@ -418,12 +418,6 @@ td .mego-btn {
     background-color: #02020242;
     color: white;
 }
-
-.home_slider_fullscreen_content h1 {
-    width: 40vw;
-    color: white;
-}
-
 .home_slider_fullscreen .slick-prev {
     margin-left: 40px !important;
     
@@ -681,7 +675,7 @@ td .mego-btn {
     }
 
     .navbar-nav #btn-organizer {
-        font-size: 4vw;
+        font-size: 7vw;
     }
 
     .nav-item a i.fa {
@@ -710,7 +704,8 @@ td .mego-btn {
         width: 100%;
     }
     /* slider */
-    .home_slider_fullscreen_content h1 {
+    .home_slider_fullscreen_content{
+        max-width: 90vw;
         font-size: 6vw;
         margin-top: -30px;
     }
@@ -726,14 +721,23 @@ td .mego-btn {
 
     .home_slider_fullscreen_content {
         position: absolute;
-        top: 10px;
+        top: 11vw;
     }
-
+    .home_slider_fullscreen_content .slide-title {
+        font-size: 5vw;
+        color: white;
+    }
+    .max-line-3 {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;  
+        overflow: hidden !important;
+        font-size: 4vw;
+    }
     .fullscreen_slider_image {
         max-height: 320px;
         max-width: auto;
     }
-
     .home_slider_fullscreen .slick-prev {
         margin-left: 50px !important;
         ;
