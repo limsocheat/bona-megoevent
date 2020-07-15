@@ -117,7 +117,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         if ($this->type == 'company' && $this->company && $this->company->logo) {
             $image  = asset($this->company->logo);
-        } else if ($this->type == 'individual' && $this->profile->avatar_url) {
+        } else if ($this->type == 'individual' && $this->profile && $this->profile->avatar_url) {
             $image  = asset($this->profile->avatar_url);
         }
 
@@ -134,7 +134,7 @@ class User extends Authenticatable implements MustVerifyEmail
             }
         }
 
-        if ($this->type == 'individual') {
+        if ($this->type == 'individual' && $this->profile) {
             if ($this->profile->first_name || $this->profile->last_name) {
                 $name = $this->profile->first_name . " " . $this->profile->last_name;
             }

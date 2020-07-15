@@ -12,7 +12,8 @@
                 id="mego-gold-bg">Join Now</a>
             {{-- </div> --}}
         </div>
-        <h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2">{{ $event->name }}</h3>
+        <h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2; margin-left: 0; padding: 0;">
+            {{ $event->name }}</h3>
         <p class="card-text multi-line-truncate">{!! $event->description !!}</p>
     </div>
 </div>
