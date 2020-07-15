@@ -20,8 +20,8 @@
                  <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3">
-                               <img  src="{{  asset('/images/create_event.png') }}" alt="" width="200px" height="200px" />
+                            <div class="col-md-3 mego-event-create-image" >
+                               <img  src="{{  asset('/images/create_event.png') }}" alt="" />
                             </div>
                             <div class="col-md-9">
                                 <h5 class="mb-4">Welcome to MegoOrganise! Let's create an event!</h5>
