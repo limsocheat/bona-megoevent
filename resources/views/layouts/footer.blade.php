@@ -85,40 +85,36 @@
     <hr>
     <!-- Call to action -->
     {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
-    <div class="bg-white p-5 m-auto">
+    <div class="bg-white pr-5 pl-5 m-auto mego-logo-footer">
         <div class="text-center text-md-left">
             <!-- Grid row -->
             <div class="row">
                 <!-- Grid column -->
-                <div class="col-md-3 p-4">
+                <div class="col-md-3 p-2">
                     <div class="text-center">
                         <a class="footer-logo" href="{{ url('/') }}">
-                            <img src="{{ asset('images/megomege-footer.png') }}"
-                                style=" max-width: 200px;width: 100%;" />
+                            <img src="{{ asset('images/megomege-footer.png') }}" />
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 p-4">
+                <div class="col-md-3 p-2">
                     <div class="text-center ">
                         <a class="footer-logo" href="{{ url('/') }}">
-                            <img src="{{ asset('images/megoshopping-footer.png') }}"
-                                style=" max-width: 200px;width: 100%;" />
+                            <img src="{{ asset('images/megoshopping-footer.png') }}" />
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 p-4">
+                <div class="col-md-3 p-2">
                     <div class="text-center">
                         <a class="footer-logo" href="{{ url('/') }}">
-                            <img src="{{ asset('images/bonabot-footer.png') }}"
-                                style=" max-width: 200px;width: 100%;" />
+                            <img src="{{ asset('images/bonabot-footer.png') }}" />
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3 p-4">
+                <div class="col-md-3 p-2">
                     <div class="text-center">
                         <a class="footer-logo" href="{{ url('/') }}">
-                            <img src="{{ asset('images/singro-logo-footer.png') }}"
-                                style=" max-width: 200px;width: 100%;" />
+                            <img src="{{ asset('images/singro-logo-footer.png') }}" />
                         </a>
                     </div>
                 </div>

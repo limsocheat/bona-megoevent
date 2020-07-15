@@ -450,7 +450,15 @@ body a:hover {
     font-size: 25px;
     color: black;
 }
-
+/* footer */
+.mego-logo-footer{
+    max-height: 100%;
+    max-width: 100%;
+}
+.mego-logo-footer img{
+    max-width: 200px;
+    width: 100%;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     /* #account-navbar .nav-link {
