@@ -8,10 +8,18 @@
         <div class="row">
 
             <div class="col-md-6">
-                <p style="font-size: 120%">
-                    Hello <strong>{{ auth()->user()->name }} <br></strong>
-                    How are you today?
-                </p>
+                <div class="row">
+                    <div class="col-md-2 mego-event-layout-image">
+                          <img  src="{{  asset('/images/create_event.png') }}" alt=""  />
+                    </div>
+                    <div class="col-md-10">
+                         <p>
+                            Hello <strong>{{ auth()->user()->name }} <br></strong>
+                            How are you today?
+                        </p>
+                    </div>
+                </div>
+               
             </div>
             <div class="col-md-6 text-right mb-3" id="mego-mego-text-small">
                 <small><a href="#"><small>MegoCoins</small></a> | <a href="#"><small>My Account</small></a> | <a
