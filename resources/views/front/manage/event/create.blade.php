@@ -4,9 +4,7 @@
 
 @section('content_profile')
 <div class="col-md-10" style="margin-top: -25px">
-    <div class="container py-4">
-        <h1 class="pb-3">Create Event</h1>
-
+    <div class="container mb-3">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Sorry!</strong> Please check your input again.<br><br>
@@ -17,7 +15,27 @@
             </ul>
         </div>
         @endif
-
+        <div class="row py-3">
+            <div class="col-md-12">
+                 <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                               <img  src="{{  asset('/images/create_event.png') }}" alt="" width="200px" height="200px" />
+                            </div>
+                            <div class="col-md-9">
+                                <h5 class="mb-4">Welcome to MegoOrganise! Let's create an event!</h5>
+                                <p>There are four simple steps to create your own online event. First, 
+                                    fill in the basic information  about your event. Next,
+                                    choose your booth plans and make a mockup layout of the event. Then,
+                                    fill up  some additional details and pick your plans. Finally, create your tickets and you’re ready to publish!
+                                </p>
+                            </div>
+                         </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
         {!! Form::open(['route' => 'manage.event.store', 'method' => "POST", 'files' => true]) !!}
         <div class="card">
             <div class="card-header">

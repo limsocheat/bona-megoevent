@@ -228,7 +228,7 @@
 	</div>
 
 	<div class="row py-2 mt-4 mb-4">
-		<div class="col-md-8" style="border-left: solid 2px;">
+		<div class="col-md-8">
 			<div class="row my-2">
 				<div class="col-md-12">
 					<h1 class="text-left pl-0 mb-3 font-weight-bold" id="h1">Upcoming Events</h1>
@@ -240,7 +240,7 @@
 				@endforeach
 			</div>
 		</div>
-		<div class="col-md-4" style="border-left: solid 2px;">
+		<div class="col-md-4">
 			<div class="row my-2">
 				<div class="col-md-12">
 					<h1 class="text-left font-weight-bold mb-3" id="h1" style="text-align: center">Next Events</h1>
