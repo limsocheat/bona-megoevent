@@ -3,23 +3,6 @@
 @section ('title','Cart')
 
 @section('content')
-<style type="text/css">
-    .img-thumbnail {
-        width: 48px;
-        height: 53px;
-    }
-
-    #td-control {
-        margin-top: 12px;
-        margin-left: -10px;
-
-    }
-
-    #delete-control i {
-        font-size: 20px;
-
-    }
-</style>
 <div class="container py-4">
     <div class="row">
         <div class="col-12">
@@ -42,11 +25,11 @@
                         <tr height="">
                             <td class="text-left">
                                 {!! Form::open(['route' => ['cart.remove', $item->id], 'method' => "DELETE"]) !!}
-                                <button class="btn btn-sm btn-danger" id="td-control" type="submit"><i
+                                <button class="btn btn-sm btn-danger mego-td-control" type="submit"><i
                                         class="fa fa-times" aria-hidden="true"></i></button>
                                 {!! Form::close() !!}
                             </td>
-                            <td><img src="{{ $item->associatedModel->image_url }}" class="img-thumbnail" /> </td>
+                            <td><img src="{{ $item->associatedModel->image_url }}" class="mego-img-thumbnail" /> </td>
                             <td class="text-truncate">{{ $item->name }}</td>
                             @if ($item->associatedModel->quantity)
                             <td>

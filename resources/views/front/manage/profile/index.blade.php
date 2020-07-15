@@ -4,97 +4,6 @@
 
 @section('content_profile')
 
-<style>
-    .avatar-wrapper,
-    .company-wrapper {
-        position: relative;
-        height: 100px;
-        width: 100px;
-        margin: 50px auto;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 1px 1px 1px -5px black;
-        transition: all .3s ease;
-        border: 1px solid #7c7676;
-    }
-
-    .avatar-wrapper:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-    }
-
-    .company-wrapper:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-    }
-
-    .avatar-wrapper:hover .profile-pic {
-        opacity: .5;
-    }
-
-    .company-wrapper:hover #preview-logo-pic {
-        opacity: .5;
-    }
-
-    .avatar-wrapper .profile-pic {
-        height: 100%;
-        width: 100%;
-        transition: all .3s ease;
-
-    }
-
-    .company-wrapper #preview-logo-pic {
-        height: 100%;
-        width: 100%;
-        transition: all .3s ease;
-
-    }
-
-    .avatar-wrapper .profile-pic:after {
-        /* font-family: FontAwesome; */
-        content: "\f007";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        font-size: 100px;
-        background: #ecf0f1;
-        color: #34495e;
-        text-align: center;
-    }
-
-    .company-wrapper #preview-logo-pic:after {
-        font-family: FontAwesome;
-        content: "\f007";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        font-size: 100px;
-        background: #ecf0f1;
-        color: #34495e;
-        text-align: center;
-    }
-
-    .avatar-wrapper .upload-button {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-
-    }
-
-    .company-wrapper .logo-upload-button {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-    }
-</style>
 <div class="col-md-10" style="margin-top: -25px">
     <div class="container py-4">
         <div class="row justify-content-center">
@@ -111,7 +20,7 @@
                     !!}
                     <div class="card-body">
                         <div class="form-group" style="height: 110px;">
-                            <div class="avatar-wrapper">
+                            <div class="mego-avatar-wrapper">
                                 <img class="profile-pic"
                                     src="{{$user->profile ? $user->profile->avatarUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}" />
                                 <div class="upload-button">
@@ -221,7 +130,7 @@
                         => 'PUT', 'files' => true ]) !!}
                         <div class="card-body">
                             <div class="form-group" style="height: 110px;">
-                                <div class="company-wrapper" id="profile-preview">
+                                <div class="mego-company-wrapper" id="profile-preview">
                                     <img id="logoPreview" class="preview-img"
                                         src="{{ $user->company ? $user->company->logoUrl : "http://simpleicon.com/wp-content/uploads/account.png" }}"
                                         alt="Preview Image" width="100" height="100" />
@@ -256,7 +165,7 @@
                         <div class="card-body">
                             <div class="form-group" style="height: 110px;">
                                 <div class="form-group" style="height: 110px;">
-                                    <div class="company-wrapper" id="profile-preview">
+                                    <div class="mego-company-wrapper" id="profile-preview">
                                         <img id="logoPreview" class="preview-img"
                                             src="http://simpleicon.com/wp-content/uploads/account.png"
                                             alt="Preview Image" width="100" height="100" />

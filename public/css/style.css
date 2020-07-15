@@ -213,7 +213,27 @@ body a:hover {
     background: #C5B358;
     color: white;
 }
+td .mego-btn {
+    border: 1px solid #C5B358;
+    ;
+    border-radius: 0.2rem;
+    background-color: white;
+    color: black;
+    padding: 0.25rem 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
 
+.mego-outline-gold {
+    border-color: #C5B358;
+    color: #C5B358;
+}
+
+.mego-outline-gold:hover {
+    background: #C5B358;
+    color: white;
+}
 #h1,
 #h3 {
     color: #C5B358;
@@ -450,7 +470,188 @@ body a:hover {
     font-size: 25px;
     color: black;
 }
+/* product */
+ .mego-card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
 
+#mego-card-product {
+    position: relative;
+    width: auto;
+    height: 199px;
+}
+
+#mego-card-product img {
+    width: 100px;
+    height: 120px;
+    margin: 18px 25px 18px 25px;
+}
+
+.mego-card-body .card-text {
+    color: #45f145;
+    font-size: 16px;
+}
+
+.mogo-card-body {
+    margin-top: 12%;
+}
+
+.mogo-card-body a {
+    text-decoration: none;
+}
+
+.add-to-cart {
+    margin-top: 6rem;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 15px;
+
+}
+.mego-img-thumbnail {
+    width: 48px;
+    height: 53px;
+}
+
+.mego-td-control {
+    margin-top: 12px;
+    margin-left: -10px;
+
+}
+.mego-img-thumbnail-show {
+    width: 70px;
+    height: auto;
+}
+/* profile */
+.mego-avatar-wrapper,
+.mego-company-wrapper {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    margin: 50px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px -5px black;
+    transition: all .3s ease;
+    border: 1px solid #7c7676;
+}
+
+.mego-avatar-wrapper:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.mego-company-wrapper:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.mego-avatar-wrapper:hover .profile-pic {
+    opacity: .5;
+}
+
+.mego-company-wrapper:hover #preview-logo-pic {
+    opacity: .5;
+}
+
+.mego-avatar-wrapper .profile-pic {
+    height: 100%;
+    width: 100%;
+    transition: all .3s ease;
+
+}
+
+.mego-company-wrapper #preview-logo-pic {
+    height: 100%;
+    width: 100%;
+    transition: all .3s ease;
+
+}
+
+.mego-avatar-wrapper .profile-pic:after {
+    /* font-family: FontAwesome; */
+    content: "\f007";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 100px;
+    background: #ecf0f1;
+    color: #34495e;
+    text-align: center;
+}
+
+.mego-company-wrapper #preview-logo-pic:after {
+    font-family: FontAwesome;
+    content: "\f007";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 100px;
+    background: #ecf0f1;
+    color: #34495e;
+    text-align: center;
+}
+
+.mego-avatar-wrapper .upload-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
+.mego-company-wrapper .logo-upload-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+#mego-text-small small {
+    font-size: 16px;
+}
+
+#mego-text-small a:hover {
+    color: #bf9000;
+}
+/* contact us */
+.mego-hero-image {
+    background-image: url(https://bona.com.sg/wp-content/uploads/2019/04/bg-image-12-1920x238.png);
+    background-color: #cccccc;
+    height: 130px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.mego-hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.mego-txt-line-height p {
+    margin-bottom: 2px;
+    line-height: 1.5;
+}
+/* footer */
+.mego-logo-footer{
+    max-height: 100%;
+    max-width: 100%;
+}
+.mego-logo-footer img{
+    max-width: 200px;
+    width: 100%;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     /* #account-navbar .nav-link {
