@@ -213,6 +213,7 @@ body a:hover {
     background: #C5B358;
     color: white;
 }
+
 td .mego-btn {
     border: 1px solid #C5B358;
     ;
@@ -234,6 +235,7 @@ td .mego-btn {
     background: #C5B358;
     color: white;
 }
+
 #h1,
 #h3 {
     color: #C5B358;
@@ -411,22 +413,17 @@ td .mego-btn {
 .event-single-page .btn-danger {
     border-radius: 4px;
 }
+
 /* slider */
-.home_slider_fullscreen_content{
+.home_slider_fullscreen_content {
     max-width: 600px;
     padding: 15px;
     background-color: #02020242;
     color: white;
 }
-
-.home_slider_fullscreen_content h1 {
-    width: 40vw;
-    color: white;
-}
-
 .home_slider_fullscreen .slick-prev {
     margin-left: 40px !important;
-    
+
     z-index: 1;
 }
 
@@ -443,6 +440,7 @@ td .mego-btn {
 .home_slider_carousel .slick-next {
     margin-right: 50px !important;
 }
+
 .slick-lightbox-slick-item-inner,
 .slick-lightbox-slick-img {
     max-height: auto !important;
@@ -470,8 +468,9 @@ td .mego-btn {
     font-size: 25px;
     color: black;
 }
+
 /* product */
- .mego-card-horizontal {
+.mego-card-horizontal {
     display: flex;
     flex: 1 1 auto;
 }
@@ -508,6 +507,7 @@ td .mego-btn {
     margin-bottom: 15px;
 
 }
+
 .mego-img-thumbnail {
     width: 48px;
     height: 53px;
@@ -518,10 +518,22 @@ td .mego-btn {
     margin-left: -10px;
 
 }
+
 .mego-img-thumbnail-show {
     width: 70px;
     height: auto;
 }
+
+.mego-event-layout-image img {
+    width: 80px;
+    height: 80px;
+}
+
+.mego-event-create-image img {
+    width: 150px;
+    height: 150px;
+}
+
 /* profile */
 .mego-avatar-wrapper,
 .mego-company-wrapper {
@@ -612,6 +624,7 @@ td .mego-btn {
     height: 100%;
     width: 100%;
 }
+
 #mego-text-small small {
     font-size: 16px;
 }
@@ -619,6 +632,7 @@ td .mego-btn {
 #mego-text-small a:hover {
     color: #bf9000;
 }
+
 /* contact us */
 .mego-hero-image {
     background-image: url(https://bona.com.sg/wp-content/uploads/2019/04/bg-image-12-1920x238.png);
@@ -644,11 +658,12 @@ td .mego-btn {
     line-height: 1.5;
 }
 
-.mego-logo-footer{
+.mego-logo-footer {
     max-height: 100%;
     max-width: 100%;
 }
-.mego-logo-footer img{
+
+.mego-logo-footer img {
     max-width: 200px;
     width: 100%;
 }
@@ -656,7 +671,7 @@ td .mego-btn {
 .max-line-3 {
     display: -webkit-box !important;
     -webkit-line-clamp: 3 !important;
-    -webkit-box-orient: vertical !important;  
+    -webkit-box-orient: vertical !important;
     overflow: hidden !important;
 }
 
@@ -681,7 +696,7 @@ td .mego-btn {
     }
 
     .navbar-nav #btn-organizer {
-        font-size: 4vw;
+        font-size: 7vw;
     }
 
     .nav-item a i.fa {
@@ -709,8 +724,10 @@ td .mego-btn {
         justify-content: space-between;
         width: 100%;
     }
+
     /* slider */
-    .home_slider_fullscreen_content h1 {
+    .home_slider_fullscreen_content{
+        max-width: 90vw;
         font-size: 6vw;
         margin-top: -30px;
     }
@@ -726,14 +743,23 @@ td .mego-btn {
 
     .home_slider_fullscreen_content {
         position: absolute;
-        top: 10px;
+        top: 11vw;
     }
-
+    .home_slider_fullscreen_content .slide-title {
+        font-size: 5vw;
+        color: white;
+    }
+    .max-line-3 {
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;  
+        overflow: hidden !important;
+        font-size: 4vw;
+    }
     .fullscreen_slider_image {
         max-height: 320px;
         max-width: auto;
     }
-
     .home_slider_fullscreen .slick-prev {
         margin-left: 50px !important;
         ;
@@ -755,6 +781,7 @@ td .mego-btn {
         max-width: 170px;
         width: 100%;
     }
+
     /* slider */
     .home_slider_carousel_item {
         height: 80px !important;
@@ -791,6 +818,7 @@ td .mego-btn {
         position: relative;
         display: flex;
     }
+
     /* slider */
     .home_slider_carousel_item {
         height: 200px !important;
@@ -843,6 +871,7 @@ td .mego-btn {
     .event-single-header-right {
         flex: 1;
     }
+
     .home_slider_carousel_item {
         height: 200px !important;
         width: auto !important;
