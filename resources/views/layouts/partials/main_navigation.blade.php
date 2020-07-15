@@ -1,12 +1,34 @@
 <style>
     /* adds some margin below the link sets */
-    .navbar .dropdown-menu div[class*="col"] {
+    .navbar .mego-dropdown-menu div[class*="col"] {
         margin-bottom: 1rem;
     }
 
-    .navbar .dropdown-menu {
+    .navbar .mego-dropdown-menu {
+        height: 400px;
+        width: auto;
+        max-height: 100%;
         border: none;
-        background-color: #0060c8 !important;
+        color: black;
+        background-color: #ffffff00;
+    }
+
+    .navbar .mego-dropdown-menu .mego-column1 {
+        border: none;
+        height: 400px;
+        width: auto;
+        max-height: 100%;
+        color: white;
+        background-color: #6f358d !important;
+    }
+
+    .navbar .mego-dropdown-menu .mego-bg-white {
+        border: none;
+        height: 400px;
+        width: auto;
+        max-height: 100%;
+        color: black;
+        background-color: #ffffff !important;
     }
 
     /* breakpoint and up - mega dropdown styles */
@@ -29,7 +51,7 @@
             position: static;
         }
 
-        .navbar .dropdown-menu {
+        .navbar .mego-dropdown-menu {
             width: 100%;
             left: 0;
             right: 0;
@@ -48,17 +70,17 @@
 
         /* shows the dropdown menu on hover */
         .navbar .dropdown:hover .dropdown-menu,
-        .navbar .dropdown .dropdown-menu:hover {
+        .navbar .dropdown .mego-dropdown-menu:hover {
             display: block;
             visibility: visible;
             opacity: 1;
             transition: visibility 0s, opacity 0.3s linear;
         }
 
-        .navbar .dropdown-menu {
+        /* .navbar .dropdown-menu {
             border: 1px solid rgba(0, 0, 0, .15);
             background-color: rgb(17, 17, 17);
-        }
+        } */
 
     }
 </style>
@@ -72,7 +94,6 @@
             <span class="navbar-toggler-icon"><i class="fa fa-bars" style="color:#1f1c1c; font-size:28px;"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
             <ul id="navbar-nav" class="navbar-nav mr-auto">
                 <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
                     <a href="{{ route('index') }}" class="nav-link nav-link-left pl-0 ml-0">Home</a>
@@ -84,38 +105,36 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category 1
+                        Dropdown
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#">Active</a>
-                                        </li>
-                                    </ul>
+                    <div class="row">
+                        <div class="dropdown-menu mego-dropdown-menu bg-none" aria-labelledby="navbarDropdown">
+                            <div class="container">
+
+                                <div class="col-md-3 mego-column1 rounded-left">
+                                    <h2>Infocomm Media Landscape</h2>
+                                    <p class="title">More than a growth engine, ICM transforms industries for the
+                                        future.</p>
                                 </div>
-                                <!-- /.col-md-4  -->
-                                <div class="col-md-4">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#">Active</a>
-                                        </li>
-                                    </ul>
+                                <div class="col-md-4 mego-bg-white bg-white">
+                                    <h2>Infocomm Media Landscape</h2>
+                                    <p class="title">More than a growth engine, ICM transforms industries for the
+                                        future.More than a growth engine, ICM transforms industries for the</p>
                                 </div>
-                                <div class="col-md-4">
-                                    <a href="">
-                                        <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt=""
-                                            class="img-fluid">
-                                    </a>
-                                    <p class="text-white">Short image call to action</p>
+                                <div class="col-md-5 mego-bg-white " style="border-left: 2px solid #ceba48;">
+                                    <h2>Highlights</h2>
+                                    <hr>
+                                    <p class="title">More than a growth engine, ICM transforms industries for the
+                                        future.</p>
+                                    {{-- <img src="{{assets="/front/image/image1.jpg"}}" alt=""> --}}
+
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
                 </li>
-
             </ul>
             <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
                 <li class="nav-item ">
