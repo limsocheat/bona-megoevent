@@ -52,7 +52,7 @@ class BannerController extends Controller
         $request->validate([
             'name'      => 'required',
         ]);
-
+        
         DB::beginTransaction();
         try {
             $data  = $request->all();

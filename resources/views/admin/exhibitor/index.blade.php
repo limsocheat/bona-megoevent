@@ -48,10 +48,9 @@
 
                     <td>
                         <a href="{{ route('admin.exhibitor.edit', $exhibitor->id) }}" class="btn btn-primary btn-sm mego-button-edit">Edit</a>
-                        {!! Form::open(['route' => ['admin.exhibitor.destroy', $exhibitor->id], 'onsubmit' => "return
-                            confirm('Are you sure?')", 'method' => 'DELETE']) !!}
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        {!! Form::close() !!}
+                         {!! Form::open(['route' => ['admin.exhibitor.destroy', $exhibitor->id], 'onsubmit' => "return confirm('Are you sure?')", 'method' => 'DELETE']) !!}
+                              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                         {!! Form::close() !!}
                     </td>
                 </tr>
                 @endforeach

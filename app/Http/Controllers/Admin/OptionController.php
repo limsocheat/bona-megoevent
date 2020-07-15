@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Option;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OptionController extends Controller
 {
@@ -43,11 +44,17 @@ class OptionController extends Controller
             'name'      => 'required|string|max:255',
             'type'      => 'required'
         ]);
-        $data         = $request->all();
-        $option = Option::create($data);
-        if ($option) {
+        DB::beginTransaction();
+        try {
+            $data         = $request->all();
+            Option::create($data);
+            DB::commit();
             return redirect()->route('admin.option.index');
+         } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+       
     }
 
     /**
@@ -70,7 +77,6 @@ class OptionController extends Controller
     public function edit($id)
     {
         $option   = Option::findOrFail($id);
-
         return view('admin.option.edit', ['option' => $option]);
     }
 
@@ -83,18 +89,24 @@ class OptionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        $option   = Option::findOrFail($id);
         $request->validate([
             'name'      => 'required|string|max:255',
             'type'      => 'required'
 
         ]);
-        $option   = Option::findOrFail($id);
-        $data       = $request->all();
-        $option->update($data);
-
-        if ($option) {
+        DB::beginTransaction();
+        try {
+            $data       = $request->all();
+            $option->update($data);
+            DB::commit();
             return redirect()->route('admin.option.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+            
     }
 
     /**
@@ -105,12 +117,16 @@ class OptionController extends Controller
      */
     public function destroy($id)
     {
-
+        
         $option   = Option::findOrFail($id);
-        $option->delete();
-
-        if ($option) {
+        DB::beginTransaction();
+        try{
+            $option->delete();
+            DB::commit();
             return redirect()->route('admin.option.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

@@ -5,10 +5,22 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Utils\Uploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+
+
+    
+    protected $uploader;
+
+    public function __construct(Uploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,19 +57,20 @@ class ProductController extends Controller
     {
         $request->validate([
             'name'      => 'required',
-
         ]);
-        $data  = $request->all();
 
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
-
-            $data['image'] = "/uploads/" . $imageName;
-        }
-        $product = Product::create($data);
-        if ($product) {
+        DB::beginTransaction();
+        try {
+            $data  = $request->all();
+            if ($request->file('new_image')) {
+                $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
+            Product::create($data);
+            DB::commit();
             return redirect()->route('admin.product.index');
+         } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -85,7 +98,6 @@ class ProductController extends Controller
         $data = [
             'product'  => Product::findOrFail($id),
             'categories' => ProductCategory::select('id', 'name')->get()->pluck('name', 'id'),
-
         ];
         return view('admin.product.edit', $data);
     }
@@ -99,29 +111,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
+        $product = Product::findOrFail($id);
         $request->validate([
             'name'      => 'required',
-
         ]);
 
-        $product = Product::findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $data   = $request->all(); 
 
-
-
-        $data       = $request->all();
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
-
-            $data['image'] = "/uploads/" . $imageName;
-        }
-
-
-        $product->update($data);
-
-        if ($product) {
+            if ($request->file('new_image')) {
+                $data['image'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
+            $product->update($data);
+            DB::commit();
             return redirect()->route('admin.product.index');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -134,10 +143,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product   = Product::findOrFail($id);
-        $product->delete();
-
-        if ($product) {
+         DB::beginTransaction();
+        try {
+            $product->delete();
+            DB::commit();
             return redirect()->route('admin.product.index');
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -42,14 +43,17 @@ class PageController extends Controller
             'title'         => 'required|unique:pages,title',
             'description'   => 'required',
         ]);
-
-        $data       = $request->all();
-
-        $page       = Page::create($data);
-
-        if ($page) {
+        DB::beginTransaction();
+        try {
+            $data       = $request->all();
+            Page::create($data);
+            DB::commit();
             return redirect()->route('admin.page.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -92,14 +96,17 @@ class PageController extends Controller
             'title'         => 'required|unique:pages,title,' . $id,
             'description'   => 'required'
         ]);
-
-        $data   = $request->all();
-
-        $page   = $page->update($data);
-
-        if ($page) {
+        DB::beginTransaction();
+        try{
+            $data   = $request->all();
+            $page   = $page->update($data);
+            DB::commit();
             return redirect()->route('admin.page.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -112,10 +119,15 @@ class PageController extends Controller
     {
         
         $page   = Page::findOrFail($id);
-        $page->delete();
-
-        if ($page) {
+        DB::beginTransaction();
+        try{
+            $page->delete();
+            DB::commit();
             return redirect()->route('admin.page.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+       
     }
 }

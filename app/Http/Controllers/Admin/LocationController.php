@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LocationController extends Controller
 {
@@ -45,11 +46,17 @@ class LocationController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $data         = $request->all();
-        $location = Location::create($data);
-        if ($location) {
+        DB::beginTransaction();
+        try{
+            $data     = $request->all();
+            Location::create($data);
+            DB::commit();
             return redirect()->route('admin.location.index');
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+      
     }
 
     /**
@@ -83,17 +90,23 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        $location   = Location::findOrFail($id);
         $request->validate([
             'name'  => 'required',
 
         ]);
-        $location   = Location::findOrFail($id);
-        $data       = $request->all();
-        $location->update($data);
-
-        if ($location) {
+        DB::beginTransaction();
+        try{
+            $data       = $request->all();
+            $location->update($data);
+            DB::commit();
             return redirect()->route('admin.location.index');
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -105,10 +118,15 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $location   = Location::findOrFail($id);
-        $location->delete();
-
-        if ($location) {
+        DB::beginTransaction();
+        try{
+            $location->delete();
+            DB::commit();
             return redirect()->route('admin.location.index');
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 }

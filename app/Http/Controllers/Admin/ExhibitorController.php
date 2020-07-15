@@ -5,10 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Exhibitor;
 use App\User;
+use App\Utils\Uploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExhibitorController extends Controller
 {
+
+    protected $uploader;
+
+    public function __construct(Uploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,28 +61,31 @@ class ExhibitorController extends Controller
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|string|min:8|confirmed'
         ]);
-        $data       = $request->except('password', 'role');
-        $data['password']   = bcrypt($request->input('password'));
+        DB::beginTransaction();
+        try{
 
-        $user = User::create($data);
-        $user->assignRole('exhibitor');
+            $data       = $request->except('password', 'role');
+            $data['password']   = bcrypt($request->input('password'));
+            $user = User::create($data);
+            $user->assignRole('exhibitor');
 
-        $data  = $request->all();
+            $data  = $request->all();
 
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
+            if ($request->file('new_image')) {
+                $data['logo'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
 
-            $data['logo'] = "/uploads/" . $imageName;
-        }
-
-        $data['user_id'] = $user->id;
-
-        $exhibitor = Exhibitor::create($data);
-
-        if ($user && $exhibitor) {
+            $data['user_id'] = $user->id;
+            Exhibitor::create($data);
+            DB::commit();
             return redirect()->route('admin.exhibitor.index');
+          
+
+        }catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -109,21 +122,28 @@ class ExhibitorController extends Controller
     {
 
         $exhibitor = Exhibitor::findOrFail($id);
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+        ]);
+        DB::beginTransaction();
+        try{
 
-        $data       = $request->all();
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
+            $data       = $request->all();
 
-            $data['logo'] = "/uploads/" . $imageName;
-        }
+            if ($request->file('new_image')) {
+                $data['logo'] = $this->uploader->uploadImage($request->file('new_image'));
+            }
 
-
-        $exhibitor->update($data);
-
-        if ($exhibitor) {
+            $exhibitor->update($data);
+            DB::commit();
             return redirect()->route('admin.exhibitor.index');
+      
+       }catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -135,10 +155,14 @@ class ExhibitorController extends Controller
     public function destroy($id)
     {
         $exhibitor   = Exhibitor::findOrFail($id);
-        $exhibitor->delete();
-
-        if ($exhibitor) {
+        DB::beginTransaction();
+        try{
+            $exhibitor->delete();
+            DB::commit();
             return redirect()->route('admin.exhibitor.index');
+        }catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

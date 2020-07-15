@@ -4,10 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BoothType;
+use App\Utils\Uploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BoothTypeController extends Controller
 {
+
+
+    protected $uploader;
+
+    public function __construct(Uploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,20 +53,25 @@ class BoothTypeController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $data         = $request->all();
 
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
+        DB::beginTransaction();
+        try{
+            $data         = $request->all();
 
-            $data['image'] = "/uploads/" . $imageName;
-        }
+            if ($request->file('new_image')) {
+                $data['image'] =$this->uploader->uploadImage($request->file('new_image'));
+            }
 
-        $booth_type = BoothType::create($data);
+            BoothType::create($data);
 
-        if ($booth_type) {
+            DB::commit();
             return redirect()->route('admin.booth_type.index');
+        
+        }catch(\Exception $e){
+             DB::rollBack();
+             return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -92,26 +108,31 @@ class BoothTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        $booth_type   = BoothType::findOrFail($id);
 
         $request->validate([
             'name'  => 'required',
 
         ]);
-        $booth_type   = BoothType::findOrFail($id);
-        $data       = $request->all();
+        DB::beginTransaction();
+        try{
+             $data       = $request->all();
 
-        if ($request->file('new_image')) {
-            $imageName = $request->file('new_image')->getClientOriginalName();
-            request()->new_image->move(public_path('uploads'), $imageName);
+            if ($request->file('new_image')) {
+                $data['image'] =$this->uploader->uploadImage($request->file('new_image'));
+            }
 
-            $data['image'] = "/uploads/" . $imageName;
-        }
-
-        $booth_type->update($data);
-
-        if ($booth_type) {
+            $booth_type->update($data);
+            DB::commit();
             return redirect()->route('admin.booth_type.index');
+            
+        }catch (\Exception $e){
+                DB::rollBack();
+                return redirect()->back()->with('error',$e->getMessage());
+
         }
+      
     }
 
     /**
@@ -123,10 +144,16 @@ class BoothTypeController extends Controller
     public function destroy($id)
     {
         $booth_type   = BoothType::findOrFail($id);
-        $booth_type->delete();
-
-        if ($booth_type) {
+        DB::beginTransaction();
+        try{
+            $booth_type->delete();
+            DB::commit();
             return redirect()->route('admin.booth_type.index');
+           
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 }

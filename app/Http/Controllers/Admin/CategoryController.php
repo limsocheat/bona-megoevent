@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\EventCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -43,11 +44,18 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $data         = $request->all();
-        $category = EventCategory::create($data);
-        if ($category) {
+        DB::beginTransaction();
+        try{
+            $data  = $request->all();
+            EventCategory::create($data);
+            DB::commit();
             return redirect()->route('admin.category.index');
+      
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->back()->with('error',$e->getMessage());
         }
+        
     }
 
     /**
@@ -82,17 +90,24 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        $category   = EventCategory::findOrFail($id);
         $request->validate([
             'name'  => 'required',
 
         ]);
-        $category   = EventCategory::findOrFail($id);
-        $data       = $request->all();
-        $category->update($data);
-
-        if ($category) {
-            return redirect()->route('admin.category.index');
+         DB::beginTransaction();
+         try{
+             $data       = $request->all();
+             $category->update($data);
+             DB::commit();
+             return redirect()->route('admin.category.index');
+             
+         }catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+       
     }
 
     /**
@@ -104,10 +119,16 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category   = EventCategory::findOrFail($id);
-        $category->delete();
-
-        if ($category) {
+        DB::beginTransaction();
+        try{
+            $category->delete();
+            DB::commit();
             return redirect()->route('admin.category.index');
+           
+        }catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+       
     }
 }

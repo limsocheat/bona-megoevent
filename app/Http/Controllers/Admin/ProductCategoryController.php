@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductCategoryController extends Controller
 {
@@ -42,11 +43,18 @@ class ProductCategoryController extends Controller
          $request->validate([
             'name' => 'required|string|max:255'
         ]);
-        $data         = $request->all();
-        $product_category = ProductCategory::create($data);
-        if ($product_category) {
+
+        DB::beginTransaction();
+        try {
+            $data         = $request->all();
+            ProductCategory::create($data);
+            DB::commit();
             return redirect()->route('admin.product_category.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+        
     }
 
     /**
@@ -83,18 +91,23 @@ class ProductCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {  
+        $product_category   = ProductCategory::findOrFail($id);
         $request->validate([
             'name'  => 'required',
 
         ]);
-        $product_category   = ProductCategory::findOrFail($id);
-        $data       = $request->all();
-        $product_category->update($data);
-
-        if ($product_category) {
+        DB::beginTransaction();
+        try {
+            $data       = $request->all();
+            $product_category->update($data);
+            DB::commit();
             return redirect()->route('admin.product_category.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
+       
     }
 
     /**
@@ -106,10 +119,14 @@ class ProductCategoryController extends Controller
     public function destroy($id)
     {
         $product_category   = ProductCategory::findOrFail($id);
-        $product_category->delete();
-
-        if ($product_category) {
+        DB::beginTransaction();
+        try {
+            $product_category->delete();
+            DB::commit();
             return redirect()->route('admin.product_category.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }
