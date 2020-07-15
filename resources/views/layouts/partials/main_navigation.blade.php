@@ -22,13 +22,21 @@
         background-color: #6f358d !important;
     }
 
-    .navbar .mego-dropdown-menu .mego-bg-white {
+    .navbar .mego-dropdown-menu .mego-bg-mega {
         border: none;
         height: 400px;
         width: auto;
         max-height: 100%;
         color: black;
         background-color: #ffffff !important;
+    }
+
+    .mego-bg-mega .mego-img {
+        width: 400px;
+        height: auto;
+        max-width: 100%;
+        text-align: center;
+        margin: auto;
     }
 
     /* breakpoint and up - mega dropdown styles */
@@ -44,6 +52,10 @@
         .navbar .nav-item {
             padding: .5rem .5rem;
             margin: 0 .25rem;
+        }
+
+        .mego-text-gold {
+            color: #C5B358;
         }
 
         /* makes the dropdown full width */
@@ -116,17 +128,36 @@
                                     <p class="title">More than a growth engine, ICM transforms industries for the
                                         future.</p>
                                 </div>
-                                <div class="col-md-4 mego-bg-white bg-white">
+                                <div class="col-md-4 mego-bg-mega bg-white">
                                     <h2>Infocomm Media Landscape</h2>
                                     <p class="title">More than a growth engine, ICM transforms industries for the
                                         future.More than a growth engine, ICM transforms industries for the</p>
                                 </div>
-                                <div class="col-md-5 mego-bg-white " style="border-left: 2px solid #ceba48;">
+                                <div class="col-md-5 mego-bg-mega rounded-right"
+                                    style="border-left: 2px solid #ceba48;">
                                     <h2>Highlights</h2>
                                     <hr>
                                     <p class="title">More than a growth engine, ICM transforms industries for the
                                         future.</p>
-                                    {{-- <img src="{{assets="/front/image/image1.jpg"}}" alt=""> --}}
+                                    <div class="row container">
+                                        <div class="col-md-6">
+                                            <img class="mego-img"
+                                                src="https://www.imda.gov.sg/-/media/Imda/Images/Content/Infocomm-Media-Landscape/SG-Digital-Office/SGDOffice-Seniors-Mobile.jpg?h=400&w=600&la=en&hash=59D03AEDCF227725DC6B01B0741A8FDD3AA82E7B"
+                                                alt="">
+                                            <a href="#" class="text-center mego-text-gold">SG Digital Office – Life is
+                                                more colourful
+                                                with digital</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img class="mego-img"
+                                                src="https://www.imda.gov.sg/-/media/Imda/Images/Content/Featured/infocomm-media-landscape-3.jpg?h=168&w=300&la=en&hash=78BC7A4A11975633B8110FA848C0D34F9345A377"
+                                                alt="">
+                                            <a href="#" class="text-center mego-text-gold">Services 4.0 – Envisioning
+                                                the
+                                                Future of
+                                                Services</a>
+                                        </div>
+                                    </div>
 
                                 </div>
 
