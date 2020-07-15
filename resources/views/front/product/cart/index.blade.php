@@ -78,7 +78,7 @@
                 <div class="row">
 
                     <div class="col-sm-12  col-md-6">
-                        <a href="{{ route('product') }}" class="btn btn-lg btn-block mego-gold-bg mb-4">Continue
+                        <a href="{{ route('events') }}" class="btn btn-lg btn-block mego-gold-bg mb-4">Continue
                             Shopping</a>
                     </div>
                     @if (Cart::getContent()->count() > 0)
