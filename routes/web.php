@@ -112,6 +112,7 @@ Route::namespace('Front')->group(function () {
                 Route::get('/', 'PageController@manage')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+                Route::put('/re_password','ProfileController@re_password')->name('profile.re_password');
 
                 Route::get('/event_exhibitor/{event}', 'EventExhibitorController@show')->name('event_exhibitor.show');
                 Route::get('/sale/{sale}', 'SaleController@show')->name('sale.show');

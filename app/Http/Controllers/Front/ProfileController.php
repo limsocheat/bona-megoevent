@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Country;
+use App\User;
 use App\Utils\Uploader;
 use Illuminate\Support\Facades\DB;
 
@@ -53,6 +54,29 @@ class ProfileController extends Controller
             }
 
             $user->profile()->updateOrCreate([], $profile);
+            DB::commit();
+            return redirect()->route('manage.profile.index')->with('success', 'Profile Updated Succesfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function re_password(Request $request){
+         $user       = Auth::user();
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+          DB::beginTransaction();
+        try {
+              $data       = $request->except('password');
+            if ($request->input('password')) {
+                $request->validate([
+                    'password'  => 'required|min:8'
+                ]);
+                $data['password']   = bcrypt($request->input('password'));
+            }
+            $user->update($data);
             DB::commit();
             return redirect()->route('manage.profile.index')->with('success', 'Profile Updated Succesfully!');
         } catch (\Exception $e) {

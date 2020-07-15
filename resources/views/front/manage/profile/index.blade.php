@@ -89,7 +89,7 @@
             <div class="col-md-6 ">
                 <div class="col-md-12 mb-3">
                     <div class="card">
-                        {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT', 'files' =>
+                        {!! Form::model($user, ['route' => ['manage.profile.re_password'], 'method' => 'PUT', 'files' =>
                         true])!!}
                         <div class="card-body">
                             <div class="form-group">
@@ -107,10 +107,13 @@
                                 {!! Form::password('password', ['class' => 'form-control']) !!}
                                 <small id="passwordHelp" class="form-text text-muted">Leave empty to keep
                                     unchanged.</small>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
                             </div>
                             <div class="form-group">
-                                {!! Form::label('password', 'Confirm Password') !!}
-                                {!! Form::password('password-confirm', ['class' => 'form-control']) !!}
+                                {!! Form::label('password_confirmation', 'Password Confirmation') !!}
+                                {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                                 <small id="passwordHelp" class="form-text text-muted">Leave empty to keep
                                     unchanged.</small>
                             </div>

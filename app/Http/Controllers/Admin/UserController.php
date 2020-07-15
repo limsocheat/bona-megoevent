@@ -68,7 +68,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
-
+    
 
     /**
      * Display the specified resource.
