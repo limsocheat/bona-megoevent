@@ -60,7 +60,8 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('profile[country_id]', 'Country') !!}
-                            {!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country','class' => 'form-control']) !!}
+                            {!! Form::select('profile[country_id]', $countries, null, ['placeholder' =>
+                            'Country','class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('profile[address]', 'Address') !!}
@@ -90,11 +91,6 @@
                         true])!!}
                         <div class="card-body">
                             <div class="form-group">
-                                {!! Form::label('name', 'User Name') !!}
-                                {!! Form::text('name', null, ['placeholder' => 'user name', 'class' => 'form-control'
-                                ,'readonly' => true]) !!}
-                            </div>
-                            <div class="form-group">
                                 {!! Form::label('email', 'E-Mail Address') !!}
                                 {!! Form::email('email', null, ['placeholder' => 'enter email address', 'class'
                                 =>'form-control' ,'readonly' => true]) !!}
@@ -105,7 +101,7 @@
                                 <small id="passwordHelp" class="form-text text-muted">Leave empty to keep
                                     unchanged.</small>
                                 @if ($errors->has('password'))
-                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">

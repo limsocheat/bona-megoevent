@@ -62,14 +62,15 @@ class ProfileController extends Controller
         }
     }
 
-    public function re_password(Request $request){
-         $user       = Auth::user();
+    public function re_password(Request $request)
+    {
+        $user       = Auth::user();
         $request->validate([
             'password' => 'required|string|min:8|confirmed',
         ]);
-          DB::beginTransaction();
+        DB::beginTransaction();
         try {
-              $data       = $request->except('password');
+            $data       = $request->except('password');
             if ($request->input('password')) {
                 $request->validate([
                     'password'  => 'required|min:8'
