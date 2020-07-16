@@ -92,28 +92,28 @@
                 <!-- Grid column -->
                 <div class="col-md-3 pl-0 py-2">
                     <div class="text-center">
-                        <a class="footer-logo float-left" href="{{ url('/') }}">
+                        <a class="footer-logo float-left" href="http://megomega.com.sg/" target="_blank">
                             <img src="{{ asset('images/megomege-footer.png') }}" />
                         </a>
                     </div>
                 </div>
                 <div class="col-md-3 p-2">
                     <div class="text-center ">
-                        <a class="footer-logo" href="{{ url('/') }}">
+                        <a class="footer-logo" href="http://megoshopping.com.sg/" target="_blank">
                             <img src="{{ asset('images/megoshopping-footer.png') }}" />
                         </a>
                     </div>
                 </div>
                 <div class="col-md-3 p-2">
                     <div class="text-center">
-                        <a class="footer-logo" href="{{ url('/') }}">
+                        <a class="footer-logo" href="https://bona.com.sg/" target="_blank">
                             <img src="{{ asset('images/bonabot-footer.png') }}" />
                         </a>
                     </div>
                 </div>
                 <div class="col-md-3 pr-0 py-2">
                     <div class="text-center">
-                        <a class="footer-logo float-right" href="{{ url('/') }}">
+                        <a class="footer-logo float-right" href="https://singroll.com/web/" target="_blank">
                             <img src="{{ asset('images/singro-logo-footer.png') }}" />
                         </a>
                     </div>

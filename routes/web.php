@@ -68,6 +68,8 @@ Route::namespace('Front')->group(function () {
     Route::get('/event', 'PageController@events')->name('events');
     Route::get('/event/{event}', 'PageController@event')->name('event');
 
+    Route::get('/exhibitor/{exhibitor}', 'ExhibitorController@show')->name('exhibitor.show');
+
     Route::get('product/{product}', 'PageController@product')->name('show.product');
     Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -112,7 +114,7 @@ Route::namespace('Front')->group(function () {
                 Route::get('/', 'PageController@manage')->name('index');
                 Route::get('/profile', 'ProfileController@index')->name('profile.index');
                 Route::put('/profile', 'ProfileController@update')->name('profile.update');
-                Route::put('/re_password','ProfileController@re_password')->name('profile.re_password');
+                Route::put('/re_password', 'ProfileController@re_password')->name('profile.re_password');
 
                 Route::get('/event_exhibitor/{event}', 'EventExhibitorController@show')->name('event_exhibitor.show');
                 Route::get('/sale/{sale}', 'SaleController@show')->name('sale.show');
