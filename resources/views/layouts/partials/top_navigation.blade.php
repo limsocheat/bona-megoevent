@@ -115,10 +115,10 @@
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </a>
                                 @guest
-                                <ul class="dropdown-content p-0 mr-auto ml-auto">
+                                <ul class="dropdown-content p-0 mr-auto ml-auto dropdown-menu dropdown-menu-right">
                                     <li>
                                         <a href="{{ route('login') }}">Login</a>
-                                        </a>
+
                                     <li>
                                         <a href="{{ route('register')}}">Sign Up</a>
                                     </li>
