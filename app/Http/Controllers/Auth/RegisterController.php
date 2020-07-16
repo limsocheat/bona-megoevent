@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Auth\Events\Registered;
@@ -80,8 +81,12 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $roles      = Role::select('*')->where('name', '!=', 'administrator')->get();
+         $Country   = Country::select('id', 'name')->pluck('name', 'id');
 
-        return view('auth.register', ['roles' => $roles]);
+        return view('auth.register', [
+            'roles' => $roles,
+            'countries' => $Country
+            ]);
     }
 
     public function register(Request $request)

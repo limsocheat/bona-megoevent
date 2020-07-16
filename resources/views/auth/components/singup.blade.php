@@ -48,13 +48,3 @@
 	</div>
 </div> -->
 
-<div class="form-group ">
-	{!! Captcha::display($attributes = [
-		'data-type' => 'audio',
-	]) !!}
-	@if ($errors->has('g-recaptcha-response'))
-		<span class="help-block text-danger">
-			<strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-		</span>
-	@endif
-</div>

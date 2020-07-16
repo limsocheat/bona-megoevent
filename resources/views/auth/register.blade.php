@@ -23,7 +23,6 @@ html {
     border-radius: 0px;
     padding: 20px 40px 30px 40px;
     box-sizing: border-box;
-    width: 94%;
     position: relative
 }
 
@@ -45,50 +44,6 @@ html {
 #msform fieldset .form-card {
     text-align: left;
     color: #9E9E9E
-}
-
-#msform input,
-#msform textarea {
-    padding: 0px 8px 4px 8px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    border-radius: 0px;
-    margin-bottom: 25px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    font-size: 16px;
-    letter-spacing: 1px
-}
-
-#msform input:focus,
-#msform textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: none;
-    font-weight: bold;
-    border-bottom: 2px solid #bf9000;
-    outline-width: 0
-}
-
-#msform .action-button {
-    width: 100px;
-    background: #bf9000;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 5px
-}
-
-#msform .action-button:hover,
-#msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #bf9000
 }
 
 #msform .action-button-previous {
@@ -148,30 +103,26 @@ select.list-dt:focus {
 #progressbar li {
     list-style-type: none;
     font-size: 12px;
-    width: 25%;
+    width: 33.3%;
     float: left;
     position: relative
 }
 
-#progressbar #account:before {
+#progressbar #register:before {
     font-family: FontAwesome;
-    content: "\f023"
+    content: "\f234"
 }
 
-#progressbar #personal:before {
+#progressbar #profile:before {
     font-family: FontAwesome;
     content: "\f007"
 }
 
-#progressbar #payment:before {
+#progressbar #company:before {
     font-family: FontAwesome;
-    content: "\f09d"
+    content: "\f1ad"
 }
 
-#progressbar #confirm:before {
-    font-family: FontAwesome;
-    content: "\f00c"
-}
 
 #progressbar li:before {
     width: 50px;
@@ -236,7 +187,7 @@ select.list-dt:focus {
 <!-- MultiStep Form -->
 <div class="container-fluid" id="grad1">
     <div class="row justify-content-center mt-0">
-        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-4 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>Sign Up Your User Account</strong></h2>
                 <p>Fill all form field to go to next step</p>
@@ -245,72 +196,31 @@ select.list-dt:focus {
                         <form id="msform">
                             <!-- progressbar -->
                             <ul id="progressbar">
-                                <li class="active" id="account"><strong>Register</strong></li>
-                                <li id="personal"><strong>Profile</strong></li>
-                                <li id="payment"><strong>Company</strong></li>
-                                <li id="confirm"><strong>Finish</strong></li>
+                                <li class="active" id="register"><strong>Register</strong></li>
+                                <li id="profile"><strong>Profile</strong></li>
+                                <li id="company"><strong>Company</strong></li>
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class="form-card">
-                                     <h2 class="fs-title">Register</h2>
                                      @include('auth.components.singup')
                                 </div> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
+                                <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Profile</h2>
                                     @include('auth.components.profile')
                                 </div>
-                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
-                                 <input type="button" name="next" class="next action-button" value="Next Step" />
+                                 <input type="button" name="previous" class="previous btn btn-secondary" value="Previous" /> 
+                                 <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
-                                    <h2 class="fs-title">Payment Information</h2>
-                                    <div class="radio-group">
-                                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
-                                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div> <br>
-                                    </div> <label class="pay">Card Holder Name*</label> <input type="text" name="holdername" placeholder="" />
-                                    <div class="row">
-                                        <div class="col-9"> <label class="pay">Card Number*</label> <input type="text" name="cardno" placeholder="" /> </div>
-                                        <div class="col-3"> <label class="pay">CVC*</label> <input type="password" name="cvcpwd" placeholder="***" /> </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-3"> <label class="pay">Expiry Date*</label> </div>
-                                        <div class="col-9"> <select class="list-dt" id="month" name="expmonth">
-                                                <option selected>Month</option>
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                                <option>April</option>
-                                                <option>May</option>
-                                                <option>June</option>
-                                                <option>July</option>
-                                                <option>August</option>
-                                                <option>September</option>
-                                                <option>October</option>
-                                                <option>November</option>
-                                                <option>December</option>
-                                            </select> <select class="list-dt" id="year" name="expyear">
-                                                <option selected>Year</option>
-                                            </select> </div>
-                                    </div>
-                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title text-center">Success !</h2> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                    </div> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5>You Have Successfully Signed Up</h5>
-                                        </div>
-                                    </div>
+                                    @include('auth.components.company')
                                 </div>
+                                 <input type="button" name="previous" class="previous btn btn-secondary" value="Previous" /> 
+                                 <input type="button" name="make_company" class="next btn mego-gold-bg" value="Confirm" />
                             </fieldset>
+                          
                         </form>
                     </div>
                 </div>
@@ -407,6 +317,45 @@ select.list-dt:focus {
             $(".upload-button").on('click', function () {
             $(".file-upload").click();
         });
+        //company
+
+         $("#logoImage").change(function() {
+            
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $('#logoPreview').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            }
+               
+        });
+
+        $(".logo-upload-button").on('click', function () {
+        $(".browse-input").click();
+        });
+    
+
+      /***phone number format***/
+    $(".phone-format").keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        return false;
+        }
+        var curchr = this.value.length;
+        var curval = $(this).val();
+        if (curchr == 3 && curval.indexOf("(") <= -1) {
+        $(this).val("(" + curval + ")" + "-");
+        } else if (curchr == 4 && curval.indexOf("(") > -1) {
+        $(this).val(curval + ")-");
+        } else if (curchr == 5 && curval.indexOf(")") > -1) {
+        $(this).val(curval + "-");
+        } else if (curchr == 9) {
+        $(this).val(curval + "-");
+        $(this).attr('maxlength', '14');
+        }
+    });
 
 });
 </script>
