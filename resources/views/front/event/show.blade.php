@@ -13,7 +13,7 @@
 						<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
 							<img class="d-block w-100" src="{{ url('/uploads/' . $event->banners[$i]["image"]) }}"
 								alt="Third slide" class="figure-img img-fluid rounded"
-								style="height: auto; max-height: 600px; width: auto; max-width: 900px">
+								style="height: auto; max-height: 600px; width: auto; max-width: 900px; object-fit: cover;">
 						</div>
 						@endfor
 						@if($event->floor_image)
@@ -188,11 +188,6 @@
 				</div>
 				<div class="tab-pane fade" id="exhibitor" role="tabpanel" aria-labelledby="exhibitor-tab">
 					{!! Form::open(['route' => ['event.exhibitor_registration', $event->name], 'method' => "GET"]) !!}
-					@guest
-					<div class="alert alert-danger" role="alert">
-						You must login or register first!
-					</div>
-					@endguest
 
 					<div class="card">
 						<div class="card-text">
