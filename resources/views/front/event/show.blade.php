@@ -36,8 +36,7 @@
 				</a>
 			</div>
 			@else
-			<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="img-fluid"
-				style="height: auto; max-height: 600px; width: auto; max-width: 900px">
+			<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="img-fluid single-event-feature-image">
 			@endif
 		</div>
 		<div class="event-single-header-right" style="background-color:#f1f1f1;">

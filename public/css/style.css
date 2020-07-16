@@ -670,6 +670,13 @@ img {
    height: auto;
 }
 
+.single-event-feature-image {
+    height: 600px; 
+    max-height: 100%; 
+    width: 900px; 
+    max-width: 100%;
+    object-fit: cover;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -768,6 +775,17 @@ img {
 
     .slider-subtitle {
         display: none;
+    }
+
+    .single-event-feature-image {
+        height: 300px; 
+        max-height: 100%; 
+        width: 900px; 
+        max-width: 100%;
+        object-fit: cover;
+    }
+    #btn-organizer {
+        font-size: 14px !important;
     }
 }
 
