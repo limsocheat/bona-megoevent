@@ -188,11 +188,6 @@
 				</div>
 				<div class="tab-pane fade" id="exhibitor" role="tabpanel" aria-labelledby="exhibitor-tab">
 					{!! Form::open(['route' => ['event.exhibitor_registration', $event->name], 'method' => "GET"]) !!}
-					@guest
-					<div class="alert alert-danger" role="alert">
-						You must login or register first!
-					</div>
-					@endguest
 
 					<div class="card">
 						<div class="card-text">
