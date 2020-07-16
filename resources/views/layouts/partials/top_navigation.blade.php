@@ -101,7 +101,7 @@
                         </li>
                     </div>
                     <div class="col-xs-3">
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Email">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Contact">
                             <a href="{{ route('contact') }}" class="nav-link mego-text-hover">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>
@@ -122,24 +122,22 @@
                             </a>
                         </li>
                     </div>
-                    @guest
-                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Up">
-                        <a href="{{ route('register') }}" class="nav-link mego-text-hover">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign in">
-                        <a href="{{ route('login') }}" class="nav-link mego-text-hover">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    @else
 
-                    <li class="nav-item dropdown ">
+                    <li class="nav-item dropdown">
                         <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
                             data-toggle="dropdown mego-text-hover">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
+                        @guest
+                        <ul class="dropdown-content p-0 mr-auto ml-auto">
+                            <li>
+                                <a href="{{ route('login') }}">Login</a>
+                                </a>
+                            <li>
+                                <a href="{{ route('register')}}">Sign Up</a>
+                            </li>
+                        </ul>
+                        @else
                         <ul class="dropdown-content p-0 mr-auto ml-auto">
                             <li>
                                 <a href="{{ route('manage.profile.index') }}">Profile</a>
@@ -151,8 +149,11 @@
                                 <a href="{{ route('manage.event.index')}}">Event</a>
                             </li>
                         </ul>
+                        @endguest
                     </li>
 
+                    @guest
+                    @else
                     <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
                         <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                             class="nav-link mego-text-hover">

@@ -5,7 +5,7 @@
     }
 
     .navbar .mego-dropdown-menu {
-        height: 400px;
+        height: 450px;
         width: auto;
         max-height: 100%;
         border: none;
@@ -15,7 +15,7 @@
 
     .navbar .mego-dropdown-menu .mego-column1 {
         border: none;
-        height: 400px;
+        height: 450px;
         width: auto;
         max-height: 100%;
         color: white;
@@ -24,7 +24,7 @@
 
     .navbar .mego-dropdown-menu .mego-bg-mega {
         border: none;
-        height: 400px;
+        height: 450px;
         width: auto;
         max-height: 100%;
         color: black;
@@ -98,47 +98,40 @@
                         <div class="dropdown-menu mego-dropdown-menu bg-none" aria-labelledby="navbarDropdown"
                             style="margin-top: -7px; ">
                             <div class=" container">
-
-                                <div class="col-md-3 mego-column1 rounded-left">
-                                    <h2>Infocomm Media Landscape</h2>
+                                <div class="col-md-3 mego-column1 rounded-left py-3">
+                                    <h2>About Us</h2>
                                     <p class="title">More than a growth engine, ICM transforms industries for the
                                         future.</p>
                                 </div>
-                                <div class="col-md-4 mego-bg-mega bg-white">
-                                    <h2>Infocomm Media Landscape</h2>
-                                    <p class="title">More than a growth engine, ICM transforms industries for the
-                                        future.More than a growth engine, ICM transforms industries for the</p>
+                                <div class="col-md-3 mego-bg-mega bg-white py-3">
+                                    @inject('event_category', 'App\Models\EventCategory')
+                                    @php
+                                    $event_categories = $event_category::select('*')->limit(4)->get();
+                                    @endphp
+                                    <h2 class="ml-3">Event Categories</h2>
+                                    <ul class="list-group list-group-flush">
+                                        @foreach ($event_categories as $event_category)
+                                        <a href="{{ route('events') }}" class="list-group-item text-left">
+                                            {{ $event_category->name }}
+                                        </a>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <div class="col-md-5 mego-bg-mega rounded-right"
+                                <div class="col-md-6 mego-bg-mega rounded-right py-3"
                                     style="border-left: 2px solid #ceba48;">
-                                    <h2>Highlights</h2>
-                                    <hr>
-                                    <p class="title">More than a growth engine, ICM transforms industries for the
-                                        future.</p>
+                                    <h2 class="ml-3">Highlights</h2>
+                                    @inject('event', 'App\Models\Event')
+                                    @php
+                                    $events = $event::select('*')->limit(2)->get();
+                                    @endphp
                                     <div class="row container">
+                                        @foreach ($events as $event)
                                         <div class="col-md-6">
-                                            <img class="mego-img"
-                                                src="https://www.imda.gov.sg/-/media/Imda/Images/Content/Infocomm-Media-Landscape/SG-Digital-Office/SGDOffice-Seniors-Mobile.jpg?h=400&w=600&la=en&hash=59D03AEDCF227725DC6B01B0741A8FDD3AA82E7B"
-                                                alt="">
-                                            <a href="#" class="text-center mego-text-gold">SG Digital Office – Life is
-                                                more colourful
-                                                with digital</a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <img class="mego-img"
-                                                src="https://www.imda.gov.sg/-/media/Imda/Images/Content/Featured/infocomm-media-landscape-3.jpg?h=168&w=300&la=en&hash=78BC7A4A11975633B8110FA848C0D34F9345A377"
-                                                alt="">
-                                            <a href="#" class="text-center mego-text-gold">Services 4.0 – Envisioning
-                                                the
-                                                Future of
-                                                Services</a>
-                                        </div>
+                                            @include('front.components.event.card')</div>
+                                        @endforeach
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </li>
@@ -146,9 +139,6 @@
             <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
                 <li class="nav-item ">
                     <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
-                    <a href="{{route('contact')}}" class="nav-link nav-link-right pr-0 mr-0">Contact</a>
                 </li>
             </ul>
         </div>

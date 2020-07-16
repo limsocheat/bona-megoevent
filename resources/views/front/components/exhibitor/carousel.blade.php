@@ -1,9 +1,4 @@
 <style>
-    h2 {
-        text-align: center;
-        padding: 20px;
-    }
-
     /* Slider */
 
     .slick-slide {
