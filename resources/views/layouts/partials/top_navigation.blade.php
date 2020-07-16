@@ -124,12 +124,11 @@
                     </div>
 
                     <li class="nav-item dropdown">
-                        <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
-                            data-toggle="dropdown mego-text-hover">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown mego-text-hover">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
                         @guest
-                        <ul class="dropdown-content p-0 mr-auto ml-auto">
+                        <ul class="dropdown-content rounded p-0 mr-auto dropdown-menu-lg-right">
                             <li>
                                 <a href="{{ route('login') }}">Login</a>
                                 </a>
@@ -138,7 +137,7 @@
                             </li>
                         </ul>
                         @else
-                        <ul class="dropdown-content p-0 mr-auto ml-auto">
+                        <ul class="dropdown-content rounded p-0 ml-auto">
                             <li>
                                 <a href="{{ route('manage.profile.index') }}">Profile</a>
                                 </a>

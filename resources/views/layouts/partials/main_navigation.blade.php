@@ -19,7 +19,7 @@
         width: auto;
         max-height: 100%;
         color: white;
-        background-color: #6f358d !important;
+        background-color: #c20000 !important;
     }
 
     .navbar .mego-dropdown-menu .mego-bg-mega {
