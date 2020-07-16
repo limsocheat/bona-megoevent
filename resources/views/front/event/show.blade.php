@@ -13,7 +13,7 @@
 						<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
 							<img class="d-block w-100" src="{{ url('/uploads/' . $event->banners[$i]["image"]) }}"
 								alt="Third slide" class="figure-img img-fluid rounded"
-								style="height: auto; max-height: 600px; width: auto; max-width: 900px">
+								style="height: auto; max-height: 600px; width: auto; max-width: 900px; object-fit: cover;">
 						</div>
 						@endfor
 						@if($event->floor_image)
