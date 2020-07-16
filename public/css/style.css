@@ -108,7 +108,7 @@ body a:hover {
 }
 
 /* .navbar-nav .dropdown-content {
-            y
+            
         } */
 
 .dropdown-content {
@@ -116,14 +116,16 @@ body a:hover {
     position: fixed;
     float: left;
     background-color: #ffffff;
-    min-width: 170px;
-    min-height: 150px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     border-bottom: none;
     z-index: 1111;
 }
 
 .dropdown .dropdown-content li {
-    padding: 10px 16px;
+    padding: 10px 25px;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -705,14 +707,14 @@ img {
         display: none;
         position: fixed;
         float: left;
-        right: 20px;
         background-color: #ffffff;
-        min-width: 170px;
-        min-height: 150px;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
         border-bottom: none;
         z-index: 1111;
     }
-
     .event-single-header {
         display: flex;
         flex-direction: column;
