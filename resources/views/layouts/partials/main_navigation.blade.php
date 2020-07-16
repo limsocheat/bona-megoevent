@@ -147,9 +147,6 @@
                 <li class="nav-item ">
                     <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
                 </li>
-                <li class="nav-item  {{ Request::routeIs('contact') ? 'active' : ''}}">
-                    <a href="{{route('contact')}}" class="nav-link nav-link-right pr-0 mr-0">Contact</a>
-                </li>
             </ul>
         </div>
     </div>

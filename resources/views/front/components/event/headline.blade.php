@@ -70,6 +70,7 @@
 	</div>
 	<div class="px-3">
 		<p id="multi-line-truncate">{{$event->description}}</p>
+		<a href="#event-description">Read More</a>
 	</div>
 	<div class="px-3 pb-3">
 		<div class="mb-4">

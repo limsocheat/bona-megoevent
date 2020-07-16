@@ -96,7 +96,7 @@
 
 	</div>
 
-	<div class="row py-2">
+	<div class="row py-2" id="event-description">
 		<div class="col-md-6 py-4">
 			<div class="py-3">
 				<h5 class="font-weight-bold">Event Description:</h5>

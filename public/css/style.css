@@ -53,8 +53,13 @@
     text-transform: capitalize;
     position: relative;
     text-align: center;
-    padding: 18px 15px;
+    padding: 18px 8px;
 }
+
+#top-navigation .navbar-nav li a i{
+    font-size: 120%;
+}
+
 
 #top-navigation a.nav-link-left {
     padding-left: 0 !important;

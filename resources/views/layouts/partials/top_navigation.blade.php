@@ -101,7 +101,7 @@
                         </li>
                     </div>
                     <div class="col-xs-3">
-                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Email">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Contact">
                             <a href="{{ route('contact') }}" class="nav-link mego-text-hover">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </a>
