@@ -118,13 +118,13 @@
                                 <ul class="dropdown-content p-0 mr-auto ml-auto dropdown-menu dropdown-menu-right">
                                     <li>
                                         <a href="{{ route('login') }}">Login</a>
-
+                                        </a>
                                     <li>
                                         <a href="{{ route('register')}}">Sign Up</a>
                                     </li>
                                 </ul>
                                 @else
-                                <ul class="dropdown-content p-0 mr-auto ml-auto">
+                                <ul class="dropdown-content p-0 mr-auto ml-auto dropdown-menu dropdown-menu-right">
                                     <li>
                                         <a href="{{ route('manage.profile.index') }}">Profile</a>
                                         </a>
