@@ -1,3 +1,83 @@
+<style type="text/css">
+    #top-navigation .popup-box-on {
+        display: block !important;
+    }
+
+    #top-navigation .off {
+        display: none;
+    }
+
+    #top-navigation .chat_box .chat_message_wrapper ul.chat_message>li+li {
+        margin-top: 4px;
+    }
+
+    #top-navigation #search.open {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1, 1);
+    }
+
+    #top-navigation #search {
+        background-color: #fff;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        transition: all 0.5s ease-in-out 0s;
+        width: 100%;
+        z-index: 2000;
+
+    }
+
+    #top-navigation #search .close {
+        color: #be5254;
+        font-size: 40px;
+        opacity: 1;
+        padding: 10px 17px;
+        position: fixed;
+        right: 15px;
+        top: 15px;
+    }
+
+    #top-navigation button.close {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        cursor: pointer;
+    }
+
+    #top-navigation .close {
+        float: right;
+        font-weight: bold;
+        line-height: 1;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+    #top-navigation #search input[type="text"] {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        border: 0 none;
+        color: #333;
+        font-family: "Open Sans", sans-serif;
+        font-size: 50px;
+        font-weight: 300;
+        margin: -51px auto 0;
+        outline: medium none;
+        padding-left: 30px;
+        padding-right: 30px;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+    }
+
+    #top-navigation #search .btn {
+        left: 50%;
+        margin-top: 60px;
+        padding: 10px 50px;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+
 <nav id="top-navigation"
     class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
     <div class="container pr-0">
@@ -13,8 +93,9 @@
                     </div>
 
                     <div class="col-xs-3">
-                        <li class="nav-item actives" data-toggle="tooltip" data-placement="bottom" title="Search">
-                            <a href="{{ route('search') }}" class="nav-link .heavy-rain-gradient mego-text-hover">
+                        <li class="nav-item actives s-icon" data-toggle="tooltip" data-placement="bottom"
+                            title="Search">
+                            <a href="#" id="addClass" class="nav-link .heavy-rain-gradient mego-text-hover">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </a>
                         </li>
@@ -86,4 +167,27 @@
             </ul>
         </div>
     </div>
+    <div id="qnimate" class="off">
+        <div id="search" class="open">
+            <button data-widget="remove" id="removeClass" class="close" type="button">×</button>
+            <form action="{{ route('search') }}" autocomplete="off">
+                <input type="text" placeholder="Type search keywords here" value="" name="keyword" id="keyword">
+                <button class="btn btn-lg mego-gold-bg" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                    Search</button>
+            </form>
+        </div>
+    </div>
 </nav>
+
+
+<script>
+    $(document).ready(function() {
+        $("#addClass").click(function () {
+        $('#qnimate').addClass('popup-box-on');
+        });
+        
+        $("#removeClass").click(function () {
+        $('#qnimate').removeClass('popup-box-on');
+        });
+    });
+</script>

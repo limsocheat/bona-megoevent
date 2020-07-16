@@ -42,18 +42,6 @@
     /* breakpoint and up - mega dropdown styles */
     @media screen and (min-width: 992px) {
 
-        /* remove the padding from the navbar so the dropdown hover state is not broken */
-        .navbar {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
-
-        /* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
-        .navbar .nav-item {
-            padding: .5rem .5rem;
-            margin: 0 .25rem;
-        }
-
         .mego-text-gold {
             color: #C5B358;
         }
@@ -77,9 +65,6 @@
 
         }
 
-
-
-
         /* shows the dropdown menu on hover */
         .navbar .dropdown:hover .dropdown-menu,
         .navbar .dropdown .mego-dropdown-menu:hover {
@@ -88,11 +73,6 @@
             opacity: 1;
             transition: visibility 0s, opacity 0.3s linear;
         }
-
-        /* .navbar .dropdown-menu {
-            border: 1px solid rgba(0, 0, 0, .15);
-            background-color: rgb(17, 17, 17);
-        } */
 
     }
 </style>
@@ -111,17 +91,13 @@
                     <a href="{{ route('index') }}" class="nav-link nav-link-left pl-0 ml-0">Home</a>
                 </li>
                 <li
-                    class="nav-item {{ Route::currentRouteName() == 'upcoming' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
-                    <a href="{{ route('upcoming') }}" class="nav-link">Upcoming Events</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
+                    class="nav-item dropdown {{ Route::currentRouteName() == 'events' || Route::currentRouteName() == 'event' ? 'active' : ''}}">
+                    <a href="{{ route('events') }}" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Upcoming Events</a>
                     <div class="row">
-                        <div class="dropdown-menu mego-dropdown-menu bg-none" aria-labelledby="navbarDropdown">
-                            <div class="container">
+                        <div class="dropdown-menu mego-dropdown-menu bg-none" aria-labelledby="navbarDropdown"
+                            style="margin-top: -7px; ">
+                            <div class=" container">
 
                                 <div class="col-md-3 mego-column1 rounded-left">
                                     <h2>Infocomm Media Landscape</h2>
@@ -189,7 +165,18 @@
                 $( ".navbar .dropdown-menu" ).mouseleave(function() {
                     $(this).removeClass("show");
                 });
+
+                $('.navbar .dropdown > a').click(function(){
+                    location.href = this.href;
+                });
+            } else {
+                $('.navbar .dropdown > a').click(function(){
+                    return;
+                });
             }
+        });
+        $('.navbar .dropdown > a').click(function(){
+            location.href = this.href;
         });
     });
 </script>
