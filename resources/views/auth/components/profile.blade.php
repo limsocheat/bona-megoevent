@@ -1,4 +1,4 @@
-<div class="form-group" style="height: 110px;">
+<div class="form-group">
 	<div class="mego-avatar-wrapper">
 		<img class="profile-pic" src="http://simpleicon.com/wp-content/uploads/account.png" />
 		<div class="upload-button">
@@ -8,14 +8,14 @@
 	</div>
 </div>
 <div class="form-group">
-	{!! Form::label('profile[first_name]', 'First Name *') !!}
-	{!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class'=> 'form-control', 'required' =>
-	true])!!}
+	<label for="first_name" class="wizard-form-text-label">First Name*</label>
+	<input type="text" class="form-control wizard-required" name="profile[first_name]" id="first_name">
+	<div class="wizard-form-error"></div>
 </div>
 <div class="form-group">
-	{!! Form::label('profile[last_name]', 'Last Name *') !!}
-	{!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' =>'form-control', 'required' =>
-	true]) !!}
+	<label for="last_name" class="wizard-form-text-label">Last Name*</label>
+	<input type="text" class="form-control wizard-required" name="profile[last_name]" id="last_name">
+	<div class="wizard-form-error"></div>
 </div>
 <div class="form-group">
 	{!! Form::label('profile[job_title]', 'Job Title') !!}

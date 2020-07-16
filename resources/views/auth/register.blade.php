@@ -2,303 +2,318 @@
 
 @section('title', 'Register')
 <style>
-    #mego-multi-step #msform {
-        text-align: center;
-        position: relative;
-        margin-top: 20px
-    }
-
-    #mego-multi-step #msform fieldset .form-card {
-        border: 0 none;
-        border-radius: 0px;
-        padding: 20px 40px 30px 40px;
-        box-sizing: border-box;
-        position: relative
-    }
-
-    #mego-multi-step #msform fieldset {
-        background: white;
-        border: 0 none;
-        border-radius: 0.5rem;
-        box-sizing: border-box;
-        width: 100%;
-        margin: 0;
-        padding-bottom: 20px;
-        position: relative
-    }
-
-    #mego-multi-step #msform fieldset:not(:first-of-type) {
-        display: none
-    }
-
-    #mego-multi-step #msform fieldset .form-card {
-        text-align: left;
-        color: #9E9E9E
-    }
-
-    #mego-multi-step #msform .action-button-previous {
-        width: 100px;
-        background: #616161;
-        font-weight: bold;
-        color: white;
-        border: 0 none;
-        border-radius: 0px;
-        cursor: pointer;
-        padding: 10px 5px;
-        margin: 10px 5px
-    }
-
-    #mego-multi-step #msform .action-button-previous:hover,
-    #mego-multi-step #msform .action-button-previous:focus {
-        box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
-    }
-
-    #mego-multi-step select.list-dt {
-        border: none;
-        outline: 0;
-        border-bottom: 1px solid #ccc;
-        padding: 2px 5px 3px 5px;
-        margin: 2px
-    }
-
-    #mego-multi-step select.list-dt:focus {
-        border-bottom: 2px solid #bf9000
-    }
-
-    #mego-multi-step .card {
-        z-index: 0;
-        border: none;
-        border-radius: 0.5rem;
-        position: relative
-    }
-
-    #mego-multi-step .fs-title {
-        font-size: 25px;
-        color: #2C3E50;
-        margin-bottom: 10px;
-        font-weight: bold;
-        text-align: left
-    }
-
-    #mego-multi-step #progressbar {
-        margin-bottom: 30px;
-        overflow: hidden;
-        color: lightgrey
-    }
-
-    #mego-multi-step #progressbar .active {
-        color: #000000
-    }
-
-    #mego-multi-step #progressbar li {
-        list-style-type: none;
-        font-size: 12px;
-        width: 30%;
-        float: left;
-        position: relative
-    }
-
-    #mego-multi-step #progressbar #register:before {
-        font-family: FontAwesome;
-        content: "\f234"
-    }
-
-    #mego-multi-step #progressbar #profile:before {
-        font-family: FontAwesome;
-        content: "\f007"
-    }
-
-    #mego-multi-step #progressbar #company:before {
-        font-family: FontAwesome;
-        content: "\f1ad"
-    }
 
 
-    #mego-multi-step #progressbar li:before {
-        width: 50px;
-        height: 50px;
-        line-height: 45px;
-        display: block;
-        font-size: 18px;
-        color: #ffffff;
-        background: lightgray;
-        border-radius: 50%;
-        margin: 0 auto 10px auto;
-        padding: 2px
-    }
+.form-wizard {
+  color: #888888;
+  padding: 30px;
+}
+.form-wizard .wizard-form-radio {
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+}
+.form-wizard .wizard-form-radio input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-color: #dddddd;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:focus {
+  outline: 0;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked {
+  background-color: #fb1647;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 1px;
+  right: 0;
+  margin: 0 auto;
+  top: 8px;
+}
 
-    #mego-multi-step #progressbar li:after {
-        content: '';
-        width: 100%;
-        height: 2px;
-        background: lightgray;
-        position: absolute;
-        left: 0;
-        top: 25px;
-        z-index: -1
-    }
+.form-wizard .wizard-form-radio input[type="radio"] ~ label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.form-wizard .form-wizard-header {
+  text-align: center;
+}
 
-    #mego-multi-step #progressbar li.active:before,
-    #mego-multi-step #progressbar li.active:after {
-        background: #bf9000
-    }
+.form-wizard .wizard-fieldset {
+  display: none;
+}
+.form-wizard .wizard-fieldset.show {
+  display: block;
+}
+.form-wizard .wizard-form-error {
+  display: none;
+  background-color: #d70b0b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
 
-    #mego-multi-step .radio-group {
-        position: relative;
-        margin-bottom: 25px
-    }
+.form-wizard .form-control {
+  font-weight: 300;
+  height: auto !important;
+  padding: 15px;
+  color: #888888;
+  background-color: #f1f1f1;
+  border: none;
+}
+.form-wizard .form-control:focus {
+  box-shadow: none;
+}
+.form-wizard .form-group {
+  position: relative;
+  margin: 25px 0;
+}
+/* .form-wizard .wizard-form-text-label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  transition: 0.2s linear all;
+}
+.form-wizard .focus-input .wizard-form-text-label {
+  color: #c5b358;
+  top: -18px;
+  transition: 0.2s linear all;
+  font-size: 12px;
+} */
+.form-wizard .form-wizard-steps {
+  margin: 30px 0;
+}
+.form-wizard .form-wizard-steps li {
+  width: 33%;
+  float: left;
+  position: relative;
+}
+.form-wizard .form-wizard-steps li::after {
+  background-color: #f3f3f3;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+.form-wizard .form-wizard-steps li span {
+  background-color: #dddddd;
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 1;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  width: 50%;
+}
+.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+  background-color: #c5b358;
+  color: #ffffff;
+}
+.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+  background-color: #c5b358;
+  left: 50%;
+  width: 50%;
+  border-color: #c5b358;
+}
+.form-wizard .form-wizard-steps li.activated::after {
+  width: 100%;
+  border-color: #c5b358;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  left: 0;
+}
+.form-wizard .wizard-password-eye {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 
-    #mego-multi-step .radio {
-        display: inline-block;
-        width: 204;
-        height: 104;
-        border-radius: 0;
-        background: lightblue;
-        box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-        box-sizing: border-box;
-        cursor: pointer;
-        margin: 8px 2px
-    }
 
-    #mego-multi-step .radio:hover {
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
-    }
-
-    #mego-multi-step .radio.selected {
-        box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
-    }
-
-    #mego-multi-step .fit-image {
-        width: 100%;
-        object-fit: cover
-    }
 </style>
 @section('content')
-<!-- MultiStep Form -->
-<div class="container-fluid" id="mego-multi-step">
-    <div class="row justify-content-center mt-0">
-        <div class="col-11 col-sm-9 col-md-7 col-lg-4 text-center p-0 mt-3 mb-2">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2><strong>Sign Up Your User Account</strong></h2>
-                <p>Fill all form field to go to next step</p>
 
-                @if (count($errors) > 0)
-                <div class="alert alert-danger text-left">
-                    <strong>Sorry!</strong> Please check your input again.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                <div class="row">
-                    <div class="col-md-12 mx-0">
-                        {!! Form::open(['route' => 'register', 'method' => 'POST', 'id' => 'msform', 'files' => true])
-                        !!}
-                        <!-- progressbar -->
-                        <ul id="progressbar">
-                            <li class="active" id="register"><strong>Register</strong></li>
-                            <li id="profile"><strong>Profile</strong></li>
-                            <li id="company"><strong>Company</strong></li>
-                        </ul> <!-- fieldsets -->
-                        <fieldset>
-                            <div class="form-card">
-                                @include('auth.components.singup')
-                            </div>
-                            <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step"
-                                id="signup-basic" />
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-card">
-                                @include('auth.components.profile')
-                            </div>
-                            <input type="button" name="previous" class="previous btn btn-secondary" value="Previous" />
-                            <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step"
-                                id="signup-profile" />
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-card">
-                                @include('auth.components.company')
-                            </div>
-                            <input type="button" name="previous" class="previous btn btn-secondary" value="Previous" />
-                            <input type="submit" class="next btn mego-gold-bg" value="Register" id="signup-company" />
-                        </fieldset>
-
-                        {!! Form::close() !!}
+	<div class="container py-4">
+        <div class="row justify-content-center">	
+            <div class="col-lg-8 col-md-8">
+                <div class="form-wizard">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="" method="post" role="form">
+                                <div class="form-wizard-header">
+                                     <h2><strong>Sign Up Your User Account</strong></h2>
+                                    <p>Fill all form field to go next step</p>
+                                    <ul class="list-unstyled form-wizard-steps clearfix">
+                                        <li class="active"><span>1</span></li>
+                                        <li><span>2</span></li>
+                                        <li><span>3</span></li>
+                                    </ul>
+                                </div>
+                                <fieldset class="wizard-fieldset show">
+                                    <h5>Personal Information</h5>
+                                      @include('auth.components.singup')
+                                    <div class="form-group clearfix">
+                                        <a href="javascript:;" class=" form-wizard-next-btn btn mego-gold-bg btn-lg float-right">Next</a>
+                                    </div>
+                                </fieldset>	
+                                <fieldset class="wizard-fieldset">
+                                    <h5>Profile</h5>
+                                     @include('auth.components.profile')
+                                    <div class="form-group clearfix">
+                                        <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary btn-lg float-left">Previous</a>
+                                        <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg btn-lg  float-right">Next</a>
+                                    </div>
+                                </fieldset>	
+                                <fieldset class="wizard-fieldset">
+                                    <h5>Company Profile</h5>
+                                    @include('auth.components.company')
+                                    <div class="form-group clearfix">
+                                        <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
+                                        <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg btn-lg  float-right">Next</a>
+                                    </div>
+                                </fieldset>	
+                               
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- /.MultiStep Form -->
+	</div>
+	
+
+
+
 <script type="text/javascript">
-    $(document).ready(function(){
-            var current_fs, next_fs, previous_fs;
-            var opacity;
+  jQuery(document).ready(function() {
+	// click on next button
+	jQuery('.form-wizard-next-btn').click(function() {
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		var next = jQuery(this);
+		var nextWizardStep = true;
+		parentFieldset.find('.wizard-required').each(function(){
+			var thisValue = jQuery(this).val();
 
-            $(".next").click(function(){
-
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
-
-                //Add Class Active
-                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-                next_fs.show();
-                current_fs.animate({opacity: 0}, {
-                    step: function(now) {
-                    opacity = 1 - now;
-
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    next_fs.css({'opacity': opacity});
-                    },
-                    duration: 600
-                });
-            });
-
-            $(".previous").click(function(){
-
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
-
-            //Remove class active
-            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-            //show the previous fieldset
-            previous_fs.show();
-
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-            step: function(now) {
-            // for making fielset appear animation
-            opacity = 1 - now;
-
-            current_fs.css({
-            'display': 'none',
-            'position': 'relative'
-            });
-            previous_fs.css({'opacity': opacity});
-            },
-            duration: 600
-            });
-            });
-
-            $('.radio-group .radio').click(function(){
-            $(this).parent().find('.radio').removeClass('selected');
-            $(this).addClass('selected');
-            });
-
-            $(".submit").click(function(){
-            return false;
-            });
-
-
-// upload profile image
+			if( thisValue == "") {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+				nextWizardStep = false;
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+		if( nextWizardStep) {
+			next.parents('.wizard-fieldset').removeClass("show","400");
+			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
+			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
+			jQuery(document).find('.wizard-fieldset').each(function(){
+				if(jQuery(this).hasClass('show')){
+					var formAtrr = jQuery(this).attr('data-tab-content');
+					jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+						if(jQuery(this).attr('data-attr') == formAtrr){
+							jQuery(this).addClass('active');
+							var innerWidth = jQuery(this).innerWidth();
+							var position = jQuery(this).position();
+							jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+						}else{
+							jQuery(this).removeClass('active');
+						}
+					});
+				}
+			});
+		}
+	});
+	//click on previous button
+	jQuery('.form-wizard-previous-btn').click(function() {
+		var counter = parseInt(jQuery(".wizard-counter").text());;
+		var prev =jQuery(this);
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		prev.parents('.wizard-fieldset').removeClass("show","400");
+		prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
+		currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
+		jQuery(document).find('.wizard-fieldset').each(function(){
+			if(jQuery(this).hasClass('show')){
+				var formAtrr = jQuery(this).attr('data-tab-content');
+				jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+					if(jQuery(this).attr('data-attr') == formAtrr){
+						jQuery(this).addClass('active');
+						var innerWidth = jQuery(this).innerWidth();
+						var position = jQuery(this).position();
+						jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+					}else{
+						jQuery(this).removeClass('active');
+					}
+				});
+			}
+		});
+	});
+	//click on form submit button
+	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			if( thisValue == "" ) {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+	});
+	// focus on input field check empty or not
+	jQuery(".form-control").on('focus', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().addClass("focus-input");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+		}
+	}).on('blur', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().removeClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideDown("3000");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideUp("3000");
+		}
+    });
+    // upload profile image
         var readURL = function (input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -357,6 +372,10 @@
         }
     });
 
+
+    
 });
+
+
 </script>
 @endsection
