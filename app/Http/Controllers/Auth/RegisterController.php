@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Country;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Utils\Uploader;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
@@ -29,6 +32,8 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    protected $uploader;
+
     /**
      * Where to redirect users after registration.
      *
@@ -41,8 +46,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Uploader $uploader)
     {
+
+        $this->uploader = $uploader;
         $this->middleware('guest');
     }
 
@@ -55,10 +62,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'g-recaptcha-response' => 'required|captcha',
+            'email'                 => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'              => ['required', 'string', 'min:8', 'confirmed'],
+            'type'                  => ['required'],
+            'g-recaptcha-response'  => 'required | captcha',
+            'profile.first_name'    => ['required'],
+            'profile.last_name'     => ['required'],
         ]);
     }
 
@@ -70,23 +79,51 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-       
+        DB::beginTransaction();
+
+        try {
+            $user = User::create([
+                'name'      => $data['email'],
+                'email'     => $data['email'],
+                'password'  => Hash::make($data['password']),
+                'type'      => $data['type'],
+            ]);
+
+            $profile        = $data['profile'];
+            if (array_key_exists('profile', $data) && array_key_exists('image', $data['profile'])) {
+                $profile['avatar'] = $this->uploader->uploadImage($data['profile']['image']);
+            }
+
+            $user->profile()->updateOrCreate([], $profile);
+
+            if ($data['type'] == 'company') {
+                $company             = $data['company'];
+
+                if (array_key_exists('company', $data) && array_key_exists('logo', $data['company'])) {
+                    $company['logo'] =  $this->uploader->uploadImage($data['company']['logo']);
+                }
+
+                $user->company()->updateOrCreate([], $company);
+            }
+
+            DB::commit();
+            return $user;
+        } catch (\Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     public function showRegistrationForm()
     {
         $roles      = Role::select('*')->where('name', '!=', 'administrator')->get();
-         $Country   = Country::select('id', 'name')->pluck('name', 'id');
+        $Country   = Country::select('id', 'name')->pluck('name', 'id');
 
         return view('auth.register', [
             'roles' => $roles,
             'countries' => $Country
-            ]);
+        ]);
     }
 
     public function register(Request $request)
