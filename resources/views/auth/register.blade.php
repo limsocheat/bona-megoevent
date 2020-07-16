@@ -181,7 +181,7 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>Sign Up Your User Account</strong></h2>
                 <p>Fill all form field to go to next step</p>
-                 
+
                 @if (count($errors) > 0)
                 <div class="alert alert-danger text-left">
                     <strong>Sorry!</strong> Please check your input again.<br><br>
@@ -191,7 +191,7 @@
                         @endforeach
                     </ul>
                 </div>
-                        @endif
+                @endif
                 <div class="row">
                     <div class="col-md-12 mx-0">
                         {!! Form::open(['route' => 'register', 'method' => 'POST', 'id' => 'msform', 'files' => true])
@@ -206,21 +206,23 @@
                             <div class="form-card">
                                 @include('auth.components.singup')
                             </div>
-                            <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step" />
+                            <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step"
+                                id="signup-basic" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
                                 @include('auth.components.profile')
                             </div>
                             <input type="button" name="previous" class="previous btn btn-secondary" value="Previous" />
-                            <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step" />
+                            <input type="button" name="next" class="next  btn mego-gold-bg" value="Next Step"
+                                id="signup-profile" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
                                 @include('auth.components.company')
                             </div>
                             <input type="button" name="previous" class="previous btn btn-secondary" value="Previous" />
-                            <input type="submit" class="next btn mego-gold-bg" value="Register" />
+                            <input type="submit" class="next btn mego-gold-bg" value="Register" id="signup-company" />
                         </fieldset>
 
                         {!! Form::close() !!}
@@ -233,34 +235,30 @@
 <!-- /.MultiStep Form -->
 <script type="text/javascript">
     $(document).ready(function(){
-
-            var current_fs, next_fs, previous_fs; //fieldsets
+            var current_fs, next_fs, previous_fs;
             var opacity;
 
             $(".next").click(function(){
 
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
 
-            //Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-            //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-            step: function(now) {
-            // for making fielset appear animation
-            opacity = 1 - now;
+                next_fs.show();
+                current_fs.animate({opacity: 0}, {
+                    step: function(now) {
+                    opacity = 1 - now;
 
-            current_fs.css({
-            'display': 'none',
-            'position': 'relative'
-            });
-            next_fs.css({'opacity': opacity});
-            },
-            duration: 600
-            });
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({'opacity': opacity});
+                    },
+                    duration: 600
+                });
             });
 
             $(".previous").click(function(){
