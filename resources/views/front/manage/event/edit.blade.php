@@ -8,6 +8,13 @@
     <div class="container py-4">
 
         <div class="row">
+            <div class="col-md-12">
+                @if (\Session::has('error'))
+                <div class="alert alert-error">
+                    {!! \Session::get('error') !!}
+                </div>
+                @endif
+            </div>
             <div class="col-md-6">
                 <h1 class="float-left">Edit Event</h1>
                 <div
@@ -84,8 +91,6 @@
                                         none;']) !!}
                                     </div>
                                 </div>
-                                {!! Form::file('image', ['id' => 'feature-image-uploader', 'style' => 'display: none;'])
-                                !!}
                             </div>
 
                             <div class="col-md-12 pt-3">
