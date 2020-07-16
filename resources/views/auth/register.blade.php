@@ -93,7 +93,7 @@
     #mego-multi-step #progressbar li {
         list-style-type: none;
         font-size: 12px;
-        width: 33.3%;
+        width: 30%;
         float: left;
         position: relative
     }
@@ -181,6 +181,19 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>Sign Up Your User Account</strong></h2>
                 <p>Fill all form field to go to next step</p>
+                 
+                @if (count($errors) > 0)
+                <div class="alert alert-danger text-left">
+                    <strong>Sorry!</strong> Please check your input again.<br><br>
+                    <ul>
+                        @if($errors->has())
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+                        @endif
                 <div class="row">
                     <div class="col-md-12 mx-0">
                         {!! Form::open(['route' => 'register', 'method' => 'POST', 'id' => 'msform', 'files' => true])
