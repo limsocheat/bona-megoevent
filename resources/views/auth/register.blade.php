@@ -186,11 +186,9 @@
                 <div class="alert alert-danger text-left">
                     <strong>Sorry!</strong> Please check your input again.<br><br>
                     <ul>
-                        @if($errors->has())
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        @endif
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
                     </ul>
                 </div>
                         @endif

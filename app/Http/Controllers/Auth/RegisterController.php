@@ -110,7 +110,6 @@ class RegisterController extends Controller
             return $user;
         } catch (\Exception $e) {
             DB::rollback();
-            dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
