@@ -103,7 +103,6 @@ class EventController extends Controller
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
             'category_id'           => 'required|exists:event_categories,id',
-            'location_id'           => 'required|exists:locations,id',
             'start_date'            => 'required',
             'start_time'            => 'required',
             'end_date'              => 'required',
@@ -242,7 +241,6 @@ class EventController extends Controller
             'name'                  => 'required',
             'type_id'               => 'required|exists:event_types,id',
             'category_id'           => 'required|exists:event_categories,id',
-            'location_id'           => 'required|exists:locations,id',
         ]);
 
         DB::beginTransaction();

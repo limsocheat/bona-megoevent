@@ -14,11 +14,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('location_id', 'Event Location') !!}
-    {!! Form::select('location_id', $event_locations, null, ['class'  => 'form-control']) !!}
-</div>
-
-<div class="form-group">
     {!! Form::label('description', 'Description') !!}
     {!! Form::textarea('description', null, ['class' =>'form-control']) !!}
 </div>
