@@ -1,5 +1,5 @@
 <div class="form-group">
-	{!! Form::label('type', 'Type') !!}
+	{!! Form::label('type', 'Type *') !!}
 	{!! Form::select('type', ['individual' => 'Individual', 'company' => 'Company'], null,['placeholder' => 'Select',
 	'class' => 'form-control']) !!}
 </div>

@@ -2,7 +2,7 @@
     .event-feature-image {
         max-height: 100%;
         height: auto;
-        height: 200px;
+        height: 180px;
         width: 100%;
         object-fit: cover;
     }

@@ -8,12 +8,12 @@
 	</div>
 </div>
 <div class="form-group">
-	{!! Form::label('profile[first_name]', 'First Name') !!}
+	{!! Form::label('profile[first_name]', 'First Name *') !!}
 	{!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class'=> 'form-control', 'required' =>
 	true])!!}
 </div>
 <div class="form-group">
-	{!! Form::label('profile[last_name]', 'Last Name') !!}
+	{!! Form::label('profile[last_name]', 'Last Name *') !!}
 	{!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' =>'form-control', 'required' =>
 	true]) !!}
 </div>

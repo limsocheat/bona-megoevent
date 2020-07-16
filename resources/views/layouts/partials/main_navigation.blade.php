@@ -57,7 +57,6 @@
             right: 0;
             /* height of nav-item */
             top: 45px;
-
             display: block;
             visibility: hidden;
             opacity: 0;
@@ -98,7 +97,7 @@
                         <div class="dropdown-menu mego-dropdown-menu bg-none" aria-labelledby="navbarDropdown"
                             style="margin-top: -7px; ">
                             <div class=" container">
-                                <div class="col-md-3 mego-column1 rounded-left py-3">
+                                <div class="col-md-2 mego-column1 rounded-left py-3">
                                     <h2>About Us</h2>
                                     <p class="title">More than a growth engine, ICM transforms industries for the
                                         future.</p>
@@ -117,7 +116,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                <div class="col-md-6 mego-bg-mega rounded-right py-3"
+                                <div class="col-md-7 mego-bg-mega rounded-right py-3"
                                     style="border-left: 2px solid #ceba48;">
                                     <h2 class="ml-3">Highlights</h2>
                                     @inject('event', 'App\Models\Event')
@@ -138,7 +137,7 @@
             </ul>
             <ul id="navbar-nav" class="navbar-nav navbar-right ml-auto">
                 <li class="nav-item ">
-                    <a href="" data-toggle="modal" data-target="#about" class="nav-link">About</a>
+                    <a href="" data-toggle="modal" data-target="#about" class="nav-link nav-link-right pr-0">About</a>
                 </li>
             </ul>
         </div>

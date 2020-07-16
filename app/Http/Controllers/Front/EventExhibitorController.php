@@ -10,36 +10,36 @@ use Illuminate\Support\Facades\DB;
 class EventExhibitorController extends Controller
 {
 
-    public function show(Request $request, $id) {
+    public function show(Request $request, $id)
+    {
         $event          = Event::findOrFail($id);
         $exhibitors     = $event->exhibitors;
 
         $data           = [
             'event'     => $event,
-            'exhibitors'=> $exhibitors
+            'exhibitors' => $exhibitors
         ];
 
         return view('front.manage.event.exhibitor', $data);
     }
 
-    public function store(Request $request, $id) 
+    public function store(Request $request, $id)
     {
         $event      = Event::findOrFail($id);
         $user       = auth()->user();
 
         DB::beginTransaction();
         try {
-            if(!$event->exhibitors->contains($user->id)) {
+            if (!$event->exhibitors->contains($user->id)) {
                 $event->exhibitors()->attach([$user->id]);
 
                 DB::commit();
                 return redirect()->route('manage.profile.index');
-            } 
+            }
 
             DB::rollback();
             return redirect()->back()->with('error', 'You already have application!');
-
-        }catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', $e->getMessage());
         }
