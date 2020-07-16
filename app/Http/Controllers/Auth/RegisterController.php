@@ -83,34 +83,35 @@ class RegisterController extends Controller
 
         try {
             $user = User::create([
-                'name' => $data['email'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'type'  => $data['type'],
+                'name'      => $data['email'],
+                'email'     => $data['email'],
+                'password'  => Hash::make($data['password']),
+                'type'      => $data['type'],
             ]);
 
-            $profile = $data['profile'];
-            if ($data['profile']['image']) {
+            $profile        = $data['profile'];
+            if (array_key_exists('profile', $data) && array_key_exists('image', $data['profile'])) {
                 $profile['avatar'] = $this->uploader->uploadImage($data['profile']['image']);
             }
 
             $user->profile()->updateOrCreate([], $profile);
 
             if ($data['type'] == 'company') {
-                $company                = $data['company'];
-                $company['user_id']     = $user->id;
+                $company             = $data['company'];
 
-                if ($data['company']['logo']) {
+                if (array_key_exists('company', $data) && array_key_exists('logo', $data['company'])) {
                     $company['logo'] =  $this->uploader->uploadImage($data['company']['logo']);
                 }
 
-                Company::create($company);
+                $user->company()->updateOrCreate([], $company);
             }
 
             DB::commit();
             return $user;
         } catch (\Exception $e) {
             DB::rollback();
+            dd($e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

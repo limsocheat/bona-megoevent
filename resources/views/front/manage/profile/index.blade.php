@@ -105,7 +105,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                {!! Form::label('password_confirmation', 'Password Confirmation') !!}
+                                {!! Form::label('password_confirmation', 'Confirmed Password') !!}
                                 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                                 <small id="passwordHelp" class="form-text text-muted">Leave empty to keep
                                     unchanged.</small>
