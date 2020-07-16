@@ -7,10 +7,10 @@
                 <h5 class="text-truncate font-weight-bold mb-0" style="max-lines: 1">
                     {{ $event->display_start_date }}</h5>
             </div>
-            {{-- <div class="col-5 text-right"> --}}
-            <a href="{{ route('event', $event->id) }}" class="ml-auto mr-2 btn btn-sm  stretched-link"
-                id="mego-gold-bg">Join Now</a>
-            {{-- </div> --}}
+            <a href="{{ route('event', $event->id) }}"
+                class="ml-auto mr-2 btn btn-sm stretched-link white-text mego-gold-bg" style="background-color: #C5B358;
+                color: white; height: 30px">Join
+                Now</a>
         </div>
         <h3 class="card-title multi-line-truncate" id="h3" style="max-lines: 2; margin-left: 0; padding: 0;">
             {{ $event->name }}</h3>
