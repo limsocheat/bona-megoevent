@@ -110,7 +110,7 @@
                             </div>
 
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle"
+                                <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
                                     data-toggle="dropdown mego-text-hover">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                 </a>
@@ -118,7 +118,7 @@
                                 <ul class="dropdown-content p-0 mr-auto ml-auto dropdown-menu dropdown-menu-right">
                                     <li>
                                         <a href="{{ route('login') }}">Login</a>
-                                        
+
                                     <li>
                                         <a href="{{ route('register')}}">Sign Up</a>
                                     </li>

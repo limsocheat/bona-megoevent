@@ -363,7 +363,6 @@ td .mego-btn {
 }
 
 #account-nav .nav-link {
-    width: 200px;
     background-color: #bf9000;
     color: white;
     /* border: 1px solid #000; */
@@ -684,7 +683,7 @@ img {
         border: 1px solid #000;
     } */
 
-    #account-navbar #account-link {
+    #account-navbar .nav-item {
         width: 80vw;
     }
 

@@ -5,7 +5,7 @@
 @section('content_profile')
 
 <div class="col-md-10" style="margin-top: -25px">
-    <div class="container py-4">
+    <div class="container py-4 ">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @if (\Session::has('success'))

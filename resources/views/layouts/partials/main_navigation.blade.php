@@ -39,6 +39,12 @@
         margin: auto;
     }
 
+    @media screen and (max-width: 768px) {
+        .navbar .mego-dropdown-menu {
+            display: none;
+        }
+    }
+
     /* breakpoint and up - mega dropdown styles */
     @media screen and (min-width: 992px) {
 
