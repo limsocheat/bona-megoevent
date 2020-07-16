@@ -107,66 +107,66 @@
                             </a>
                         </li>
                     </div>
-                    <div class="col-xs-3">
+                    {{-- <div class="col-xs-3">
                         <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cart">
                             <a href="{{ route('cart.index') }}" class="nav-link mego-text-hover">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                @guest
-                                @else
-                                <sup>
-                                    <div class="badge badge-danger">
-                                        {{ Cart::session(auth()->id())->getTotalQuantity() }}
-                                    </div>
-                                </sup>
-                                @endif
-                            </a>
-                        </li>
-                    </div>
-
-                    <li class="nav-item dropdown">
-                        <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
-                            data-toggle="dropdown mego-text-hover">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </a>
-                        @guest
-                        <ul class="dropdown-content p-0 mr-auto ml-auto">
-                            <li>
-                                <a href="{{ route('login') }}">Login</a>
-                                </a>
-                            <li>
-                                <a href="{{ route('register')}}">Sign Up</a>
-                            </li>
-                        </ul>
-                        @else
-                        <ul class="dropdown-content p-0 mr-auto ml-auto">
-                            <li>
-                                <a href="{{ route('manage.profile.index') }}">Profile</a>
-                                </a>
-                            <li>
-                                <a href="{{ route('manage.purchase.index')}}">Purchase</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('manage.event.index')}}">Event</a>
-                            </li>
-                        </ul>
-                        @endguest
-                    </li>
-
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     @guest
                     @else
-                    <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
-                        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
-                            class="nav-link mego-text-hover">
-                            <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                    <sup>
+                        <div class="badge badge-danger">
+                            {{ Cart::session(auth()->id())->getTotalQuantity() }}
+                        </div>
+                    </sup>
+                    @endif
+                    </a>
                     </li>
+                </div> --}}
+
+                <li class="nav-item dropdown">
+                    <a href="{{ route('manage.profile.index') }}" class="nav-link dropdown-toggle"
+                        data-toggle="dropdown mego-text-hover">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
+                    @guest
+                    <ul class="dropdown-content p-0 mr-auto ml-auto">
+                        <li>
+                            <a href="{{ route('login') }}">Login</a>
+                            </a>
+                        <li>
+                            <a href="{{ route('register')}}">Sign Up</a>
+                        </li>
+                    </ul>
+                    @else
+                    <ul class="dropdown-content p-0 mr-auto ml-auto">
+                        <li>
+                            <a href="{{ route('manage.profile.index') }}">Profile</a>
+                            </a>
+                        <li>
+                            <a href="{{ route('manage.purchase.index')}}">Purchase</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('manage.event.index')}}">Event</a>
+                        </li>
+                    </ul>
                     @endguest
-                </div>
-            </ul>
+                </li>
+
+                @guest
+                @else
+                <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Sign Out">
+                    <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                        class="nav-link mego-text-hover">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                @endguest
         </div>
+        </ul>
+    </div>
     </div>
     <div id="qnimate" class="off">
         <div id="search" class="open">

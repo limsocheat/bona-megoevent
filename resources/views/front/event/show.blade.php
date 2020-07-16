@@ -13,13 +13,14 @@
 						<div class="carousel-item <?php if($i == 0) {echo 'active';} ?>">
 							<img class="d-block w-100" src="{{ url('/uploads/' . $event->banners[$i]["image"]) }}"
 								alt="Third slide" class="figure-img img-fluid rounded"
-								style="width:100%; height: 450px; ">
+								style="height: auto; max-height: 600px; width: auto; max-width: 900px">
 						</div>
 						@endfor
 						@if($event->floor_image)
 						<div class="carousel-item">
 							<img class="d-block w-100" src="{{ $event->floor_image }}" alt="Floor Image"
-								class="figure-img img-fluid rounded" style="width:100%; height: 450px; ">
+								class="figure-img img-fluid rounded"
+								style="height: auto; max-height: 600px; width: auto; max-width: 900px">
 						</div>
 						@else
 
@@ -36,7 +37,7 @@
 			</div>
 			@else
 			<img src="{{ $event->image_url }}" alt="{{ $event->name }}" class="img-fluid"
-				style="width: 100%; height: auto">
+				style="height: auto; max-height: 600px; width: auto; max-width: 900px">
 			@endif
 		</div>
 		<div class="event-single-header-right" style="background-color:#f1f1f1;">
