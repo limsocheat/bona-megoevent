@@ -44,7 +44,44 @@
 #main-navigation .navbar-nav li {
     border-left: 1px solid #ffffff;
 }
+.navbar .mego-dropdown-menu {
+    height: 450px;
+    width: auto;
+    max-height: 100%;
+    border: none;
+    color: black;
+    background-color: #ffffff00;
+}
 
+.navbar .mego-dropdown-menu .mego-column1 {
+    border: none;
+    height: 450px;
+    width: auto;
+    max-height: 100%;
+    color: white;
+    background-color: #c20000 !important;
+}
+
+.navbar .mego-dropdown-menu .mego-bg-mega {
+    border: none;
+    height: 450px;
+    width: auto;
+    max-height: 100%;
+    color: black;
+    background-color: #ffffff !important;
+}
+.mego-navbar-toggler {
+    margin-top: 12px;
+    height: 40px;
+    padding: 5px 10px;
+}
+.mego-bg-mega .mego-img {
+    width: 400px;
+    height: auto;
+    max-width: 100%;
+    text-align: center;
+    margin: auto;
+}
 #top-navigation .navbar-nav li a {
     text-decoration: none;
     font-weight: 700;
@@ -76,7 +113,83 @@
 #top-navigation .navbar-nav li a:hover::before {
     width: 100%;
 }
+  #top-navigation .popup-box-on {
+        display: block !important;
+    }
 
+    #top-navigation .off {
+        display: none;
+    }
+
+    #top-navigation .chat_box .chat_message_wrapper ul.chat_message>li+li {
+        margin-top: 4px;
+    }
+
+    #top-navigation #search.open {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1, 1);
+    }
+
+    #top-navigation #search {
+        background-color: #fff;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        transition: all 0.5s ease-in-out 0s;
+        width: 100%;
+        z-index: 2000;
+
+    }
+
+    #top-navigation #search .close {
+        color: #be5254;
+        font-size: 40px;
+        opacity: 1;
+        padding: 10px 17px;
+        position: fixed;
+        right: 15px;
+        top: 15px;
+    }
+
+    #top-navigation button.close {
+        background: transparent none repeat scroll 0 0;
+        border: 0 none;
+        cursor: pointer;
+    }
+
+    #top-navigation .close {
+        float: right;
+        font-weight: bold;
+        line-height: 1;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+    #top-navigation #search input[type="text"] {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        border: 0 none;
+        color: #333;
+        font-family: "Open Sans", sans-serif;
+        font-size: 50px;
+        font-weight: 300;
+        margin: -51px auto 0;
+        outline: medium none;
+        padding-left: 30px;
+        padding-right: 30px;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+    }
+
+    #top-navigation #search .btn {
+        left: 50%;
+        margin-top: 60px;
+        padding: 10px 50px;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%);
+    }
 /* .dropdown-menu {
             z-index: 1;
         } */
@@ -119,9 +232,8 @@ body a:hover {
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 100%;
-    border-bottom: none;
-    z-index: 1111;
+    z-index: 11111;
+    top: 60px;
 }
 
 .dropdown .dropdown-content li {
@@ -364,7 +476,6 @@ td .mego-btn {
 }
 
 #account-nav .nav-link {
-    width: 200px;
     background-color: #bf9000;
     color: white;
     /* border: 1px solid #000; */
@@ -386,11 +497,6 @@ td .mego-btn {
 
 .spacer {
     padding: 25px 0;
-}
-
-.navbar-nav #btn-organizer {
-    margin-top: 12px;
-    margin-left: 4px;
 }
 
 .mego-text-hover i {
@@ -685,7 +791,7 @@ img {
         border: 1px solid #000;
     } */
 
-    #account-navbar #account-link {
+    #account-navbar .nav-item {
         width: 80vw;
     }
 
@@ -699,7 +805,7 @@ img {
     }
 
     .navbar-nav #btn-organizer {
-        font-size: 7vw;
+        font-size: 3.5vw !important;
     }
 
     .nav-item a i.fa {
@@ -717,9 +823,7 @@ img {
         width: auto;
         height: auto;
         max-width: 100%;
-        max-height: 100%;
-        border-bottom: none;
-        z-index: 1111;
+        z-index: 11111;
     }
     .event-single-header {
         display: flex;
@@ -863,7 +967,11 @@ img {
         display: block;
     }
 }
-
+@media screen and (max-width: 768px) {
+    .navbar .mego-dropdown-menu {
+        display: none;
+    }
+}
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .navbar-brand .logo {
@@ -903,6 +1011,36 @@ img {
     .fullscreen_slider_image {
         max-height: 560px;
         max-width: 100%;
+    }
+    .mego-text-gold {
+        color: #C5B358;
+    }
+
+    /* makes the dropdown full width */
+    .navbar .dropdown {
+        position: static;
+    }
+
+    .navbar .mego-dropdown-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+        /* height of nav-item */
+        top: 45px;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.3s linear;
+
+    }
+
+    /* shows the dropdown menu on hover */
+    .navbar .dropdown:hover .dropdown-menu,
+    .navbar .dropdown .mego-dropdown-menu:hover {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s, opacity 0.3s linear;
     }
 }
 
