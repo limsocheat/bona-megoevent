@@ -33,9 +33,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('profile[first_name]', 'First Name') !!}
-                                    {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class'
-                                    =>
-                                    'form-control', 'required' => true])
+                                    {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' =>'form-control', 'required' => true])
                                     !!}
                                 </div>
                             </div>
