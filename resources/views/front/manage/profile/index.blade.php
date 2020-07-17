@@ -14,7 +14,7 @@
                 </div>
                 @endif
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-3 p-md-3 pr-0 pl-0">
                 <div class="card">
                     {!! Form::model($user, ['route' => ['manage.profile.update'], 'method' => 'PUT', 'files' => true])
                     !!}
@@ -33,7 +33,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::label('profile[first_name]', 'First Name') !!}
-                                    {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' =>'form-control', 'required' => true])
+                                    {!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class'
+                                    =>'form-control', 'required' => true])
                                     !!}
                                 </div>
                             </div>
@@ -82,8 +83,8 @@
                 </div>
             </div>
 
-            <div class="col-md-6 ">
-                <div class="col-md-12 mb-3">
+            <div class="col-md-6 pl-0 pr-0">
+                <div class="col-md-12 p-md-3 mb-3 pl-0 pr-0">
                     <div class="card">
                         {!! Form::model($user, ['route' => ['manage.profile.re_password'], 'method' => 'PUT', 'files' =>
                         true])!!}
@@ -115,7 +116,7 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 p-md-3 pl-0 pr-0">
                     @if ($user->type == "company")
                     @if ($user->company)
                     <div class="card">
@@ -192,7 +193,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12 mt-5">
+            <div class="col-md-12 mt-5 p-md-3 pl-0 pr-0">
                 <div class="card">
                     <div class="card-header">
                         Events Registered as Exhibitor
