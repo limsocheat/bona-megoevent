@@ -891,6 +891,17 @@ img {
     #btn-organizer {
         font-size: 14px !important;
     }
+    /* footer */
+    .mego-footer-center {
+        margin: auto;
+        text-align: center !important;
+    }
+    .mego-logo-footer .footer-center img{
+        margin-left:100px;
+        align-items: center !important;
+        margin: auto !important;
+    }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
