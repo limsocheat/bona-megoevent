@@ -45,7 +45,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-item nav-link text-capitalize" href="{{ route('upcoming') }}">Exhibit
-                                        in and Event!</a>
+                                        in an Event!</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-item nav-link text-capitalize"
