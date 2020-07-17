@@ -73,13 +73,14 @@ $footers4 = $widget::select('*')->where('location', 'footer-4')->get();
     <!-- Call to action -->
     {{-- <ul class="list-unstyled list-inline text-center py-2"> --}}
     <div class="bg-white pr-5 pl-5 m-auto mego-logo-footer">
-        <div class="container text-center text-md-left">
+        <div class="container text-center">
             <!-- Grid row -->
             <div class="row">
                 <!-- Grid column -->
                 <div class="col-md-3 py-2">
                     <div class="text-xs-center">
-                        <a class="footer-logo float-left" href="http://megomega.com.sg/" target="_blank">
+                        <a class="footer-logo float-md-left footer-center" href="http://megomega.com.sg/"
+                            target="_blank">
                             <img src="{{ asset('images/megomege-footer.png') }}" />
                         </a>
                     </div>
@@ -93,14 +94,15 @@ $footers4 = $widget::select('*')->where('location', 'footer-4')->get();
                 </div>
                 <div class="col-md-3 p-2">
                     <div class="text-xs-center">
-                        <a class="footer-logo" href="https://bona.com.sg/" target="_blank">
+                        <a class="footer-logo " href="https://bona.com.sg/" target="_blank">
                             <img src="{{ asset('images/bonabot-footer.png') }}" />
                         </a>
                     </div>
                 </div>
                 <div class="col-md-3 py-2">
                     <div class="text-xs-center">
-                        <a class="footer-logo float-right" href="https://singroll.com/web/" target="_blank">
+                        <a class="footer-logo float-md-right footer-center" href="https://singroll.com/web/"
+                            target="_blank">
                             <img src="{{ asset('images/singro-logo-footer.png') }}" />
                         </a>
                     </div>
