@@ -445,16 +445,16 @@
         },
         {
             "name": "buzz/laravel-google-captcha",
-            "version": "v2.3.1",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinhbuzz/laravel-google-captcha.git",
-                "reference": "ed364301a153ad1605a1c69461374937d60d683f"
+                "reference": "e84cf3f48baeaf302a37ea31709fded262216840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinhbuzz/laravel-google-captcha/zipball/ed364301a153ad1605a1c69461374937d60d683f",
-                "reference": "ed364301a153ad1605a1c69461374937d60d683f",
+                "url": "https://api.github.com/repos/thinhbuzz/laravel-google-captcha/zipball/e84cf3f48baeaf302a37ea31709fded262216840",
+                "reference": "e84cf3f48baeaf302a37ea31709fded262216840",
                 "shasum": ""
             },
             "require": {
@@ -504,7 +504,7 @@
                 "no-captcha",
                 "recaptcha"
             ],
-            "time": "2020-04-21T10:13:13+00:00"
+            "time": "2020-07-16T15:16:12+00:00"
         },
         {
             "name": "darryldecode/cart",
@@ -1308,16 +1308,16 @@
         },
         {
             "name": "jeroennoten/laravel-adminlte",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
-                "reference": "324698d4be687672b9ec3e78bf52f0362066d5cc"
+                "reference": "545cdb3b14cba83938709d260202aecd4e47c5fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/324698d4be687672b9ec3e78bf52f0362066d5cc",
-                "reference": "324698d4be687672b9ec3e78bf52f0362066d5cc",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/545cdb3b14cba83938709d260202aecd4e47c5fc",
+                "reference": "545cdb3b14cba83938709d260202aecd4e47c5fc",
                 "shasum": ""
             },
             "require": {
@@ -1359,7 +1359,7 @@
                 "administrator",
                 "laravel"
             ],
-            "time": "2020-07-06T17:34:34+00:00"
+            "time": "2020-07-16T07:20:31+00:00"
         },
         {
             "name": "laracasts/flash",

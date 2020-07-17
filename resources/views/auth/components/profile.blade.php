@@ -8,19 +8,19 @@
 	</div>
 </div>
 <div class="form-group">
-	<label for="first_name" class="wizard-form-text-label">First Name*</label>
-	<input type="text" class="form-control wizard-required" name="profile[first_name]" id="first_name">
+	{!! Form::label('profile[first_name]', 'First Name') !!}
+	{!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' =>'form-control wizard-required', 'required' => true])!!}
 	<div class="wizard-form-error"></div>
 </div>
 <div class="form-group">
-	<label for="last_name" class="wizard-form-text-label">Last Name*</label>
-	<input type="text" class="form-control wizard-required" name="profile[last_name]" id="last_name">
+	{!! Form::label('profile[last_name]', 'Last Name') !!}
+	{!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' =>'form-control wizard-required', 'required' => true]) !!}
 	<div class="wizard-form-error"></div>
 </div>
 <div class="form-group">
 	{!! Form::label('profile[job_title]', 'Job Title') !!}
-	{!! Form::text('profile[job_title]', null, ['placeholder' => 'Job Title', 'class' =>
-	'form-control']) !!}
+	{!! Form::text('profile[job_title]', null, ['placeholder' => 'Job Title', 'class' =>'form-control ']) !!}
+	
 </div>
 <div class="form-group">
 	{!! Form::label('profile[country_id]', 'Country') !!}

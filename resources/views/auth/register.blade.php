@@ -73,7 +73,7 @@
   width: 100%;
 }
 
-.form-wizard .form-control {
+/* .form-wizard .form-control {
   font-weight: 300;
   height: auto !important;
   padding: 15px;
@@ -83,7 +83,7 @@
 }
 .form-wizard .form-control:focus {
   box-shadow: none;
-}
+} */
 .form-wizard .form-group {
   position: relative;
   margin: 25px 0;
@@ -159,7 +159,44 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+/* selecttion */
+.box {
+				color: #fff;
+				padding: 20px;
+				display: none;
+				margin-top: 20px;
+			}
+			.Individual {
+				background: #c5b358;
+			}
 
+
+}
+/* email validation */
+
+
+
+input {
+    width: 100%;
+}
+
+.message {
+    font: 15px Helvetica, Arial, Sans-serif;
+    display: none;
+    width: 100%;
+    padding: 20px;
+    left: 0;
+    color: #fff;
+}
+
+.error {
+    color: red;
+    margin-left: -21px;
+}
+
+.success {
+    color: green;
+}
 
 </style>
 @section('content')
@@ -170,25 +207,35 @@
                 <div class="form-wizard">
                     <div class="card">
                         <div class="card-body">
-                            <form action="" method="post" role="form">
-                                <div class="form-wizard-header">
-                                     <h2><strong>Sign Up Your User Account</strong></h2>
-                                    <p>Fill all form field to go next step</p>
-                                    <ul class="list-unstyled form-wizard-steps clearfix">
-                                        <li class="active"><span>1</span></li>
-                                        <li><span>2</span></li>
-                                        <li><span>3</span></li>
-                                    </ul>
-                                </div>
+                             <div class="form-wizard-header">
+                                <h2><strong>Sign Up Your User Account</strong></h2>
+                                  <p>Fill all form field to go next step</p>
+                                  @if (count($errors) > 0)
+                                    <div class="alert alert-danger text-left">
+                                      <strong>Sorry!</strong> Please check your input again.<br><br>
+                                      <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                      </ul>
+                                    </div>
+                                  @endif
+                              <ul class="list-unstyled form-wizard-steps clearfix">
+                                  <li class="active"><span>1</span></li>
+                                  <li><span>2</span></li>
+                                  <li><span>3</span></li>
+                              </ul>
+                               </div>
+                              {!! Form::open(['route' => 'register', 'method' => 'POST','role' =>'form', 'id' => 'msform', 'files' => true])!!}
                                 <fieldset class="wizard-fieldset show">
-                                    <h5>Personal Information</h5>
+                                    <h2>Register</h2>
                                       @include('auth.components.singup')
                                     <div class="form-group clearfix">
                                         <a href="javascript:;" class=" form-wizard-next-btn btn mego-gold-bg btn-lg float-right">Next</a>
                                     </div>
                                 </fieldset>	
                                 <fieldset class="wizard-fieldset">
-                                    <h5>Profile</h5>
+                                     <h2>Profile</h2>
                                      @include('auth.components.profile')
                                     <div class="form-group clearfix">
                                         <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary btn-lg float-left">Previous</a>
@@ -196,15 +243,14 @@
                                     </div>
                                 </fieldset>	
                                 <fieldset class="wizard-fieldset">
-                                    <h5>Company Profile</h5>
+                                     <h2>Company Profile</h2>
                                     @include('auth.components.company')
                                     <div class="form-group clearfix">
                                         <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
-                                        <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg btn-lg  float-right">Next</a>
+                                        <button  href="javascript:;" type="submit" class="form-wizard-next-btn btn mego-gold-bg btn-lg  float-right">Submit</button>
                                     </div>
                                 </fieldset>	
-                               
-                            </form>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
@@ -372,7 +418,27 @@
         }
     });
 
+    //select company and Individual
+    $("select").change(function () {
+					$(this).find("option:selected").each(function () {
+						var optionValue = $(this).attr("value");
+						if (optionValue) {
+							$(".box").not("." + optionValue).hide();
+							$("." + optionValue).show();
+						} else {
+							$(".box").hide();
+						}
+					});
+				}).change();
 
+        // var regExp = /^\w*(\.\w*)?@\w*\.[a-z]+(\.[a-z]+)?$/;
+                var regExp = /^([\w\.\+]{1,})([^\W])(@)([\w]{1,})(\.[\w]{1,})+$/;
+
+                $('[type="email"]').on('keyup', function () {
+                    $('.message').hide();
+                    regExp.test($(this).val()) ? $('.message.success').show() : $('.message.error')
+                        .show();
+                });
     
 });
 
