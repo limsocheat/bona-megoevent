@@ -1,15 +1,35 @@
 <style>
     /* Slider */
 
-    .slick-slide {
-        margin: 0px 20px;
+    @media only screen and (max-width: 600px) {
+        #exhibitor-carousel .slick-track .slick-slide {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #exhibitor-carousel .slick-list>div {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
-    .slick-slide img {
+    #exhibitor-carousel .slick-track :first-child {
+        margin-left: 0 !important;
+    }
+
+    #exhibitor-carousel .slick-track :last-child {
+        margin-right: 0 !important;
+    }
+
+    #exhibitor-carousel .slick-track .slick-slide {
+        margin: 0 10px;
+    }
+
+    #exhibitor-carousel .slick-slide img {
         width: 100%;
     }
 
-    .slick-slider {
+    #exhibitor-carousel .slick-slider {
         position: relative;
         display: block;
         box-sizing: border-box;
@@ -24,7 +44,7 @@
         -webkit-tap-highlight-color: transparent;
     }
 
-    .slick-list {
+    #exhibitor-carousel .slick-list {
         position: relative;
         display: block;
         overflow: hidden;
@@ -32,17 +52,17 @@
         padding: 0;
     }
 
-    .slick-list:focus {
+    #exhibitor-carousel .slick-list:focus {
         outline: none;
     }
 
-    .slick-list.dragging {
+    #exhibitor-carousel .slick-list.dragging {
         cursor: pointer;
         cursor: hand;
     }
 
-    .slick-slider .slick-track,
-    .slick-slider .slick-list {
+    #exhibitor-carousel .slick-slider .slick-track,
+    #exhibitor-carousel .slick-slider .slick-list {
         -webkit-transform: translate3d(0, 0, 0);
         -moz-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);
@@ -50,70 +70,74 @@
         transform: translate3d(0, 0, 0);
     }
 
-    .slick-track {
+    #exhibitor-carousel .slick-track {
         position: relative;
         top: 0;
         left: 0;
         display: block;
     }
 
-    .slick-track:before,
-    .slick-track:after {
+    #exhibitor-carousel .slick-track:before,
+    #exhibitor-carousel .slick-track:after {
         display: table;
         content: '';
     }
 
-    .slick-track:after {
+    #exhibitor-carousel .slick-track:after {
         clear: both;
     }
 
-    .slick-loading .slick-track {
+    #exhibitor-carousel .slick-loading .slick-track {
         visibility: hidden;
     }
 
-    .slick-slide {
+    #exhibitor-carousel .slick-slide {
         display: none;
         float: left;
         height: 100%;
         min-height: 1px;
     }
 
-    [dir='rtl'] .slick-slide {
+    #exhibitor-carousel [dir='rtl'] .slick-slide {
         float: right;
     }
 
-    .slick-slide img {
+    #exhibitor-carousel .slick-slide img {
         display: block;
     }
 
-    .slick-slide.slick-loading img {
+    #exhibitor-carousel .slick-slide.slick-loading img {
         display: none;
     }
 
-    .slick-slide.dragging img {
+    #exhibitor-carousel .slick-slide.dragging img {
         pointer-events: none;
     }
 
-    .slick-initialized .slick-slide {
+    #exhibitor-carousel .slick-initialized .slick-slide {
         display: block;
     }
 
-    .slick-loading .slick-slide {
+    #exhibitor-carousel .slick-loading .slick-slide {
         visibility: hidden;
     }
 
-    .slick-vertical .slick-slide {
+    #exhibitor-carousel .slick-vertical .slick-slide {
         display: block;
         height: auto;
         border: 1px solid transparent;
     }
 
-    .slick-arrow.slick-hidden {
+    #exhibitor-carousel .slick-arrow.slick-hidden {
         display: none;
+    }
+
+    #exhibitor-carousel .slick-list>div {
+        margin-left: 0;
     }
 </style>
 
-<div class="container">
+<div class="container" id="exhibitor-carousel">
     <section class="customer-logos slider">
         @foreach ($exhibitors as $exhibitor)
         <div class="slide">
@@ -133,6 +157,7 @@
         arrows: false,
         dots: false,
         pauseOnHover: false,
+        centerMode: false,
         responsive: [{
             breakpoint: 768,
             settings: {
@@ -141,7 +166,7 @@
         }, {
             breakpoint: 520,
             settings: {
-                slidesToShow: 3
+                slidesToShow: 1
             }
         }]
     });

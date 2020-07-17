@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Page;
+use App\Models\Widget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PageController extends Controller
+class WidgetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages  = Page::select('*')->get();
-        return view('admin.page.index', ['pages' => $pages]);
+        $widgets  = Widget::select('*')->get();
+        return view('admin.widget.index', ['widgets' => $widgets]);
     }
 
     /**
@@ -27,7 +27,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('admin.page.create');
+        return view('admin.widget.create');
     }
 
     /**
@@ -39,16 +39,16 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'slug'          => 'required|unique:pages,slug',
-            'title'         => 'required|unique:pages,title',
-            'description'   => 'required',
+            'name'          => 'required',
+            'body'          => 'required',
+            'location'      => 'required',
         ]);
         DB::beginTransaction();
         try {
             $data       = $request->all();
-            Page::create($data);
+            Widget::create($data);
             DB::commit();
-            return redirect()->route('admin.page.index');
+            return redirect()->route('admin.widget.index');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
@@ -74,9 +74,9 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $page   = Page::findOrFail($id);
+        $widget   = Widget::findOrFail($id);
 
-        return view('admin.page.edit', ['page' => $page]);
+        return view('admin.widget.edit', ['widget' => $widget]);
     }
 
     /**
@@ -88,19 +88,19 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $page   = Page::findOrFail($id);
+        $widget   = Widget::findOrFail($id);
 
         $request->validate([
-            'slug'          => 'required|unique:pages,slug,' . $id,
-            'title'         => 'required|unique:pages,title,' . $id,
-            'description'   => 'required'
+            'name'          => 'required',
+            'body'          => 'required',
+            'location'      => 'required',
         ]);
         DB::beginTransaction();
         try {
             $data   = $request->all();
-            $page   = $page->update($data);
+            $widget   = $widget->update($data);
             DB::commit();
-            return redirect()->route('admin.page.index');
+            return redirect()->route('admin.widget.index');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
@@ -115,13 +115,12 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-
-        $page   = Page::findOrFail($id);
+        $widget   = Widget::findOrFail($id);
         DB::beginTransaction();
         try {
-            $page->delete();
+            $widget->delete();
             DB::commit();
-            return redirect()->route('admin.page.index');
+            return redirect()->route('admin.widget.index');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());

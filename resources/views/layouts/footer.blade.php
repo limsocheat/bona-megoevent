@@ -1,83 +1,70 @@
 <!-- Footer -->
-<footer class="page-footer font-small pt-4 bg-dark text-white">
+@inject('widget', 'App\Models\Widget')
+@php
+$footers1 = $widget::select('*')->where('location', 'footer-1')->get();
+$footers2 = $widget::select('*')->where('location', 'footer-2')->get();
+$footers3 = $widget::select('*')->where('location', 'footer-3')->get();
+$footers4 = $widget::select('*')->where('location', 'footer-4')->get();
+@endphp
+
+
+<style type="text/css">
+    #mego-footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #mego-footer ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    #mego-footer ul li a:hover {
+        color: #C5B358
+    }
+
+    #mego-footer a {
+        color: #fff
+    }
+</style>
+<footer class="page-footer font-small pt-4 bg-dark text-white" id="mego-footer">
     <!-- Footer Links -->
-    <div class="container text-center text-md-left">
+    <div class="container text-md-left">
         <!-- Grid row -->
         <div class="row">
-            <!-- Grid column -->
-            <div class="col-md-4 mx-auto">
-                <!-- Content -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipisicing elit.
+            <div class="col-md-3">
+                @foreach ($footers1 as $footer1)
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">{{ $footer1->name }}</h5>
+                <p>
+                    {!! $footer1->body !!}
                 </p>
+                @endforeach
             </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none">
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                    </li>
-                </ul>
+            <div class="col-md-3">
+                @foreach ($footers2 as $footer2)
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">{{ $footer2->name }}</h5>
+                <p>
+                    {!! $footer2->body !!}
+                </p>
+                @endforeach
             </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none">
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!" class="text-white">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-white">Link 4</a>
-                    </li>
-                </ul>
+            <div class="col-md-3">
+                @foreach ($footers3 as $footer3)
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">{{ $footer3->name }}</h5>
+                <p>
+                    {!! $footer3->body !!}
+                </p>
+                @endforeach
             </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none">
-            <!-- Grid column -->
-            <div class="col-md-2 mx-auto">
-                <div class="text-center">
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-md-3">
+                @foreach ($footers4 as $footer4)
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">{{ $footer4->name }}</h5>
+                <p>
+                    {!! $footer4->body !!}
+                </p>
+                @endforeach
             </div>
-            <!-- Grid column -->
         </div>
         <!-- Grid row -->
     </div>
