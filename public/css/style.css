@@ -70,7 +70,11 @@
     color: black;
     background-color: #ffffff !important;
 }
-
+.mego-navbar-toggler {
+    margin-top: 12px;
+    height: 40px;
+    padding: 5px 10px;
+}
 .mego-bg-mega .mego-img {
     width: 400px;
     height: auto;
@@ -495,11 +499,6 @@ td .mego-btn {
     padding: 25px 0;
 }
 
-.navbar-nav #btn-organizer {
-    margin-top: 12px;
-    margin-left: 4px;
-}
-
 .mego-text-hover i {
     color: black;
 }
@@ -806,7 +805,7 @@ img {
     }
 
     .navbar-nav #btn-organizer {
-        font-size: 7vw;
+        font-size: 3.5vw !important;
     }
 
     .nav-item a i.fa {

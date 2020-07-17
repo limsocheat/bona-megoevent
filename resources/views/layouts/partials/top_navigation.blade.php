@@ -1,13 +1,13 @@
-<nav id="top-navigation"
-    class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white pt-0 pb-0 pr-0">
+<nav id="top-navigation" class="navbar navbar-expand-md navbar-default navbar-fixed-top navbar-white bg-white p-0">
+    
     <div class="container pr-0">
         <div class=" navbar-collapse d-flex justify-content-end">
             <ul class="navbar-nav navbar-right ml-auto">
                 <div class="row ">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 m-auto px-3">
                         <li id="btn-mego">
-                            <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg py-2" id="btn-organizer"
-                                style="height:41px; color: #fff;">Be an Organizer, create your
+                            <a href="{{ route('manage.event.index') }}" class="btn mego-gold-bg py-2 text-white"
+                                id="btn-organizer">Be an Organizer, create your
                                 own event!</a>
                         </li>
                     </div>
@@ -74,11 +74,12 @@
                             @endguest
                         </div>
                     </div>
-
+                    @include('layouts.partials.main_navbar_dropdown')
                 </div>
             </ul>
         </div>
     </div>
+    
     <div id="qnimate" class="off">
         <div id="search" class="open">
             <button data-widget="remove" id="removeClass" class="close" type="button">×</button>

@@ -2,11 +2,7 @@
     class="navbar navbar-expand-md navbar-default fixed-top sticky-top navbar-white bg-white pt-0 pb-0 "
     style="border-bottom: 1px solid #efefef; border-top: 1px solid #efefef;">
     <div class="container">
-        <button class="navbar-toggler navbar-toggler-right border-dark" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><i class="fa fa-bars" style="color:#1f1c1c; font-size:28px;"></i></span>
-        </button>
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="navbar-nav" class="navbar-nav mr-auto">
                 <li class="nav-item {{ Route::currentRouteName() == 'index' ? 'active' : ''}}">
@@ -66,29 +62,3 @@
         </div>
     </div>
 </nav>
-<script>
-    $(document).ready(function() {
-        $(window).resize(function(){
-            if ($(window).width() >= 980){
-                $(".navbar .dropdown-toggle").hover(function () {
-                    $(this).parent().toggleClass("show");
-                    $(this).parent().find(".dropdown-menu").toggleClass("show");
-                });
-                $( ".navbar .dropdown-menu" ).mouseleave(function() {
-                    $(this).removeClass("show");
-                });
-
-                $('.navbar .dropdown > a').click(function(){
-                    location.href = this.href;
-                });
-            } else {
-                $('.navbar .dropdown > a').click(function(){
-                    return;
-                });
-            }
-        });
-        $('.navbar .dropdown > a').click(function(){
-            location.href = this.href;
-        });
-    });
-</script>
