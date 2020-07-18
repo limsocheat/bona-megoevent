@@ -289,6 +289,11 @@ return [
             'icon'        => 'fa fa-cogs',
         ],
         [
+            'text'        => 'Widgets',
+            'url'         => 'admin/widget',
+            'icon'        => 'fa fa-cogs',
+        ],
+        [
             'text'        => 'Setting',
             'url'         => 'admin/setting',
             'icon'        => 'fa fa-cogs',
@@ -427,12 +432,12 @@ return [
                     'asset'     => true,
                     'location'  => 'js/admin.js',
                 ],
-                 [
+                [
                     'type'      => 'css',
                     'asset'     => true,
                     'location'  => 'plugins/summernote/summernote-bs4.min.css',
                 ],
-                
+
                 [
                     'type'      => 'js',
                     'asset'     => true,
