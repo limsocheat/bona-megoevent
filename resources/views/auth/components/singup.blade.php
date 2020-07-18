@@ -13,8 +13,9 @@
 
 <div class="form-group row">
 	<label for="password" class="col-form-label text-md-left">{{ __('Password') }}</label>
-	<input id="password" type="password" class="form-control wizard-required @error('password') is-invalid @enderror" name="password"  required autocomplete="new-password">
+	<input id="pass1"  type="password" class="form-control wizard-required @error('password') is-invalid @enderror" name="password"  required autocomplete="new-password" onkeyup="checkPass(); return false;">
 	<div class="wizard-form-error"></div>
+	<div id="error-nwl"></div>
 	@error('password')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
@@ -24,6 +25,6 @@
 
 <div class="form-group row">
 	<label for="password-confirm" class="col-form-label text-md-left">{{ __('Confirm Password') }}</label>
-	<input id="password-confirm" type="password" class="form-control wizard-required" name="password_confirmation" required autocomplete="new-password">
+	<input id="pass2" type="password" class="form-control wizard-required" name="password_confirmation" required autocomplete="new-password" onkeyup="checkPass(); return false;">
 	<div class="wizard-form-error"></div>
 </div>

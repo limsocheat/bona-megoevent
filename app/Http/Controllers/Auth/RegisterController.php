@@ -98,6 +98,7 @@ class RegisterController extends Controller
             $user->profile()->updateOrCreate([], $profile);
 
             if ($data['type'] == 'company') {
+
                 $company             = $data['company'];
 
                 if (array_key_exists('company', $data) && array_key_exists('logo', $data['company'])) {

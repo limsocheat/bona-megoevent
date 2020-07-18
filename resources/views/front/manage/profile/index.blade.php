@@ -183,7 +183,7 @@
                                 'form-control' , 'required' => true]) !!}
                             </div>
                         </div>
-                        <div class="card-footer ">
+                        <div class="card-footer">
                             {!! Form::submit('Create', ['class' => 'btn mego-gold-bg']); !!}
                         </div>
                         {!! Form::close() !!}

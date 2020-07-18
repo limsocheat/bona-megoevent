@@ -2,8 +2,6 @@
 
 @section('title', 'Register')
 <style>
-
-
 .form-wizard {
   color: #888888;
   padding: 30px;
@@ -104,7 +102,7 @@
   margin: 30px 0;
 }
 .form-wizard .form-wizard-steps li {
-  width: 33%;
+  width: 25%;
   float: left;
   position: relative;
 }
@@ -132,17 +130,16 @@
   width: 40px;
   z-index: 1;
 }
-.form-wizard .form-wizard-steps li:last-child::after {
+/* .form-wizard .form-wizard-steps li:last-child::after {
   width: 50%;
-}
+} */
 .form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
   background-color: #c5b358;
   color: #ffffff;
 }
 .form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
   background-color: #c5b358;
-  left: 50%;
-  width: 50%;
+  /* left: 50%; */
   border-color: #c5b358;
 }
 .form-wizard .form-wizard-steps li.activated::after {
@@ -152,13 +149,13 @@
 .form-wizard .form-wizard-steps li:last-child::after {
   left: 0;
 }
-.form-wizard .wizard-password-eye {
+/* .form-wizard .wizard-password-eye {
   position: absolute;
   right: 32px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-}
+} */
 /* selecttion */
 .box {
 				color: #fff;
@@ -181,15 +178,16 @@ input {
 }
 
 .message {
-    font: 15px Helvetica, Arial, Sans-serif;
+    font: 15px ;
     display: none;
     width: 100%;
-    padding: 20px;
+    padding: 30px;
     left: 0;
     color: #fff;
 }
 
 .error {
+    margin-top: 20px;
     color: red;
     margin-left: -21px;
 }
@@ -221,9 +219,10 @@ input {
                                     </div>
                                   @endif
                               <ul class="list-unstyled form-wizard-steps clearfix">
-                                  <li class="active"><span>1</span></li>
-                                  <li><span>2</span></li>
-                                  <li><span>3</span></li>
+                                <li class="active"><span>1</span></li>
+                                <li><span>2</span></li>
+                                <li><span>3</span></li>
+                                <li><span>4</span></li>
                               </ul>
                                </div>
                               {!! Form::open(['route' => 'register', 'method' => 'POST','role' =>'form', 'id' => 'msform', 'files' => true])!!}
@@ -231,15 +230,15 @@ input {
                                     <h2>Register</h2>
                                       @include('auth.components.singup')
                                     <div class="form-group clearfix">
-                                        <a href="javascript:;" class=" form-wizard-next-btn btn mego-gold-bg btn-lg float-right">Next</a>
+                                        <a href="javascript:;" class=" form-wizard-next-btn btn mego-gold-bg  float-right">Next</a>
                                     </div>
                                 </fieldset>	
                                 <fieldset class="wizard-fieldset">
                                      <h2>Profile</h2>
                                      @include('auth.components.profile')
                                     <div class="form-group clearfix">
-                                        <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary btn-lg float-left">Previous</a>
-                                        <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg btn-lg  float-right">Next</a>
+                                        <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
+                                        <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg   float-right">Next</a>
                                     </div>
                                 </fieldset>	
                                 <fieldset class="wizard-fieldset">
@@ -247,9 +246,19 @@ input {
                                     @include('auth.components.company')
                                     <div class="form-group clearfix">
                                         <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
-                                        <button  href="javascript:;" type="submit" class="form-wizard-next-btn btn mego-gold-bg btn-lg  float-right">Submit</button>
-                                    </div>
+                                         <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg   float-right">Next</a>
+                                       
                                 </fieldset>	
+                                <fieldset class="wizard-fieldset">
+                                  <h5>Payment Information</h5>
+                            
+                              
+                                  <div class="form-group clearfix">
+                                    <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
+                                    <button  type="submit" class="form-wizard-next-btn btn mego-gold-bg float-right">Create</button>
+                                   
+                                  </div>
+						                    </fieldset>	
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -262,7 +271,19 @@ input {
 
 
 <script type="text/javascript">
-  jQuery(document).ready(function() {
+  jQuery(document).ready(function($) {
+
+    $('#register-account-type').change(function() {
+      if(this.value == 'company')
+      {
+        $('#register-company-name').addClass('wizard-required');
+        $('#register-company-number').addClass('wizard-required');
+      } else {
+        $('#register-company-name').removeClass('wizard-required');
+        $('#register-company-number').removeClass('wizard-required');
+      }
+    });
+
 	// click on next button
 	jQuery('.form-wizard-next-btn').click(function() {
 		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
@@ -326,6 +347,20 @@ input {
 		});
 	});
 	//click on form submit button
+	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			if( thisValue == "" ) {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+	});
+  	//click on form submit button
 	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
 		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
 		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
@@ -432,15 +467,54 @@ input {
 				}).change();
 
         // var regExp = /^\w*(\.\w*)?@\w*\.[a-z]+(\.[a-z]+)?$/;
-                var regExp = /^([\w\.\+]{1,})([^\W])(@)([\w]{1,})(\.[\w]{1,})+$/;
+        var regExp = /^([\w\.\+]{1,})([^\W])(@)([\w]{1,})(\.[\w]{1,})+$/;
 
-                $('[type="email"]').on('keyup', function () {
-                    $('.message').hide();
-                    regExp.test($(this).val()) ? $('.message.success').show() : $('.message.error')
-                        .show();
-                });
-    
+        $('[type="email"]').on('keyup', function () {
+            $('.message').hide();
+            regExp.test($(this).val()) ? $('.message.success').show() : $('.message.error')
+                .show();
+        });
+
+       
 });
+
+ //validation password
+        function checkPass()
+{
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    var message = document.getElementById('error-nwl');
+    var goodColor = "#c5b358";
+    var badColor = "#ff4d4d";
+ 	
+    if(pass1.value.length > 7)
+    {
+        pass1.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "character number ok!"
+    }
+    else
+    {
+        pass1.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = " you have to enter at least 8 digit!"
+        return;
+    }
+  
+    if(pass1.value == pass2.value)
+    {
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "ok!"
+    }
+	else
+    {
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = " These passwords don't match"
+    }
+}  
+    
 
 
 </script>
