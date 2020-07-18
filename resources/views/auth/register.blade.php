@@ -181,7 +181,6 @@ input {
     font: 15px ;
     display: none;
     width: 100%;
-    padding: 30px;
     left: 0;
     color: #fff;
 }
@@ -189,7 +188,7 @@ input {
 .error {
     margin-top: 20px;
     color: red;
-    margin-left: -21px;
+    padding: 20px 0px;
 }
 
 .success {
@@ -250,9 +249,7 @@ input {
                                        
                                 </fieldset>	
                                 <fieldset class="wizard-fieldset">
-                                  <h5>Payment Information</h5>
-                            
-                              
+                                  <h5>Verify Information</h5>
                                   <div class="form-group clearfix">
                                     <a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
                                     <button  type="submit" class="form-wizard-next-btn btn mego-gold-bg float-right">Create</button>

@@ -9,27 +9,27 @@
 </div>
 <div class="form-group">
 	{!! Form::label('profile[first_name]', 'First Name') !!}
-	{!! Form::text('profile[first_name]', null, ['placeholder' => 'First Name', 'class' =>'form-control wizard-required', 'required' => true])!!}
+	{!! Form::text('profile[first_name]', null, ['class' =>'form-control wizard-required', 'required' => true])!!}
 	<div class="wizard-form-error"></div>
 </div>
 <div class="form-group">
 	{!! Form::label('profile[last_name]', 'Last Name') !!}
-	{!! Form::text('profile[last_name]', null, ['placeholder' => 'Last Name', 'class' =>'form-control wizard-required', 'required' => true]) !!}
+	{!! Form::text('profile[last_name]', null, ['class' =>'form-control wizard-required', 'required' => true]) !!}
 	<div class="wizard-form-error"></div>
 </div>
 <div class="form-group">
 	{!! Form::label('profile[job_title]', 'Job Title') !!}
-	{!! Form::text('profile[job_title]', null, ['placeholder' => 'Job Title', 'class' =>'form-control ']) !!}
+	{!! Form::text('profile[job_title]', null, ['class' =>'form-control ']) !!}
 	
 </div>
 <div class="form-group">
 	{!! Form::label('profile[country_id]', 'Country') !!}
-	{!! Form::select('profile[country_id]', $countries, null, ['placeholder' => 'Country','class' => 'form-control'])
+	{!! Form::select('profile[country_id]', $countries, null, ['class' => 'form-control'])
 	!!}
 </div>
 <div class="form-group">
 	{!! Form::label('profile[address]', 'Address') !!}
-	{!! Form::text('profile[address]', null, ['placeholder' => 'Address', 'class' =>'form-control']) !!}
+	{!! Form::text('profile[address]', null, ['class' =>'form-control']) !!}
 </div>
 
 <div class="form-group">

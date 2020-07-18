@@ -28,12 +28,14 @@
 	</div>
 {{-- <div class="Individual box">You are register with individual! </div> --}}
 		
-<div class="form-group ">
+<div class="form-group">
 	{!! Captcha::display($attributes = [
 	'data-type' => 'audio',
+	'class'     => 'wizard-required'
 	]) !!}
+	<div class="wizard-form-error"></div>
 	@if ($errors->has('g-recaptcha-response'))
-	<span class="help-block text-danger wizard-required">
+	<span class="help-block text-danger ">
 		<strong>{{ $errors->first('g-recaptcha-response') }}</strong>
 	</span>
 	@endif
