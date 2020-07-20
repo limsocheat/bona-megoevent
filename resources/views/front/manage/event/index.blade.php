@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="float-left">Manage Event me</h2>
+                        <h2 class="float-left">Manage Event</h2>
                         <a class="btn  float-right mego-gold-bg" href="{{ route('manage.event.create') }}">New Event</a>
                     </div>
 

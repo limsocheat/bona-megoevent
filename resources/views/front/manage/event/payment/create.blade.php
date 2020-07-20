@@ -51,16 +51,6 @@
                                                     {{ $event->display_end_date }} @ {{ $event->display_end_time }}
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    Location
-                                                </td>
-                                                <td>
-                                                    {{ $event->location ? $event->location->name : null }}
-                                                    <br>
-                                                    {{ $event->location ? $event->location->address : null }}
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -76,8 +66,8 @@
                                     {!! Form::open(['route' => ['event.event_product.add', $event->id], 'method' =>
                                     'POST', 'class' => 'row']) !!}
                                     <div class="col-md-9">
-                                        {!! Form::select('product_id', $products, null, ['placeholder' => 'Choose
-                                        Addon Product', 'class' => 'form-control', 'disabled' => $event->readonly])
+                                        {!! Form::select('product_id', $products, null, ['placeholder' => 'Choose add on
+                                        product', 'class' => 'form-control', 'disabled' => $event->readonly])
                                         !!}
                                     </div>
                                     <div class="col-md-3">

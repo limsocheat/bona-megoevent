@@ -56,16 +56,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    Location
-                                </td>
-                                <td>
-                                    {{ $event->location ? $event->location->name : null }}
-                                    <br>
-                                    {{ $event->location ? $event->location->address : null }}
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>Exhibitors</td>
                                 <td>
                                     {{ count($event->exhibitors) }}
