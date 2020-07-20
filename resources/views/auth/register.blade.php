@@ -210,15 +210,12 @@
 								<li><span>3</span></li>
 							</ul>
 						</div>
-						{!! Form::open(['route' => 'register', 'method' => 'POST','role' =>'form', 'id' => 'msform',
-						'files' =>
-						true])!!}
+						{!! Form::open(['route' => 'register', 'method' => 'POST','role' =>'form', 'id' => 'smform','files' => true])!!}
 						<fieldset class="wizard-fieldset show">
 							<h2>Register</h2>
 							@include('auth.components.singup')
 							<div class="form-group clearfix">
-								<a href="javascript:;"
-									class=" form-wizard-next-btn btn mego-gold-bg  float-right">Next</a>
+								<a href="javascript:;" class=" form-wizard-next-btn btn mego-gold-bg  float-right">Next</a>
 							</div>
 						</fieldset>
 						<fieldset class="wizard-fieldset">
@@ -235,11 +232,11 @@
 							<h2>Company Profile</h2>
 							@include('auth.components.company')
 							<div class="form-group clearfix">
-								<a href="javascript:;"
-									class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
-								<a href="javascript:;"
-									class="form-wizard-next-btn btn mego-gold-bg float-right">Next</a>
-
+								<a href="javascript:;" class="form-wizard-previous-btn btn btn btn-secondary float-left">Previous</a>
+								<input type="submit" id="register" value="Create" class="form-wizard-next-btn form-wizard-submit btn mego-gold-bg float-right" disabled="disabled" />
+								{{-- <a href="javascript:;" class="form-wizard-next-btn btn mego-gold-bg float-right">Next</a> --}}
+								{{-- <button href="javascript:;" type="submit" class="form-wizard-next-btn form-wizard-submit btn mego-gold-bg float-right" disabled="disabled">Create</button> --}}
+							</div>
 						</fieldset>
 						{!! Form::close() !!}
 					</div>
@@ -251,18 +248,32 @@
 
 
 <script type="text/javascript">
+// add class and remove class wizard-required
 	jQuery(document).ready(function($) {
+
 
     $('#register-account-type').change(function() {
       if(this.value == 'company')
       {
         $('#register-company-name').addClass('wizard-required');
         $('#register-company-number').addClass('wizard-required');
-      } else {
+
+		if (jQuery('#register-company-name').val() == '' || jQuery('#register-company-number').val() == ''  ) {
+			 $('#register').attr('disabled', 'disabled');
+			
+		}else{
+			$('#register').removeAttr('disabled');
+		}
+		
+      } else if(this.value == 'individual'){
         $('#register-company-name').removeClass('wizard-required');
         $('#register-company-number').removeClass('wizard-required');
-      }
+		$('#register').removeAttr('disabled');
+      }else{
+		 $('#register').attr('disabled', 'disabled');
+	  }
     });
+
 
 	// click on next button
 	jQuery('.form-wizard-next-btn').click(function() {
@@ -340,20 +351,7 @@
 			}
 		});
 	});
-  	//click on form submit button
-	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
-		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
-		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
-		parentFieldset.find('.wizard-required').each(function() {
-			var thisValue = jQuery(this).val();
-			if( thisValue == "" ) {
-				jQuery(this).siblings(".wizard-form-error").slideDown();
-			}
-			else {
-				jQuery(this).siblings(".wizard-form-error").slideUp();
-			}
-		});
-	});
+
 	// focus on input field check empty or not
 	jQuery(".form-control").on('focus', function(){
 		var tmpThis = jQuery(this).val();
@@ -435,16 +433,16 @@
 
     //select company and Individual
     $("select").change(function () {
-					$(this).find("option:selected").each(function () {
-						var optionValue = $(this).attr("value");
-						if (optionValue) {
-							$(".box").not("." + optionValue).hide();
-							$("." + optionValue).show();
-						} else {
-							$(".box").hide();
-						}
-					});
-				}).change();
+		$(this).find("option:selected").each(function () {
+			var optionValue = $(this).attr("value");
+			if (optionValue) {
+				$(".box").not("." + optionValue).hide();
+				$("." + optionValue).show();
+			} else {
+				$(".box").hide();
+			}
+		});
+	}).change();
 
         // var regExp = /^\w*(\.\w*)?@\w*\.[a-z]+(\.[a-z]+)?$/;
         var regExp = /^([\w\.\+]{1,})([^\W])(@)([\w]{1,})(\.[\w]{1,})+$/;
@@ -457,7 +455,16 @@
 
        
 });
-
+//
+function checkcompany(){
+	var register_company_name = document.getElementById('register-company-name');
+	var register_company_number = document.getElementById('register-company-number');
+	if(register_company_name.value === '' || register_company_number.value ===''){
+		$('#register').attr('disabled', 'disabled');
+	}else{
+		$('#register').removeAttr('disabled');
+	}
+}
  //validation password
         function checkPass()
 {

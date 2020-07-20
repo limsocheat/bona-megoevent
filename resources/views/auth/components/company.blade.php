@@ -17,15 +17,17 @@
 	</div>
 	<div class="form-group">
 		{!! Form::label('company[name]', 'Company Name') !!}
-		{!! Form::text('company[name]', null, ['placeholder' => 'Company Name', 'class' =>'form-control', 'id' =>
+		{{-- {!! Form::text('company[name]', null, ['placeholder' => 'Company Name', 'class' =>'form-control', 'id' =>
 		'register-company-name'])
-		!!}
+		!!} --}}
+		<input id="register-company-name"  type="text" name="company[name]" class="form-control"  placeholder="'Company Name"  onkeyup="checkcompany(); return false;">
 		<div class="wizard-form-error"></div>
 	</div>
 	<div class="form-group">
 		{!! Form::label('company[registration_number]', 'Registration Number') !!}
-		{!! Form::text('company[registration_number]', null, ['placeholder' => 'xxxxxxxx', 'class' =>'form-control',
-		'id' => 'register-company-number']) !!}
+		{{-- {!! Form::text('company[registration_number]', null, ['placeholder' => 'xxxxxxxx', 'class' =>'form-control',
+		'id' => 'register-company-number']) !!} --}}
+		<input id="register-company-number"  type="text" name="company[registration_number]" class="form-control"  placeholder="xxxxxxxx" onkeyup="checkcompany(); return false;" >
 		<div class="wizard-form-error"></div>
 	</div>
 </div>
