@@ -4,7 +4,7 @@
         height: auto;
         max-height: 200px;
         width: 100%;
-        object-fit: cover;
+        object-fit: scale-down;
     }
 
     .exhibitor-card {
